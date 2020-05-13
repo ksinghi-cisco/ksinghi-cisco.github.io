@@ -23,7 +23,7 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Screen](/Screenshot (1).png)
+[Link](url) and ![Screen](ksinghi-cisco.github.io/Screenshot (1).png)
 ```
 
 For moe details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
