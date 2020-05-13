@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Jekyll Doc Theme
+  product: Cisco SDWAN
   version: 6.0
   folders:
 
@@ -23,16 +23,16 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Get started
+    - title: Conventions used in this document
       url: /index.html
       output: web, pdf
       type: homepage
 
-    - title: Introduction
+    - title: Topology
       url: /mydoc_introduction.html
       output: web, pdf
 
-    - title: Supported features
+    - title: Prerequisites
       url: /mydoc_supported_features.html
       output: web, pdf
 
