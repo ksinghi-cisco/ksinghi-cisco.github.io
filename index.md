@@ -12,9 +12,16 @@ summary: These brief instructions will help you become familiar with the SWAT SD
 
 In order to move around in the document and skip to particular sections, use the sidebar and/or the header hyperlink.
 
+<br>
+</br>
+
 ### Sub headers will look like this
 
 These can also be navigated to via the Index at the top of the page
+
+<br>
+</br>
+
 
 ```
 A block of commands like this one
@@ -22,27 +29,37 @@ can be copied and pasted
 directly to the CLI
 
 ```
+<br>
+</br>
 
-**Text in bold** is usually important.
-
-*Text in italics* will give nifty tips and tricks.
+**Text in bold** is usually important. Standalone commands will be distinguishable `from the rest of the text`
 
 A [Hyperlink](https://www.cisco.com) will direct you to additional technical documentation associated with the section you're working on.
+
+<br>
+</br>
 
 1.  Steps to be followed as part of the lab guide have an associated image as a visual aid
     ![CiscoSDWAN](/images/cisco-sdwan.jpg)
 
+<br>
+</br>
+
 2.  Some steps will also have a table with information useful for that section of the guide
 
-Tables are | Cool
------------- | -------------
-Cisco SD-WAN | is cooler
+    Tables are | Cool
+    ------------ | -------------
+    Cisco SD-WAN | is cooler
 
-
+<br>
+</br>
 
 > Techtips will
 > be highlighted like this
-> for easy readability
+> for easy readability. These will have nifty tips and tricks from our Cisco SD-WAN experts.
+
+<br>
+</br>
 
 - [ ] Every major section will have a checklist
 - [x] Which we will check mark once complete
