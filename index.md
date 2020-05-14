@@ -13,7 +13,7 @@ summary: These brief instructions will help you become familiar with the SWAT SD
 In order to move around in the document and skip to particular sections, use the sidebar and/or the header hyperlink.
 
 <br>
-</br>
+<br>
 
 ### Sub headers will look like this
 
@@ -42,8 +42,7 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 1.  Steps to be followed as part of the lab guide have an associated image as a visual aid
     ![CiscoSDWAN](/images/cisco-sdwan.jpg)
 
-<br>
-<br>
+
 
 
 2.  Some steps will also have a table with information useful for that section of the guide
