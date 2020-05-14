@@ -20,7 +20,7 @@ In order to move around in the document and skip to particular sections, use the
 These can also be navigated to via the Index at the top of the page
 
 <br>
-</br>
+<br>
 
 
 ```
@@ -30,20 +30,21 @@ directly to the CLI
 
 ```
 <br>
-</br>
+<br>
 
 **Text in bold** is usually important. Standalone commands will be distinguishable `from the rest of the text`
 
 A [Hyperlink](https://www.cisco.com) will direct you to additional technical documentation associated with the section you're working on.
 
 <br>
-</br>
+<br>
 
 1.  Steps to be followed as part of the lab guide have an associated image as a visual aid
     ![CiscoSDWAN](/images/cisco-sdwan.jpg)
 
 <br>
-</br>
+<br>
+
 
 2.  Some steps will also have a table with information useful for that section of the guide
 
@@ -52,14 +53,14 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
     Cisco SD-WAN | is cooler
 
 <br>
-</br>
+<br>
 
 > Techtips will
 > be highlighted like this
 > for easy readability. These will have nifty tips and tricks from our Cisco SD-WAN experts.
 
 <br>
-</br>
+<br>
 
 - [ ] Every major section will have a checklist
 - [x] Which we will check mark once complete
