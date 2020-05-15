@@ -11,11 +11,11 @@ folder: mydoc
 
 Task List
 
-* [ ] Verifying the existing lab setup
-* [ ] Creating the DC-vEdge1 VM
-* [ ] Onboarding DC-vEdge1
-* [ ] Onboarding Verification
-* [ ] Helpful debugs and logs
+1. [ ] Verifying the existing lab setup
+2. [ ] Creating the DC-vEdge1 VM
+3. [ ] Onboarding DC-vEdge1
+4. [ ] Onboarding Verification
+5. [ ] Helpful debugs and logs
 
 
 ## Verifying the existing lab setup
@@ -128,11 +128,11 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
 
 Task List
 
-* [x] Verifying the existing lab setup
-* [x] Creating the DC-vEdge1 VM
-* [ ] Onboarding DC-vEdge1
-* [ ] Onboarding Verification
-* [ ] Helpful debugs and logs
+1. [x] Verifying the existing lab setup
+2. [x] Creating the DC-vEdge1 VM
+3. [ ] Onboarding DC-vEdge1
+4. [ ] Onboarding Verification
+5. [ ] Helpful debugs and logs
 
 ## Onboarding DC-vEdge1
 
