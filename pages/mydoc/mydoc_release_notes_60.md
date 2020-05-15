@@ -9,13 +9,13 @@ permalink: mydoc_release_notes_60.html
 folder: mydoc
 ---
 
-Things-to-do List:
+Task List
 
-- [ ] Verifying the existing lab setup
-- [ ] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+* [ ] Verifying the existing lab setup
+* [ ] Creating the DC-vEdge1 VM
+* [ ] Onboarding DC-vEdge1
+* [ ] Onboarding Verification
+* [ ] Helpful debugs and logs
 
 
 ## Verifying the existing lab setup
@@ -46,13 +46,13 @@ The vManage, vBond and vSmarts have been deployed and should be ready to accept 
 We see that the connections are up and this completes the verification activity.
 <br>
 
-Things-to-do List:
+Task List
 
-- [x] Verifying the existing lab setup
-- [ ] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+* [x] Verifying the existing lab setup
+* [ ] Creating the DC-vEdge1 VM
+* [ ] Onboarding DC-vEdge1
+* [ ] Onboarding Verification
+* [ ] Helpful debugs and logs
 
 ## Creating the DC-vEdge1 VM
 
@@ -126,13 +126,13 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
 <br>
 
 
-Things-to-do List:
+Task List
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+* [x] Verifying the existing lab setup
+* [x] Creating the DC-vEdge1 VM
+* [ ] Onboarding DC-vEdge1
+* [ ] Onboarding Verification
+* [ ] Helpful debugs and logs
 
 ## Onboarding DC-vEdge1
 
@@ -140,13 +140,13 @@ You can use include templates for notes, tips, and warnings. These include templ
 
 <br>
 
-Things-to-do List:
+Task List
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+* [x] Verifying the existing lab setup
+* [x] Creating the DC-vEdge1 VM
+* [x] Onboarding DC-vEdge1
+* [ ] Onboarding Verification
+* [ ] Helpful debugs and logs
 
 ## Onboarding Verification
 
@@ -154,25 +154,25 @@ Similar to alerts, images also have include templates. You can insert both regul
 
 <br>
 
-Things-to-do List:
+Task List
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [x] Onboarding Verification
-- [ ] Helpful debugs and logs
+* [x] Verifying the existing lab setup
+* [x] Creating the DC-vEdge1 VM
+* [x] Onboarding DC-vEdge1
+* [x] Onboarding Verification
+* [ ] Helpful debugs and logs
 
 ## Helpful debugs and logs
 
 Instead of using YAML references to handle links, I've switched to a Markdown reference style approach. A links.html file iterates through the sidebar files and formats the content in the Markdown reference. You then just use Markdown syntax for the links. See [Links][mydoc_hyperlinks] for more details.
 
 <br>
-Things-to-do List:
+Task List
 <br>
 <br>
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [x] Onboarding Verification
-- [x] Helpful debugs and logs
+* [x] Verifying the existing lab setup
+* [x] Creating the DC-vEdge1 VM
+* [x] Onboarding DC-vEdge1
+* [x] Onboarding Verification
+* [x] Helpful debugs and logs

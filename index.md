@@ -61,5 +61,5 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 <br>
 <br>
 
-- [ ] Every major section will have a checklist
-- [x] Which we will check mark once complete
+* [ ] Every major section will have a checklist
+* [x] Which we will check mark once complete
