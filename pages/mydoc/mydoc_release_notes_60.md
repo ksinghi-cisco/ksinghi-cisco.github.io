@@ -9,6 +9,15 @@ permalink: mydoc_release_notes_60.html
 folder: mydoc
 ---
 
+Things-to-do List:
+
+- [ ] Verifying the existing lab setup
+- [ ] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+
 ## Verifying the existing lab setup
 
 The vManage, vBond and vSmarts have been deployed and should be ready to accept control connections from vEdges and cEdges. We will start by verifying the existing setup.
@@ -37,6 +46,13 @@ The vManage, vBond and vSmarts have been deployed and should be ready to accept 
 We see that the connections are up and this completes the verification activity.
 <br>
 
+Things-to-do List:
+
+- [x] Verifying the existing lab setup
+- [ ] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Creating the DC-vEdge1 VM
 
@@ -52,9 +68,9 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
  | Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.10.20.2/24 | 10.10.20.1
  | Network Adapter 5 | Internet | ge0/0 | 100.100.100.10/24 | 100.100.100.1
 
-> Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.
+> *Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.*
 
-> This configuration is applicable only for virtual vEdges/cEdges. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.
+> *This configuration is applicable only for virtual vEdges/cEdges. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.*
 
 ### Deploying the VM on vCenter
 <br>
@@ -107,15 +123,56 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
 
     ![](/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.png)
 
+<br>
+
+
+Things-to-do List:
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Onboarding DC-vEdge1
 
 You can use include templates for notes, tips, and warnings. These include templates make it easier to insert notes. If you make an error, you're immediately made aware since the site won't build. See [Alerts][mydoc_alerts] for more details.
 
-## Verification
+<br>
+
+Things-to-do List:
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+## Onboarding Verification
 
 Similar to alerts, images also have include templates. You can insert both regular images and inline images, such as images that are a button or icon. See [Images][mydoc_images] for more details.
 
-## Helpful debug logs
+<br>
+
+Things-to-do List:
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+## Helpful debugs and logs
 
 Instead of using YAML references to handle links, I've switched to a Markdown reference style approach. A links.html file iterates through the sidebar files and formats the content in the Markdown reference. You then just use Markdown syntax for the links. See [Links][mydoc_hyperlinks] for more details.
+
+<br>
+Things-to-do List:
+<br>
+<br>
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [x] Helpful debugs and logs

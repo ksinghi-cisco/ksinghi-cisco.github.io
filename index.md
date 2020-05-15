@@ -54,9 +54,9 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 <br>
 <br>
 
-> Techtips will
+> *Techtips will
 > be highlighted like this
-> for easy readability. These will have nifty tips and tricks from our Cisco SD-WAN experts.
+> for easy readability. These will have nifty tips and tricks from our Cisco SD-WAN experts.*
 
 <br>
 <br>
