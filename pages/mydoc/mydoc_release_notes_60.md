@@ -20,6 +20,7 @@ The vManage, vBond and vSmarts have been deployed and should be ready to accept 
     admin | admin
 
     ![](/images/Deploying_DC_vEdge1/01_logintovmanage.PNG)
+
 2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along the top row and 2 control planes should be up
 
     ![](/images/Deploying_DC_vEdge1/02_2smarts_1bond_vm.PNG)
