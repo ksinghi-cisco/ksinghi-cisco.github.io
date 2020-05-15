@@ -1,0 +1,29 @@
+conf t
+system
+ host-name DC-vEdge1
+ system-ip 10.255.255.11
+ site-id 1
+ organization-name "swat-sdwanlab"
+ vbond 100.100.100.3
+!
+vpn 0
+ ip route 0.0.0.0/0 100.100.100.1
+ interface ge0/0
+  ip address 100.100.100.10/24
+  no tunnel-interface
+  no shutdown
+
+!
+vpn 512
+ ip route 0.0.0.0/0 192.168.0.1
+ interface eth0
+  ip address 192.168.0.10/24
+  no shutdown
+!
+commit and-quit
+
+vshell
+scp admin@192.168.0.6:ROOTCA.pem .
+exit
+
+request root-cert-chain install /home/admin/ROOTCA.pem
