@@ -66,7 +66,7 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
     ![](/images/Deploying_DC_vEdge1/04_nositesdeployed_onlyctrl.PNG)
 3. Right click on the host and choose to **Deploy OVF Template**
 
-    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.PNG)
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
     ![](/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG)
@@ -90,13 +90,13 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
     ![](/images/Deploying_DC_vEdge1/12_finish.PNG)
 11. Once the VM is deployed, right click **DC-vEdge1** and click Edit settings.
 
-    ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.PNG)
+    ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png)
 12. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab)
 
     ![](/images/Deploying_DC_vEdge1/14_addnewdev_netadapt.PNG)
 13. Click on the drop down next to **New Network** and click on *Browse*
 
-    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.PNG)
+    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
 14. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
 
     ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
@@ -104,7 +104,7 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
     ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
 15. Click on DC-vEdge1 and choose to power it on
 
-    ![](/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.PNG)
+    ![](/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.png)
 
 
 ## Onboarding DC-vEdge1
