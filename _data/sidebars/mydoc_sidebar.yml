@@ -45,7 +45,7 @@ entries:
       output: web, pdf
 
     - title: Deploying DC-vEdge2
-      url: /mydoc_release_notes_50.html
+      url: /mydoc_Deploying_DCvEdge2.html
       output: web, pdf
 
   - title: Installation
