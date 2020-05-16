@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Network Details
 sidebar: mydoc_sidebar
 permalink: mydoc_introduction.html
 folder: mydoc
