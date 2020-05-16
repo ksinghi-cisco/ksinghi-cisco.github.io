@@ -22,7 +22,7 @@ Task List
 
 **Note 1: There will be a number of repetitive tasks from the Deploying DC-vEdge1 section. In the interest of brevity, only the delta from the previous section will be enumerated over here with the steps being listed out. Images will be similar to the ones seen in the previous section so many will be carried over or omitted entirely.**
 
-**Note 2: The important sections which will guide you through this activity will be `highlighted like this`**
+**Note 2: The important sections which will guide you through this activity will be `highlighted like this`(the entire step will be earmarked).**
 
 
 We will be deploying another vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
@@ -50,7 +50,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. `Change the Virtual Machine name to **DC-vEdge2** and click on Next.`
+4. `Change the Virtual Machine name to DC-vEdge2 and click on Next.`
 
 5. Select the host assigned to you (image shown as an example only) and click on Next
 
@@ -113,8 +113,7 @@ Use the following information in this section (some of the information will be u
     | admin     | admin       |
 
 3. `Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly`
-
-```
+    ```
     conf t
     system
      host-name DC-vEdge2
@@ -140,7 +139,7 @@ Use the following information in this section (some of the information will be u
       no shutdown
     !
     commit and-quit
-```
+    ```  
     > We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established
 
 4. Open **Putty** and double click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.11**)
@@ -149,7 +148,7 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
 
-6. Login using the same credentials as Step 1.
+6. Log in using the same credentials as Step 1.
 
 <br>
 
@@ -165,9 +164,9 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
 
-3. `Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose **Generate Bootstrap Configuration**`
+3. `Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration`
 
-4. Select **Cloud-Init** and click on OK
+4. `Select Cloud-Init and click on OK`
 
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
