@@ -20,9 +20,9 @@ Task List
 
 ### Overview
 
-**Note 1: There will be a number of repetitive tasks from the Deploying DC-vEdge1 section. In the interest of brevity, only the delta from the previous section will be enumerated over here with the steps being listed out. Images will be similar to the ones seen in the previous section so many will be carried over or omitted entirely.**
+**Note 1: There will be a number of repetitive tasks from the Deploying DC-vEdge1 section.**
 
-**Note 2: The important sections which will guide you through this activity will be `highlighted like this`(the entire step will be earmarked).**
+**Note 2: The important sections which will guide you through this activity will be `highlighted like this`(the entire step will be earmarked, indicating a delta from the previous section).**
 
 
 We will be deploying another vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
@@ -31,8 +31,8 @@ We will be deploying another vEdge in our first site (the Data Center) via vCent
 VM Name | System IP | Network Adapter | Network | Interface | IP Address | Default Gateway
 ------- | ----- | ------------- | ------------- | ------------- | ------------- | -------------
 DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11/24 | 192.168.0.1
- || Network Adapter 2 | MPLS10 | ge0/1 | 192.0.2.6/30 | 192.0.2.5
- || Network Adapter 3 | SiteDC-VPN10 | ge0/2 | 10.100.10.3/24 | 10.100.10.1
+ || Network Adapter 2 | MPLS11 | ge0/1 | 192.0.2.6/30 | 192.0.2.5
+ || Network Adapter 3 | SiteDC_VPN10 | ge0/2 | 10.100.10.3/24 | 10.100.10.1
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.3/24 | 10.100.20.1
  || Network Adapter 5 | Internet | ge0/0 | 100.100.100.11/24 | 100.100.100.1
 
@@ -52,6 +52,8 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
 4. `Change the Virtual Machine name to DC-vEdge2 and click on Next.`
 
+    ![](/images/Deploying_DC_vEdge2/01_CreateVM.PNG)
+
 5. Select the host assigned to you (image shown as an example only) and click on Next
 
     ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
@@ -62,8 +64,10 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
 8. Populate the VM Networks as per the table given at the start of this section (or reference the image below)
 
-    ![](/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG)
+    ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
 9. Click on **Finish** to deploy your DC-vEdge2 VM
+
+    ![](/images/Deploying_DC_vEdge2/03_Summary.PNG)
 
 10. Once the VM is deployed, right click **DC-vEdge2** and click Edit settings.
 
@@ -71,10 +75,11 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
 12. Click on the drop down next to **New Network** and click on *Browse*
 
-    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
+    ![](/images/Deploying_DC_vEdge2/04_addnetworkadapt.PNG)
+
 13. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
 
-    ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
+    ![](/images/Deploying_DC_vEdge2/05_Internet.PNG)
 
     ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
 14. Click on DC-vEdge2 and choose to power it on
@@ -99,8 +104,8 @@ Use the following information in this section (some of the information will be u
 | SITE ID | SYSTEM IP     | VM        | Network Adapter   | Network      | Interface | IP                | Gateway       |
 |---------|---------------|-----------|-------------------|--------------|-----------|-------------------|---------------|
 | 1       | 10.255.255.12 | DC-vEdge2 | Network Adapter 1 | Management   | eth0      | 192.168.0.11/24   | 192.168.0.1   |
-|         |               |           | Network Adapter 2 | MPLS10       | ge0/1     | 192.0.2.6/30      | 192.0.2.5     |
-|         |               |           | Network Adapter 3 | SiteDC-VPN10 | ge0/2     | 10.100.10.3/24    | 10.100.10.1   |
+|         |               |           | Network Adapter 2 | MPLS11       | ge0/1     | 192.0.2.6/30      | 192.0.2.5     |
+|         |               |           | Network Adapter 3 | SiteDC_VPN10 | ge0/2     | 10.100.10.3/24    | 10.100.10.1   |
 |         |               |           | Network Adapter 4 | SiteDC-VPN20 | ge0/3     | 10.100.20.3/24    | 10.100.20.1   |
 |         |               |           | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.11/24 | 100.100.100.1 |
 
@@ -113,6 +118,8 @@ Use the following information in this section (some of the information will be u
     | admin     | admin       |
 
 3. `Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly`
+
+    ![](/images/Deploying_DC_vEdge2/06_bootstap.PNG)
     ```
     conf t
     system
@@ -144,11 +151,13 @@ Use the following information in this section (some of the information will be u
 
 4. Open **Putty** and double click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.11**)
 
+    ![](/images/Deploying_DC_vEdge2/07_dcvedge2putty.PNG)
+
 5. Choose Yes to accept the certificate, if prompted
 
     ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
 
-6. Log in using the same credentials as Step 1.
+6. Log in using the same credentials as Step 2.
 
 <br>
 
@@ -166,13 +175,19 @@ Use the following information in this section (some of the information will be u
 
 3. `Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration`
 
+    ![](/images/Deploying_DC_vEdge2/08_genboot.PNG)
+
 4. `Select Cloud-Init and click on OK`
 
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
 5. `Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge2 device. Alternatively, leave this popup open and we can come back to it when required`
 
+    ![](/images/Deploying_DC_vEdge2/09_uuid_otp.PNG)
+
 6. Go back to the Putty session for DC-vEdge2 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
+
+    ![](/images/Deploying_DC_vEdge2/10_installrootcert.PNG)
     ```
     request root-cert-chain install /home/admin/ROOTCA.pem
     ```
@@ -188,11 +203,12 @@ Use the following information in this section (some of the information will be u
      !
      commit and-quit
      ```
+
     This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
 
 8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
 
-    ![](/images/Deploying_DC_vEdge1/32_activatevedge_uuid_token_diff.PNG)
+    ![](/images/Deploying_DC_vEdge2/11_enabletunnel_activating.PNG)
     ```
     request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
     ```
@@ -212,6 +228,9 @@ Task List
 ## Onboarding Verification
 
 1. Wait for a couple of minutes and run `show control connections` in the DC-vEdge2 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don't see any output, wait for a couple of minutes and run the command again
+
+    ![](/images/Deploying_DC_vEdge2/16_shcontrolconn.PNG)
+
     ```
     show control connections
     ```
@@ -223,8 +242,15 @@ Task List
 
 3. DC-vEdge2 should show up in the list of devices
 
+    ![](/images/Deploying_DC_vEdge2/13_monitornetworks.PNG)
+
 4. Click on DC-vEdge2 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
 
+    ![](/images/Deploying_DC_vEdge2/14_2smarts_vmanage.PNG)
+
+5. On the main dashboard, notice that we now have two WAN Edges onboarded on DNAC. The site doesn't have WAN connectivity yet since BFD sessions are not being established as of now. This will change once we get more sites onboard
+
+    ![](/images/Deploying_DC_vEdge2/15_maindashboard.PNG)
 
 This completes the verification activity.
 
