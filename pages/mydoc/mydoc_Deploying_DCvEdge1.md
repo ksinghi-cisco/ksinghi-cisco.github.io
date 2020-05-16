@@ -255,11 +255,11 @@ Use the following information in this section (some of the information will be u
      ```
     This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
 
-8. Issue the `request vedge-cloud activate chassis-number <Enter your UUID> token <Enter the OTP>`command. Replace the **<Enter your UUID>** and **<Enter your OTP>** fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
 
     ![](/images/Deploying_DC_vEdge1/32_activatevedge_uuid_token_diff.PNG)
     ```
-    request vedge-cloud activate chassis-number <Enter your UUID> token <Enter the OTP>
+    request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
     ```
 This completes the Onboarding section for DC-vEdge1
 
@@ -276,7 +276,28 @@ Task List
 
 ## Onboarding Verification
 
-Similar to alerts, images also have include templates. You can insert both regular images and inline images, such as images that are a button or icon. See [Images][mydoc_images] for more details.
+1. Wait for a couple of minutes and run `show control connections` in the DC-vEdge1 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don't see any output, wait for a couple of minutes and run the command again
+
+    ![](/images/Deploying_DC_vEdge1/33_showcontrolconn.PNG)
+    ```
+    show control connections
+    ```
+> You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`.
+
+2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
+
+    ![](/images/Deploying_DC_vEdge1/34_monitor_network.png)
+
+3. DC-vEdge1 should show up in the list of devices
+
+    ![](/images/Deploying_DC_vEdge1/35_DC-vEdge1added.PNG)
+
+4. Click on DC-vEdge1 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
+
+    ![](/images/Deploying_DC_vEdge1/36_MonNet_dcvedge1_tshoot_controlconn.PNG)
+
+
+This completes the verification activity.
 
 <br>
 
@@ -290,7 +311,29 @@ Task List
 
 ## Helpful debugs and logs
 
-Instead of using YAML references to handle links, I've switched to a Markdown reference style approach. A links.html file iterates through the sidebar files and formats the content in the Markdown reference. You then just use Markdown syntax for the links. See [Links][mydoc_hyperlinks] for more details.
+
+**This section is optional and can be used for learning. It is not required to go through this in order to complete the lab activities successfully.**
+
+1. On the CLI for DC-vEdge1, issue `debug vdaemon all` followed by `clear control connections`. This will tear down all the control connections and the vEdge will rebuilt the DTLS tunnels. We can capture the logs to see the process associated with the DTLS tunnels being built
+
+    ![](/images/Deploying_DC_vEdge1/37_enabledebug_clearcontr.PNG)
+    ```
+    debug vdaemon all
+    clear control connections
+    ```
+
+2. Wait for a couple of minutes and go to `vshell`. Type `cat /var/log/tmplog/vdebug` to view the contents of the log file
+
+    ![](/images/Deploying_DC_vEdge1/38_accessvsh_deboutput.PNG)
+
+3. Given below are a couple of sample outputs
+
+    ![](/images/Deploying_DC_vEdge1/39_sampleoutput.PNG)
+
+    ![](/images/Deploying_DC_vEdge1/40_sampleoutput2.PNG)    
+
+
+This completes our onboarding activity for DC-vEdge1.
 
 <br>
 Task List
