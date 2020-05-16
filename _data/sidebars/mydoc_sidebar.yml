@@ -41,7 +41,7 @@ entries:
     folderitems:
 
     - title: Deploying DC-vEdge1
-      url: /mydoc_release_notes_60.html
+      url: /mydoc_Deploying_DCvEdge1.html
       output: web, pdf
 
     - title: Deploying DC-vEdge2

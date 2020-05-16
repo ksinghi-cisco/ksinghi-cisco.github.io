@@ -5,17 +5,17 @@ keywords: DC-vEdge1, onboarding, deploying, vEdge1
 last_updated: May 15, 2020
 summary: "Step by step process for deploying DC-vEdge1"
 sidebar: mydoc_sidebar
-permalink: mydoc_release_notes_60.html
+permalink: mydoc_Deploying_DCvEdge1.html
 folder: mydoc
 ---
 
 Task List
 
-1. [ ] Verifying the existing lab setup
-2. [ ] Creating the DC-vEdge1 VM
-3. [ ] Onboarding DC-vEdge1
-4. [ ] Onboarding Verification
-5. [ ] Helpful debugs and logs
+- [ ] Verifying the existing lab setup
+- [ ] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 
 ## Verifying the existing lab setup
@@ -48,11 +48,11 @@ We see that the connections are up and this completes the verification activity.
 
 Task List
 
-* [x] Verifying the existing lab setup
-* [ ] Creating the DC-vEdge1 VM
-* [ ] Onboarding DC-vEdge1
-* [ ] Onboarding Verification
-* [ ] Helpful debugs and logs
+- [x] Verifying the existing lab setup
+- [ ] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Creating the DC-vEdge1 VM
 
@@ -128,11 +128,11 @@ DC-vEdge1 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.
 
 Task List
 
-1. [x] Verifying the existing lab setup
-2. [x] Creating the DC-vEdge1 VM
-3. [ ] Onboarding DC-vEdge1
-4. [ ] Onboarding Verification
-5. [ ] Helpful debugs and logs
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Onboarding DC-vEdge1
 
@@ -142,11 +142,11 @@ You can use include templates for notes, tips, and warnings. These include templ
 
 Task List
 
-* [x] Verifying the existing lab setup
-* [x] Creating the DC-vEdge1 VM
-* [x] Onboarding DC-vEdge1
-* [ ] Onboarding Verification
-* [ ] Helpful debugs and logs
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Onboarding Verification
 
@@ -156,11 +156,11 @@ Similar to alerts, images also have include templates. You can insert both regul
 
 Task List
 
-* [x] Verifying the existing lab setup
-* [x] Creating the DC-vEdge1 VM
-* [x] Onboarding DC-vEdge1
-* [x] Onboarding Verification
-* [ ] Helpful debugs and logs
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 ## Helpful debugs and logs
 
@@ -171,8 +171,8 @@ Task List
 <br>
 <br>
 
-* [x] Verifying the existing lab setup
-* [x] Creating the DC-vEdge1 VM
-* [x] Onboarding DC-vEdge1
-* [x] Onboarding Verification
-* [x] Helpful debugs and logs
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [x] Helpful debugs and logs
