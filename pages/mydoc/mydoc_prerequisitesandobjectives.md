@@ -27,6 +27,10 @@ folder: mydoc
 
 * Knowledge of Cisco WAAS and NGIPS concepts is an added advantage
 
+
+## Objectives
+
+
 ### What will you learn?
 
 This lab has multiple use cases that are covered as part of the tasks. We are working on expanding this list as and when new features are tested/released.
