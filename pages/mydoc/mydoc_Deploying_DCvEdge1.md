@@ -140,7 +140,7 @@ Task List
 
 Use the following information in this section (some of the information will be used later)
 
-| SITE ID | SYSTEM ID     | VM        | Network Adapter   | Network      | Interface | IP                | Gateway       |
+| SITE ID | SYSTEM IP     | VM        | Network Adapter   | Network      | Interface | IP                | Gateway       |
 |---------|---------------|-----------|-------------------|--------------|-----------|-------------------|---------------|
 | 1       | 10.255.255.11 | DC-vEdge1 | Network Adapter 1 | Management   | eth0      | 192.168.0.10/24   | 192.168.0.1   |
 |         |               |           | Network Adapter 2 | MPLS10       | ge0/1     | 192.0.2.2/30      | 192.0.2.1     |
