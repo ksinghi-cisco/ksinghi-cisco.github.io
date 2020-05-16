@@ -64,7 +64,7 @@ VM Name | System IP | Network Adapter | Network | Interface | IP Address | Defau
 ------- | | ------------- | ------------- | ------------- | ------------- | -------------
 DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.1
  || Network Adapter 2 | MPLS10 | ge0/1 | 192.0.2.2/30 | 192.0.2.1
- || Network Adapter 3 | SiteDC-VPN10 | ge0/2 | 10.100.10.2/24 | 10.100.10.1
+ || Network Adapter 3 | SiteDC_VPN10 | ge0/2 | 10.100.10.2/24 | 10.100.10.1
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.2/24 | 10.100.20.1
  || Network Adapter 5 | Internet | ge0/0 | 100.100.100.10/24 | 100.100.100.1
 
@@ -144,7 +144,7 @@ Use the following information in this section (some of the information will be u
 |---------|---------------|-----------|-------------------|--------------|-----------|-------------------|---------------|
 | 1       | 10.255.255.11 | DC-vEdge1 | Network Adapter 1 | Management   | eth0      | 192.168.0.10/24   | 192.168.0.1   |
 |         |               |           | Network Adapter 2 | MPLS10       | ge0/1     | 192.0.2.2/30      | 192.0.2.1     |
-|         |               |           | Network Adapter 3 | SiteDC-VPN10 | ge0/2     | 10.100.10.2/24    | 10.100.10.1   |
+|         |               |           | Network Adapter 3 | SiteDC_VPN10 | ge0/2     | 10.100.10.2/24    | 10.100.10.1   |
 |         |               |           | Network Adapter 4 | SiteDC-VPN20 | ge0/3     | 10.100.20.2/24    | 10.100.20.1   |
 |         |               |           | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.10/24 | 100.100.100.1 |
 
@@ -202,7 +202,7 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
 
-6. Login using the same credentials as Step 1.
+6. Login using the same credentials as Step 2.
 
     ![](/images/Deploying_DC_vEdge1/24_loginusingadminadmin.PNG)
 
