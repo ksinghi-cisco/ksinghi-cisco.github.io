@@ -170,7 +170,7 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
-5. `Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required`
+5. `Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge2 device. Alternatively, leave this popup open and we can come back to it when required`
 
 6. Go back to the Putty session for DC-vEdge2 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
     ```
