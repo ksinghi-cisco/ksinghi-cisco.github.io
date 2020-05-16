@@ -136,7 +136,133 @@ Task List
 
 ## Onboarding DC-vEdge1
 
-You can use include templates for notes, tips, and warnings. These include templates make it easier to insert notes. If you make an error, you're immediately made aware since the site won't build. See [Alerts][mydoc_alerts] for more details.
+### Bootstrapping DC-vEdge1 (Initial Configuration)
+
+Use the following information in this section (some of the information will be used later)
+
+| SITE ID | SYSTEM ID     | VM        | Network Adapter   | Network      | Interface | IP                | Gateway       |
+|---------|---------------|-----------|-------------------|--------------|-----------|-------------------|---------------|
+| 1       | 10.255.255.11 | DC-vEdge1 | Network Adapter 1 | Management   | eth0      | 192.168.0.10/24   | 192.168.0.1   |
+|         |               |           | Network Adapter 2 | MPLS10       | ge0/1     | 192.0.2.2/30      | 192.0.2.1     |
+|         |               |           | Network Adapter 3 | SiteDC-VPN10 | ge0/2     | 10.100.10.2/24    | 10.100.10.1   |
+|         |               |           | Network Adapter 4 | SiteDC-VPN20 | ge0/3     | 10.100.20.2/24    | 10.100.20.1   |
+|         |               |           | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.10/24 | 100.100.100.1 |
+
+
+1. Console in to the DC-vEdge1 VM from vCenter (you should already be logged in from our last activity)
+
+    ![](/images/Deploying_DC_vEdge1/19_choosetoopenconsolefordcvedge1.png)
+
+2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in)
+
+    | Username | Password     |
+    | ------------- | ------------- |
+    | admin      | admin       |
+
+    ![](/images/Deploying_DC_vEdge1/20_login_adminadminresettoadmin.PNG)
+
+3. Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+
+    ![](/images/Deploying_DC_vEdge1/21_Enterbootstrap_typeincons.PNG)
+
+    ```
+    conf t
+    system
+     host-name DC-vEdge1
+     system-ip 10.255.255.11
+     site-id 1
+     organization-name "swat-sdwanlab"
+     vbond 100.100.100.3
+     exit
+    !
+    vpn 0
+     ip route 0.0.0.0/0 100.100.100.1
+     interface ge0/0
+      ip address 100.100.100.10/24
+      no tunnel-interface
+      no shutdown
+      exit
+
+    !
+    vpn 512
+     ip route 0.0.0.0/0 192.168.0.1
+     interface eth0
+      ip address 192.168.0.10/24
+      no shutdown
+    !
+    commit and-quit
+```
+    > We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established
+
+4. Open **Putty** and double click the saved session for DC-vEdge1 (or **SSH** to **192.168.0.10**)
+
+    ![](/images/Deploying_DC_vEdge1/22_openputty_dcvedge1doubleclick.PNG)
+
+5. Choose Yes to accept the certificate, if prompted
+
+    ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
+
+6. Login using the same credentials as Step 1.
+
+    ![](/images/Deploying_DC_vEdge1/24_loginusingadminadmin.PNG)
+
+
+### Installing certificates and activating the vEdge
+
+1. Type `vshell` and enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command)
+
+    ![](/images/Deploying_DC_vEdge1/25_vshellcopypemtovedgefromvman.PNG)
+    ```
+    vshell
+    scp admin@192.168.0.6:ROOTCA.pem .
+    exit
+    ```
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+
+    ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
+
+3. Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose **Generate Bootstrap Configuration**
+
+    ![](/images/Deploying_DC_vEdge1/27_threedots_genbootstrap.png)
+
+4. Select **Cloud-Init** and click on OK
+
+    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+
+5. Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required
+
+    ![](/images/Deploying_DC_vEdge1/29_makenote_uuid_otp.PNG)
+
+6. Go back to the Putty session for DC-vEdge1 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
+
+    ![](/images/Deploying_DC_vEdge1/30_installrootcertchain.PNG)
+    ```
+    request root-cert-chain install /home/admin/ROOTCA.pem
+    ```
+7. Enter `tunnel-interface`, `encapsulation ipsec` and `allow-service all` under `interface ge0/0` to bring up the tunnel Interface. Make sure to `commit and-quit` in order to write the configuration change
+
+    ![](/images/Deploying_DC_vEdge1/31_enable_tunnint.PNG)
+    ```
+    config t
+    vpn 0
+    interface ge0/0
+     tunnel-interface
+     encapsulation ipsec
+     allow-service all
+     exit
+     !
+     commit and-quit
+     ```
+    This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
+
+8. Issue the `request vedge-cloud activate chassis-number <Enter your UUID> token <Enter the OTP>`command. Replace the **<Enter your UUID>** and **<Enter your OTP>** fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+
+    ![](/images/Deploying_DC_vEdge1/32_activatevedge_uuid_token_diff.PNG)
+    ```
+    request vedge-cloud activate chassis-number <Enter your UUID> token <Enter the OTP>
+    ```
+This completes the Onboarding section for DC-vEdge1
+
 
 <br>
 
