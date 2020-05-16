@@ -1,48 +1,309 @@
 ---
-title: Release notes 5.0
+title: Deploying and Onboarding DC-vEdge2
 tags: [getting_started]
-keywords: release notes, announcements, what's new, new features
-last_updated: July 3, 2016
-summary: "Version 5.0 of the Documentation theme for Jekyll changes some fundamental ways the theme works to provide product-specific sidebars, intended to accommodate a site where multiple products are grouped together on the same site rather than generated out as separate outputs."
+keywords: DC-vEdge2, onboarding, deploying, vEdge2
+last_updated: May 15, 2020
+summary: "Step by step process for deploying DC-vEdge2"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_DCvEdge2.html
 folder: mydoc
 ---
 
-## Unique sidebars for each product
+Task List
 
-In previous versions of the theme, I built the theme to generate different outputs for different scenarios based on various filtering attributes that might include product, version, platform, and audience variants.
+- [ ] Creating the DC-vEdge2 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
-However, this model results in siloed outputs and lots of separate file directories to manage. Instead of having 30 separate sites for your content (or however many variants you might have been producing), in this version of the theme I've moved towards a strategy of having one site with multiple products.
+## Creating the DC-vEdge1 VM
 
-For each product, you can associate a unique sidebar with each of the product's pages. This allows you to have all your documentation on one site, but with separate navigation that is tailored to a view of that product.
+### Overview
 
-You can still output to both web and PDF. And if you really need multiple site outputs, you can still do so by using multiple configuration files that trigger different builds. But my conclusion after using the multiple site output model for some years is that it's a bad practice for tech comm.
+We will be deploying another vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-## Permalinks
+VM Name | System IP | Network Adapter | Network | Interface | IP Address | Default Gateway
+------- | ----- | ------------- | ------------- | ------------- | ------------- | -------------
+DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11/24 | 192.168.0.1
+ || Network Adapter 2 | MPLS10 | ge0/1 | 192.0.2.6/30 | 192.0.2.5
+ || Network Adapter 3 | SiteDC-VPN10 | ge0/2 | 10.100.10.3/24 | 10.100.10.1
+ || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.3/24 | 10.100.20.1
+ || Network Adapter 5 | Internet | ge0/0 | 100.100.100.11/24 | 100.100.100.1
 
-With this theme, since you'll be publishing to one site, I've implement permalinks instead of relative links. Using permalinks means the way you store pages is much more flexible. You can store topics in folders and subfolders, etc., to any degree. But note that with permalinks you can't view the content offline (outside of Jekyll's preview server) nor on a separate site other than the one specified in the configuration file. Permalinks are how Jekyll was designed to work, and the sites just work better that way.
+> *Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.*
 
-## Kramdown and Rouge
+> *This configuration is applicable only for virtual vEdges/cEdges. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.*
 
-I also switched from redcarpet and Pygments to Kramdown and Rouge to align with the current direction of Jekyll 3.0. Kramdown is a Markdown filter (it's slightly different from Github-flavored Markdown). Rouge is a syntax highlighter. Pygments had some dependencies on Python, which made it more cumbersome for Windows users.
+### Deploying the VM on vCenter
+<br>
 
-## Blog feature
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
 
-I included a blog feature with this version of the theme. You can write posts and view them through the News link. There's also an archive for blog posts that sorts posts by year.
+    ![](/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG)
+2. Notice that no vEdges/cEdges have been deployed on the host you've accessed. This is expected.
 
-Additionally, the tagging system works across both the blog and pages, so your tags allow users to move laterally across the site based on topics they're interested in. When you view a tag archive, the sidebar shows a list of tags.
+    ![](/images/Deploying_DC_vEdge1/04_nositesdeployed_onlyctrl.PNG)
+3. Right click on the host and choose to **Deploy OVF Template**
 
-## Updated documentation
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
+4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-I updated the documentation for  the theme. The switch from the multi-site outputs to the single-site with multiple sidebars required updating a lot of different parts of the documentation and code.
+    ![](/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG)
+5. Change the Virtual Machine name to **DC-vEdge1** and click on Next.
 
-## Fixed errors
+    ![](/images/Deploying_DC_vEdge1/07_namedcvedge1_next.PNG)
+6. Select the host assigned to you (image shown as an example only) and click on Next
 
-Previously I had some errors with the HTML that showed up in w3c HTML validator analyses. This caused some small problems in certain browsers or systems less tolerant of the errors. I fixed all of the errors.
+    ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
+7. Review the details shown and click on Next
 
-## Accessing the old theme
+    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+8. Choose the Datastore and click on Next
 
-If you want to access the old theme, you can still find it [here](https://github.com/tomjoht/jekylldoctheme-separate-outputs).
+    ![](/images/Deploying_DC_vEdge1/10_storage_next.PNG)
+9. Populate the VM Networks as per the table given at the start of this section (or reference the image below)
 
-{% include links.html %}
+    ![](/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG)
+10. Click on **Finish** to deploy your DC-vEdge1 VM
+
+    ![](/images/Deploying_DC_vEdge1/12_finish.PNG)
+11. Once the VM is deployed, right click **DC-vEdge1** and click Edit settings.
+
+    ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png)
+12. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab)
+
+    ![](/images/Deploying_DC_vEdge1/14_addnewdev_netadapt.PNG)
+13. Click on the drop down next to **New Network** and click on *Browse*
+
+    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
+14. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
+
+    ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
+
+    ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
+15. Click on DC-vEdge1 and choose to power it on
+
+    ![](/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.png)
+
+<br>
+
+
+Task List
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+## Onboarding DC-vEdge1
+
+### Bootstrapping DC-vEdge1 (Initial Configuration)
+
+Use the following information in this section (some of the information will be used later)
+
+| SITE ID | SYSTEM ID     | VM        | Network Adapter   | Network      | Interface | IP                | Gateway       |
+|---------|---------------|-----------|-------------------|--------------|-----------|-------------------|---------------|
+| 1       | 10.255.255.11 | DC-vEdge1 | Network Adapter 1 | Management   | eth0      | 192.168.0.10/24   | 192.168.0.1   |
+|         |               |           | Network Adapter 2 | MPLS10       | ge0/1     | 192.0.2.2/30      | 192.0.2.1     |
+|         |               |           | Network Adapter 3 | SiteDC-VPN10 | ge0/2     | 10.100.10.2/24    | 10.100.10.1   |
+|         |               |           | Network Adapter 4 | SiteDC-VPN20 | ge0/3     | 10.100.20.2/24    | 10.100.20.1   |
+|         |               |           | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.10/24 | 100.100.100.1 |
+
+
+1. Console in to the DC-vEdge1 VM from vCenter (you should already be logged in from our last activity)
+
+    ![](/images/Deploying_DC_vEdge1/19_choosetoopenconsolefordcvedge1.png)
+
+2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in)
+
+    | Username | Password     |
+    | ------------- | ------------- |
+    | admin      | admin       |
+
+    ![](/images/Deploying_DC_vEdge1/20_login_adminadminresettoadmin.PNG)
+
+3. Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+
+    ![](/images/Deploying_DC_vEdge1/21_Enterbootstrap_typeincons.PNG)
+
+    ```
+    conf t
+    system
+     host-name DC-vEdge1
+     system-ip 10.255.255.11
+     site-id 1
+     organization-name "swat-sdwanlab"
+     vbond 100.100.100.3
+     exit
+    !
+    vpn 0
+     ip route 0.0.0.0/0 100.100.100.1
+     interface ge0/0
+      ip address 100.100.100.10/24
+      no tunnel-interface
+      no shutdown
+      exit
+
+    !
+    vpn 512
+     ip route 0.0.0.0/0 192.168.0.1
+     interface eth0
+      ip address 192.168.0.10/24
+      no shutdown
+    !
+    commit and-quit
+```
+    > We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established
+
+4. Open **Putty** and double click the saved session for DC-vEdge1 (or **SSH** to **192.168.0.10**)
+
+    ![](/images/Deploying_DC_vEdge1/22_openputty_dcvedge1doubleclick.PNG)
+
+5. Choose Yes to accept the certificate, if prompted
+
+    ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
+
+6. Login using the same credentials as Step 1.
+
+    ![](/images/Deploying_DC_vEdge1/24_loginusingadminadmin.PNG)
+
+
+### Installing certificates and activating the vEdge
+
+1. Type `vshell` and enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command)
+
+    ![](/images/Deploying_DC_vEdge1/25_vshellcopypemtovedgefromvman.PNG)
+    ```
+    vshell
+    scp admin@192.168.0.6:ROOTCA.pem .
+    exit
+    ```
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+
+    ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
+
+3. Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose **Generate Bootstrap Configuration**
+
+    ![](/images/Deploying_DC_vEdge1/27_threedots_genbootstrap.png)
+
+4. Select **Cloud-Init** and click on OK
+
+    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+
+5. Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required
+
+    ![](/images/Deploying_DC_vEdge1/29_makenote_uuid_otp.PNG)
+
+6. Go back to the Putty session for DC-vEdge1 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
+
+    ![](/images/Deploying_DC_vEdge1/30_installrootcertchain.PNG)
+    ```
+    request root-cert-chain install /home/admin/ROOTCA.pem
+    ```
+7. Enter `tunnel-interface`, `encapsulation ipsec` and `allow-service all` under `interface ge0/0` to bring up the tunnel Interface. Make sure to `commit and-quit` in order to write the configuration change
+
+    ![](/images/Deploying_DC_vEdge1/31_enable_tunnint.PNG)
+    ```
+    config t
+    vpn 0
+    interface ge0/0
+     tunnel-interface
+     encapsulation ipsec
+     allow-service all
+     exit
+     !
+     commit and-quit
+     ```
+    This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
+
+8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+
+    ![](/images/Deploying_DC_vEdge1/32_activatevedge_uuid_token_diff.PNG)
+    ```
+    request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
+    ```
+This completes the Onboarding section for DC-vEdge1
+
+
+<br>
+
+Task List
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+## Onboarding Verification
+
+1. Wait for a couple of minutes and run `show control connections` in the DC-vEdge1 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don't see any output, wait for a couple of minutes and run the command again
+
+    ![](/images/Deploying_DC_vEdge1/33_showcontrolconn.PNG)
+    ```
+    show control connections
+    ```
+> You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`.
+
+2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
+
+    ![](/images/Deploying_DC_vEdge1/34_monitor_network.png)
+
+3. DC-vEdge1 should show up in the list of devices
+
+    ![](/images/Deploying_DC_vEdge1/35_DC-vEdge1added.PNG)
+
+4. Click on DC-vEdge1 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
+
+    ![](/images/Deploying_DC_vEdge1/36_MonNet_dcvedge1_tshoot_controlconn.PNG)
+
+
+This completes the verification activity.
+
+<br>
+
+Task List
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+## Helpful debugs and logs
+
+
+**This section is optional and can be used for learning. It is not required to go through this in order to complete the lab activities successfully.**
+
+1. On the CLI for DC-vEdge1, issue `debug vdaemon all` followed by `clear control connections`. This will tear down all the control connections and the vEdge will rebuilt the DTLS tunnels. We can capture the logs to see the process associated with the DTLS tunnels being built
+
+    ![](/images/Deploying_DC_vEdge1/37_enabledebug_clearcontr.PNG)
+    ```
+    debug vdaemon all
+    clear control connections
+    ```
+
+2. Wait for a couple of minutes and go to `vshell`. Type `cat /var/log/tmplog/vdebug` to view the contents of the log file
+
+    ![](/images/Deploying_DC_vEdge1/38_accessvsh_deboutput.PNG)
+
+3. Given below are a couple of sample outputs
+
+    ![](/images/Deploying_DC_vEdge1/39_sampleoutput.PNG)
+
+    ![](/images/Deploying_DC_vEdge1/40_sampleoutput2.PNG)    
+
+
+This completes our onboarding activity for DC-vEdge1.
+
+<br>
+Task List
+<br>
+<br>
+
+- [x] Verifying the existing lab setup
+- [x] Creating the DC-vEdge1 VM
+- [x] Onboarding DC-vEdge1
+- [x] Onboarding Verification
+- [x] Helpful debugs and logs
