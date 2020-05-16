@@ -33,7 +33,7 @@ entries:
       output: web, pdf
 
     - title: Prerequisites and Objectives
-      url: /mydoc_supported_features.html
+      url: /mydoc_prerequisitesandobjectives.html
       output: web, pdf
 
   - title: Bringing Up the DC-vEdges
