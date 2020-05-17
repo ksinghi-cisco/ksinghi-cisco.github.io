@@ -86,7 +86,7 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 15.  Make sure the Network Adapters match with the image below and click on OK
 
-    ![](/images/Deploying_vEdge20/99_nwad.PNG)
+    ![](/images/Deploying_vEdge20/99_nwad2.PNG)
 
 16. Click on vEdge20 and choose to power it on
 
@@ -120,7 +120,7 @@ Use the following information in this section (some of the information will be u
 2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in).
 
     | Username | Password     |
-    | ------------- | ------------- |
+    | ------------- | ------------ |
     | admin     | admin       |
 
     {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
