@@ -61,25 +61,34 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-    ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
+    ![](/images/Deploying_vEdge20/02_nwadapters.PNG)
 9. Click on **Finish** to deploy your vEdge20 VM
 
-    ![](/images/Deploying_DC_vEdge2/03_Summary.PNG)
+    ![](/images/Deploying_vEdge20/03_summary.PNG)
 
 10. Once the VM is deployed, right click **vEdge20** and click Edit settings.
 
+    ![](/images/Deploying_vEdge20/04_edtisett.PNG)
+
 11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 6 for our lab). Add another network device this way, for a total of 6 network adapters.
 
-12. Click on the drop down next to **New Network** and click on *Browse*
+12. Click on the drop down next to the first **New Network** and click on *Browse*
 
-    ![](/images/Deploying_DC_vEdge2/04_addnetworkadapt.PNG)
+    ![](/images/Deploying_vEdge20/05_browsenetint.PNG)
 
-13. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
+13. Choose the **Internet** Network and click on OK.
 
-    ![](/images/Deploying_DC_vEdge2/05_Internet.PNG)
+    ![](/images/Deploying_vEdge20/06_chooseInt.PNG)
 
-    ![](/images/Deploying_DC_vEdge2/99_nwve2.PNG)
-14. Click on vEdge20 and choose to power it on
+14. Click on the drop down for the second **New Network** entry, added as a result of adding two network adapters and click on *Browse*. Select the **TLOCEXT2_vEdge** Network
+
+    ![](/images/Deploying_vEdge20/07_browseagain_tlocext2.PNG)
+
+15.  Make sure the Network Adapters match with the image below and click on OK
+
+    ![](/images/Deploying_vEdge20/99_nwad.PNG)
+
+16. Click on vEdge20 and choose to power it on
 
 <br>
 
