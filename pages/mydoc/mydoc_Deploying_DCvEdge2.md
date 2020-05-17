@@ -48,7 +48,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. `Change the Virtual Machine name to DC-vEdge2 and click on Next.`
+4. > Change the Virtual Machine name to DC-vEdge2 and click on Next.
 
     ![](/images/Deploying_DC_vEdge2/01_CreateVM.PNG)
 
@@ -60,7 +60,9 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
 7. Choose the Datastore and click on Next
 
-8. >Populate the VM Networks as per the table given at the start of this section (or reference the image below)
+8. >Populate the VM Networks as per the image given below
+
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
 9. Click on **Finish** to deploy your DC-vEdge2 VM
@@ -115,6 +117,8 @@ Use the following information in this section (some of the information will be u
     | ------------- | ------------- |
     | admin     | admin       |
 
+    {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
+
 3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
     ![](/images/Deploying_DC_vEdge2/06_bootstap.PNG)
@@ -135,7 +139,8 @@ Use the following information in this section (some of the information will be u
       no tunnel-interface
       no shutdown
       exit
-
+      !
+      exit
     !
     vpn 512
      ip route 0.0.0.0/0 192.168.0.1
@@ -159,11 +164,10 @@ Use the following information in this section (some of the information will be u
 
 ### Installing certificates and activating the vEdge
 
-1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command)
+1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin)
     ```
     vshell
     scp admin@192.168.0.6:ROOTCA.pem .
-    exit
     ```
 2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
 
