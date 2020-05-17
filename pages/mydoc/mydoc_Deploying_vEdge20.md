@@ -85,7 +85,6 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
     ![](/images/Deploying_vEdge20/07_browseagain_tlocext2.PNG)
 
 15.  Make sure the Network Adapters match with the image below and click on OK
-
     ![](/images/Deploying_vEdge20/99_nwad2.PNG)
 
 16. Click on vEdge20 and choose to power it on
