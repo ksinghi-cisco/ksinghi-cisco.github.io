@@ -1,8 +1,8 @@
 ---
-title: About Ruby, Gems, Bundler, and other prerequisites
+title: Deploying Single uplink (INET) vEdge
 tags: [getting_started, troubleshooting]
 keywords:
-summary: "Ruby is a programming language you must have on your computer in order to build Jekyll locally. Ruby has various gems (or plugins) that provide various functionality. Each Jekyll project usually requires certain gems."
+summary: "Deploying vEdge20 in Site 20. This vEdge has a single uplink to the Internet"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_vEdge20.html
 folder: mydoc
