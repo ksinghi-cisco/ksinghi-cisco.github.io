@@ -17,7 +17,8 @@ folder: mydoc
 
 * A stable internet connection that has standard Cisco AnyConnect ports allowed
 
-* It is preferable to open this Lab Guide on one screen and perform lab activities on another
+{% include note.html content="It is recommended to open this Lab Guide on one screen and perform lab activities on another" %}
+
 
 ### What should you know?
 
