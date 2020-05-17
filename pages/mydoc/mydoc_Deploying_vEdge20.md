@@ -123,7 +123,7 @@ Use the following information in this section (some of the information will be u
     | ------------- | ------------- |
     | admin     | admin       |
 
-{% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
+    {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
 
 3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
@@ -241,7 +241,7 @@ Task List
     ```
     show control connections
     ```
-{% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
+    {% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
 
 2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
 
