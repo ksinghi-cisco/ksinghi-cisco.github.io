@@ -20,9 +20,11 @@ Task List
 
 ### Overview
 
-**Note 1: There will be a number of repetitive tasks from the Deploying DC-vEdge1 section.**
+{% include note.html content="There will be a number of repetitive tasks from the Deploying DC-vEdge1 section." %}
 
-**Note 2: The important sections which will guide you through this activity will be `highlighted like this`(the entire step will be earmarked, indicating a delta from the previous section).**
+{% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous section." %}
+
+> This is what an earmarked step will look like
 
 
 We will be deploying another vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
@@ -36,11 +38,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.3/24 | 10.100.20.1
  || Network Adapter 5 | Internet | ge0/0 | 100.100.100.11/24 | 100.100.100.1
 
-> *Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.*
-
-> *This configuration is applicable only for virtual vEdges/cEdges. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.*
-
-### Deploying the VM on vCenter
+### Deploying the DC-vEdge2 VM on vCenter
 <br>
 
 1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
@@ -62,7 +60,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
 7. Choose the Datastore and click on Next
 
-8. `Populate the VM Networks as per the table given at the start of this section (or reference the image below)`
+8. >Populate the VM Networks as per the table given at the start of this section (or reference the image below)
 
     ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
 9. Click on **Finish** to deploy your DC-vEdge2 VM
@@ -117,7 +115,7 @@ Use the following information in this section (some of the information will be u
     | ------------- | ------------- |
     | admin     | admin       |
 
-3. `Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly`
+3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
     ![](/images/Deploying_DC_vEdge2/06_bootstap.PNG)
     ```
@@ -147,9 +145,7 @@ Use the following information in this section (some of the information will be u
     !
     commit and-quit
     ```  
-    > We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established
-
-4. Open **Putty** and double click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.11**)
+4. Open **Putty** and double-click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.11**)
 
     ![](/images/Deploying_DC_vEdge2/07_dcvedge2putty.PNG)
 
@@ -173,15 +169,15 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
 
-3. `Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration`
+3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
 
     ![](/images/Deploying_DC_vEdge2/08_genboot.PNG)
 
-4. `Select Cloud-Init and click on OK`
+4. >Select Cloud-Init and click on OK
 
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
-5. `Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge2 device. Alternatively, leave this popup open and we can come back to it when required`
+5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge2 device. Alternatively, leave this popup open and we can come back to it when required
 
     ![](/images/Deploying_DC_vEdge2/09_uuid_otp.PNG)
 
@@ -234,7 +230,7 @@ Task List
     ```
     show control connections
     ```
-> You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`.
+{% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
 
 2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
 
@@ -267,7 +263,7 @@ Task List
 ## Helpful debugs and logs
 
 
-**This section is optional and can be used for learning. It is not required to go through this in order to complete the lab activities successfully.**
+{% include note.html content="This section is optional and is intended as a learning activity. It is not required to go through this in order to complete the lab tasks successfully" %}
 
 1. On the CLI for DC-vEdge2, issue `debug vdaemon all` followed by `clear control connections`. This will tear down all the control connections and the vEdge will rebuilt the DTLS tunnels. We can capture the logs to see the process associated with the DTLS tunnels being built
     ```

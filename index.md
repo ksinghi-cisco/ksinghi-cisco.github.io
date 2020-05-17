@@ -58,7 +58,15 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 
 <br>
 
-{% include note.html content="A friendly, neighbourhood note" %}
+{% include note.html content="A friendly, neighbourhood note will look like this" %}
+
+<br>
+
+{% include important.html content="When something important needs to be highlighted" %}
+
+<br>
+
+{% include warning.html content="Things may go horribly wrong if these warning messages aren't taken into account" %}
 
 <br>
 

@@ -68,9 +68,9 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.2/24 | 10.100.20.1
  || Network Adapter 5 | Internet | ge0/0 | 100.100.100.10/24 | 100.100.100.1
 
-> *Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.*
+{% include tip.html content="Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment." %}
 
-> *This configuration is applicable only for virtual vEdges/cEdges. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.*
+{% include tip.html content="There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options." %}
 
 ### Deploying the VM on vCenter
 <br>
@@ -101,6 +101,8 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
     ![](/images/Deploying_DC_vEdge1/10_storage_next.PNG)
 9. Populate the VM Networks as per the table given at the start of this section (or reference the image below)
 
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
+
     ![](/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG)
 10. Click on **Finish** to deploy your DC-vEdge1 VM
 
@@ -115,6 +117,7 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 
     ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
 14. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
+    {% include warning.html content="The Network Adapter mapping might vary based on the version of vEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the vEdge" %}
 
     ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
 
@@ -192,7 +195,7 @@ Use the following information in this section (some of the information will be u
     !
     commit and-quit
 ```
-    > We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established
+    {% include tip.html content="We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. `no tunnel-interface` has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established" %}
 
 4. Open **Putty** and double click the saved session for DC-vEdge1 (or **SSH** to **192.168.0.10**)
 
@@ -209,6 +212,8 @@ Use the following information in this section (some of the information will be u
 
 ### Installing certificates and activating the vEdge
 
+{% include tip.html content="Make sure the certificates and relevant files (like the .viptela Serial file) are in order before initiating a deployment. Certificate mismatches are one of the most widely seen causes for devices not being able to establish control connections with the vManage/vSmarts" %}
+
 1. Type `vshell` and enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command)
 
     ![](/images/Deploying_DC_vEdge1/25_vshellcopypemtovedgefromvman.PNG)
@@ -217,6 +222,7 @@ Use the following information in this section (some of the information will be u
     scp admin@192.168.0.6:ROOTCA.pem .
     exit
     ```
+    {% include note.html content="This is NOT how you would normally install certificates over to your devices. In a lab, this manual method works fine but for production environments, the other options are definitely preferred (like Cisco PKI)" %}
 2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
 
     ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
@@ -230,6 +236,7 @@ Use the following information in this section (some of the information will be u
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
 5. Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required
+    {% include important.html content="The UUID and OTP/Token are super important for vEdge Cloud or cEdge CSRs. Physical devices don't have a token associated with them and are uniquely identified by their serial number" %}
 
     ![](/images/Deploying_DC_vEdge1/29_makenote_uuid_otp.PNG)
 
@@ -282,7 +289,7 @@ Task List
     ```
     show control connections
     ```
-> You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`.
+    {% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
 
 2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
 
@@ -311,8 +318,7 @@ Task List
 
 ## Helpful debugs and logs
 
-
-**This section is optional and can be used for learning. It is not required to go through this in order to complete the lab activities successfully.**
+{% include note.html content="This section is optional and is intended as a learning activity. It is not required to go through this in order to complete the lab tasks successfully" %}
 
 1. On the CLI for DC-vEdge1, issue `debug vdaemon all` followed by `clear control connections`. This will tear down all the control connections and the vEdge will rebuilt the DTLS tunnels. We can capture the logs to see the process associated with the DTLS tunnels being built
 
