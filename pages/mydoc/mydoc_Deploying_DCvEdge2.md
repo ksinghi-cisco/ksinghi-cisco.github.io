@@ -62,7 +62,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
 7. Choose the Datastore and click on Next
 
-8. Populate the VM Networks as per the table given at the start of this section (or reference the image below)
+8. `Populate the VM Networks as per the table given at the start of this section (or reference the image below)`
 
     ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
 9. Click on **Finish** to deploy your DC-vEdge2 VM
@@ -81,7 +81,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
     ![](/images/Deploying_DC_vEdge2/05_Internet.PNG)
 
-    ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
+    ![](/images/Deploying_DC_vEdge2/99_nwve2.PNG)
 14. Click on DC-vEdge2 and choose to power it on
 
 <br>
