@@ -127,7 +127,7 @@ Use the following information in this section (some of the information will be u
 
 3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
-    ![](/images/Deploying_DC_vEdge2/06_bootstap.PNG)
+    ![](/images/Deploying_vEdge20/08_bootstrap.PNG)
     ```
     conf t
     system
@@ -158,7 +158,7 @@ Use the following information in this section (some of the information will be u
     ```  
 4. Open **Putty** and double-click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.20**)
 
-    ![](/images/Deploying_DC_vEdge2/07_dcvedge2putty.PNG)
+    ![](/images/Deploying_vEdge20/09_Putty.PNG)
 
 5. Choose Yes to accept the certificate, if prompted
 
@@ -181,7 +181,7 @@ Use the following information in this section (some of the information will be u
 
 3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
 
-    ![](/images/Deploying_DC_vEdge2/08_genboot.PNG)
+    ![](/images/Deploying_vEdge20/10_genbootstrap.PNG)
 
 4. >Select Cloud-Init and click on OK
 
@@ -189,11 +189,11 @@ Use the following information in this section (some of the information will be u
 
 5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge20 device. Alternatively, leave this popup open and we can come back to it when required
 
-    ![](/images/Deploying_DC_vEdge2/09_uuid_otp.PNG)
+    ![](/images/Deploying_vEdge20/11_uuidotp.PNG)
 
 6. Go back to the Putty session for vEdge20 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
 
-    ![](/images/Deploying_DC_vEdge2/10_installrootcert.PNG)
+    ![](/images/Deploying_vEdge20/12_rootcert.PNG)
     ```
     request root-cert-chain install /home/admin/ROOTCA.pem
     ```
@@ -212,9 +212,11 @@ Use the following information in this section (some of the information will be u
 
     This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
 
+    ![](/images/Deploying_vEdge20/13_enableTunn.PNG)
+
 8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
 
-    ![](/images/Deploying_DC_vEdge2/11_enabletunnel_activating.PNG)
+    ![](/images/Deploying_vEdge20/14_actvedge.PNG)
     ```
     request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
     ```
@@ -234,7 +236,7 @@ Task List
 
 1. Wait for a couple of minutes and run `show control connections` in the vEdge20 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don't see any output, wait for a couple of minutes and run the command again
 
-    ![](/images/Deploying_DC_vEdge2/16_shcontrolconn.PNG)
+    ![](/images/Deploying_vEdge20/15_shcontconn.PNG)
 
     ```
     show control connections
@@ -247,15 +249,23 @@ Task List
 
 3. vEdge20 should show up in the list of devices
 
-    ![](/images/Deploying_DC_vEdge2/13_monitornetworks.PNG)
+    ![](/images/Deploying_vEdge20/16_vedge20inlist.PNG)
 
 4. Click on vEdge20 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
 
-    ![](/images/Deploying_DC_vEdge2/14_2smarts_vmanage.PNG)
+    ![](/images/Deploying_vEdge20/17_vedge20controlgui.PNG)
 
-5. On the main dashboard, notice that we now have two WAN Edges onboarded on DNAC. The site doesn't have WAN connectivity yet since BFD sessions are not being established as of now. This will change once we get more sites onboard
+5. On the main dashboard, notice that we now have three WAN Edges onboarded on DNAC. The two sites also have WAN connectivity since BFD sessions have been established.
 
-    ![](/images/Deploying_DC_vEdge2/15_maindashboard.PNG)
+    ![](/images/Deploying_vEdge20/98_dash.PNG)
+
+6. This can be verified from the **Monitor -> Network** page as well, where we will see active BFD sessions on all devices. Via CLI, this can be checked using `show bfd sessions`
+
+    ![](/images/Deploying_vEdge20/97_mon.PNG)
+
+    ![](/images/Deploying_vEdge20/96_bfd.PNG)
+
+{% include tip.html content="The vEdges at DC show only one BFD session whereas vEdge20 shows two. THis is because the DC-vEdges detect that they are part of the same site (via the `site-id` command), hence won't have BFD entries for each other" %}
 
 This completes the verification activity.
 
