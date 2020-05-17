@@ -1,6 +1,6 @@
 ---
-title: Install Jekyll on Windows
-permalink: mydoc_install_jekyll_on_windows.html
+title: Deploying a dual uplink vEdge
+permalink: mydoc_Deploying_vEdge30.html
 keywords: jekyll on windows, pc, ruby, ruby dev kit
 sidebar: mydoc_sidebar
 folder: mydoc
@@ -14,7 +14,7 @@ First you must install Ruby because Jekyll is a Ruby-based program and needs Rub
 
 1. Go to [RubyInstaller for Windows](http://rubyinstaller.org/downloads/).
 2. Under **RubyInstallers**, download and install one of the Ruby installers under the **WITH DEVKIT** list (usually the recommended/highlighted option).
-3. Double-click the downloaded file and proceed through the wizard to install it. Run the `ridk install` step on the last stage of the installation wizard. 
+3. Double-click the downloaded file and proceed through the wizard to install it. Run the `ridk install` step on the last stage of the installation wizard.
 4. Open a new command prompt window or Git Bash session.
 
 <h2 id="bundler">Install the Jekyll gem</h2>
@@ -68,7 +68,7 @@ You install Bundler by using the gem command with RubyGems:
 
 ## Git Clients for Windows
 
-Although you can use the default command prompt with Windows, it's recommended that you use [Git Bash](https://git-for-windows.github.io/) instead. The Git Bash client will allow you to run shell scripts and execute other Unix commands. 
+Although you can use the default command prompt with Windows, it's recommended that you use [Git Bash](https://git-for-windows.github.io/) instead. The Git Bash client will allow you to run shell scripts and execute other Unix commands.
 
 ## Serve the Jekyll Documentation theme
 

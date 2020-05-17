@@ -3,9 +3,9 @@ title: Posts
 tags: [getting_started, formatting, content_types]
 keywords: posts, blog, news, authoring, exclusion, frontmatter
 last_updated: Feb 25, 2016
-summary: "You can use posts when you want to create blogs or news type of content."
+summary: "Deploying Site 50 - contains cEdges with single uplinks to each transport"
 sidebar: mydoc_sidebar
-permalink: mydoc_posts.html
+permalink: mydoc_Deploying_cEdge50_cEdge51.html
 folder: mydoc
 ---
 

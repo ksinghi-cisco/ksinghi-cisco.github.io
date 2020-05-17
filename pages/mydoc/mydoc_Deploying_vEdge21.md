@@ -1,8 +1,8 @@
 ---
-title: Install Jekyll on Mac
+title: Deploying single uplink (MPLS) vEdge
 tags: [getting_started, troubleshooting]
 keywords:
-summary: "Installation of Jekyll on Mac is usually less problematic than on Windows. However, you may run into permissions issues with Ruby that you must overcome. You should also use Bundler to be sure that you have all the required gems and other utilities on your computer to make the project run. "
+summary: "Deploying vEdge21 in Site 20. This vEdge has a single uplink (MPLS)"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_vEdge21.html
 folder: mydoc

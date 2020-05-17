@@ -48,7 +48,7 @@ entries:
       url: /mydoc_Deploying_DCvEdge2.html
       output: web, pdf
 
-  - title: Deploying devices in Site 20
+  - title: Deploying devices in Site 20 and Site 30
     output: web, pdf
     folderitems:
 
@@ -60,23 +60,23 @@ entries:
       url: /mydoc_Deploying_vEdge21.html
       output: web, pdf
 
-    - title: Install Jekyll on Windows
-      url: /mydoc_install_jekyll_on_windows.html
+    - title: Deploying vEdge30 - Dual uplink
+      url: /mydoc_Deploying_vEdge30.html
       output: web, pdf
 
-  - title: Authoring
+  - title: Deploying devices in Site 40 and Site 50
     output: web, pdf
 
     folderitems:
-    - title: Pages
-      url: /mydoc_pages.html
+    - title: Deploying cEdge40 - Dual Uplink
+      url: /mydoc_Deploying_cEdge40.html
       output: web, pdf
 
-    - title: Posts
-      url: /mydoc_posts.html
+    - title: Deploying cEdge50 and cEdge51
+      url: /mydoc_Deploying_cEdge50_cEdge51.html
       output: web, pdf
 
-    - title: Lists
+    - title:
       url: /mydoc_lists.html
       output: web, pdf
 
