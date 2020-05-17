@@ -99,7 +99,7 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 8. Choose the Datastore and click on Next
 
     ![](/images/Deploying_DC_vEdge1/10_storage_next.PNG)
-9. Populate the VM Networks as per the table given at the start of this section (or reference the image below)
+9. Populate the VM Networks as per the image given below
 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
@@ -162,6 +162,8 @@ Use the following information in this section (some of the information will be u
     | ------------- | ------------- |
     | admin      | admin       |
 
+    {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
+
     ![](/images/Deploying_DC_vEdge1/20_login_adminadminresettoadmin.PNG)
 
 3. Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
@@ -185,7 +187,8 @@ Use the following information in this section (some of the information will be u
       no tunnel-interface
       no shutdown
       exit
-
+      !
+      exit
     !
     vpn 512
      ip route 0.0.0.0/0 192.168.0.1
@@ -214,13 +217,12 @@ Use the following information in this section (some of the information will be u
 
 {% include tip.html content="Make sure the certificates and relevant files (like the .viptela Serial file) are in order before initiating a deployment. Certificate mismatches are one of the most widely seen causes for devices not being able to establish control connections with the vManage/vSmarts" %}
 
-1. Type `vshell` and enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command)
+1. Type `vshell` and enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin)
 
     ![](/images/Deploying_DC_vEdge1/25_vshellcopypemtovedgefromvman.PNG)
     ```
     vshell
     scp admin@192.168.0.6:ROOTCA.pem .
-    exit
     ```
     {% include note.html content="This is NOT how you would normally install certificates over to your devices. In a lab, this manual method works fine but for production environments, the other options are definitely preferred (like Cisco PKI)" %}
 2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)

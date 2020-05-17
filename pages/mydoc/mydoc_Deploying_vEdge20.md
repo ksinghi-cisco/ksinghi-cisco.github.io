@@ -1,5 +1,5 @@
 ---
-title: Deploying Single uplink (INET) vEdge
+title: Deploying a Single uplink (INET) vEdge
 tags: [getting_started, troubleshooting]
 keywords:
 summary: "Deploying vEdge20 in Site 20. This vEdge has a single uplink to the Internet"
@@ -8,247 +8,253 @@ permalink: mydoc_Deploying_vEdge20.html
 folder: mydoc
 ---
 
-## About Ruby
+Task List
 
-Jekyll runs on Ruby, a programming language. You have to have Ruby on your computer in order to run Ruby-based programs like Jekyll. Ruby is installed on the Mac by default, but you must add it to Windows.
+- [ ] Creating the vEdge20 VM
+- [ ] Onboarding vEdge20
+- [ ] Onboarding Verification
 
-## About Ruby Gems
+## Creating the vEdge20 VM
 
-Ruby has a number of plugins referred to as "gems." Just because you have Ruby doesn't mean you have all the necessary Ruby gems that your program needs to run. Gems provide additional functionality for Ruby programs. There are thousands of [Rubygems](https://rubygems.org/) available for you to use.
+### Overview
 
-Some gems depend on other gems for functionality. For example, the Jekyll gem might depend on 20 other gems that must also be installed.
+{% include note.html content="There will be a number of repetitive tasks from the Deploying DC-vEdge1/DC-vEdge2 section." %}
 
-Each gem has a version associated with it, and not all gem versions are compatible with each other.
+{% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous section." %}
 
-## Rubygem package managers
+> This is what an earmarked step will look like
 
-[Bundler](http://bundler.io/) is a gem package manager for Ruby, which means it goes out and gets all the gems you need for your Ruby programs. If you tell Bundler you need the [jekyll gem](https://rubygems.org/gems/jekyll), it will retrieve all the dependencies on the jekyll gem as well -- automatically.
+We will be deploying a vEdge at Site 20 via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-Not only does Bundler retrieve the right gem dependencies, but it's smart enough to retrieve the right versions of each gem. For example, if you get the [github-pages](https://rubygems.org/gems/github-pages) gem, it will retrieve all of these other gems:
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | VLAN | IP                | Gateway       |
+|---------|---------------|---------|-------------------|----------------|-----------|------|-------------------|---------------|
+| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 0    | 192.168.0.20/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 25   | 192.168.25.20/24  |               |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 21   | 10.20.10.1/24     |               |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 22   | 10.20.20.1/24     |               |
+|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 2    | 100.100.100.20/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 26   | 192.168.26.20/24  |               |
 
-```
-github-pages-health-check = 1.1.0
-jekyll = 3.0.3
-jekyll-coffeescript = 1.0.1
-jekyll-feed = 0.4.0
-jekyll-gist = 1.4.0
-jekyll-github-metadata = 1.9.0
-jekyll-mentions = 1.1.2
-jekyll-paginate = 1.1.0
-jekyll-redirect-from = 0.10.0
-jekyll-sass-converter = 1.3.0
-jekyll-seo-tag = 1.3.2
-jekyll-sitemap = 0.10.0
-jekyll-textile-converter = 0.1.0
-jemoji = 0.6.2
-kramdown = 1.10.0
-liquid = 3.0.6
-mercenary ~> 0.3
-rdiscount = 2.1.8
-redcarpet = 3.3.3
-RedCloth = 4.2.9
-rouge = 1.10.1
-terminal-table ~> 1.
-```
+### Deploying the vEdge20 VM on vCenter
+<br>
 
-See how Bundler retrieved version 3.0.3 of the jekyll gem, even though (as of this writing) the latest version of the jekyll gem is 3.1.2? That's because github-pages is only compatible up to jekyll 3.0.3. Bundler handles all of this dependency and version compatibility for you.
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
 
- Trying to keep track of which gems and versions are appropriate for your project can be a nightmare. This is the problem Bundler solves. As explained on [Bundler.io](http://bundler.io/):
+2. Right click on the host and choose to **Deploy OVF Template**
 
-> Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed.
->
-> Bundler is an exit from dependency hell, and ensures that the gems you need are present in development, staging, and production. Starting work on a project is as simple as bundle install.
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
+3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-## Gemfiles
+4. > Change the Virtual Machine name to vEdge20 and click on Next.
 
-Bundler looks in a project's "Gemfile" (no file extension) to see which gems are required by the project. The Gemfile lists the source and then any gems, like this:
+    ![](/images/Deploying_vEdge20/01_NamevEdge20.PNG)
 
-```
-source "https://rubygems.org"
+5. Select the host assigned to you (image shown as an example only) and click on Next
 
-gem 'github-pages'
-gem 'jekyll'
-```
+    ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
+6. Review the details shown and click on Next
 
-The source indicates the site where Bundler will retrieve the gems: [https://rubygems.org](https://rubygems.org).
+    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+7. Choose the Datastore and click on Next
 
-The gems it retrieves are listed separately on each line.
+8. >Populate the VM Networks as per the image given below
 
-Here no versions are specified. Sometimes gemfiles will specify the versions like this:
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-```
-gem 'kramdown', '1.0'
-```
+    ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
+9. Click on **Finish** to deploy your vEdge20 VM
 
-This means Bundler should get version 1.0 of the kramdown gem.
+    ![](/images/Deploying_DC_vEdge2/03_Summary.PNG)
 
-To specify a subset of versions, the Gemfile looks like this:
+10. Once the VM is deployed, right click **vEdge20** and click Edit settings.
 
-```
-gem 'jekyll', '~> 2.3'
-```
-The `~>` sign means greater than or equal to the *last digit before the last period in the number*.
+11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 6 for our lab). Add another network device this way, for a total of 6 network adapters.
 
-Here it will get any gem equal to 2.3 but less than 3.0.
+12. Click on the drop down next to **New Network** and click on *Browse*
 
-If it adds another digit, the scope is affected:
+    ![](/images/Deploying_DC_vEdge2/04_addnetworkadapt.PNG)
 
-```
-gem `jekyll`, `~>2.3.1'
-```
+13. Choose the **Internet** Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
 
-This means to get any gem equal to 2.3.1 but less than 2.4.
+    ![](/images/Deploying_DC_vEdge2/05_Internet.PNG)
 
-If it looks like this:
+    ![](/images/Deploying_DC_vEdge2/99_nwve2.PNG)
+14. Click on vEdge20 and choose to power it on
 
-```
-gem 'jekyll', '~> 3.0', '>= 3.0.3'
-```
+<br>
 
-This will get any Jekyll gem between versions 3.0 and up to 3.0.3.
 
-See this [Stack Overflow post](http://stackoverflow.com/questions/5170547/what-does-tilde-greater-than-mean-in-ruby-gem-dependencies) for more details.
+Task List
 
-## Gemfile.lock
 
-After Bundler retrieves and installs the gems, it makes a detailed list of all the gems and versions it has installed for your project. The snapshot of all gems + versions installed is stored in your Gemfile.lock file, which might look like this:
+- [x] Creating the vEdge20 VM
+- [ ] Onboarding vEdge20
+- [ ] Onboarding Verification
 
-```
-GEM
-  remote: https://rubygems.org/
-  specs:
-    RedCloth (4.2.9)
-    activesupport (4.2.5.1)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
-      minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
-      tzinfo (~> 1.1)
-    addressable (2.3.8)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.10.0)
-    colorator (0.1)
-    ethon (0.8.1)
-      ffi (>= 1.3.0)
-    execjs (2.6.0)
-    faraday (0.9.2)
-      multipart-post (>= 1.2, < 3)
-    ffi (1.9.10)
-    gemoji (2.1.0)
-    github-pages (52)
-      RedCloth (= 4.2.9)
-      github-pages-health-check (= 1.0.1)
-      jekyll (= 3.0.3)
-      jekyll-coffeescript (= 1.0.1)
-      jekyll-feed (= 0.4.0)
-      jekyll-gist (= 1.4.0)
-      jekyll-mentions (= 1.0.1)
-      jekyll-paginate (= 1.1.0)
-      jekyll-redirect-from (= 0.9.1)
-      jekyll-sass-converter (= 1.3.0)
-      jekyll-seo-tag (= 1.3.1)
-      jekyll-sitemap (= 0.10.0)
-      jekyll-textile-converter (= 0.1.0)
-      jemoji (= 0.5.1)
-      kramdown (= 1.9.0)
-      liquid (= 3.0.6)
-      mercenary (~> 0.3)
-      rdiscount (= 2.1.8)
-      redcarpet (= 3.3.3)
-      rouge (= 1.10.1)
-      terminal-table (~> 1.4)
-    github-pages-health-check (1.0.1)
-      addressable (~> 2.3)
-      net-dns (~> 0.8)
-      octokit (~> 4.0)
-      public_suffix (~> 1.4)
-      typhoeus (~> 0.7)
-    html-pipeline (2.3.0)
-      activesupport (>= 2, < 5)
-      nokogiri (>= 1.4)
-    i18n (0.7.0)
-    jekyll (3.0.3)
-      colorator (~> 0.1)
-      jekyll-sass-converter (~> 1.0)
-      jekyll-watch (~> 1.1)
-      kramdown (~> 1.3)
-      liquid (~> 3.0)
-      mercenary (~> 0.3.3)
-      rouge (~> 1.7)
-      safe_yaml (~> 1.0)
-    jekyll-coffeescript (1.0.1)
-      coffee-script (~> 2.2)
-    jekyll-feed (0.4.0)
-    jekyll-gist (1.4.0)
-      octokit (~> 4.2)
-    jekyll-mentions (1.0.1)
-      html-pipeline (~> 2.3)
-      jekyll (~> 3.0)
-    jekyll-paginate (1.1.0)
-    jekyll-redirect-from (0.9.1)
-      jekyll (>= 2.0)
-    jekyll-sass-converter (1.3.0)
-      sass (~> 3.2)
-    jekyll-seo-tag (1.3.1)
-      jekyll (~> 3.0)
-    jekyll-sitemap (0.10.0)
-    jekyll-textile-converter (0.1.0)
-      RedCloth (~> 4.0)
-    jekyll-watch (1.3.1)
-      listen (~> 3.0)
-    jemoji (0.5.1)
-      gemoji (~> 2.0)
-      html-pipeline (~> 2.2)
-      jekyll (>= 2.0)
-    json (1.8.3)
-    kramdown (1.9.0)
-    liquid (3.0.6)
-    listen (3.0.6)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9.7)
-    mercenary (0.3.5)
-    mini_portile2 (2.0.0)
-    minitest (5.8.4)
-    multipart-post (2.0.0)
-    net-dns (0.8.0)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
-    octokit (4.2.0)
-      sawyer (~> 0.6.0, >= 0.5.3)
-    public_suffix (1.5.3)
-    rb-fsevent (0.9.7)
-    rb-inotify (0.9.7)
-      ffi (>= 0.5.0)
-    rdiscount (2.1.8)
-    redcarpet (3.3.3)
-    rouge (1.10.1)
-    safe_yaml (1.0.4)
-    sass (3.4.21)
-    sawyer (0.6.0)
-      addressable (~> 2.3.5)
-      faraday (~> 0.8, < 0.10)
-    terminal-table (1.5.2)
-    thread_safe (0.3.5)
-    typhoeus (0.8.0)
-      ethon (>= 0.8.0)
-    tzinfo (1.2.2)
-      thread_safe (~> 0.1)
+## Onboarding vEdge20
 
-PLATFORMS
-  ruby
+### Bootstrapping vEdge20 (Initial Configuration)
 
-DEPENDENCIES
-  github-pages
-  jekyll
+Use the following information in this section (some of the information will be used later)
 
-BUNDLED WITH
-   1.11.2
-```
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | VLAN | IP                | Gateway       |
+|---------|---------------|---------|-------------------|----------------|-----------|------|-------------------|---------------|
+| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 0    | 192.168.0.20/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 25   | 192.168.25.20/24  |               |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 21   | 10.20.10.1/24     |               |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 22   | 10.20.20.1/24     |               |
+|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 2    | 100.100.100.20/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 26   | 192.168.26.20/24  |               |
 
-You can always delete the Gemlock file and run Bundle install again to get the latest versions. You can also run `bundle update`, which will ignore the Gemlock file to get the latest versions of each gem.
+1. Console in to the vEdge20 VM from vCenter (you should already be logged in from our last activity)
 
-To learn more about Bundler, see [Bundler's Purpose and Rationale](http://bundler.io/rationale.html).
+2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in).
 
-{% include links.html %}
+    | Username | Password     |
+    | ------------- | ------------- |
+    | admin     | admin       |
+
+{% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
+
+3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+
+    ![](/images/Deploying_DC_vEdge2/06_bootstap.PNG)
+    ```
+    conf t
+    system
+     host-name vEdge20
+     system-ip 10.255.255.21
+     site-id 20
+     organization-name "swat-sdwanlab"
+     vbond 100.100.100.3
+     exit
+    !
+    vpn 0
+     ip route 0.0.0.0/0 100.100.100.1
+     interface ge0/0
+      ip address 100.100.100.20/24
+      no tunnel-interface
+      no shutdown
+      exit
+     !
+     exit
+    !
+    vpn 512
+     ip route 0.0.0.0/0 192.168.0.1
+     interface eth0
+      ip address 192.168.0.20/24
+      no shutdown
+    !
+    commit and-quit
+    ```  
+4. Open **Putty** and double-click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.20**)
+
+    ![](/images/Deploying_DC_vEdge2/07_dcvedge2putty.PNG)
+
+5. Choose Yes to accept the certificate, if prompted
+
+    ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
+
+6. Log in using the same credentials as Step 2.
+
+<br>
+
+### Installing certificates and activating the vEdge
+
+1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin)
+    ```
+    vshell
+    scp admin@192.168.0.6:ROOTCA.pem .
+    ```
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+
+    ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
+
+3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
+
+    ![](/images/Deploying_DC_vEdge2/08_genboot.PNG)
+
+4. >Select Cloud-Init and click on OK
+
+    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+
+5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge20 device. Alternatively, leave this popup open and we can come back to it when required
+
+    ![](/images/Deploying_DC_vEdge2/09_uuid_otp.PNG)
+
+6. Go back to the Putty session for vEdge20 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
+
+    ![](/images/Deploying_DC_vEdge2/10_installrootcert.PNG)
+    ```
+    request root-cert-chain install /home/admin/ROOTCA.pem
+    ```
+7. Enter  `tunnel-interface`, `encapsulation ipsec` and `allow-service all` under `interface ge0/0` to bring up the tunnel Interface. Make sure to `commit and-quit` in order to write the configuration change
+    ```
+    config t
+    vpn 0
+    interface ge0/0
+     tunnel-interface
+     encapsulation ipsec
+     allow-service all
+     exit
+     !
+     commit and-quit
+     ```
+
+    This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
+
+8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+
+    ![](/images/Deploying_DC_vEdge2/11_enabletunnel_activating.PNG)
+    ```
+    request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
+    ```
+This completes the Onboarding section for vEdge20
+
+
+<br>
+
+Task List
+
+
+- [x] Creating the vEdge20 VM
+- [x] Onboarding vEdge20
+- [ ] Onboarding Verification
+
+## Onboarding Verification
+
+1. Wait for a couple of minutes and run `show control connections` in the vEdge20 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don't see any output, wait for a couple of minutes and run the command again
+
+    ![](/images/Deploying_DC_vEdge2/16_shcontrolconn.PNG)
+
+    ```
+    show control connections
+    ```
+{% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
+
+2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
+
+    ![](/images/Deploying_DC_vEdge1/34_monitor_network.png)
+
+3. vEdge20 should show up in the list of devices
+
+    ![](/images/Deploying_DC_vEdge2/13_monitornetworks.PNG)
+
+4. Click on vEdge20 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
+
+    ![](/images/Deploying_DC_vEdge2/14_2smarts_vmanage.PNG)
+
+5. On the main dashboard, notice that we now have two WAN Edges onboarded on DNAC. The site doesn't have WAN connectivity yet since BFD sessions are not being established as of now. This will change once we get more sites onboard
+
+    ![](/images/Deploying_DC_vEdge2/15_maindashboard.PNG)
+
+This completes the verification activity.
+
+<br>
+
+Task List
+
+
+- [x] Creating the vEdge20 VM
+- [x] Onboarding vEdge20
+- [x] Onboarding Verification
