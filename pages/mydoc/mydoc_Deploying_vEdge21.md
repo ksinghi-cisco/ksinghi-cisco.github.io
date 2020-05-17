@@ -4,7 +4,7 @@ tags: [getting_started, troubleshooting]
 keywords:
 summary: "Installation of Jekyll on Mac is usually less problematic than on Windows. However, you may run into permissions issues with Ruby that you must overcome. You should also use Bundler to be sure that you have all the required gems and other utilities on your computer to make the project run. "
 sidebar: mydoc_sidebar
-permalink: mydoc_install_jekyll_on_mac.html
+permalink: mydoc_Deploying_vEdge21.html
 folder: mydoc
 ---
 
@@ -154,4 +154,3 @@ To resolve the "No Github API authentication" error:
 Browse to your jekyll project and run `bundle exec jekyll serve`. Make an edit to a file and observe that no Github API errors appear when Jekyll rebuilds the project.
 
 {% include links.html %}
-
