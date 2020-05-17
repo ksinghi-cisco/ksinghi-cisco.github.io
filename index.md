@@ -54,11 +54,12 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 <br>
 <br>
 
-> *Techtips will
-> be highlighted like this
-> for easy readability. These will have nifty tips and tricks from our Cisco SD-WAN experts.*
+{% include tip.html content="Techtips will be highlighted like this. These inlcude nifty tips and tricks from our SD-WAN Experts" %}
 
 <br>
+
+{% include note.html content="A friendly, neighbourhood note" %}
+
 <br>
 
 * [ ] Every major section will have a checklist
