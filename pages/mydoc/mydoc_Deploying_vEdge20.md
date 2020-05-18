@@ -26,14 +26,14 @@ Task List
 
 We will be deploying a vEdge at Site 20 via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | VLAN | IP                | Gateway       |
-|---------|---------------|---------|-------------------|----------------|-----------|------|-------------------|---------------|
-| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 0    | 192.168.0.20/24   | 192.168.0.1   |
-|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 25   | 192.168.25.20/24  |               |
-|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 21   | 10.20.10.1/24     |               |
-|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 22   | 10.20.20.1/24     |               |
-|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 2    | 100.100.100.20/24 | 100.100.100.1 |
-|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 26   | 192.168.26.20/24  |               |
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP                | Gateway       |
+|---------|---------------|---------|-------------------|----------------|-----------|-------------------|---------------|
+| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 192.168.0.20/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.20/24  |               |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 100.100.100.20/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 192.168.26.20/24  |               |
 
 ### Deploying the vEdge20 VM on vCenter
 <br>
@@ -105,14 +105,14 @@ Task List
 
 Use the following information in this section (some of the information will be used later)
 
-| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | VLAN | IP                | Gateway       |
-|---------|---------------|---------|-------------------|----------------|-----------|------|-------------------|---------------|
-| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 0    | 192.168.0.20/24   | 192.168.0.1   |
-|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 25   | 192.168.25.20/24  |               |
-|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 21   | 10.20.10.1/24     |               |
-|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 22   | 10.20.20.1/24     |               |
-|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 2    | 100.100.100.20/24 | 100.100.100.1 |
-|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 26   | 192.168.26.20/24  |               |
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP                | Gateway       |
+|---------|---------------|---------|-------------------|----------------|-----------|-------------------|---------------|
+| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 192.168.0.20/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.20/24  |               |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Internet       | ge0/0     | 100.100.100.20/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 192.168.26.20/24  |               |
 
 1. Console in to the vEdge20 VM from vCenter (you should already be logged in from our last activity)
 
@@ -155,7 +155,7 @@ Use the following information in this section (some of the information will be u
     !
     commit and-quit
     ```  
-4. Open **Putty** and double-click the saved session for DC-vEdge2 (or **SSH** to **192.168.0.20**)
+4. Open **Putty** and double-click the saved session for vEdge20 (or **SSH** to **192.168.0.20**)
 
     ![](/images/Deploying_vEdge20/09_Putty.PNG)
 
@@ -169,7 +169,7 @@ Use the following information in this section (some of the information will be u
 
 ### Installing certificates and activating the vEdge
 
-1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin)
+1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
     ```
     vshell
     scp admin@192.168.0.6:ROOTCA.pem .

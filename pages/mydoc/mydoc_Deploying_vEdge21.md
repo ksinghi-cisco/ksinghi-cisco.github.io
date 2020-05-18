@@ -8,149 +8,198 @@ permalink: mydoc_Deploying_vEdge21.html
 folder: mydoc
 ---
 
-## Ruby and RubyGems
+Task List
 
-Ruby and [RubyGems](https://rubygems.org/pages/download) are usually installed by default on Macs. Open your Terminal and type `which ruby` and  `which gem` to confirm that you have Ruby and Rubygems. You should get a response indicating the location of Ruby and Rubygems.
+- [ ] Creating the vEdge21 VM
+- [ ] Onboarding vEdge21
 
-If you get responses that look like this:
+## Creating the vEdge21 VM
 
-```
-/usr/local/bin/ruby
-```
+### Overview
 
-and
+{% include warning.html content="Since we have gone through deploying vEdges multiple times by now, this section will just have the steps listed out. Images for every step has not been populated due to similarity with the previous sections. " %}
 
-```
-/usr/local/bin/gem
-```
+{% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous sections." %}
 
-Great! Skip down to the [Bundler](#bundler) section.
+> This is what an earmarked step will look like
 
-However, if your location is something like `/Users/MacBookPro/.rvm/rubies/ruby-2.2.1/bin/gem`, which points to your system location of Rubygems, you will likely run into permissions errors when trying to get a gem. A sample permissions error (triggered when you try to install the jekyll gem such as `gem install jekyll`) might look like this for Rubygems:
+We will be deploying another vEdge at Site 20 via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-```
- >ERROR:  While executing gem ... (Gem::FilePermissionError)
-  You don't have write permissions for the /Library/Ruby/Gems/2.0.0 directory.
-```  
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP               | Gateway     |
+|---------|---------------|---------|-------------------|----------------|-----------|------------------|-------------|
+| 20      | 10.255.255.22 | vEdge21 | Network Adapter 1 | Management     | eth0      | 192.168.0.21/24  | 192.168.0.1 |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.21/24 |             |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.3/24    |             |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.3/24    |             |
+|         |               |         | Network Adapter 5 | MPLS20         | ge0/0     | 192.0.2.10/30    | 192.0.2.9   |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 192.168.26.21/24 |             |
 
-Instead of changing the write permissions on your operating system's version of Ruby and Rubygems (which could pose security issues), you can install another instance of Ruby (one that is writable) to get around this.
+### Deploying the vEdge21 VM on vCenter
+<br>
 
-## Install Homebrew
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
 
-Homebrew is a package manager for the Mac, and you can use it to install an alternative instance of Ruby code. To install Homebrew, run this command:
+2. Right click on the host and choose to **Deploy OVF Template**
 
-```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
+3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-If you already had Homebrew installed on your computer, be sure to update it:
+4. > Change the Virtual Machine name to vEdge21 and click on Next.
 
-```
-brew update
-```
+5. Select the host assigned to you (image shown as an example only) and click on Next
 
-## Install Ruby through Homebrew
+    ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
+6. Review the details shown and click on Next
 
-Now use Homebrew to install Ruby:
+    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+7. Choose the Datastore and click on Next
 
-```
-brew install ruby
-```
+8. >Populate the VM Networks as per the image given below
 
-Log out of terminal, and then then log back in.
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-When you type `which ruby` and `which gem`, you should get responses like this:
+    ![](/images/Deploying_vEdge21/01_nwad.PNG)
+9. Click on **Finish** to deploy your vEdge21 VM
 
-```
-/usr/local/bin/ruby
-```
+    ![](/images/Deploying_vEdge21/02_summ.PNG)
 
-And this:
+10. Once the VM is deployed, right click **vEdge21** and click Edit settings.
 
-```
-/usr/local/bin/gem
-```
+11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 6 for our lab). Add another network device this way, for a total of 6 network adapters.
 
-Now Ruby and Rubygems are installed under your username, so these directories are writeable.
+12. Click on the drop down next to the first **New Network** and click on *Browse*
 
-Note that if you don't see these paths, try restarting your computer or try installing rbenv, which is a Ruby version management tool. If you still have issues getting a writeable version of Ruby, you need to resolve them before installing Bundler.
+13. > Choose the **MPLS20** Network and click on OK.
 
-<h2 id="bundler">Install the Jekyll gem</h2>
+14. > Click on the drop down for the second **New Network** entry, added as a result of adding two network adapters and click on *Browse*. Select the **TLOCEXT2_vEdge** Network
 
-At this point you should have a writeable version of Ruby and Rubygem on your machine.
+15.  Make sure the Network Adapters match with the image below and click on OK
+    ![](/images/Deploying_vEdge21/03_addnetad.PNG)
 
-Now use `gem` to install Jekyll:
+16. Click on vEdge21 and choose to power it on
 
-```
-gem install jekyll
-```
+<br>
 
-You can now use Jekyll to create new Jekyll sites following the quick-start instructions on [Jekyllrb.com](http://jekyllrb.com).
+Task List
 
-## Installing dependencies through Bundler
+- [x] Creating the vEdge21 VM
+- [ ] Onboarding vEdge21
 
-Some Jekyll themes will require certain Ruby gem dependencies. These dependencies are stored in something called a Gemfile, which is packaged with the Jekyll theme. You can install these dependencies through Bundler. (Although you don't need to install Bundler for this Documentation theme, it's a good idea to do so.)
+## Onboarding vEdge21
 
-[Bundler](http://bundler.io/) is a package manager for RubyGems. You can use it to get all the gems (or Ruby plugins) that you need for your Jekyll project.
+### Bootstrapping vEdge21 (Initial Configuration)
 
-You install Bundler by using the gem command with RubyGems:
+Use the following information in this section (some of the information will be used later)
 
-```
-gem install bundler
-```
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP               | Gateway     |
+|---------|---------------|---------|-------------------|----------------|-----------|------------------|-------------|
+| 20      | 10.255.255.22 | vEdge21 | Network Adapter 1 | Management     | eth0      | 192.168.0.21/24  | 192.168.0.1 |
+|         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.21/24 |             |
+|         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.3/24    |             |
+|         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.3/24    |             |
+|         |               |         | Network Adapter 5 | MPLS20         | ge0/0     | 192.0.2.10/30    | 192.0.2.9   |
+|         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 192.168.26.21/24 |             |
 
-If you're prompted to switch to superuser mode (`sudo`) to get the correct permissions to install Bundler in that directory, avoid doing this. All other applications that need to use Bundler will likely not have the needed permissions to run.
+1. Console in to the vEdge21 VM from vCenter (you should already be logged in from our last activity)
 
-Bundler goes out and retreives all the gems that are specified in a Jekyll project's Gemfile. If you have a gem that depends on other gems to work, Bundler will go out and retrieve all of the dependencies as well. (To learn more about Bundler, see [About Ruby Gems][mydoc_about_ruby_gems_etc].
+2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in).
 
-The vanilla Jekyll site you create through `jekyll new my-awesome-site` doesn't have a Gemfile, but many other themes (including the Documentation theme for Jekyll) do have a Gemfile.
+    | Username | Password     |
+    | ------------- | ------------ |
+    | admin     | admin       |
 
-## Serve the Jekyll Documentation theme
+    {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
 
-1. Browse to the directory where you downloaded the Documentation theme for Jekyll.
-2. Type `jekyll serve`
-3. Go to the preview address in the browser. (Make sure you include the `/` at the end.)
+3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
-## Resolve "No Github API authentication" errors {#githuberror}
-
-After making an edit, Jekyll auto-rebuilds the site. If you have the Gemfile in the theme with the github-pages gem, you may see the following error:
-
-```
-GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
-```
-
-If you see this error, you will need to take some additional steps to resolve it. (Note that this error only appears if you have the github-pages gem in your gemfile.) The resolution involves adding a Github token and a cert file.
-
-{% include note.html content="These instructions apply to Mac OS X, but they're highly similar to Windows. These instructions are adapted from a post on [Knight Codes](http://knightcodes.com/miscellaneous/2016/09/13/fix-github-metadata-error.html). If you're on Windows, see the Knight Codes post for details instead of following along below." %}
-
-To resolve the "No Github API authentication" error:
-
-1.  Follow Github's instructions to [create a personal access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
-2.  Open the **.bash_profile** file in your user directory:
-
+    ![](/images/Deploying_vEdge21/04_bootstrap.PNG)
     ```
-    open ~/.bash_profile
+    conf t
+    system
+     host-name vEdge21
+     system-ip 10.255.255.22
+     organization-name "swat-sdwanlab"
+     site-id 20
+     vbond 100.100.100.3
+     exit
+    !
+    vpn 0
+     ip route 0.0.0.0/0 192.0.2.9
+     interface ge0/0
+      ip address 192.0.2.10/30
+      no tunnel-interface
+      no shutdown
+      exit
+     !
+     exit
+    !
+    vpn 512
+     ip route 0.0.0.0/0 192.168.0.1
+     interface eth0
+      ip address 192.168.0.21/24
+      no shutdown
+    !
+    commit and-quit
+    ```  
+4. Open **Putty** and double-click the saved session for vEdge21 (or **SSH** to **192.168.0.21**)
+
+5. Choose Yes to accept the certificate, if prompted
+
+    ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
+
+6. Log in using the same credentials as Step 2.
+
+<br>
+
+### Installing certificates and activating the vEdge
+
+1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
     ```
-
-    The file will open in your default terminal editor. If you don't have a .bash_profile file, you can just create a file with this name. Note that files that begin with `.` are hidden, so if you're looking in your user directory for the file, use `ls -a` to see hidden files.
-
-3.  In your **.bash_profile** file, reference your token as a system variable like this:
-
+    vshell
+    scp admin@192.168.0.6:ROOTCA.pem .
     ```
-    export JEKYLL_GITHUB_TOKEN=abc123abc123abc123abc123abc123abc123abc123abc123
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+
+    ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
+
+3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
+
+4. >Select Cloud-Init and click on OK
+
+    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+
+5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge21 device. Alternatively, leave this popup open and we can come back to it when required
+
+    ![](/images/Deploying_vEdge21/05_genbootstrap.PNG)
+
+6. Go back to the Putty session for vEdge21 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
     ```
-
-    Replace `abc123...` with your own token that you generated in step 1.
-
-4.  Go to **[https://curl.haxx.se/ca/cacert.pem][https://curl.haxx.se/ca/cacert.pem]. Right-click the page, select **Save as**, and save the file on your computer (save it somewhere safe, where you won't delete it). Name the file **cacert**.
-5.  Open your **.bash_profile** file again and add this line, replacing `Users/johndoe/projects/` with the path to your cacert.pem file:
-
+    request root-cert-chain install /home/admin/ROOTCA.pem
     ```
-    export SSL_CERT_FILE=/Users/johndoe/projects/cacert.pem
+7. Enter  `tunnel-interface`, `encapsulation ipsec` and `allow-service all` under `interface ge0/0` to bring up the tunnel Interface. Make sure to `commit and-quit` in order to write the configuration change
     ```
+    config t
+    vpn 0
+    interface ge0/0
+     tunnel-interface
+     encapsulation ipsec
+     allow-service all
+     exit
+     !
+     commit and-quit
+     ```
 
-6.  Close and restart your terminal.
+    This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
 
-Browse to your jekyll project and run `bundle exec jekyll serve`. Make an edit to a file and observe that no Github API errors appear when Jekyll rebuilds the project.
+8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+    ```
+    request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
+    ```
+This completes the Onboarding section for vEdge21
 
-{% include links.html %}
+<br>
+
+Task List
+
+- [x] Creating the vEdge21 VM
+- [x] Onboarding vEdge21
