@@ -9,13 +9,10 @@ folder: mydoc
 
 Task List
 
-{% include callout.html content="
-- [ ] Creating the vEdge30 VM
+- [ ] Creating the vEdge30 VM on vCenter
 - [ ] Onboarding vEdge30
 
-" type="primary" %}
-
-## Creating the vEdge30 VM
+## Creating the vEdge30 VM on vCenter
 
 ### Overview
 
@@ -58,13 +55,10 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 8. >Populate the VM Networks as per the image given below
 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
-
-    ![](/images/Deploying_vEdge21/01_nwad.PNG)
+    ![](/images/Deploying_vEdge30/01_netad.PNG)
 9. Click on **Finish** to deploy your vEdge30 VM
 
-    ![](/images/Deploying_vEdge21/02_summ.PNG)
-
-10. Once the VM is deployed, right click **vEdge30** and click Edit settings.
+10. Once the VM is deployed, right click on **vEdge30** and click Edit settings.
 
 11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab).
 
@@ -72,8 +66,9 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
 13. > Choose the **Internet** Network and click on OK.
 
-14.  Make sure the Network Adapters match with the image below and click on OK
-    ![](/images/Deploying_vEdge21/03_addnetad.PNG)
+14.  > Make sure the Network Adapters match with the image below and click on OK
+
+    ![](/images/Deploying_vEdge30/02_addnwad.PNG)
 
 15. Click on vEdge30 and choose to power it on
 
@@ -110,7 +105,7 @@ Use the following information in this section (some of the information will be u
 
 3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
 
-    ![](/images/Deploying_vEdge21/04_bootstrap.PNG)
+    ![](/images/Deploying_vEdge30/03_bootstrap.PNG)
     ```
     conf t
     system
@@ -139,7 +134,7 @@ Use the following information in this section (some of the information will be u
     !
     commit and-quit
     ```  
-4. Open **Putty** and double-click the saved session for vEdge21 (or **SSH** to **192.168.0.30**)
+4. Open **Putty** and double-click the saved session for vEdge30 (or **SSH** to **192.168.0.30**)
 
 5. Choose Yes to accept the certificate, if prompted
 
@@ -162,13 +157,15 @@ Use the following information in this section (some of the information will be u
 
 3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
 
+    ![](/images/Deploying_vEdge30/04_genbootgui.PNG)
+
 4. >Select Cloud-Init and click on OK
 
     ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
 
 5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge30 device. Alternatively, leave this popup open and we can come back to it when required
 
-    ![](/images/Deploying_vEdge21/05_genbootstrap.PNG)
+    ![](/images/Deploying_vEdge30/05_bootstrapconfig.PNG)
 
 6. Go back to the Putty session for vEdge30 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
     ```
@@ -190,6 +187,7 @@ Use the following information in this section (some of the information will be u
     This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
 
 8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+    ![](/images/Deploying_vEdge30/06_certtunn.PNG)
     ```
     request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
     ```
