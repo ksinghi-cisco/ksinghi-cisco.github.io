@@ -1,7 +1,7 @@
 ---
-title: Pages
+title: Deploying a Dual Uplink cEdge
 tags: [getting_started, formatting, content_types]
-keywords: pages, authoring, exclusion, frontmatter
+keywords: cEdges, cEdge40, Site40, Deploy
 last_updated: July 16, 2016
 summary: "Deploying Site 40 with a single cEdge which has both transport uplinks"
 sidebar: mydoc_sidebar
@@ -9,175 +9,140 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
-## Where to author content
-Use a text editor such as Sublime Text, WebStorm, IntelliJ, or Atom to create pages. Atom is recommended because it's created by Github, which is driving some of the Jekyll development through Github Pages.
+Task List
 
-## Where to save pages
-
-You can store your pages in any folder structures you want, with any level of folder nesting. The site output will pull all of those pages out of their folders and put them into the root directory. Check out the \_site folder, which is where Jekyll is generated, to see the difference between your project's structure and the resulting site output.
-
-The listing of all pages in the root directory (which happens when you add a permalink property to the pages) is what allows the relative linking and offline viewing of the site to work.
-
-## Frontmatter
-
-Make sure each page has frontmatter at the top like this:
+- [ ] Verifying the existing lab setup
+- [ ] Creating the cEdge40 VM
+- [ ] Onboarding cEdge40
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
 
-```yaml
----
-title: Alerts
-tags: [formatting]
-keywords: notes, tips, cautions, warnings, admonitions
-last_updated: July 3, 2016
-summary: "You can insert notes, tips, warnings, and important alerts in your content."
-sidebar: mydoc_sidebar
-permalink: mydoc_alerts.html
----
-```
+## Verifying the existing lab setup
 
-Frontmatter is always formatted with three hyphens at the top and bottom. Your frontmatter must have a `title` and `permalink` value. All the other values are optional.
+The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30. We will start by verifying the existing setup.
 
-Note that you cannot use variables in frontmatter.
+1. Log in to vManage by clicking on the bookmark or navigating to https://192.168.0.6. Use the following credentials:
 
-The following table describes each of the frontmatter that you can use with this theme:
+    Username | Password
+    ------------ | -------------
+    admin | admin
 
-| Frontmatter | Required? | Description |
-|-------------|-------------|-------------|
-| **title** | Required | The title for the page |
-| **tags** | Optional | Tags for the page. Make all tags single words, with underscores if needed (rather than spaces). Separate them with commas. Enclose the whole list within brackets. Also, note that tags must be added to \_data/tags_doc.yml to be allowed entrance into the page. This prevents tags from becoming somewhat random and unstructured. You must create a tag page for each one of your tags following the pattern shown in the tags folder. (Tag pages aren't automatically created.)  |
-| **keywords** | Optional | Synonyms and other keywords for the page. This information gets stuffed into the page's metadata to increase SEO. The user won't see the keywords, but if you search for one of the keywords, it will be picked up by the search engine.  |
-| **last_updated**  | Optional | The date the page was last updated. This information could helpful for readers trying to evaluate how current and authoritative information is. If included, the last_updated date appears in the footer of the page in small font.|
-| **sidebar** | Required | Refers to the sidebar data file for this page. Don't include the ".yml" file extension for the sidebar &mdash; just provide the file name. If no sidebar is specified, this value will inherit the `default` property set in your \_config.yml file for the page's frontmatter. |
-| **summary** | Optional | A 1-2 word sentence summarizing the content on the page. This gets formatted into the summary section in the page layout. Adding summaries is a key way to make your content more scannable by users (check out [Jakob Nielsen's site](http://www.nngroup.com/articles/corporate-blogs-front-page-structure/) for a great example of page summaries.) The only drawback with summaries is that you can't use variables in them. |
-| **permalink**| Required | The permalink *must* match the filename in order for automated links to work. Additionally, you must include the ".html" in the filename. Do not put forward slashes around the permalink (this makes Jekyll put the file inside a folder in the output). When Jekyll builds the site, it will put the page into the root directory rather than leaving it in a subdirectory or putting it inside a folder and naming the file index.html. Having all files flattened in the root directory is essential for relative linking to work and for all paths to JS and CSS files to be valid. |
-| **datatable** | Optional | 'true'. If you add `datatable: true` in the frontmatter, scripts for the [jQuery Datatables plugin](https://www.datatables.net/) get included on the page. You can see the scripts that conditionally appear by looking in the \_layouts/default.html page. |
-| **toc** | Optional | If you specify `toc: false` in the frontmatter, the page won't have the table of contents that appears below the title. The toc refers to the list of jump links below the page title, not the sidebar navigation. You probably want to hide the TOC on the homepage and product landing pages.|
+    ![](/images/Deploying_DC_vEdge1/01_logintovmanage.PNG)
 
-## Colons in page titles
+2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along with 5 WAN Edges. 7 control planes should be up and 3 sites should have WAN connectivity.
 
-If you want to use a colon in your page title, you must enclose the title's value in quotation marks.
+    ![](/images/Deploying_DC_vEdge1/02_2smarts_1bond_vm.PNG)
+3. Open and log in to the vManage via the CLI - fire up Putty and double click the saved session for vManage or SSH to 192.168.0.6. Use the same credentials as the GUI.
 
-## Page names and excluding files from outputs
+    ![](/images/Deploying_DC_vEdge1/03_cliver.PNG)
+4. Issue `show control connections` and you should see the vManage talking to the vSmarts, vBond and vEdges.
 
-By default, everything in your project is included in the output. You can exclude all files that don't belong to that project by specifying the file name, the folder name, or by using wildcards in your configuration file:
+    ![](/images/Deploying_DC_vEdge1/03_controlconnver.PNG)
 
-```yaml
-exclude:
+Look at the System IP to see which device has the vManage established a control connection with. There should be 5 connections to vEdges. We see that the connections are up and this completes the verification activity.
+<br>
 
-- filename.md
-- subfolder_name/
-- mydoc_*
-- gitignore
-```
+Task List
 
-Wildcards will exclude every match after the `*`.
+- [x] Verifying the existing lab setup
+- [ ] Creating the DC-vEdge1 VM
+- [ ] Onboarding DC-vEdge1
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
-## Saving pages as drafts
+## Creating the vEdge40 VM
 
-If you add `published: false` in the frontmatter, your page won't be published. You can also move draft pages into the \_drafts folder to exclude them from the build. With posts, you can also keep them as drafts by omitting the date in the title.
+### Overview
 
-## Markdown or HTML format
+We will be deploying a cEdge in Site 40 via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-Pages can be either Markdown or HTML format (specified through either an .md or .html file extension).
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP              | Gateway       |
+|---------|---------------|---------|-------------------|--------------|------------------|-----------------|---------------|
+| 40      | 10.255.255.41 | cEdge40 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.40  | 100.100.100.1 |
+|         |               |         | Network Adapter 3 | MPLS40       | GigabitEthernet3 | 192.1.2.18/30   | 192.1.2.17    |
+|         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
+|         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
+|         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
 
-If you use Markdown, you can also include HTML formatting where needed. But if your format is HTML, you must add a `markdown="1"` attribute to the element in order to use Markdown inside that HTML element:
+{% include tip.html content="Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment." %}
 
-```
-<div markdown="1">This is a [link](http://exmaple.com).</div>
-```
+{% include tip.html content="There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options." %}
 
-For your Markdown files, note that a space or two indent will set text off as code or blocks, so avoid spacing indents unless intentional.
+### Deploying the VM on vCenter
+<br>
 
-If you have a lot of HTML, as long as the top and bottom tags of the HTML are flush left in a Markdown file, all the tags inside those bookend HTML tags will render as HTML, regardless of their indentation. (This can be especially useful for tables.)
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
 
+    ![](/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG)
+2. We should see the vEdges from previous sections of the lab deployed.
 
-## Page names
+    ![](/images/Deploying_DC_vEdge1/04_nositesdeployed_onlyctrl.PNG)
+3. Right click on the host and choose to **Deploy OVF Template**
 
-I recommend prefixing your page names with the product, such as "mydoc_pages" instead of just "pages." This way if you have other products that also have topics with generic names such as "pages," there won't be naming conflicts.
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
+4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr100v-univer*. Click on Next.
 
-Additionally, consider adding the product name in parentheses after the title, such as "Pages (Mydoc)" so that users can clearly navigate different topics for each product.
+    ![](/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG)
+5. Change the Virtual Machine name to **cEdge40** and click on Next.
 
-## Kramdown Markdown
+    ![](/images/Deploying_DC_vEdge1/07_namedcvedge1_next.PNG)
+6. Select the host assigned to you (image shown as an example only) and click on Next
 
-Kramdown is the Markdown flavor used in the theme. This mostly aligns with Github-flavored Markdown, but with some differences in the indentation allowed within lists. Basically, Kramdown requires you to line up the indent between list items with the first starting character after the space in your list item numbering. See this [blog post on Kramdown and Rouge](http://idratherbewriting.com/2016/02/21/bug-with-kramdown-and-rouge-with-github-pages/) for more details.
+    ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
+7. Review the details shown and click on Next.  Select the **Large** option (4 vCPUs and 4 GB RAM) and click on Next
 
-You can use standard Multimarkdown syntax for tables. You can also use fenced code blocks with lexers specifying the type of code. The configuration file shows the Markdown processor and extension:
+    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+8. Choose the Datastore and click on Next.
 
-```yaml
-highlighter: rouge
-markdown: kramdown
-kramdown:
- input: GFM
- auto_ids: true
- hard_wrap: false
- syntax_highlighter: rouge
-```
+    ![](/images/Deploying_DC_vEdge1/10_storage_next.PNG)
+9. Populate the VM Networks as per the image given below
 
-## Automatic mini-TOCs
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-By default, a TOC appears at the top of your pages and posts. If you don't want the TOC to appear for a specific page, such as for a landing page or other homepage, add `toc: false` in the frontmatter of the page.
+    ![](/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG)
+10. Click Next on **Customize Template** and then Click on **Finish** to deploy your DC-vEdge1 VM
 
-The mini-TOC requires you to use the `##` Markdown syntax for headings. If you use `<h2>` elements, you must add an ID attribute for the heading element in order for it to appear in the mini-TOC (for example, `<h2 id="mysampleid">Heading</h2>`.
+    ![](/images/Deploying_DC_vEdge1/12_finish.PNG)
+11. Once the VM is deployed, right click **cEdge40** and click Edit settings.
 
-## Headings
+    ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png)
+12. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
 
-Use pound signs before the heading title to designate the level. Note that kramdown requires headings to have one space before and after the heading. Without this space above and below, the heading won't render into HTML.
+    ![](/images/Deploying_DC_vEdge1/14_addnewdev_netadapt.PNG)
+13. Click on the drop down next to the first **New Network** and click on *Browse*
 
-```
-## Second-level heading
-```
+    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
+14. Choose the **Site40-VPN10** Network and click on OK. Do the same for the next two network adapters, allocating them to **Site40-VPN20** and **Site40-VPN30** respectively. Make sure the Network Adapters match with the second image below and click on OK again
+    {% include warning.html content="The Network Adapter mapping might vary based on the version of vEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the vEdge" %}
 
-**Result:**
+    ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
 
-## Second-level heading
+    ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
+15. Click on cEdge40 and choose to power it on
 
------
+<br>
 
-```
-### Third-level heading
-```
-**Result:**
+Task List
 
-### Third-level heading
+- [x] Verifying the existing lab setup
+- [x] Creating the cEdge40 VM
+- [ ] Onboarding cEdge40
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
 
-------
+## Onboarding cEdge40
 
-```
-#### Fourth-level heading
-```
+### Initial Configuration - non SD-WAN mode
 
-**Result:**
+Use the following information in this section (some of the information will be used later)
 
-#### Fourth-level heading
-
-## Headings with ID Tags {#someIdTag}
-
-If you want to use a specific ID tag with your heading, add it like this:
-
-```
-## Headings with ID Tags {#someIdTag}
-```
-
-Then you can reference it with a link like this on the same page:
-
-```
-[Some link](#someIdTag)
-```
-
-**Result:**
-
-[Some link](#someIdTag)
-
-For details about linking to headings on different pages, see [Automated links to headings on pages][mydoc_hyperlinks.html#bookmarklinks].
-
-## Specify a particular page layout
-
-The configuration file sets the default layout for pages as the "page" layout.
-
-You can create other layouts inside the layouts folder. If you create a new layout, you can specify that your page use your new layout by adding `layout: mylayout.html` in the page's frontmatter. Whatever layout you specify in the frontmatter of a page will override the layout default set in the configuration file.
-
-## Comments
-
-Disqus, a commenting system, is integrated into the theme. In the configuration file, specify the Disqus code for the universal code, and Disqus will appear. If you don't add a Disqus value, the Disqus form isn't included.
-
-{% include links.html %}
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP              | Gateway       |
+|---------|---------------|---------|-------------------|--------------|------------------|-----------------|---------------|
+| 40      | 10.255.255.41 | cEdge40 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.40  | 100.100.100.1 |
+|         |               |         | Network Adapter 3 | MPLS40       | GigabitEthernet3 | 192.1.2.18/30   | 192.1.2.17    |
+|         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
+|         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
+|         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
