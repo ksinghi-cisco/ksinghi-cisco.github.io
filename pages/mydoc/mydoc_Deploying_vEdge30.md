@@ -66,8 +66,7 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
 13. > Choose the **Internet** Network and click on OK.
 
-14.  > Make sure the Network Adapters match with the image below and click on OK
-
+14.  > Make sure the Network Adapters match with the image below and click on *OK*
     ![](/images/Deploying_vEdge30/02_addnwad.PNG)
 
 15. Click on vEdge30 and choose to power it on
