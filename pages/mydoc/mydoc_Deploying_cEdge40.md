@@ -146,3 +146,21 @@ Use the following information in this section (some of the information will be u
 |         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
 |         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
 |         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
+
+{% include tip.html content="Starting from IOS-XW 17.2, the cEdge platforms use a Universal image. One can switch from non SD-WAN mode to SD-WAN mode via a command" %}
+
+1. We will first console in to the cEdge and set up an IP Address with basic routing to ensure that the cEdge can reach vManage and the Jumphost. This is done by issuing `ip route 0.0.0.0 0.0.0.0 192.168.0.1` followed by `interface GigabitEthernet1` and giving an IP Address to the interface through `ip address 192.168.0.40 255.255.255.0`. Make sure you `no shut` the interface.
+
+    ```
+    enable
+    conf t
+    interface GigabitEthernet1
+    ip address 192.168.0.40 255.255.255.0
+    no shut
+    exit
+    ip route 0.0.0.0 0.0.0.0 192.168.0.1
+    ```
+
+2. Verify connectivity to the vManage and the JumpHost (IP of the Jumphost might vary)
+
+3. On vManage, navigate to **Configuration -> Templates**.

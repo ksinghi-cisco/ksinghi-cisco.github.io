@@ -291,7 +291,7 @@ Task List
     ```
     show control connections
     ```
-    {% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed` and `show certificate validity`" %}
+    {% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed`, `show certificate root-ca-cert`, `show control local-properties` and `show certificate validity`. Most of these commands give us details about the status of certificates on the device and are helpful in ascertaining the root cause of failure when control connections aren't getting established." %}
 
 2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
 
