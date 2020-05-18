@@ -1,93 +1,203 @@
 ---
 title: Deploying a dual uplink vEdge
 permalink: mydoc_Deploying_vEdge30.html
-keywords: jekyll on windows, pc, ruby, ruby dev kit
+keywords: vedge30, Site 30, dual uplink vEdge
+summary: "Deploying vEdge30 in Site 30. This vEdge has dual uplinks (INET and MPLS)"
 sidebar: mydoc_sidebar
 folder: mydoc
 ---
 
-{% include tip.html content="For a better terminal emulator on Windows, use [Git Bash](https://git-for-windows.github.io/). Git Bash gives you Linux-like control on Windows." %}
+Task List
 
-## Install Ruby and Ruby Development Kit
+{% include callout.html content="
+- [ ] Creating the vEdge30 VM
+- [ ] Onboarding vEdge30
 
-First you must install Ruby because Jekyll is a Ruby-based program and needs Ruby to run.
+" type="primary" %}
 
-1. Go to [RubyInstaller for Windows](http://rubyinstaller.org/downloads/).
-2. Under **RubyInstallers**, download and install one of the Ruby installers under the **WITH DEVKIT** list (usually the recommended/highlighted option).
-3. Double-click the downloaded file and proceed through the wizard to install it. Run the `ridk install` step on the last stage of the installation wizard.
-4. Open a new command prompt window or Git Bash session.
+## Creating the vEdge30 VM
 
-<h2 id="bundler">Install the Jekyll gem</h2>
+### Overview
 
-At this point you should have Ruby and Rubygem on your machine.
+{% include warning.html content="Since we have gone through deploying vEdges multiple times by now, this section will just have the steps listed out. Images for every step has not been populated due to similarity with the previous sections. " %}
 
-Now use `gem` to install Jekyll:
+{% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous sections." %}
 
-```
-gem install jekyll
-```
+> This is what an earmarked step will look like
 
-You can now use Jekyll to create new Jekyll sites following the quick-start instructions on [Jekyllrb.com](http://jekyllrb.com).
+We will be deploying a vEdge at Site 30 via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-## Installing dependencies through Bundler
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface | IP                | Gateway       |
+|---------|---------------|---------|-------------------|--------------|-----------|-------------------|---------------|
+| 30      | 10.255.255.31 | vEdge30 | Network Adapter 1 | Management   | eth0      | 192.168.0.30/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | MPLS30       | ge0/1     | 192.0.2.14/30     | 192.0.2.13    |
+|         |               |         | Network Adapter 3 | Site30-VPN10 | ge0/2     | 10.30.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site30-VPN20 | ge0/3     | 10.30.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.30/24 | 100.100.100.1 |
 
-Some Jekyll themes will require certain Ruby gem dependencies. These dependencies are stored in something called a Gemfile, which is packaged with the Jekyll theme. You can install these dependencies through Bundler. (Although you don't need to install Bundler for this Documentation theme, it's a good idea to do so.)
+### Deploying the vEdge30 VM on vCenter
+<br>
 
-[Bundler](http://bundler.io/) is a package manager for RubyGems. You can use it to get all the gems (or Ruby plugins) that you need for your Jekyll project.
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
 
-You install Bundler by using the gem command with RubyGems:
+2. Right click on the host and choose to **Deploy OVF Template**
 
+    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
+3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-## Install Bundler
+4. > Change the Virtual Machine name to vEdge30 and click on Next.
 
-1. Browse to the directory where you downloaded the Documentation theme for Jekyll.
-2. Delete or rename the existing `Gemfile` and `Gemfile.lock` files.
-3. Install Bundler: `gem install bundler`
-4. Initialize Bundler: `bundle init`
+5. Select the host assigned to you (image shown as an example only) and click on Next
 
-   This will create a new Gemfile.
+    ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
+6. Review the details shown and click on Next
 
-3. Open the Gemfile in a text editor.
+    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+7. Choose the Datastore and click on Next
 
-   Typically you can open files from the Command Prompt by just typing the filename, but because Gemfile doesn't have a file extension, no program will automatically open it. You may need to use your File Explorer and browse to the directory, and then open the Gemfile in a text editor such as Notepad.
+8. >Populate the VM Networks as per the image given below
 
-4. Remove the existing contents. Then paste in the following:
+    {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-   ```
-   source "https://rubygems.org"
+    ![](/images/Deploying_vEdge21/01_nwad.PNG)
+9. Click on **Finish** to deploy your vEdge30 VM
 
-   gem 'wdm'
-   gem 'jekyll'
-   ```
-   The [wdm gem](https://rubygems.org/gems/wdm/versions/0.1.1) allows for the polling of the directory and rebuilding of the Jekyll site when you make changes. This gem is needed for Windows users, not Mac users.
+    ![](/images/Deploying_vEdge21/02_summ.PNG)
 
-5. Save and close the file.
-6. Type `bundle install`.
+10. Once the VM is deployed, right click **vEdge30** and click Edit settings.
 
-   Bundle retrieves all the needed gems and gem dependencies and downloads them to your computer. At this time, Bundle also takes a snapshot of all the gems used in your project and creates a Gemfile.lock file to store this information.
+11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab).
 
-## Git Clients for Windows
+12. Click on the drop down next to the **New Network** and click on *Browse*
 
-Although you can use the default command prompt with Windows, it's recommended that you use [Git Bash](https://git-for-windows.github.io/) instead. The Git Bash client will allow you to run shell scripts and execute other Unix commands.
+13. > Choose the **Internet** Network and click on OK.
 
-## Serve the Jekyll Documentation theme
+14.  Make sure the Network Adapters match with the image below and click on OK
+    ![](/images/Deploying_vEdge21/03_addnetad.PNG)
 
-1. Browse to the directory where you downloaded the Documentation theme for Jekyll.
-2. Type `jekyll serve`
-3. Go to the preview address in the browser. (Make sure you include the `/` at the end.)
+15. Click on vEdge30 and choose to power it on
 
-   Unfortunately, the Command Prompt doesn't allow you to easily copy and paste the URL, so you'll have to type it manually.
+<br>
 
-## Resolving Github Metadata errors {#githuberror}
+Task List
 
-After making an edit, Jekyll auto-rebuilds the site. If you have the Gemfile in the theme with the github-pages gem, you may see the following error:
+- [x] Creating the vEdge30 VM
+- [ ] Onboarding vEdge30
 
-```
-GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
-```
+## Onboarding vEdge30
 
-If so, you will need to take some additional steps to resolve it. (Note that this error only appears if you have the github-pages gem in your gemfile.) The resolution involves adding a Github token and a cert file.
+### Bootstrapping vEdge30 (Initial Configuration)
 
-See this post on [Knight Codes](http://knightcodes.com/miscellaneous/2016/09/13/fix-github-metadata-error.html) for instructions on how to fix the error. You basically generate a personal token on Github and set it as a system variable. You also download a certification file and set it as a system variable. This resolves the issue.
+Use the following information in this section (some of the information will be used later)
 
-{% include links.html %}
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface | IP                | Gateway       |
+|---------|---------------|---------|-------------------|--------------|-----------|-------------------|---------------|
+| 30      | 10.255.255.31 | vEdge30 | Network Adapter 1 | Management   | eth0      | 192.168.0.30/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | MPLS30       | ge0/1     | 192.0.2.14/30     | 192.0.2.13    |
+|         |               |         | Network Adapter 3 | Site30-VPN10 | ge0/2     | 10.30.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site30-VPN20 | ge0/3     | 10.30.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Internet     | ge0/0     | 100.100.100.30/24 | 100.100.100.1 |
+
+1. Console in to the vEdge30 VM from vCenter (you should already be logged in from our last activity)
+
+2. Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in).
+
+    | Username | Password     |
+    | ------------- | ------------ |
+    | admin     | admin       |
+
+    {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
+
+3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+
+    ![](/images/Deploying_vEdge21/04_bootstrap.PNG)
+    ```
+    conf t
+    system
+     host-name vEdge30
+     system-ip 10.255.255.31
+     organization-name "swat-sdwanlab"
+     site-id 30
+     vbond 100.100.100.3
+     exit
+    !
+    vpn 0
+     ip route 0.0.0.0/0 100.100.100.1
+     interface ge0/0
+      ip address 100.100.100.30/24
+      no tunnel-interface
+      no shutdown
+      exit
+     !
+     exit
+    !
+    vpn 512
+     ip route 0.0.0.0/0 192.168.0.1
+     interface eth0
+      ip address 192.168.0.30/24
+      no shutdown
+    !
+    commit and-quit
+    ```  
+4. Open **Putty** and double-click the saved session for vEdge21 (or **SSH** to **192.168.0.30**)
+
+5. Choose Yes to accept the certificate, if prompted
+
+    ![](/images/Deploying_DC_vEdge1/23_cert_yes.PNG)
+
+6. Log in using the same credentials as Step 2.
+
+<br>
+
+### Installing certificates and activating the vEdge
+
+1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
+    ```
+    vshell
+    scp admin@192.168.0.6:ROOTCA.pem .
+    ```
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+
+    ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
+
+3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
+
+4. >Select Cloud-Init and click on OK
+
+    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+
+5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge30 device. Alternatively, leave this popup open and we can come back to it when required
+
+    ![](/images/Deploying_vEdge21/05_genbootstrap.PNG)
+
+6. Go back to the Putty session for vEdge30 and enter `request root-cert-chain install /home/admin/ROOTCA.pem`to install the root cert chain. It should install successfully
+    ```
+    request root-cert-chain install /home/admin/ROOTCA.pem
+    ```
+7. Enter  `tunnel-interface`, `encapsulation ipsec` and `allow-service all` under `interface ge0/0` to bring up the tunnel Interface. Make sure to `commit and-quit` in order to write the configuration change
+    ```
+    config t
+    vpn 0
+    interface ge0/0
+     tunnel-interface
+     encapsulation ipsec
+     allow-service all
+     exit
+     !
+     commit and-quit
+     ```
+
+    This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don't activate the vEdge itself
+
+8. Issue the `request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)`command. Replace the *(Enter your UUID)* and *(Enter your OTP)* fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).
+    ```
+    request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
+    ```
+This completes the Onboarding section for vEdge30
+
+<br>
+
+Task List
+
+- [x] Creating the vEdge30 VM
+- [x] Onboarding vEdge30

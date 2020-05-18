@@ -1,7 +1,7 @@
 ---
-title: Deploying single uplink (MPLS) vEdge
+title: Deploying a single uplink (MPLS) vEdge
 tags: [getting_started, troubleshooting]
-keywords:
+keywords: vEdge21, Site 20, Single uplink vEdge
 summary: "Deploying vEdge21 in Site 20. This vEdge has a single uplink (MPLS)"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_vEdge21.html
