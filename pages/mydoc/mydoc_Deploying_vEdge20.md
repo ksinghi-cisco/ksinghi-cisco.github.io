@@ -1,7 +1,7 @@
 ---
 title: Deploying a Single uplink (INET) vEdge
 tags: [getting_started, troubleshooting]
-keywords:
+keywords: vEdge 20, Site 20, Single uplink vedge
 summary: "Deploying vEdge20 in Site 20. This vEdge has a single uplink to the Internet"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_vEdge20.html
