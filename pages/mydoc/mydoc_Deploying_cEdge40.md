@@ -2,7 +2,7 @@
 title: Deploying a Dual Uplink cEdge
 tags: [getting_started, formatting, content_types]
 keywords: cEdges, cEdge40, Site40, Deploy
-last_updated: July 16, 2016
+last_updated: May 19, 2020
 summary: "Deploying Site 40 with a single cEdge which has both transport uplinks"
 sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_cEdge40.html
@@ -115,7 +115,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 
     ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
 14. Choose the **Site40-VPN10** Network and click on OK. Do the same for the next two network adapters, allocating them to **Site40-VPN20** and **Site40-VPN30** respectively. Make sure the Network Adapters match with the second image below and click on OK again
-    {% include warning.html content="The Network Adapter mapping might vary based on the version of vEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the vEdge" %}
+    {% include warning.html content="The Network Adapter mapping might vary based on the version of cEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the cEdge" %}
 
     ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
 
