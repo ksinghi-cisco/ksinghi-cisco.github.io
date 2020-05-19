@@ -216,3 +216,37 @@ Templates are the key configuration components of the Cisco SD-WAN solution. The
 1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
 
     ![](/images/Deploying_cEdge40/22_gototemp.PNG)
+
+2. Click on the Feature tab to access the Feature templates. Click on **Add Template**
+
+    ![](/images/Deploying_cEdge40/23_Feature.PNG)
+
+3. Search for csr and select CSR1000v on the left-hand side. This should give the option to select a template from the right. Choose **Cisco VPN** template
+
+    ![](/images/Deploying_cEdge40/24_csr_vpn.PNG)
+
+4. Name your template *cEdge_VPN0_dual_uplink* and give a description of *cEdge VPN 0 Template for Dual Uplinks*. Enter the VPN as 0.
+
+    ![](/images/Deploying_cEdge40/25_tempname.PNG)
+
+5. Click on **IPv4 Route** and then choose **New IPv4 Route**
+
+    ![](/images/Deploying_cEdge40/26_ipv4routenew.PNG)
+
+6. Enter the **Prefix** as *0.0.0.0/0* and click on **Add Next Hop**. We're adding the default route for VPN 0 (draw parallels with the manual configuration that was done on the vEdges)
+
+    ![](/images/Deploying_cEdge40/27_defroute_addhop.PNG)
+
+7. Click on **Add Next Hop** again and choose **Device Specific** from the Address drop down. Enter *vpn0_next_hop_ip_address_0*. Click on Add.
+
+    ![](/images/Deploying_cEdge40/28_addnexthopagain.PNG)
+
+    ![](/images/Deploying_cEdge40/29_devspec.PNG)
+
+8. Make sure you have **1 Next Hop** showing up in the IPv4 Route window and click on **Add** again. Once on the main Template page, click on **Create** to create your Feature Template
+
+    ![](/images/Deploying_cEdge40/30_clickadd.PNG)
+
+9. Choose to **Add Template**, searching and selecting CSR1000v like before. This time, choose to add a **Cisco VPN Interface Ethernet** template
+
+    ![](/images/Deploying_cEdge40/32_addftemp_csr_vpnint.PNG)
