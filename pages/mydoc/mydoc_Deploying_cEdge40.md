@@ -11,24 +11,26 @@ folder: mydoc
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- Verifying the current lab setup~~
+<ul>
+<li>Verifying the current lab setup</li>
 <br/>
-- Creating the cEdge40 VM
+<li>Creating the cEdge40 VM</li>
 <br/>
-- Onboarding cEdge40
+<li>Onboarding cEdge40</li>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;- Initial Configuration - non SD-WAN mode
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Initial Configuration - non SD-WAN mode</li>
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Setting up Feature Templates
+    <br/></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Creating and Attaching Device Templates</li>
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Copying the Bootstrap file and converting to SD-WAN IOS-XE mode</li>
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
-    <br/>
-- Onboarding Verification
+<li>Onboarding Verification</li>
 <br/>
-- Helpful debugs and logs
+<li>Helpful debugs and logs</li>
 <br/>
+</ul>
 " type="primary" %}
 
 ## Verifying the existing lab setup
