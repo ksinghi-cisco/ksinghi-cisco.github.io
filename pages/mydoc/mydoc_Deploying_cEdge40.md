@@ -9,6 +9,8 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
+{% include callout.html content="Task List <pre> verifying </pre>" type="primary" %}
+
 Task List
 
 - [x] Verifying the existing lab setup
