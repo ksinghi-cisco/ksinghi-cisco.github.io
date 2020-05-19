@@ -9,7 +9,7 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
-{% include callout.html content="Task List" type="primary" %}
+{% include callout.html content="Task List
 
 - [x] Verifying the current lab setup
 - [x] Creating the cEdge40 VM
@@ -20,7 +20,7 @@ folder: mydoc
     - [ ] Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
 - [ ] Onboarding Verification
 - [ ] Helpful debugs and logs
-
+" type="primary" %}
 
 ## Verifying the existing lab setup
 
