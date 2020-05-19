@@ -11,23 +11,23 @@ folder: mydoc
 
 {% include callout.html content="**Task List**
 <br/><br/>
-Verifying the current lab setup
+- Verifying the current lab setup
 <br/>
-Creating the cEdge40 VM
+- Creating the cEdge40 VM
 <br/>
-Onboarding cEdge40
+- Onboarding cEdge40
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial Configuration - non SD-WAN mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Initial Configuration - non SD-WAN mode
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting up Feature Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creating and Attaching Device Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
     <br/>
-Onboarding Verification
+- Onboarding Verification
 <br/>
-Helpful debugs and logs
+- Helpful debugs and logs
 <br/>
 
 " type="primary" %}
@@ -60,23 +60,23 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~Verifying the current lab setup~~
+~~- Verifying the current lab setup~~
 <br/>
-Creating the cEdge40 VM
+- Creating the cEdge40 VM
 <br/>
-Onboarding cEdge40
+- Onboarding cEdge40
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial Configuration - non SD-WAN mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Initial Configuration - non SD-WAN mode
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting up Feature Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creating and Attaching Device Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
     <br/>
-Onboarding Verification
+- Onboarding Verification
 <br/>
-Helpful debugs and logs
+- Helpful debugs and logs
 <br/>
 
 " type="primary" %}
@@ -164,23 +164,23 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~Verifying the current lab setup~~
+~~- Verifying the current lab setup~~
 <br/>
-~~Creating the cEdge40 VM~~
+~~- Creating the cEdge40 VM~~
 <br/>
-Onboarding cEdge40
+- Onboarding cEdge40
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial Configuration - non SD-WAN mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Initial Configuration - non SD-WAN mode
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting up Feature Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creating and Attaching Device Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
     <br/>
-Onboarding Verification
+- Onboarding Verification
 <br/>
-Helpful debugs and logs
+- Helpful debugs and logs
 <br/>
 
 " type="primary" %}
@@ -231,23 +231,23 @@ Use the following information in this section (some of the information will be u
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~Verifying the current lab setup~~
+~~- Verifying the current lab setup~~
 <br/>
-~~Creating the cEdge40 VM~~
+~~- Creating the cEdge40 VM~~
 <br/>
-Onboarding cEdge40
+- Onboarding cEdge40
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~Initial Configuration - non SD-WAN mode~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting up Feature Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creating and Attaching Device Templates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
     <br/>
-Onboarding Verification
+- Onboarding Verification
 <br/>
-Helpful debugs and logs
+- Helpful debugs and logs
 <br/>
 
 " type="primary" %}
