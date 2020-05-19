@@ -11,7 +11,7 @@ folder: mydoc
 
 {% include callout.html content="**Task List**
 <br/><br/>
-<ul>
+<ul><br/>
 <li>Verifying the current lab setup</li>
 <br/>
 <li>Creating the cEdge40 VM</li>
