@@ -8,10 +8,14 @@ permalink: mydoc_Deploying_vEdge21.html
 folder: mydoc
 ---
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+- Creating the vEdge21 VM
+<br/>
+- Onboarding vEdge21
+<br/>
 
-- [ ] Creating the vEdge21 VM
-- [ ] Onboarding vEdge21
+" type="primary" %}
 
 ## Creating the vEdge21 VM
 
@@ -80,10 +84,14 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge21 VM~~
+<br/>
+- Onboarding vEdge21
+<br/>
 
-- [x] Creating the vEdge21 VM
-- [ ] Onboarding vEdge21
+" type="primary" %}
 
 ## Onboarding vEdge21
 
@@ -199,7 +207,11 @@ This completes the Onboarding section for vEdge21
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge21 VM~~
+<br/>
+~~- Onboarding vEdge21~~
+<br/>
 
-- [x] Creating the vEdge21 VM
-- [x] Onboarding vEdge21
+" type="primary" %}

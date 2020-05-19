@@ -8,11 +8,16 @@ permalink: mydoc_Deploying_vEdge20.html
 folder: mydoc
 ---
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+- Creating the vEdge20 VM
+<br/>
+- Onboarding vEdge20
+<br/>
+- Onboarding Verification
+    <br/>
 
-- [ ] Creating the vEdge20 VM
-- [ ] Onboarding vEdge20
-- [ ] Onboarding Verification
+" type="primary" %}
 
 ## Creating the vEdge20 VM
 
@@ -91,13 +96,16 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 <br>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge20 VM~~
+<br/>
+- Onboarding vEdge20
+<br/>
+- Onboarding Verification
+    <br/>
 
-Task List
-
-
-- [x] Creating the vEdge20 VM
-- [ ] Onboarding vEdge20
-- [ ] Onboarding Verification
+" type="primary" %}
 
 ## Onboarding vEdge20
 
@@ -224,12 +232,16 @@ This completes the Onboarding section for vEdge20
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge20 VM~~
+<br/>
+~~- Onboarding vEdge20~~
+<br/>
+- Onboarding Verification
+    <br/>
 
-
-- [x] Creating the vEdge20 VM
-- [x] Onboarding vEdge20
-- [ ] Onboarding Verification
+" type="primary" %}
 
 ## Onboarding Verification
 
@@ -270,9 +282,13 @@ This completes the verification activity.
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge20 VM~~
+<br/>
+~~- Onboarding vEdge20~~
+<br/>
+~~- Onboarding Verification~~
+    <br/>
 
-
-- [x] Creating the vEdge20 VM
-- [x] Onboarding vEdge20
-- [x] Onboarding Verification
+" type="primary" %}
