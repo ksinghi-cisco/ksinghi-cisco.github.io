@@ -1,0 +1,12 @@
+enable
+conf t
+interface GigabitEthernet1
+ip address 192.168.0.50 255.255.255.0
+no shut
+exit
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
+ip scp server enable
+username admin priv 15 sec admin
+line vty 0 4
+login local
+do wr
