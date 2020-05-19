@@ -313,11 +313,7 @@ a.accordion-toggle, a.accordion-collapsed {
     list-style: none;
 }
 
-/* adds scrollbar to sidenav */
-.wy-side-scroll {
-  width: auto;
-  overflow-y: auto;
-}
+
 
 .nav ul {
     padding: 0;
