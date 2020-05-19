@@ -32,15 +32,16 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
 
 2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along with 5 WAN Edges. 7 control planes should be up and 3 sites should have WAN connectivity.
 
-    ![](/images/Deploying_DC_vEdge1/02_2smarts_1bond_vm.PNG)
+    ![](/images/Deploying_cEdge40/01_dash.PNG)
+
 3. Open and log in to the vManage via the CLI - fire up Putty and double click the saved session for vManage or SSH to 192.168.0.6. Use the same credentials as the GUI.
 
     ![](/images/Deploying_DC_vEdge1/03_cliver.PNG)
-4. Issue `show control connections` and you should see the vManage talking to the vSmarts, vBond and vEdges.
+4. Issue `show control connections` and you should see the vManage talking to the vSmarts, vBond and vEdges. Note the **System IP** and the fact that all the connections are **up**
 
-    ![](/images/Deploying_DC_vEdge1/03_controlconnver.PNG)
+    ![](/images/Deploying_cEdge40/02_vercontvm.PNG)
 
-Look at the System IP to see which device has the vManage established a control connection with. There should be 5 connections to vEdges. We see that the connections are up and this completes the verification activity.
+    Look at the System IP to see which device has the vManage established a control connection with. There should be 5 connections to vEdges. This completes the verification activity.
 <br>
 
 Task List
@@ -68,7 +69,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 
 {% include tip.html content="Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment." %}
 
-{% include tip.html content="There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options." %}
+{% include tip.html content="There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical cEdges/vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options." %}
 
 ### Deploying the VM on vCenter
 <br>
@@ -78,22 +79,24 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     ![](/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG)
 2. We should see the vEdges from previous sections of the lab deployed.
 
-    ![](/images/Deploying_DC_vEdge1/04_nositesdeployed_onlyctrl.PNG)
+    ![](/images/Deploying_cEdge40/03_vcdep.PNG)
 3. Right click on the host and choose to **Deploy OVF Template**
 
-    ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
-4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr100v-univer*. Click on Next.
+    ![](/images/Deploying_cEdge40/04_depovf.PNG)
+4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr1000v-univer*. Click on Next.
 
-    ![](/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG)
+    ![](/images/Deploying_cEdge40/05_csrimage.PNG)
 5. Change the Virtual Machine name to **cEdge40** and click on Next.
 
-    ![](/images/Deploying_DC_vEdge1/07_namedcvedge1_next.PNG)
+    ![](/images/Deploying_cEdge40/06_renamecedge.PNG)
 6. Select the host assigned to you (image shown as an example only) and click on Next
 
     ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
 7. Review the details shown and click on Next.  Select the **Large** option (4 vCPUs and 4 GB RAM) and click on Next
 
-    ![](/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG)
+    ![](/images/Deploying_cEdge40/07_revdet.PNG)
+
+    ![](/images/Deploying_cEdge40/08_largedep.PNG)
 8. Choose the Datastore and click on Next.
 
     ![](/images/Deploying_DC_vEdge1/10_storage_next.PNG)
@@ -101,25 +104,31 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
-    ![](/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG)
+    ![](/images/Deploying_cEdge40/09_netad.PNG)
 10. Click Next on **Customize Template** and then Click on **Finish** to deploy your DC-vEdge1 VM
 
-    ![](/images/Deploying_DC_vEdge1/12_finish.PNG)
+    ![](/images/Deploying_cEdge40/10_nextcusttemp.PNG)
+
+    ![](/images/Deploying_cEdge40/11_summfin.PNG)
 11. Once the VM is deployed, right click **cEdge40** and click Edit settings.
 
-    ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png)
-12. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
+    ![](/images/Deploying_cEdge40/12_editsett.PNG)
+12. Change the memory to 8 GB and choose to **Add a new device** (top right corner). Select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
 
-    ![](/images/Deploying_DC_vEdge1/14_addnewdev_netadapt.PNG)
+    ![](/images/Deploying_cEdge40/13_mem8gb.PNG)
+
+    ![](/images/Deploying_cEdge40/14_adddevnad.PNG)
+
+    ![](/images/Deploying_cEdge40/15_total3netad.PNG)
 13. Click on the drop down next to the first **New Network** and click on *Browse*
 
-    ![](/images/Deploying_DC_vEdge1/15_dropdown_browse.png)
+    ![](/images/Deploying_cEdge40/16_dropbrowse.PNG)
 14. Choose the **Site40-VPN10** Network and click on OK. Do the same for the next two network adapters, allocating them to **Site40-VPN20** and **Site40-VPN30** respectively. Make sure the Network Adapters match with the second image below and click on OK again
+
     {% include warning.html content="The Network Adapter mapping might vary based on the version of cEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the cEdge" %}
+    ![](/images/Deploying_cEdge40/17_site40vpn10.PNG)
 
-    ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
-
-    ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
+    ![](/images/Deploying_cEdge40/18_allnetads.PNG)
 15. Click on cEdge40 and choose to power it on
 
 <br>
@@ -147,9 +156,11 @@ Use the following information in this section (some of the information will be u
 |         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
 |         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
 
-{% include tip.html content="Starting from IOS-XW 17.2, the cEdge platforms use a Universal image. One can switch from non SD-WAN mode to SD-WAN mode via a command" %}
+{% include tip.html content="Starting from IOS-XE 17.2, the cEdge platforms use a Universal image. One can switch from non SD-WAN mode to SD-WAN mode via a command" %}
 
 1. We will first console in to the cEdge and set up an IP Address with basic routing to ensure that the cEdge can reach vManage and the Jumphost. This is done by issuing `ip route 0.0.0.0 0.0.0.0 192.168.0.1` followed by `interface GigabitEthernet1` and giving an IP Address to the interface through `ip address 192.168.0.40 255.255.255.0`. Make sure you `no shut` the interface.
+
+    Additionally, we will be SCP'ing files over to the cEdge
 
     ```
     enable
