@@ -10,20 +10,20 @@ folder: mydoc
 ---
 
 {% include callout.html content="**Task List**
-<br/>
-- ~~Verifying the current lab setup~~
+<br/><br/>
+- Verifying the current lab setup~~
 <br/>
 - Creating the cEdge40 VM
 <br/>
 - Onboarding cEdge40
 <br/>
-    - Initial Configuration - non SD-WAN mode
+&nbsp;&nbsp;&nbsp;&nbsp;- Initial Configuration - non SD-WAN mode
     <br/>
-    - Setting up Feature Templates
+&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Feature Templates
     <br/>
-    - Creating and Attaching Device Templates
+&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
     <br/>
-    - Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
     <br/>
 - Onboarding Verification
 <br/>
