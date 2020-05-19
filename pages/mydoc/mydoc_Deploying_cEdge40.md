@@ -9,17 +9,26 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
-{% include callout.html content="Task List
-
-- [x] Verifying the current lab setup
-- [x] Creating the cEdge40 VM
-- [ ] Onboarding cEdge40
-    - [ ] Initial Configuration - non SD-WAN mode
-    - [ ] Setting up Feature Templates
-    - [ ] Creating and Attaching Device Templates
-    - [ ] Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+{% include callout.html content="**Task List**
+<br/>
+- ~~Verifying the current lab setup~~
+<br/>
+- Creating the cEdge40 VM
+<br/>
+- Onboarding cEdge40
+<br/>
+    - Initial Configuration - non SD-WAN mode
+    <br/>
+    - Setting up Feature Templates
+    <br/>
+    - Creating and Attaching Device Templates
+    <br/>
+    - Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+    <br/>
+- Onboarding Verification
+<br/>
+- Helpful debugs and logs
+<br/>
 " type="primary" %}
 
 ## Verifying the existing lab setup
