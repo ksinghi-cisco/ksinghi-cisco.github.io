@@ -9,11 +9,9 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
-{% include callout.html content="Task List <pre> verifying </pre>" type="primary" %}
+{% include callout.html content="Task List" type="primary" %}
 
-Task List
-
-- [x] Verifying the existing lab setup
+- [x] Verifying the current lab setup
 - [x] Creating the cEdge40 VM
 - [ ] Onboarding cEdge40
     - [ ] Initial Configuration - non SD-WAN mode
