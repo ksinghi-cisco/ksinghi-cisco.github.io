@@ -73,7 +73,7 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 
 {% include callout.html content="**Task List**
 <br/><br/>
-Every major section will have a task list
+- Every major section will have a task list
 <br/>
-~~Which we will strike out once complete~~
+~~- Which we will strike out once complete~~
 " type="primary" %}
