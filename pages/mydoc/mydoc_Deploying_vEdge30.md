@@ -7,10 +7,14 @@ sidebar: mydoc_sidebar
 folder: mydoc
 ---
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+- Creating the vEdge30 VM
+<br/>
+- Onboarding vEdge30
+<br/>
 
-- [ ] Creating the vEdge30 VM on vCenter
-- [ ] Onboarding vEdge30
+" type="primary" %}
 
 ## Creating the vEdge30 VM on vCenter
 
@@ -73,10 +77,14 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge30 VM~~
+<br/>
+- Onboarding vEdge30
+<br/>
 
-- [x] Creating the vEdge30 VM
-- [ ] Onboarding vEdge30
+" type="primary" %}
 
 ## Onboarding vEdge30
 
@@ -194,7 +202,11 @@ This completes the Onboarding section for vEdge30
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the vEdge30 VM~~
+<br/>
+~~- Onboarding vEdge30~~
+<br/>
 
-- [x] Creating the vEdge30 VM
-- [x] Onboarding vEdge30
+" type="primary" %}

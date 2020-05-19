@@ -9,12 +9,18 @@ permalink: mydoc_Deploying_DCvEdge2.html
 folder: mydoc
 ---
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+- Creating the DC-vEdge2 VM
+<br/>
+- Onboarding DC-vEdge2
+<br/>
+- Onboarding Verification
+    <br/>
+- Helpful debugs and logs
+<br/>
 
-- [ ] Creating the DC-vEdge2 VM
-- [ ] Onboarding DC-vEdge2
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Creating the DC-vEdge2 VM
 
@@ -86,14 +92,18 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
 <br>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the DC-vEdge2 VM~~
+<br/>
+- Onboarding DC-vEdge2
+<br/>
+- Onboarding Verification
+    <br/>
+- Helpful debugs and logs
+<br/>
 
-Task List
-
-
-- [x] Creating the DC-vEdge2 VM
-- [ ] Onboarding DC-vEdge2
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Onboarding DC-vEdge2
 
@@ -217,13 +227,18 @@ This completes the Onboarding section for DC-vEdge2
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the DC-vEdge2 VM~~
+<br/>
+~~- Onboarding DC-vEdge2~~
+<br/>
+- Onboarding Verification
+    <br/>
+- Helpful debugs and logs
+<br/>
 
-
-- [x] Creating the DC-vEdge2 VM
-- [x] Onboarding DC-vEdge2
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Onboarding Verification
 
@@ -256,13 +271,18 @@ This completes the verification activity.
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the DC-vEdge2 VM~~
+<br/>
+~~- Onboarding DC-vEdge2~~
+<br/>
+~~- Onboarding Verification~~
+    <br/>
+- Helpful debugs and logs
+<br/>
 
-
-- [x] Creating the DC-vEdge2 VM
-- [x] Onboarding DC-vEdge2
-- [x] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Helpful debugs and logs
 
@@ -287,12 +307,15 @@ Task List
 This completes our onboarding activity for DC-vEdge2.
 
 <br>
-Task List
-<br>
-<br>
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Creating the DC-vEdge2 VM~~
+<br/>
+~~- Onboarding DC-vEdge2~~
+<br/>
+~~- Onboarding Verification~~
+    <br/>
+~~- Helpful debugs and logs~~
+<br/>
 
-
-- [x] Creating the DC-vEdge2 VM
-- [x] Onboarding DC-vEdge2
-- [x] Onboarding Verification
-- [x] Helpful debugs and logs
+" type="primary" %}
