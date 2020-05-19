@@ -11,9 +11,13 @@ folder: mydoc
 
 Task List
 
-- [ ] Verifying the existing lab setup
-- [ ] Creating the cEdge40 VM
+- [x] Verifying the existing lab setup
+- [x] Creating the cEdge40 VM
 - [ ] Onboarding cEdge40
+    - [ ] Initial Configuration - non SD-WAN mode
+    - [ ] Setting up Feature Templates
+    - [ ] Creating and Attaching Device Templates
+    - [ ] Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
 - [ ] Onboarding Verification
 - [ ] Helpful debugs and logs
 
@@ -47,8 +51,12 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
 Task List
 
 - [x] Verifying the existing lab setup
-- [ ] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
+- [x] Creating the cEdge40 VM
+- [ ] Onboarding cEdge40
+    - [ ] Initial Configuration - non SD-WAN mode
+    - [ ] Setting up Feature Templates
+    - [ ] Creating and Attaching Device Templates
+    - [ ] Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
 - [ ] Onboarding Verification
 - [ ] Helpful debugs and logs
 
@@ -105,7 +113,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_cEdge40/09_netad.PNG)
-10. Click Next on **Customize Template** and then Click on **Finish** to deploy your DC-vEdge1 VM
+10. Click Next on **Customize Template** and then Click on **Finish** to deploy your cEdge40 VM
 
     ![](/images/Deploying_cEdge40/10_nextcusttemp.PNG)
 
@@ -138,6 +146,10 @@ Task List
 - [x] Verifying the existing lab setup
 - [x] Creating the cEdge40 VM
 - [ ] Onboarding cEdge40
+    - [ ] Initial Configuration - non SD-WAN mode
+    - [ ] Setting up Feature Templates
+    - [ ] Creating and Attaching Device Templates
+    - [ ] Copying the Bootstrap/Cert files and converting to SD-WAN IOS-XE mode
 - [ ] Onboarding Verification
 - [ ] Helpful debugs and logs
 
@@ -160,18 +172,47 @@ Use the following information in this section (some of the information will be u
 
 1. We will first console in to the cEdge and set up an IP Address with basic routing to ensure that the cEdge can reach vManage and the Jumphost. This is done by issuing `ip route 0.0.0.0 0.0.0.0 192.168.0.1` followed by `interface GigabitEthernet1` and giving an IP Address to the interface through `ip address 192.168.0.40 255.255.255.0`. Make sure you `no shut` the interface.
 
-    Additionally, we will be SCP'ing files over to the cEdge
+    Additionally, we will be SCP'ing files over to the cEdge (root certificates) from vManage
+    ![](/images/Deploying_cEdge40/20_nonsdwaninit.PNG)
 
+    ![](/images/Deploying_cEdge40/60_enablescp_putpass.PNG)
     ```
     enable
     conf t
     interface GigabitEthernet1
-    ip address 192.168.0.40 255.255.255.0
-    no shut
-    exit
+     ip address 192.168.0.40 255.255.255.0
+     no shut
+     exit
     ip route 0.0.0.0 0.0.0.0 192.168.0.1
+    ip scp server enable
+    username admin priv 15 sec admin
+    line vty 0 4
+     login local
+     do wr
     ```
 
-2. Verify connectivity to the vManage and the JumpHost (IP of the Jumphost might vary)
+2. Verify connectivity to the vManage and the JumpHost (IP of the Jumphost might vary) by pinging **192.168.0.6** and/or the IP Address of your Jumphost
 
-3. On vManage, navigate to **Configuration -> Templates**.
+    ![](/images/Deploying_cEdge40/21_verifconn_samplejump.PNG)
+
+<br>
+
+Task List
+
+- [x] Verifying the existing lab setup
+- [x] Creating the cEdge40 VM
+- [ ] Onboarding cEdge40
+    - [x] Initial Configuration - non SD-WAN mode
+    - [ ] Setting up Feature Templates
+    - [ ] Creating and Attaching Device Templates
+    - [ ] Copying the Bootstrap/Cert files and converting to SD-WAN IOS-XE mode
+- [ ] Onboarding Verification
+- [ ] Helpful debugs and logs
+
+### Setting up Feature Templates
+
+Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefullness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
+
+1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
+
+    ![](/images/Deploying_cEdge40/22_gototemp.PNG)
