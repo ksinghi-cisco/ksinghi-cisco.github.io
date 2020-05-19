@@ -7,6 +7,7 @@ permalink: index.html
 summary: These brief instructions will help you become familiar with the SWAT SD-WAN Labs.
 ---
 
+{% include warning.html content="Please disable the side navigation bar if viewing this on a mobile device/small screen (there is an option to do so in the top navigation menu). The sidebar doesn't work too well with small screen devices" %}
 
 ## This header will have a generated hyperlink for navigation
 
