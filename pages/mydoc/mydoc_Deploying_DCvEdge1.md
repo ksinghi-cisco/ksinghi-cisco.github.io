@@ -9,14 +9,20 @@ permalink: mydoc_Deploying_DCvEdge1.html
 folder: mydoc
 ---
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+Verifying the existing lab setup
+<br/>
+Creating the DC-vEdge1 VM
+<br/>
+Onboarding DC-vEdge1
+<br/>
+Onboarding Verification
+    <br/>
+Helpful debugs and logs
+<br/>
 
-- [ ] Verifying the existing lab setup
-- [ ] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
-
+" type="primary" %}
 
 ## Verifying the existing lab setup
 
@@ -46,13 +52,20 @@ The vManage, vBond and vSmarts have been deployed and should be ready to accept 
 We see that the connections are up and this completes the verification activity.
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~Verifying the existing lab setup~~
+<br/>
+Creating the DC-vEdge1 VM
+<br/>
+Onboarding DC-vEdge1
+<br/>
+Onboarding Verification
+    <br/>
+Helpful debugs and logs
+<br/>
 
-- [x] Verifying the existing lab setup
-- [ ] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Creating the DC-vEdge1 VM
 
@@ -128,14 +141,20 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 
 <br>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+~~Verifying the existing lab setup~~
+<br/>
+~~Creating the DC-vEdge1 VM~~
+<br/>
+Onboarding DC-vEdge1
+<br/>
+Onboarding Verification
+    <br/>
+Helpful debugs and logs
+<br/>
 
-Task List
-
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [ ] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Onboarding DC-vEdge1
 
@@ -275,13 +294,20 @@ This completes the Onboarding section for DC-vEdge1
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~Verifying the existing lab setup~~
+<br/>
+~~Creating the DC-vEdge1 VM~~
+<br/>
+~~Onboarding DC-vEdge1~~
+<br/>
+Onboarding Verification
+    <br/>
+Helpful debugs and logs
+<br/>
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [ ] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Onboarding Verification
 
@@ -310,13 +336,20 @@ This completes the verification activity.
 
 <br>
 
-Task List
+{% include callout.html content="**Task List**
+<br/><br/>
+~~Verifying the existing lab setup~~
+<br/>
+~~Creating the DC-vEdge1 VM~~
+<br/>
+~~Onboarding DC-vEdge1~~
+<br/>
+~~Onboarding Verification~~
+    <br/>
+Helpful debugs and logs
+<br/>
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [x] Onboarding Verification
-- [ ] Helpful debugs and logs
+" type="primary" %}
 
 ## Helpful debugs and logs
 
@@ -344,12 +377,17 @@ Task List
 This completes our onboarding activity for DC-vEdge1.
 
 <br>
-Task List
-<br>
-<br>
+{% include callout.html content="**Task List**
+<br/><br/>
+~~Verifying the existing lab setup~~
+<br/>
+~~Creating the DC-vEdge1 VM~~
+<br/>
+~~Onboarding DC-vEdge1~~
+<br/>
+~~Onboarding Verification~~
+    <br/>
+~~Helpful debugs and logs~~
+<br/>
 
-- [x] Verifying the existing lab setup
-- [x] Creating the DC-vEdge1 VM
-- [x] Onboarding DC-vEdge1
-- [x] Onboarding Verification
-- [x] Helpful debugs and logs
+" type="primary" %}
