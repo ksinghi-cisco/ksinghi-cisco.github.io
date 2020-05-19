@@ -11,7 +11,7 @@ folder: mydoc
 
 {% include callout.html content="**Task List**
 <br/><br/>
--> Verifying the existing lab setup
+- Verifying the existing lab setup
 <br/>
 Creating the DC-vEdge1 VM
 <br/>
