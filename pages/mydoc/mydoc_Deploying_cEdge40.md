@@ -387,3 +387,47 @@ We are done with creating feature templates (for now) and while it was a lot of 
 " type="primary" %}
 
 ### Creating and Attaching Device Templates
+
+The feature templates created in the previous section are referenced in Device Templates. Devices are then attached to Device Templates which pushes configuration to them, in line with the settings in the Feature templates. The general workflow for templates is given below
+
+![](/images/Deploying_cEdge40/99_DevTemp_Flow.PNG)
+
+1. From the **Configuration -> Templates** window, make sure you're on the **Device** tab and click on **Create Template**. Choose to create a template From Feature Template
+
+    ![](/images/Deploying_cEdge40/44_devtemp_fromfeat.PNG)
+
+2. Choose CSR1000v as the Device Model and enter *cedge_dualuplink_devtemp* for the **Template Name** and *cedge Device Template for devices with a dual uplink* as the **Description**
+
+    ![](/images/Deploying_cEdge40/45_devtemplatenew.PNG)
+
+3.
+
+
+
+
+
+
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Verifying the current lab setup~~
+<br/>
+~~- Creating the cEdge40 VM~~
+<br/>
+- Onboarding cEdge40
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+    <br/>
+- Onboarding Verification
+<br/>
+- Helpful debugs and logs
+<br/>
+
+" type="primary" %}
