@@ -520,7 +520,7 @@ We will be generating a Bootstrap file and placing it in the flash of the device
 
     ```
 
-We have completed this section of the lab and will now need to wait for the cEdge to reboot. On rebooting, it should pick up the configuratio file from bootflash: and connect to the vManage/vSmarts/other vEdges. This will be verified in the next section.
+We have completed this section of the lab and will now need to wait for the cEdge to reboot. On rebooting, it should pick up the configuration file from bootflash: and connect to the vManage/vSmarts/other vEdges. This will be verified in the next section.
 
 <br>
 
@@ -530,7 +530,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 <br/>
 ~~- Creating the cEdge40 VM~~
 <br/>
-- Onboarding cEdge40
+~~- Onboarding cEdge40~~
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
     <br/>
