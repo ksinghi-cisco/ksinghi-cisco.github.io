@@ -27,8 +27,7 @@ folder: mydoc
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -76,8 +75,7 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -180,8 +178,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -247,8 +244,7 @@ Use the following information in this section (some of the information will be u
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -381,8 +377,7 @@ We are done with creating feature templates (for now) and while it was a lot of 
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -455,8 +450,7 @@ Since this isn't a device that exists (as of now), the configuration push is sch
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
 
@@ -542,7 +536,73 @@ We have completed this section of the lab and will now need to wait for the cEdg
     <br/>
 - Onboarding Verification
 <br/>
-- Helpful debugs and logs
-<br/>
+
 
 " type="primary" %}
+
+### Onboarding Verification
+
+1. On the vManage GUI, go to **Monitor -> Network**. You should see the cEdge40 successfully added on vManage.
+
+    ![](/images/Deploying_cEdge40/63_mon_net_cedge.PNG)
+
+2. Click on cEdge40 and go to **Troubleshooting**. Select **Control Connections (Live View)** and we should see the cEdge has established control connections with vManage and the vSmarts
+
+    ![](/images/Deploying_cEdge40/64_liveview.PNG)
+
+3. Navigate to **Dashboards -> Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 6 WAN Edges
+
+    ![](/images/Deploying_cEdge40/65_4sites_6WE.PNG)
+
+4. Log in to the CLI of cEdge40 via Putty
+
+    ![](/images/Deploying_cEdge40/66_clicedge40.PNG)
+
+5. Issue `show sdwan control connections` and we should see connections to the vSmarts and the vManage (same information that we saw on the GUI)
+
+    ![](/images/Deploying_cEdge40/67_control.PNG)
+    ```
+    show sdwan control connections
+    ```
+    {% include tip.html content="Inject `sdwan` in show commands that would normally be used on vEdges and they should work on cEdges" %}
+
+6. On **Configuration -> Devices** in the vManage GUI, you will notice that the cEdge is in vManage mode. This is because we have attached a Device Template to it. Changes to the cEdge can only be made from vManage now. We will be converting the rest of the devices (which are in **CLI** mode right now) to vManage mode over the course of the next few sections
+
+    ![](/images/Deploying_cEdge40/68_confdev_vmanagemode.PNG)
+
+7. Issue `show sdwan control local-properties` on the CLI of cEdge40. Notice that the root-ca-chain-status is Installed and the certificate is installed and valid. The chassis-num is the same as what was referenced on vManage
+
+    ![](/images/Deploying_cEdge40/69_shcontrlocalp.PNG)
+
+8. We can also use `show sdwan certificate installed` to view the status of the installed certificates
+
+    ![](/images/Deploying_cEdge40/70_shcertinst.PNG)
+
+9. To view the SDWAN specific running configuration on a cEdge device (other than the well known `show running-config`) use `show sdwan running-config`
+
+    ![](/images/Deploying_cEdge40/71_shsdwrun.PNG)
+
+We have completed onboarding verification
+
+    <br>
+
+    {% include callout.html content="**Task List**
+    <br/><br/>
+    ~~- Verifying the current lab setup~~
+    <br/>
+    ~~- Creating the cEdge40 VM~~
+    <br/>
+    ~~- Onboarding cEdge40~~
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
+        <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
+        <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
+        <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~
+        <br/>
+    ~~- Onboarding Verification~~
+    <br/>
+
+    " type="primary" %}
