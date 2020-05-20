@@ -293,3 +293,97 @@ Templates are the key configuration components of the Cisco SD-WAN solution. The
 9. Choose to **Add Template**, searching and selecting CSR1000v like before. This time, choose to add a **Cisco VPN Interface Ethernet** template
 
     ![](/images/Deploying_cEdge40/32_addftemp_csr_vpnint.PNG)
+
+10. Populate the details as shown in the table below. Screenshots may be used as reference. Cick on **Create** at the end to create your Feature Template.
+
+    | Section                    | Field                        | Global or Device Specific (drop down) | Value                                                         |
+    |----------------------------|------------------------------|---------------------------------------|---------------------------------------------------------------|
+    |                            | Template Name                | NA                                    | *cedge-vpn0-int-dual*                                         |
+    |                            | Description                  | NA                                    | cEdge VPN 0 Interface Template for Devices with a dual uplink |
+    | Basic Configuration        | Shutdown                     | Global                                | No                                                            |
+    | Basic Configuration        | Interface Name               | Global                                | GigabitEthernet2                                              |
+    | Basic Configuration - IPv4 | IPv4 Address / prefix-length | Device Specific                       | *inet_ipv4_address*                                           |
+    | Tunnel                     | Tunnel Interface             | Global                                | On                                                            |
+    | Tunnel                     | Color                        | Device Specific                       | *inet_if_tunnel_color_value*                                  |
+    | Tunnel - Allow Service     | All                          | Global                                | On                                                            |
+
+    ![](/images/Deploying_cEdge40/33_cedgeiface.PNG)
+
+    ![](/images/Deploying_cEdge40/34_ip_tunn.PNG)
+
+    ![](/images/Deploying_cEdge40/34_tuncolall.PNG)
+
+11. You should now see the feature template created. We now need to create the feature templates for VPN 512 and the VPN 512 Interface. The power of templates becomes apparent at this point since we can copy a template that was created previously and tweak it as per the requirement. Click on the three dots at the end of the *cEdge_VPN0_dual_uplink* template and click on **Copy**
+
+    ![](/images/Deploying_cEdge40/35_copy_vpn0_temp.PNG)
+
+12. You will be prompted to name the copied template. Give it a name of *cEdge_VPN512_dual_uplink* and update the description to *cEdge VPN 512 Template for Dual Uplinks* (sometimes, the description doesn't get updated and needs to be done again when editing the template). Click on **Copy**.
+
+    ![](/images/Deploying_cEdge40/36_vpn512_tempcopy.PNG)
+
+13. Click on the three dots next to the newly created template and choose to **Edit**. Notice that the description did not get updated in the screenshot below, so we will edit it while tweaking the template
+
+    ![](/images/Deploying_cEdge40/37_vpn512_edit_descdoesntchangesometimes.PNG)
+
+14. Populate the details as follows. To populate the IPv4 Route, click on the edit (pencil icon) next to the existing IPv4 Route and then click on **1 Next Hop**. Edit and click on **Save Changes**
+
+    | Section             | Field                        | Global or Device Specific (drop down) | Value                                   |
+    |---------------------|------------------------------|---------------------------------------|-----------------------------------------|
+    |                     | Template Name                | NA                                    | *cedge_vpn512_dual_uplink*              |
+    |                     | Description                  | NA                                    | cEdge VPN 512 Template for Dual Uplinks |
+    | Basic Configuration | VPN                          | Global                                | 512                                     |
+    | IPv4 Route          | Update IPv4 Route - Next Hop | Device Specific                       | *vpn512_next_hop_ip_address_0*          |
+
+    ![](/images/Deploying_cEdge40/38_changevpn512.PNG)
+
+    ![](/images/Deploying_cEdge40/39_editipv4route.PNG)
+
+    ![](/images/Deploying_cEdge40/40_devspecvpn512.PNG)
+
+15. Make a copy of the VPN 0 Interface template so as to use it for VPN 512. Click on the 3 dots next to the template *cedge-vpn0-int-dual* and click on **Copy**. Update the name and description to *cedge-vpn512-int-dual* and *cEdge VPN 512 Interface Template for devices with a dual uplink* and click on **Copy**
+
+    ![](/images/Deploying_cEdge40/41_copyintfor512.PNG)
+
+16. Click on the three dots next to the newly copied template and choose to **Edit** it. Populate the details as given in the table below and click on **Save Changes**
+
+    | Section                    | Field                        | Global or Device Specific (drop down) | Value                                                           |
+    |----------------------------|------------------------------|---------------------------------------|-----------------------------------------------------------------|
+    |                            | Template Name                | NA                                    | *cedge-vpn512-int-dual*                                         |
+    |                            | Description                  | NA                                    | cEdge VPN 512 Interface Template for devices with a dual uplink |
+    | Basic Configuration        | Shutdown                     | Global                                | No                                                              |
+    | Basic Configuration        | Interface Name               | Global                                | GigabitEthernet1                                                |
+    | Basic Configuration - IPv4 | IPv4 Address / prefix-length | Device Specific                       | *vpn512_mgmt_ipv4_address*                                      |
+    | Tunnel                     | Tunnel Interface             | Global                                | Off                                                             |
+
+    ![](/images/Deploying_cEdge40/42_edittempname_int_desc_ip.PNG)
+
+    ![](/images/Deploying_cEdge40/43_tunnoff.PNG)
+
+We are done with creating feature templates (for now) and while it was a lot of work, these templates can be reused and/or repurposed as required.
+
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Verifying the current lab setup~~
+<br/>
+~~- Creating the cEdge40 VM~~
+<br/>
+- Onboarding cEdge40
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating and Attaching Device Templates
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+    <br/>
+- Onboarding Verification
+<br/>
+- Helpful debugs and logs
+<br/>
+
+" type="primary" %}
+
+### Creating and Attaching Device Templates
