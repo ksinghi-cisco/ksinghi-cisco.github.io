@@ -79,7 +79,7 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge30 VM~~
+- ~~Creating the vEdge30 VM~~
 <br/>
 - Onboarding vEdge30
 <br/>
@@ -204,9 +204,9 @@ This completes the Onboarding section for vEdge30
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge30 VM~~
+- ~~Creating the vEdge30 VM~~
 <br/>
-~~- Onboarding vEdge30~~
+- ~~Onboarding vEdge30~~
 <br/>
 
 " type="primary" %}

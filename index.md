@@ -75,5 +75,5 @@ A [Hyperlink](https://www.cisco.com) will direct you to additional technical doc
 <br/><br/>
 - Every major section will have a task list
 <br/>
-~~- Which we will strike out once complete~~
+- ~~Which we will strike out once complete~~
 " type="primary" %}

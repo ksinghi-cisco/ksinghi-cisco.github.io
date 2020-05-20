@@ -94,7 +94,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the DC-vEdge2 VM~~
+- ~~Creating the DC-vEdge2 VM~~
 <br/>
 - Onboarding DC-vEdge2
 <br/>
@@ -229,9 +229,9 @@ This completes the Onboarding section for DC-vEdge2
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the DC-vEdge2 VM~~
+- ~~Creating the DC-vEdge2 VM~~
 <br/>
-~~- Onboarding DC-vEdge2~~
+- ~~Onboarding DC-vEdge2~~
 <br/>
 - Onboarding Verification
     <br/>
@@ -273,11 +273,11 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the DC-vEdge2 VM~~
+- ~~Creating the DC-vEdge2 VM~~
 <br/>
-~~- Onboarding DC-vEdge2~~
+- ~~Onboarding DC-vEdge2~~
 <br/>
-~~- Onboarding Verification~~
+- ~~Onboarding Verification~~
     <br/>
 - Helpful debugs and logs
 <br/>
@@ -309,13 +309,13 @@ This completes our onboarding activity for DC-vEdge2.
 <br>
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the DC-vEdge2 VM~~
+- ~~Creating the DC-vEdge2 VM~~
 <br/>
-~~- Onboarding DC-vEdge2~~
+- ~~Onboarding DC-vEdge2~~
 <br/>
-~~- Onboarding Verification~~
+- ~~Onboarding Verification~~
     <br/>
-~~- Helpful debugs and logs~~
+- ~~Helpful debugs and logs~~
 <br/>
 
 " type="primary" %}

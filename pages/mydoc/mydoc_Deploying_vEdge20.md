@@ -98,7 +98,7 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge20 VM~~
+- ~~Creating the vEdge20 VM~~
 <br/>
 - Onboarding vEdge20
 <br/>
@@ -234,9 +234,9 @@ This completes the Onboarding section for vEdge20
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge20 VM~~
+- ~~Creating the vEdge20 VM~~
 <br/>
-~~- Onboarding vEdge20~~
+- ~~Onboarding vEdge20~~
 <br/>
 - Onboarding Verification
     <br/>
@@ -284,11 +284,11 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge20 VM~~
+- ~~Creating the vEdge20 VM~~
 <br/>
-~~- Onboarding vEdge20~~
+- ~~Onboarding vEdge20~~
 <br/>
-~~- Onboarding Verification~~
+- ~~Onboarding Verification~~
     <br/>
 
 " type="primary" %}

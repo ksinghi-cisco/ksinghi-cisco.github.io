@@ -86,7 +86,7 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge21 VM~~
+- ~~Creating the vEdge21 VM~~
 <br/>
 - Onboarding vEdge21
 <br/>
@@ -209,9 +209,9 @@ This completes the Onboarding section for vEdge21
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Creating the vEdge21 VM~~
+- ~~Creating the vEdge21 VM~~
 <br/>
-~~- Onboarding vEdge21~~
+- ~~Onboarding vEdge21~~
 <br/>
 
 " type="primary" %}

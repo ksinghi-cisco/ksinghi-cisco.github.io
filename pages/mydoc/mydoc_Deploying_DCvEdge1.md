@@ -54,7 +54,7 @@ We see that the connections are up and this completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Verifying the existing lab setup~~
+- ~~Verifying the existing lab setup~~
 <br/>
 - Creating the DC-vEdge1 VM
 <br/>
@@ -143,9 +143,9 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Verifying the existing lab setup~~
+- ~~Verifying the existing lab setup~~
 <br/>
-~~- Creating the DC-vEdge1 VM~~
+- ~~Creating the DC-vEdge1 VM~~
 <br/>
 - Onboarding DC-vEdge1
 <br/>
@@ -296,11 +296,11 @@ This completes the Onboarding section for DC-vEdge1
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Verifying the existing lab setup~~
+- ~~Verifying the existing lab setup~~
 <br/>
-~~- Creating the DC-vEdge1 VM~~
+- ~~Creating the DC-vEdge1 VM~~
 <br/>
-~~- Onboarding DC-vEdge1~~
+- ~~Onboarding DC-vEdge1~~
 <br/>
 - Onboarding Verification
     <br/>
@@ -338,13 +338,13 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Verifying the existing lab setup~~
+- ~~Verifying the existing lab setup~~
 <br/>
-~~- Creating the DC-vEdge1 VM~~
+- ~~Creating the DC-vEdge1 VM~~
 <br/>
-~~- Onboarding DC-vEdge1~~
+- ~~Onboarding DC-vEdge1~~
 <br/>
-~~- Onboarding Verification~~
+- ~~Onboarding Verification~~
     <br/>
 - Helpful debugs and logs
 <br/>
@@ -379,15 +379,15 @@ This completes our onboarding activity for DC-vEdge1.
 <br>
 {% include callout.html content="**Task List**
 <br/><br/>
-~~- Verifying the existing lab setup~~
+- ~~Verifying the existing lab setup~~
 <br/>
-~~- Creating the DC-vEdge1 VM~~
+- ~~Creating the DC-vEdge1 VM~~
 <br/>
-~~- Onboarding DC-vEdge1~~
+- ~~Onboarding DC-vEdge1~~
 <br/>
-~~- Onboarding Verification~~
+- ~~Onboarding Verification~~
     <br/>
-~~- Helpful debugs and logs~~
+- ~~Helpful debugs and logs~~
 <br/>
 
 " type="primary" %}
