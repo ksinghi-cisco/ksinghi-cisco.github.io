@@ -388,8 +388,7 @@ We are done with creating feature templates (for now) and while it was a lot of 
 
 ### Creating and Attaching Device Templates
 
-The feature templates created in the previous section are referenced in Device Templates. Devices are then attached to Device Templates which pushes configuration to them, in line with the settings in the Feature templates. The general workflow for templates is given below
-
+The feature templates created in the previous sections are referenced in Device Templates. Devices are then attached to Device Templates which pushes configuration to them, in line with the settings in the Feature templates. The general workflow for templates is given below
 ![](/images/Deploying_cEdge40/99_DevTemp_Flow.PNG)
 
 1. From the **Configuration -> Templates** window, make sure you're on the **Device** tab and click on **Create Template**. Choose to create a template From Feature Template
@@ -400,11 +399,40 @@ The feature templates created in the previous section are referenced in Device T
 
     ![](/images/Deploying_cEdge40/45_devtemplatenew.PNG)
 
-3.
+3. In the template, navigate to the **Transport & Management VPN** section. Update the fields as per the table below, selecting templates which we created before and click on **Create** to create the Device Template
 
+    {% include tip.html content="You can create templates on the fly if the template hasn't already been created. This can be done via the **Create Template** hyperlink from the drop down menu" %}
 
+    | Section                      | Field         | Sub Field                    | Value (Drop Down)        |
+    |------------------------------|---------------|------------------------------|--------------------------|
+    | Transport and Management VPN | Cisco VPN 0   |                              | cEdge_VPN0_dual_uplink   |
+    | Transport and Management VPN | Cisco VPN 0   | Cisco VPN Interface Ethernet | cedge-vpn0-int-dual      |
+    | Transport and Management VPN | Cisco VPN 512 |                              | cEdge_VPN512_dual_uplink |
+    | Transport and Management VPN | Cisco VPN 512 | Cisco VPN Interface Ethernet | cedge-vpn512-int-dual    |
 
+    ![](/images/Deploying_cEdge40/46_vpn0_vpn512_feattempsel.PNG)
 
+4. Once created, the Device Template will need to be attached to a Device for it to take effect. Click on the three dots (right-hand side) and click on **Attach Devices**
+
+    ![](/images/Deploying_cEdge40/47_create_dots_attach.PNG)
+
+5. We will be presented with a list of devices that can be associated with this template. Choose any device, making note of the Name (e.g. the device with a name ending in **73F2** has been selected over here). Click on **Attach**
+
+    ![](/images/Deploying_cEdge40/48_chooseavaildev_remembername.PNG)
+
+6. This should take you to a page which shows the attached device. Click on the three dots (right-hand side) and click on **Edit Device Template**. Also, make note of the cross mark next to the device name, on the left-hand side. This is the point where we need to enter details for the device specific values populated in the Feature Templates.
+
+    ![](/images/Deploying_cEdge40/49_editdevtempl.PNG)
+
+7. Enter details as per the screenshot below (these can be found in the table referenced at the beginning of the page) and click on **Update**
+
+    ![](/images/Deploying_cEdge40/50_enterdevdet.PNG)
+
+8. Click on the entry in the Device List to view the configuration that will be pushed to the device. Notice that the vBond IP and the Organization Name have been populated. These are taken from the vManage **Administration -> Settings** page, where they need to be populated. Click on **Configure** to configure the device.
+
+    ![](/images/Deploying_cEdge40/51_configprev_ou_vb_vman.PNG)
+
+Since this isn't a device that exists (as of now), the configuration push is scheduled for later, when a device is associated with this Device Name (the one ending in 73F2). This is done in the next section
 
 
 <br>
@@ -424,6 +452,93 @@ The feature templates created in the previous section are referenced in Device T
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
     <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+    <br/>
+- Onboarding Verification
+<br/>
+- Helpful debugs and logs
+<br/>
+
+" type="primary" %}
+
+### Copying the Bootstrap file and converting to SD-WAN IOS-XE mode
+
+We will be generating a Bootstrap file and placing it in the flash of the device we want to bring up. The device (cEdge40) should come up and establish control connections with vManage, along with establishing BFD sessions with other devices.
+
+{% include note.html content="While we are placing the Bootstrap file in flash for the lab, this can be put on a USB drive and plugged into the cEdge. This is usually done at a staging facility, post which the device is shipped to the customer site. Once they plug it in and power it on, the bootstrap configuration file allows the device to come up and establish control connections" %}
+
+1. Go to **Configuration -> Devices**
+
+    ![](/images/Deploying_cEdge40/52_config_dev_edit.PNG)
+
+2. Identify the **Chassis Number** that was selected before, while attaching a Device to the Template. In this case, it ended in **73F2**. Click on the three dots in the right-hand side and click on **Generate Bootstrap Configuration**. Choose **Cloud-Init** and click on OK.
+
+    ![](/images/Deploying_cEdge40/53_genbootstrap.PNG)
+
+    ![](/images/Deploying_cEdge40/54_cloudinit.PNG)
+
+3. Download the bootstrap file (will get saved to the Downloads folder by default). It should be a file beginning with CSR...
+
+    ![](/images/Deploying_cEdge40/55_download.PNG)
+
+4. Rename this to *ciscosdwan_cloud_init.cfg*. Note that the name should match exactly as is enumerated here, else Bootstrapping will not work. If a file already exits with the same name, choose to overwrite.
+
+    ![](/images/Deploying_cEdge40/56_rename.PNG)
+
+    {% include tip.html content="On bootup, a cEdge looks for a file on it's USB port (if a bootable USB drive is connected) and in bootflash:. The file name must match as above for Cloud type devices (i.e. CSR1K). For physical devices, the file name should be *ciscosdwan.cfg*. If the file is present on the USB drive and in bootflash:, the one in bootflash: takes precedence" %}
+
+5. From the Jumphost Desktop, start TFTPD64. Click on Browse and choose the Downloads folder (or wherever the renamed .cfg file has been stored)
+
+    ![](/images/Deploying_cEdge40/57_starttftpd32_pointtodnld.PNG)
+
+6. Choose the 192.168.0.X IP from the Server Interfaces drop down
+
+    ![](/images/Deploying_cEdge40/58_setiptojump.PNG)
+
+7. Log in to the CLI of cEdge40 (we can log in via Putty now, using the saved session or by SSH'ing to 192.168.0.40) and issue `copy tftp: bootflash:`. Specify a Remote Host IP of your Jumphost (192.168.0.121 in this case). The source and destination file name should be *ciscosdwan_cloud_init.cfg*. The file should get copied over to bootflash: successfully
+
+    ![](/images/Deploying_cEdge40/59_copytoflash.PNG)
+
+    ```
+    copy tftp: bootflash:
+    ```
+8. Log in to the CLI of the vManage (again, via the saved Putty session or by SSH'ing to 192.168.0.6) and issue the following commands to SCP the ROOTCA.pem file over to cEdge40
+
+    ![](/images/Deploying_cEdge40/61_scppemfiletocedge.PNG)
+    ```
+    vshell
+    scp ROOTCA.pem admin@192.168.0.40:ROOTCA.pem
+    yes
+    admin
+    ```
+    The last **admin** over there is the password of cEdge40
+
+9. Go back to the CLI of cEdge40 and issue `controller-mode enable` from privilege mode. **Confirm** and this should lead to the device rebooting
+
+    ![](/images/Deploying_cEdge40/62_controlmode.PNG)
+    ```
+    controller-mode enable
+
+    ```
+
+We have completed this section of the lab and will now need to wait for the cEdge to reboot. On rebooting, it should pick up the configuratio file from bootflash: and connect to the vManage/vSmarts/other vEdges. This will be verified in the next section.
+
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Verifying the current lab setup~~
+<br/>
+~~- Creating the cEdge40 VM~~
+<br/>
+- Onboarding cEdge40
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~
     <br/>
 - Onboarding Verification
 <br/>
