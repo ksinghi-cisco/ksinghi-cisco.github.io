@@ -338,7 +338,7 @@ Templates are the key configuration components of the Cisco SD-WAN solution. The
 
     ![](/images/Deploying_cEdge40/39_editipv4route.PNG)
 
-    ![](/images/Deploying_cEdge40/40_devspecvpn512.PNG)
+    ![](/images/Deploying_cEdge40/40_devspecvpn_512.PNG)
 
 15. Make a copy of the VPN 0 Interface template so as to use it for VPN 512. Click on the 3 dots next to the template *cedge-vpn0-int-dual* and click on **Copy**. Update the name and description to *cedge-vpn512-int-dual* and *cEdge VPN 512 Interface Template for devices with a dual uplink* and click on **Copy**
 
