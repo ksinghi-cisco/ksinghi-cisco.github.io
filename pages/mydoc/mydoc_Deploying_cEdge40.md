@@ -584,25 +584,25 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
 We have completed onboarding verification
 
-    <br>
+<br>
 
-    {% include callout.html content="**Task List**
-    <br/><br/>
-    ~~- Verifying the current lab setup~~
+{% include callout.html content="**Task List**
+<br/><br/>
+~~- Verifying the current lab setup~~
+<br/>
+~~- Creating the cEdge40 VM~~
+<br/>
+~~- Onboarding cEdge40~~
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
     <br/>
-    ~~- Creating the cEdge40 VM~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
     <br/>
-    ~~- Onboarding cEdge40~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
     <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Initial Configuration - non SD-WAN mode~~
-        <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~~- Setting up Feature Templates~~
-        <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
-        <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~
-        <br/>
-    ~~- Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~
     <br/>
+~~- Onboarding Verification~~
+<br/>
 
-    " type="primary" %}
+" type="primary" %}
