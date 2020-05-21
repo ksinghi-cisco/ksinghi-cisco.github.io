@@ -590,19 +590,19 @@ We have completed onboarding verification
 <br/><br/>
 - [~~Verifying the current lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- ~~Creating the cEdge40 VM~~
+- [~~Creating the cEdge40 VM~~](#creating-the-cedge40-vm)
 <br/>
-- ~~Onboarding cEdge40~~
+- [~~Onboarding cEdge40~~](#onboarding-cedge40)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Initial Configuration - non SD-WAN mode~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Initial Configuration - non SD-WAN mode~~](#initial-configuration---non-sd-wan-mode)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Setting up Feature Templates~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Setting up Feature Templates~~](#setting-up-feature-templates)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating and Attaching Device Templates~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating and Attaching Device Templates~~](#creating-and-attaching-device-templates)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Copying the Bootstrap file and converting to SD-WAN IOS-XE mode~~](#copying-the-bootstrap-file-and-converting-to-sd-wan-ios-xe-mode)
     <br/>
-- ~~Onboarding Verification~~
+- [~~Onboarding Verification~~](#onboarding-verification)
 <br/>
 
 " type="primary" %}
