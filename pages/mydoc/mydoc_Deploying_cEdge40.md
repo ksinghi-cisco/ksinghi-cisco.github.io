@@ -537,7 +537,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
 " type="primary" %}
 
-### Onboarding Verification
+## Onboarding Verification
 
 1. On the vManage GUI, go to **Monitor -> Network**. You should see the cEdge40 successfully added on vManage.
 
