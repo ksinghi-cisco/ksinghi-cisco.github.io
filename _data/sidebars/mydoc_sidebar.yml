@@ -85,11 +85,11 @@ entries:
 
     folderitems:
     - title: Creating Feature Templates
-      url: /mydoc_sidebar_navigation.html
+      url: /mydoc_creating_feature_temp.html
       output: web, pdf
 
     - title: Creating and Attaching Devices to Device Templates
-      url: /mydoc_yaml_tutorial.html
+      url: /mydoc_create_attach_dev_temp.html
       output: web, pdf
 
   - title: Implementing Dynamic Service Side Routing
