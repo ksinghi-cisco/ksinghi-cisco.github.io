@@ -1,10 +1,10 @@
 ---
-title: YAML tutorial in the context of Jekyll
+title: Device Templates for vEdges
 tags: [formatting]
-keywords: search
-summary: "YAML is a format that relies on white spacing to separate out the various elements of content. Jekyll lets you use Liquid with YAML as a way to parse through the data. Storing items for your table of contents is one of the most common uses of YAML with Jekyll."
+keywords: device template, vedge, vmanage
+summary: "Create Device Templates on vManage and attach devices to it"
 sidebar: mydoc_sidebar
-permalink: mydoc_yaml_tutorial.html
+permalink: mydoc_create_attach_dev_temp.html
 folder: mydoc
 ---
 
