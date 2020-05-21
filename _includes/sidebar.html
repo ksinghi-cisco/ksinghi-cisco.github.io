@@ -1,6 +1,6 @@
 {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
 
-<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden;">
+<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden; -ms-overflow-style: -ms-autohiding-scrollbar;">
   <li class="sidebarTitle">{{sidebar[0].product}} {{sidebar[0].version}}</li>
   {% for entry in sidebar %}
   {% for folder in entry.folders %}
