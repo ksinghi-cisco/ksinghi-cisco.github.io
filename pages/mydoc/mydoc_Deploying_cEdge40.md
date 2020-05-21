@@ -250,7 +250,7 @@ Use the following information in this section (some of the information will be u
 
 ### Setting up Feature Templates
 
-Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefullness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
+Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefulness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
 
 1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
 
@@ -418,7 +418,7 @@ The feature templates created in the previous sections are referenced in Device 
 
     ![](/images/Deploying_cEdge40/49_editdevtempl.PNG)
 
-7. Enter details as per the screenshot below (these can be found in the table referenced at the beginning of the page) and click on **Update**
+7. Enter details as per the screenshot below (these can be found in the table referenced at the beginning of this page) and click on **Update**. Once the fields have been populated, the cross mark should change to a green check mark.
 
     ![](/images/Deploying_cEdge40/50_enterdevdet.PNG)
 
