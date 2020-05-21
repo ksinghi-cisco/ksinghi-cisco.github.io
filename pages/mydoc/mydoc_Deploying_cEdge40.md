@@ -588,7 +588,7 @@ We have completed onboarding verification
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the current lab setup~~
+- [~~Verifying the current lab setup~~](#verifying-the-current-lab-setup)
 <br/>
 - ~~Creating the cEdge40 VM~~
 <br/>
