@@ -1,7 +1,7 @@
 ---
 title: Feature Templates for the vEdges
 tags: [getting_started]
-last_updated: May 321, 2020
+last_updated: May 21, 2020
 keywords: feature template, vedge, vmanage
 summary: "Create Feature Templates for vEdges in order to bring them in vManage mode."
 sidebar: mydoc_sidebar
@@ -9,7 +9,25 @@ permalink: mydoc_creating_feature_temp.html
 folder: mydoc
 ---
 
-## Navgoco foundation
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge Feature Template
+<br/>
+- Building the single uplink feature template
+    <br/>
+- Creating and Configuring the Site30 feature template
+<br/>
+
+" type="primary" %}
+
+## Overview
+
+We have already seen feature templates in action and their versatility in large deployments is unmatched. Coupled with Device Specific parameters, we have a networking construct which is extremely malleable and can be applied in wide, arcing sweeps to similar devices.
+
+In this section, we will be creating feature templates for our vEdges. We will then apply these Feature Templates to Device Templates in the next section, thereby ensuring that the vEdges are controlled by vManage.
+
+## Creating the DC-vEdge Feature Template
 
 The sidebar uses the [Navgoco jQuery plugin](https://github.com/tefra/navgoco) as its basis. Why not use Bootstrap? Navgoco provides a few features that I couldn't find in Bootstrap:
 
