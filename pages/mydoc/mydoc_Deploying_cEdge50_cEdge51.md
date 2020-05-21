@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Deploying Single Uplink cEdges
 tags: [getting_started, formatting, content_types]
 keywords: cEdge50, cEdge51, Deploy
 last_updated: Feb 25, 2016
@@ -29,20 +29,26 @@ folder: mydoc
 
 " type="primary" %}
 
+{% include note.html content="We will be deploying and onboarding cEdge50 and cEdge51 in parallel. This is easily possible due to the templates that we've created, which can be repurposed as per our requirement. Device Variables will play an important part over here" %}
+
 ## Creating the cEdge50 and cEdge51 VMs
 
 ### Overview
 
 We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a single uplink (Internet), as will cEdge51 (MPLS). Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
 
-| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP              | Gateway       |
-|---------|---------------|---------|-------------------|--------------|------------------|-----------------|---------------|
-| 40      | 10.255.255.41 | cEdge40 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
-|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.40  | 100.100.100.1 |
-|         |               |         | Network Adapter 3 | MPLS40       | GigabitEthernet3 | 192.1.2.18/30   | 192.1.2.17    |
-|         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
-|         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
-|         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP                | Gateway       |
+|---------|---------------|---------|-------------------|--------------|------------------|-------------------|---------------|
+| 50      | 10.255.255.51 | cEdge50 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.50/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.50/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 3 | Site50-VPN10 | GigabitEthernet3 | 10.50.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site50-VPN20 | GigabitEthernet4 | 10.50.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Site50-VPN30 | GigabitEthernet5 | 10.50.30.2/24     |               |
+|         | 10.255.255.52 | cEdge51 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.51/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | MPLS50       | GigabitEthernet2 | 192.1.2.22/30     | 192.1.2.21    |
+|         |               |         | Network Adapter 3 | Site50-VPN10 | GigabitEthernet3 | 10.50.10.3/24     |               |
+|         |               |         | Network Adapter 4 | Site50-VPN20 | GigabitEthernet4 | 10.50.20.3/24     |               |
+|         |               |         | Network Adapter 5 | Site50-VPN30 | GigabitEthernet5 | 10.50.30.3/24     |               |
 
 {% include tip.html content="Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment." %}
 
@@ -56,16 +62,22 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
     ![](/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG)
 2. We should see the vEdges and cEdges from previous sections of the lab deployed.
 
-    ![](/images/Deploying_cEdge40/03_vcdep.PNG)
+
 3. Right click on the host and choose to **Deploy OVF Template**
 
     ![](/images/Deploying_cEdge40/04_depovf.PNG)
 4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr1000v-univer*. Click on Next.
 
-    ![](/images/Deploying_cEdge40/05_csrimage.PNG)
-5. Change the Virtual Machine name to **cEdge50** and click on Next.
+    ![](/images/Deploying_cEdge50_cEdge51/01_Deploy_cEdge50.PNG)
+5. Change the Virtual Machine name to **cEdge50** or **cEdge51**, depending on the VM being deployed and click on Next.
 
-    ![](/images/Deploying_cEdge40/06_renamecedge.PNG)
+    |![](/images/Deploying_cEdge50_cEdge51/02_namechange.PNG)|
+    |:--:|
+    | *cEdge50* |
+
+    |![](/images/Deploying_cEdge50_cEdge51/05_Deploy_cEdge51.PNG)|
+    |:--:|
+    | *cEdge51* |
 6. Select the host assigned to you (image shown as an example only) and click on Next
 
     ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
@@ -138,14 +150,18 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
 
 Use the following information in this section (some of the information will be used later)
 
-| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP              | Gateway       |
-|---------|---------------|---------|-------------------|--------------|------------------|-----------------|---------------|
-| 40      | 10.255.255.41 | cEdge40 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
-|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.40  | 100.100.100.1 |
-|         |               |         | Network Adapter 3 | MPLS40       | GigabitEthernet3 | 192.1.2.18/30   | 192.1.2.17    |
-|         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
-|         |               |         | Network Adapter 5 | Site40-VPN20 | GigabitEthernet5 | 10.40.20.2/24   |               |
-|         |               |         | Network Adapter 6 | Site40-VPN30 | GigabitEthernet6 | 10.40.30.2/24   |               |
+| SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP                | Gateway       |
+|---------|---------------|---------|-------------------|--------------|------------------|-------------------|---------------|
+| 50      | 10.255.255.51 | cEdge50 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.50/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.50/24 | 100.100.100.1 |
+|         |               |         | Network Adapter 3 | Site50-VPN10 | GigabitEthernet3 | 10.50.10.2/24     |               |
+|         |               |         | Network Adapter 4 | Site50-VPN20 | GigabitEthernet4 | 10.50.20.2/24     |               |
+|         |               |         | Network Adapter 5 | Site50-VPN30 | GigabitEthernet5 | 10.50.30.2/24     |               |
+|         | 10.255.255.52 | cEdge51 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.51/24   | 192.168.0.1   |
+|         |               |         | Network Adapter 2 | MPLS50       | GigabitEthernet2 | 192.1.2.22/30     | 192.1.2.21    |
+|         |               |         | Network Adapter 3 | Site50-VPN10 | GigabitEthernet3 | 10.50.10.3/24     |               |
+|         |               |         | Network Adapter 4 | Site50-VPN20 | GigabitEthernet4 | 10.50.20.3/24     |               |
+|         |               |         | Network Adapter 5 | Site50-VPN30 | GigabitEthernet5 | 10.50.30.3/24     |               |
 
 {% include tip.html content="Starting from IOS-XE 17.2, the cEdge platforms use a Universal image. One can switch from non SD-WAN mode to SD-WAN mode via a command" %}
 
