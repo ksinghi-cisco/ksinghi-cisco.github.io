@@ -252,6 +252,8 @@ Use the following information in this section (some of the information will be u
 
 Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefulness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
 
+Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-SD-WAN-Design-2018OCT.pdf) to access the SD-WAN Design Guide which has a section on **Configuration Templates**.
+
 1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
 
     ![](/images/Deploying_cEdge40/22_gototemp.PNG)
