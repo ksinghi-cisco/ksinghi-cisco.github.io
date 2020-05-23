@@ -5,7 +5,7 @@ last_updated: May 21, 2020
 keywords: feature template, vedge, vmanage
 summary: "Create Feature Templates for vEdges in order to bring them in vManage mode."
 sidebar: mydoc_sidebar
-permalink: mydoc_creating_feature_temp.html
+permalink: mydoc_DCvEdges_templates.html
 folder: mydoc
 ---
 

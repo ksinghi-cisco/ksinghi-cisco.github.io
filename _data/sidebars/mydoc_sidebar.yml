@@ -80,16 +80,28 @@ entries:
       url: /mydoc_lists.html
       output: web, pdf
 
-  - title: Utilizing Configuration Templates for vEdges
+  - title: Configuring Templates
     output: web, pdf
 
     folderitems:
-    - title: Creating Feature Templates
-      url: /mydoc_creating_feature_temp.html
+    - title: Templates for the DC-vEdges
+      url: /mydoc_DCvEdges_templates.html
       output: web, pdf
 
-    - title: Creating and Attaching Devices to Device Templates
-      url: /mydoc_create_attach_dev_temp.html
+    - title: vEdge Templates for Site 20
+      url: /mydoc_Site20_Templates.html
+      output: web, pdf
+
+    - title: vEdge Templates for Site 30
+      url: /mydoc_Site30_Templates.html
+      output: web, pdf
+
+    - title: cEdge Templates for Site 40
+      url: /mydoc_Site40_Templates.html
+      output: web, pdf
+
+    - title: Applying Templates to vSmarts
+      url: /mydoc_Templates_to_vSmarts.html
       output: web, pdf
 
   - title: Implementing Dynamic Service Side Routing
