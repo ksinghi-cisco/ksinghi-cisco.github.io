@@ -35,7 +35,7 @@ directly to the CLI
 
 **Text in bold** is usually important. Standalone commands will be distinguishable `from the rest of the text`
 
-A [Hyperlink](https://www.cisco.com) will direct you to additional technical documentation associated with the section you're working on.
+A [Hyperlink](https://www.cisco.com){:target="_blank"} will direct you to additional technical documentation associated with the section you're working on.
 
 <br>
 <br>

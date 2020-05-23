@@ -4,7 +4,7 @@ tags: [formatting]
 keywords: device template, vedge, vmanage
 summary: "Create Device Templates on vManage and attach devices to it"
 sidebar: mydoc_sidebar
-permalink: mydoc_create_attach_dev_temp.html
+permalink: mydoc_Site20_Templates.html
 folder: mydoc
 ---
 
