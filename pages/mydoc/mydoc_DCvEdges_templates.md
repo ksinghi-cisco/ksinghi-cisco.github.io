@@ -79,9 +79,21 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
     ![](/images/DC-vEdge_Templates/09_nexthopinet.PNG)
 
-10. Click on **Add Next Hop**
+10. Click on **Add Next Hop**. We will now be adding the default route for the MPLS link
 
-    ![](/images/DC-vEdge_Templates/09_nexthopinet.PNG)
+    ![](/images/DC-vEdge_Templates/10_addmplshop.PNG)
+
+11. Choose **Device Specific** from the drop down and give it a name of *vpn0_mpls_next_hop*. Click on **Add**
+
+    ![](/images/DC-vEdge_Templates/11_nexthopmpls.PNG)
+
+12. Make sure the IPv4 Route screen shows **2 Next Hop** and click on Add
+
+    ![](/images/DC-vEdge_Templates/12_addroute.PNG)
+
+13. Back at the main Feature Template page, click on **Save**. This will create our VPN 0 Feature Template
+
+    ![](/images/DC-vEdge_Templates/13_save.PNG)
 
 <br/>
 
