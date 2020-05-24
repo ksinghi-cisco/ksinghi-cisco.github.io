@@ -1,33 +1,47 @@
 ---
-title: Feature Templates for the vEdges
+title: Feature and Device Templates for the DC-vEdges
 tags: [getting_started]
 last_updated: May 21, 2020
 keywords: feature template, vedge, vmanage
-summary: "Create Feature Templates for vEdges in order to bring them in vManage mode."
+summary: "Create Feature and Device Templates for the DC-vEdges in order to bring them in vManage mode."
 sidebar: mydoc_sidebar
 permalink: mydoc_DCvEdges_templates.html
 folder: mydoc
 ---
 
+<br/>
+
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge Feature Template
+- Creating the DC-vEdge VPN Feature Templates
 <br/>
-- Building the single uplink feature template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN0 Feature Template
     <br/>
-- Creating and Configuring the Site30 feature template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN512 Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
 <br/>
 
 " type="primary" %}
 
 ## Overview
 
-We have already seen feature templates in action and their versatility in large deployments is unmatched. Coupled with Device Specific parameters, we have a networking construct which is extremely malleable and can be applied in wide, arcing sweeps to similar devices.
+We have already seen feature templates in action and their versatility in large deployments is unmatched. Coupled with Device Specific parameters, we have a networking construct which is extremely malleable and can be applied in wide, arcing sweeps to similar devices through Device Templates that act as containers for grouping multiple Feature Templates.
 
-In this section, we will be creating feature templates for our vEdges. We will then apply these Feature Templates to Device Templates in the next section, thereby ensuring that the vEdges are controlled by vManage.
+In this section, we will be creating feature templates for our DC-vEdges. We will then apply these Feature Templates to Device Templates, thereby ensuring that the DC-vEdges are controlled by vManage.
 
-## Creating the DC-vEdge Feature Template
+## Creating the DC-vEdge VPN Feature Templates
+
+### Creating the VPN0 Feature Template
 
 The sidebar uses the [Navgoco jQuery plugin](https://github.com/tefra/navgoco) as its basis. Why not use Bootstrap? Navgoco provides a few features that I couldn't find in Bootstrap:
 
@@ -37,7 +51,31 @@ The sidebar uses the [Navgoco jQuery plugin](https://github.com/tefra/navgoco) a
 
 In short, the sidebar has some complex logic here. I've integrated Navgoco's features with the sidebar.html and sidebar data files to build the sidebar. It's probably the most impressive part of this theme. (Other themes usually aren't focused on creating hierarchies of pages, but this kind of hierarchy is important in a documentation site.)
 
-## Accordion sidebar feature
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN512 Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+### Creating the VPN512 Feature Template
 
 The sidebar.html file (inside the \_includes folder) contains the `.navgoco` method called on the `#mysidebar` element.
 
@@ -47,7 +85,31 @@ The value for `accordion` is a Boolean (`true` or `false`). By default, the `acc
 
 There's a danger with setting the accordion to `false`. If you click Expand All and the sidebar expands beyond the dimensions of the browser, users will be stuck. When that happens, it's hard to collapse it. As a best practice, leave the sidebar's accordion option set to `true`.
 
-## Fixed position sidebar
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+### Creating the INET VPN Interface Feature Template
 
 The sidebar has one other feature &mdash; this one from Bootstrap. If the user's viewport is tall enough, the sidebar remains fixed on the page. This allows the user to scroll down the page and still keep the sidebar in view.
 
@@ -55,7 +117,31 @@ In the customsscripts.js file in the js folder, there's a function that adds an 
 
 Depending on your content, you may need to adjust `800` pixel number. If your sidebar is so long that having it in a fixed position makes it so the bottom of the sidebar gets cut off, increase the `800` pixel number here to a higher number.
 
-## Opening sidebar links into external pages
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+### Creating the MPLS VPN Interface Feature Template
 
 In the attributes for each sidebar item, if you use `external_url` instead of `url`, the theme will insert the link into an `a href` element that opens in a blank target.
 
@@ -70,7 +156,31 @@ For example, the sidebar.html file contains the following code:
 
 You can see that the `external_url` is a condition that applies a different formatting. Although this feature is available, I recommend putting any external navigation links in the top navigation bar instead of the side navigation bar.
 
-## Sidebar item highlighting
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+### Creating the Mgmt VPN Interface Feature Template
 
 The sidebar.html file inserts an `active` class into the sidebar element when the `url` attribute in the sidebar data file matches the page URL.
 
@@ -89,14 +199,78 @@ The `page.url` in Jekyll is a site-wide variable. If you insert {% raw %}`{{page
 
 This is why the `url` value in the sidebar data file looks something like this:
 
-```yaml
-    - title: Understanding how the sidebar works
-      permalink: mydoc_understand_sidebar.html
-      output: web, pdf
-```
+<br/>
 
-Note that the url does not include the project folder where the file is stored. This is because the site uses permalinks, which pulls the topics out of subfolders and places them into the root directory when the site builds.
+{% include callout.html content="**Task List**
+<br/><br/>
 
-Now the page.url and the item.url can match and the `active` class can get applied. With the `active` class applied, the sidebar section remains open.
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+    <br/>
+- Creating a Device Template and Attaching Devices
+    <br/>
+- Activity Verification
+<br/>
 
-{% include links.html %}
+" type="primary" %}
+
+## Creating a Device Template and Attaching Devices
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+    <br/>
+- ~~Creating a Device Template and Attaching Devices~~
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+## Activity Verification
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Creating the DC-vEdge VPN Feature Templates
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+    <br/>
+- ~~Creating a Device Template and Attaching Devices~~
+    <br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+
+" type="primary" %}
