@@ -56,21 +56,21 @@ In short, the sidebar has some complex logic here. I've integrated Navgoco's fea
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [Creating the DC-vEdge VPN Feature Templates](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN512 Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the VPN512 Feature Template](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the INET VPN Interface Feature Template](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the MPLS VPN Interface Feature Template](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the Mgmt VPN Interface Feature Template](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- Creating a Device Template and Attaching Devices
+- [Creating a Device Template and Attaching Devices](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -90,21 +90,21 @@ There's a danger with setting the accordion to `false`. If you click Expand All 
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [Creating the DC-vEdge VPN Feature Templates](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the INET VPN Interface Feature Template](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the MPLS VPN Interface Feature Template](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the Mgmt VPN Interface Feature Template](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- Creating a Device Template and Attaching Devices
+- [Creating a Device Template and Attaching Devices](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -122,21 +122,21 @@ Depending on your content, you may need to adjust `800` pixel number. If your si
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [Creating the DC-vEdge VPN Feature Templates](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET VPN Interface Feature Template~~](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the MPLS VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the MPLS VPN Interface Feature Template](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the Mgmt VPN Interface Feature Template](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- Creating a Device Template and Attaching Devices
+- [Creating a Device Template and Attaching Devices](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -161,21 +161,21 @@ You can see that the `external_url` is a condition that applies a different form
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [Creating the DC-vEdge VPN Feature Templates](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET VPN Interface Feature Template~~](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the MPLS VPN Interface Feature Template~~](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the Mgmt VPN Interface Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the Mgmt VPN Interface Feature Template](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- Creating a Device Template and Attaching Devices
+- [Creating a Device Template and Attaching Devices](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -204,21 +204,21 @@ This is why the `url` value in the sidebar data file looks something like this:
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [~~Creating the DC-vEdge VPN Feature Templates~~](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET VPN Interface Feature Template~~](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the MPLS VPN Interface Feature Template~~](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the Mgmt VPN Interface Feature Template~~](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- Creating a Device Template and Attaching Devices
+- [Creating a Device Template and Attaching Devices](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -230,21 +230,21 @@ This is why the `url` value in the sidebar data file looks something like this:
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [~~Creating the DC-vEdge VPN Feature Templates~~](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET VPN Interface Feature Template~~](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the MPLS VPN Interface Feature Template~~](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the Mgmt VPN Interface Feature Template~~](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- ~~Creating a Device Template and Attaching Devices~~
+- [~~Creating a Device Template and Attaching Devices~~](#creating-a-device-template-and-attaching-devices)
     <br/>
-- Activity Verification
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
@@ -256,19 +256,19 @@ This is why the `url` value in the sidebar data file looks something like this:
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the DC-vEdge VPN Feature Templates
+- [~~Creating the DC-vEdge VPN Feature Templates~~](#creating-the-dc-vedge-vpn-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN0 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the VPN512 Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN512 Feature Template~~](#creating-the-vpn512-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the INET VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the MPLS VPN Interface Feature Template~~](#creating-the-inet-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the MPLS VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the MPLS VPN Interface Feature Template~~](#creating-the-mpls-vpn-interface-feature-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ~~Creating the Mgmt VPN Interface Feature Template~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the Mgmt VPN Interface Feature Template~~](#creating-the-mgmt-vpn-interface-feature-template)
     <br/>
-- ~~Creating a Device Template and Attaching Devices~~
+- [~~Creating a Device Template and Attaching Devices~~](#creating-a-device-template-and-attaching-devices)
     <br/>
 - [~~Activity Verification~~](#activity-verification)
 <br/>
