@@ -77,7 +77,7 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
 9. From the drop down, set the value to Device Specific and enter the key as *vpn0_inet_next_hop*
 
-    ![](/images/DC-vEdge_Templates/09_nexthopinet.PNG)
+    ![](/images/DC-vEdge_Templates/09_nexthopinet2.PNG)
 
 10. Click on **Add Next Hop**. We will now be adding the default route for the MPLS link
 
