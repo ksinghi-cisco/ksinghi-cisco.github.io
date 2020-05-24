@@ -37,19 +37,51 @@ folder: mydoc
 
 We have already seen feature templates in action and their versatility in large deployments is unmatched. Coupled with Device Specific parameters, we have a networking construct which is extremely malleable and can be applied in wide, arcing sweeps to similar devices through Device Templates that act as containers for grouping multiple Feature Templates.
 
-In this section, we will be creating feature templates for our DC-vEdges. We will then apply these Feature Templates to Device Templates, thereby ensuring that the DC-vEdges are controlled by vManage.
+In this section, we will be creating feature templates for our DC-vEdges. We will then apply these Feature Templates to Device Templates. Devices will be attached to these Device Templates, thereby ensuring that the DC-vEdges are controlled by vManage.
 
 ## Creating the DC-vEdge VPN Feature Templates
 
 ### Creating the VPN0 Feature Template
 
-The sidebar uses the [Navgoco jQuery plugin](https://github.com/tefra/navgoco) as its basis. Why not use Bootstrap? Navgoco provides a few features that I couldn't find in Bootstrap:
+1. On the vManage GUI, navigate to **Configuration -> Templates**
 
-* Navgoco sets a cookie to remember the user's position in the sidebar. If you refresh the page, the cookie allows the plugin to remember the state.
-* Navgoco inserts an `active` class based on the navigation option that's open. This is essential for keeping the accordion open.
-* Navgoco includes the expand and collapse features of a sidebar.
+    ![](/images/DC-vEdge_Templates/01_conftemp.PNG)
 
-In short, the sidebar has some complex logic here. I've integrated Navgoco's features with the sidebar.html and sidebar data files to build the sidebar. It's probably the most impressive part of this theme. (Other themes usually aren't focused on creating hierarchies of pages, but this kind of hierarchy is important in a documentation site.)
+2. Click on the **Feature** tab and click on **Add Template**
+
+    ![](/images/DC-vEdge_Templates/02_feataddtemp.PNG)
+
+3. Search for *vedge* in the search box and put a check mark next to **vEdge Cloud**. This will give the options to select Feature Templates applicable to the selected device type. Click on **VPN** to start configuring a VPN Template. This is going to be our VPN Template for VPN 0
+
+    ![](/images/DC-vEdge_Templates/03_vecloudvpn.PNG)
+
+4. Give the Template a name of *DCvEdge-vpn0* and a description of *VPN0 for the DC-vEdges INET and MPLS link*
+
+    ![](/images/DC-vEdge_Templates/03_ztempnamedesc.PNG)
+
+5. Under **Basic Configuration**, specify the VPN as 0 (zero)
+
+    ![](/images/DC-vEdge_Templates/04_tempnamedescvpn.PNG)
+
+6. Populate the Primary and Secondary DNS Address as 10.2.1.5 and 10.2.1.6 respectively. Set the drop down to **Global** in order to enter the IPs. The option to enter the Secondary DNS server will pop up once the Primary is populated
+
+    ![](/images/DC-vEdge_Templates/05_dns.PNG)
+
+7. Under **IPv4 Route**, click on **New IPv4 Route** and specify the Prefix as Global. Populate *0.0.0.0/0* as the prefix and click on **Add Next Hop**
+
+    ![](/images/DC-vEdge_Templates/07_ipv4route.PNG)
+
+8. Click on **Add Next Hop** again in the popup window
+
+    ![](/images/DC-vEdge_Templates/08_addhop.PNG)
+
+9. From the drop down, set the value to Device Specific and enter the key as *vpn0_inet_next_hop*
+
+    ![](/images/DC-vEdge_Templates/09_nexthopinet.PNG)
+
+10. Click on **Add Next Hop**
+
+    ![](/images/DC-vEdge_Templates/09_nexthopinet.PNG)
 
 <br/>
 
