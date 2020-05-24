@@ -121,13 +121,49 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
 ### Creating the VPN512 Feature Template
 
-The sidebar.html file (inside the \_includes folder) contains the `.navgoco` method called on the `#mysidebar` element.
+We will make use of the just created VPN 0 Feature Template to create our VPN 512 Feature Template.
 
-There are some options to set within the `.navgoco` method. The only noteworthy option is `accordion`. This option makes it so when you expand a section, the other sections collapse. It's a way of keeping your navigation controls condensed.
+1. On the **Configuration -> Templates** page navigate to the Feature tab and look for *DCvEdge-vpn0*. Click on the three dots for this template and click on **Copy**
 
-The value for `accordion` is a Boolean (`true` or `false`). By default, the `accordion` option is set as `true`. If you don't want the accordion, set it to `false`. Note that there's also a block of code near the bottom of sidebar.html that is commented out. Uncomment out that section to have the Collapse all and Expand All buttons appear.
+    ![](/images/DC-vEdge_Templates/14_copytemp.PNG)
 
-There's a danger with setting the accordion to `false`. If you click Expand All and the sidebar expands beyond the dimensions of the browser, users will be stuck. When that happens, it's hard to collapse it. As a best practice, leave the sidebar's accordion option set to `true`.
+2. Give the Template a name of *DCvEdge-vpn512* and a description of *VPN512 for the DC-vEdges*. Click on **Copy**
+
+    ![](/images/DC-vEdge_Templates/15_tempnamedesccopy.PNG)
+
+3. Click on the three dots for the newly created template and click on **Edit**
+
+    ![](/images/DC-vEdge_Templates/16_editcopied.PNG)
+
+4. Update the Description, if it hasn't been updated and change the VPN to **512**
+
+    ![](/images/DC-vEdge_Templates/17_vpntag.PNG)
+
+5. Scroll down to the IPv4 Route section and click on the **pencil** icon to edit the 0.0.0.0/0 Route
+
+    ![](/images/DC-vEdge_Templates/18_editroute.PNG)
+
+6. Click on **2 Next Hop**. We will be removing the MPLS next hop entry and modifying the name of the INET next hop for the management network
+
+    ![](/images/DC-vEdge_Templates/19_vpn512defroute.PNG)
+
+7. Click on the minus sign to remove the MPLS next hop
+
+    ![](/images/DC-vEdge_Templates/20_delmplsnh.PNG)
+
+8. Update the Device Specific information for the first entry to *vpn512_next_hop*. Click on **Save Changes**
+
+    ![](/images/DC-vEdge_Templates/21_vpn512nh.PNG)
+
+9. Click on **Save Changes** again.  The Update IPv4 Route page should now reflect 1 Next Hop
+
+    ![](/images/DC-vEdge_Templates/22_save.PNG)
+
+10. Click on **Update** on the main feature template page to save the changes that we have made. The Selected Gateway Configuration should have the number 1 against it
+
+    ![](/images/DC-vEdge_Templates/23_update.PNG)
+
+We have created our VPN512 Feature Template
 
 <br/>
 
