@@ -191,11 +191,32 @@ We have created our VPN512 Feature Template
 
 ### Creating the INET VPN Interface Feature Template
 
-The sidebar has one other feature &mdash; this one from Bootstrap. If the user's viewport is tall enough, the sidebar remains fixed on the page. This allows the user to scroll down the page and still keep the sidebar in view.
+We are now going to set up the VPN Interface Feature Templates for the Internet link. This template specifies the configuration for the interfaces in a VPN. There will be two interfaces in VPN 0 (INET and MPLS) and one interface in VPN 512. Let's start off with configuring the INET interface.
 
-In the customsscripts.js file in the js folder, there's a function that adds an `affix` class if the height of the browser window is greater than 800 pixels. If the browser's height is less than 800 pixels, the `nav affix` class does not get inserted. As a result, the sidebar can slide up and down as the user scrolls up and down the page.
+1. From **Configuration -> Templates** on the Feature tab, Add a new template. Search for *ved* in the search box and choose the vEdge Cloud Device. Click on **VPN Interface Ethernet** to start craeting our VPN Interface Template
 
-Depending on your content, you may need to adjust `800` pixel number. If your sidebar is so long that having it in a fixed position makes it so the bottom of the sidebar gets cut off, increase the `800` pixel number here to a higher number.
+    ![](/images/DC-vEdge_Templates/24_addtempvpnint.PNG)
+
+2. Populate the details on this page as given below. Screenshots can be used for reference. Click on **Save** once the fields have been populated
+
+    | Section                | Field            | Global or Device Specific (drop down) | Value                              |
+    |------------------------|------------------|---------------------------------------|------------------------------------|
+    |                        | Template Name    | NA                                    | *DC-vEdge_INET*                    |
+    |                        | Description      | NA                                    | *INET interface for the DC-vEdges* |
+    | Basic Configuration    | Shutdown         | Global                                | No                                 |
+    | Basic Configuration    | Interface Name   | Device Specific                       | *vpn0_inet_if_name*                |
+    | Basic Configuration    | IPv4 Address     | Device Specific                       | *vpn0_inet_if_ip_add*              |
+    | Tunnel                 | Tunnel Interface | Global                                | On                                 |
+    | Tunnel                 | Color            | Device Specific                       | *vpn0_inet_if_color*               |
+    | Tunnel - Allow Service | All              | Global                                | On                                 |
+
+    ![](/images/DC-vEdge_Templates/25_tempnamedescip.PNG)
+
+    ![](/images/DC-vEdge_Templates/26_tunn.PNG)
+
+    ![](/images/DC-vEdge_Templates/27_allowall_save.PNG)
+
+This completes the configuration of our INET Interface Feature Template. Notice that we will be populating quite a few details when the Device is attached to a Device Template which contains this Feature Template.
 
 <br/>
 
@@ -223,18 +244,30 @@ Depending on your content, you may need to adjust `800` pixel number. If your si
 
 ### Creating the MPLS VPN Interface Feature Template
 
-In the attributes for each sidebar item, if you use `external_url` instead of `url`, the theme will insert the link into an `a href` element that opens in a blank target.
+We are now going to set up the VPN Interface Feature Template for the MPLS link, making a copy from the INET template that we created in the previous section.
 
-For example, the sidebar.html file contains the following code:
+1. Identify the *DC-vEdge_INET* Feature Template from **Configuration -> Templates -> Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *DC-vEdge_MPLS* with a Description of *MPLS interface for the DC-vEdges*. Click on **Copy**
 
-{% raw %}
-```liquid
-{% if folderitem.external_url %}
-    <li><a href="{{folderitem.external_url}}" target="_blank" rel="noopener">{{folderitem.title}}</a></li>
-```
-{% endraw %}
+    ![](/images/DC-vEdge_Templates/28_mpls_namedesccopy.PNG)
 
-You can see that the `external_url` is a condition that applies a different formatting. Although this feature is available, I recommend putting any external navigation links in the top navigation bar instead of the side navigation bar.
+2. Click on the 3 dots next to the copied template and choose to **Edit**. Modify the details as per the table given below and click on **Update** (we have changed the Device Specific names to reflect mpls and set the restrict to On)
+
+    | Section             | Field            | Global or Device Specific (drop down) | Value                              |
+    |---------------------|------------------|---------------------------------------|------------------------------------|
+    |                     | Template Name    | NA                                    | *DC-vEdge_MPLS*                    |
+    |                     | Description      | NA                                    | *MPLS interface for the DC-vEdges* |
+    | Basic Configuration | Shutdown         | Global                                | No                                 |
+    | Basic Configuration | Interface Name   | Device Specific                       | *vpn0_mpls_if_name*                |
+    | Basic Configuration | IPv4 Address     | Device Specific                       | *vpn0_mpls_if_ip_add*              |
+    | Tunnel              | Tunnel Interface | Global                                | On                                 |
+    | Tunnel              | Color            | Device Specific                       | *vpn0_mpls_if_color*               |
+    | Tunnel              | Restrict         | Global                                | On                                 |
+
+    ![](/images/DC-vEdge_Templates/29_name_if_ip.PNG)
+
+    ![](/images/DC-vEdge_Templates/30_tunn_mpls_update.PNG)
+
+This completes the configuration of the MPLS VPN Interface Feature Template.
 
 <br/>
 
@@ -262,22 +295,32 @@ You can see that the `external_url` is a condition that applies a different form
 
 ### Creating the Mgmt VPN Interface Feature Template
 
-The sidebar.html file inserts an `active` class into the sidebar element when the `url` attribute in the sidebar data file matches the page URL.
+Just like before, we will make a copy of the DC-vEdge_INET Feature Template and use that for our VPN 512 Management Interface Template.
 
-For example, the sidebar.html file contains the following code:
+1. Locate the DC-vEdge_INET template created before, click on the 3 dots at the end and choose to **Copy** the template
 
-{% raw %}
-```liquid
-{% elsif page.url == folderitem.url %}
-   <li class="active"><a href="{{folderitem.url | remove: "/"}}">{{folderitem.title}}</a></li>
-```
-{% endraw %}
+    ![](/images/DC-vEdge_Templates/31_copyinet_forvpn512_2.PNG)
 
-If the `page.url` matches the `subfolderitem.url`, then an `active` class gets applied. If not, the `active` class does not get applied.
+2. Rename it to *DC-vEdge_mgmt_int* with a Description of *MGMT interface for the DC-vEdges*. Click on **Copy**
 
-The `page.url` in Jekyll is a site-wide variable. If you insert {% raw %}`{{page.url}}`{% endraw %} on a page, it will render as follows: {{page.url}}. The `url` attribute in the sidebar item must match the page URL in order to get the `active` class applied.
+    ![](/images/DC-vEdge_Templates/32_rename.PNG)
 
-This is why the `url` value in the sidebar data file looks something like this:
+3. Click on the 3 dots next to the newly created template and choose to **Edit**. Populate the details in the template as per the following table and click on **Update**. The Tunnel Interface has been set to Off
+
+    | Section             | Field            | Global or Device Specific (drop down) | Value                              |
+    |---------------------|------------------|---------------------------------------|------------------------------------|
+    |                     | Template Name    | NA                                    | *DC-vEdge_mgmt_int*                |
+    |                     | Description      | NA                                    | *MGMT interface for the DC-vEdges* |
+    | Basic Configuration | Shutdown         | Global                                | No                                 |
+    | Basic Configuration | Interface Name   | Device Specific                       | *vpn512_mgmt_if_name*              |
+    | Basic Configuration | IPv4 Address     | Device Specific                       | *vpn512_mgmt_if_ip_add*            |
+    | Tunnel              | Tunnel Interface | Global                                | Off                                |
+
+    ![](/images/DC-vEdge_Templates/33_name_ifname_ip.PNG)
+
+    ![](/images/DC-vEdge_Templates/34_Tunnoff_Update.PNG)
+
+We have creatd the VPN 512 Interface Template.
 
 <br/>
 
@@ -305,6 +348,60 @@ This is why the `url` value in the sidebar data file looks something like this:
 
 ## Creating a Device Template and Attaching Devices
 
+Most of the work has already been done, with respect to creating the building blocks for our Device Templates. All that's left is ensuring we create a Device Template with the corresponding Feature Templates and associate the Devices with the Template.
+
+1. Navigate to the **Configuration -> Templates** section and make sure you're on the **Device** tab. Click on **Create Template -> From Feature Template**
+
+    ![](/images/DC-vEdge_Templates/35_createdevtemp.PNG)
+
+2. Choose Device Model as **vEdge Cloud**, and give the Template a name of *DCvEdge_dev_temp*. Give it a Description of *Device template for the DC-vEdges*
+
+    ![](/images/DC-vEdge_Templates/36_name_devtype.PNG)
+
+3. Under **Transport and Management** choose the VPN 0 template as *DCvEdge-vpn0* and the VPN 512 Template as *DCvEdge-vpn512*. Click twice on **VPN Interface** under *Additional VPN 0 Templates*. This will add two VPN Interfaces where we can associate our VPN Interface Templates. Click once on **VPN Interface** under *Additional VPN 512 Templates* to add a VPN Interface for VPN 512
+
+    ![](/images/DC-vEdge_Templates/37_popvpntemp_clickaddvpnint.PNG)
+
+4. Populate the VPN Interface fields from the drop down as show below and click on **Create**
+
+    ![](/images/DC-vEdge_Templates/38_vpnint_create.PNG)
+
+5. Click on the three dots next to the newly created Device Template named *DCvEdge_dev_temp* and click on **Attach Devices**
+
+    ![](/images/DC-vEdge_Templates/39_attach.PNG)
+
+6. Move **DC-vEdge1** and **DC-vEdge2** to the list of selected devices and click on Attach
+
+    ![](/images/DC-vEdge_Templates/40_choosevedges.PNG)
+
+7. Click on the three dots next to DC-vEdge1 and choose **Edit Device Template**. Enter the details as shown below (these are the Device Specific paramters we had defined in the Feature Templates, along with some parameters that are part of the Default Templates pre-populated in the Device Template). Click on **Update** once everything has been populated exactly as shown below. This information can also be picked up from the table given in the topology section
+
+    ![](/images/DC-vEdge_Templates/41_enterdet.PNG)
+
+8. Click on the three dots next to DC-vEdge2 and choose **Edit Device Template**. Enter the details as shown below. Click on **Update** once done
+
+    ![](/images/DC-vEdge_Templates/42_enterdetvedge2.PNG)
+
+    Click on **Next** to proceed
+
+9. At this point, you can simply click on **Configure Devices** to start pushing the configuration to the devices, or you can click on an individual device on the left-hand side and followed by Config Diff and then Side by Side to view a comparison of the current configuration on the device vs. what will be pushed out. This is great for reviewing the configuration that is going to be pushed and for learning the syntax. Note that we are adding the MPLS interface and relevant configuration on our devices, which wasn't done before.
+
+    ![](/images/DC-vEdge_Templates/43_checkconfigdif.PNG)
+
+    ![](/images/DC-vEdge_Templates/44_maindiffmpls_configdev.PNG)
+
+10. On clicking on Configure Devices, you will need to put a check mark next to **Confirm configuration changes on 2 devices** and click on OK
+
+    ![](/images/DC-vEdge_Templates/45_checkconfig.PNG)
+
+11. Once complete, you should see a **Success** message against each device that was configured
+
+    ![](/images/DC-vEdge_Templates/46_success.PNG)
+
+    {% include tip.html content="In case a loss of connectivity occurs as a result of the configuration changes that were pushed to the Devices, there is an automatic rollback timer of 6 minutes which kicks in. Devices will revert to their previous configuration in this case. The rollback timer can be configured (on the final page before we choose to configure our devices, there is a hyperlink in the bottom left hand corner)" %}
+
+    ![](/images/DC-vEdge_Templates/44_maindiffmpls_configdev2.PNG)
+
 <br/>
 
 {% include callout.html content="**Task List**
@@ -330,6 +427,24 @@ This is why the `url` value in the sidebar data file looks something like this:
 " type="primary" %}
 
 ## Activity Verification
+
+1. Go to **Configuration -> Devices** and you should see that the two DC-vEdges are now in vManage mode
+
+    ![](/images/DC-vEdge_Templates/47_configdev_vmmode.PNG)
+
+2. On checking the main dashboard (**Dashboard -> Main Dashboard**) we should see 5 sites with full WAN connectivity (if you recall, we previously could see only 4 sites with full WAN connectivity and Site 50 wasn't showing up at all. This was because BFD sessions weren't established on the MPLS link)
+
+    ![](/images/DC-vEdge_Templates/48_maindash.PNG)
+
+3. If we click on **Full WAN Connectivity**, Site 50 now shows up
+
+    ![](/images/DC-vEdge_Templates/49_site50showsup.PNG)
+
+4. Use Putty to access **cEdge51** and issue `show bfd sessions`. We now see BFD sessions with DC-vEdge1 and DC-vEdge2, on the MPLS link
+
+    ![](/images/DC-vEdge_Templates/50_bfdsessestonce51.PNG)
+
+This completes the verification activity
 
 <br/>
 
