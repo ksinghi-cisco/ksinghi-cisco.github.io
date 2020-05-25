@@ -116,6 +116,10 @@ entries:
       url: /mydoc_ssv_cedges.html
       output: web, pdf
 
+    - title: Updating Device Templates
+      url: /mydoc_devtemp_update.html
+      output: web, pdf
+
     - title: Implementing OSPF at DC
       url: /mydoc_ospf_dc.html
       output: web, pdf
@@ -128,9 +132,7 @@ entries:
       url: /mydoc_vrrp_site50.html
       output: web, pdf
 
-    - title: Labels
-      url: /mydoc_labels.html
-      output: web, pdf
+
 
     - title: Links
       url: /mydoc_hyperlinks.html
