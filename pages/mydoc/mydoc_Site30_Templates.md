@@ -130,10 +130,7 @@ This completes our Configuration for bringing Site 30 under the control of vMana
 <br/><br/>
 
 - [~~Creating the Site 30 Feature Templates~~](#creating-the-site-30-feature-templates)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
-    <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET and MPLS VPN Interface Feature Template~~](#creating-the-inet-and-mpls-vpn-interface-feature-template)
+
     <br/>
 - [~~Modifying a Device Template and Attaching Devices~~](#modifying-a-device-template-and-attaching-devices)
 
