@@ -13,9 +13,9 @@ folder: mydoc
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Creating the Site 20 VPN Feature Templates
+- Creating the Site 20 Feature Templates
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN0 and VPN512 Feature Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN0 Feature Template
     <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the INET and MPLS VPN Interface Feature Template
     <br/>
@@ -29,87 +29,52 @@ folder: mydoc
 
 We can take the Feature Templates created for the DC-vEdges and use them as a starting point for configuring the Feature Templates at Site 20. Necessary changes based on the topology will need to be made (for example, things like a single uplink at the Site20 devices vs. a dual uplink at the DC devices)
 
-## Creating the Site 20 VPN Feature Templates
+## Creating the Site 20 Feature Templates
 
-We are now going to set up the VPN Interface Feature Template for the MPLS link, making a copy from the INET template that we created in the previous section.
+### Creating the VPN0 Feature Template
 
-1. Identify the *DC-vEdge_INET* Feature Template from **Configuration -> Templates -> Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *DC-vEdge_MPLS* with a Description of *MPLS interface for the DC-vEdges*. Click on **Copy**
+We will set up the VPN templates for VPN 0 in Site 20 by making a copy of the *DCvEdge-vpn0* Feature Template created before
 
-    ![](/images/DC-vEdge_Templates/28_mpls_namedesccopy.PNG)
+1. Identify the *DCvEdge-vpn0* Feature Template from **Configuration -> Templates -> Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *Site20-vpn0* with a Description of *VPN0 for the Site 20 vEdges*. Click on **Copy** again
 
-2. Click on the 3 dots next to the copied template and choose to **Edit**. Modify the details as per the table given below and click on **Update** (we have changed the Device Specific names to reflect mpls and set the restrict to On)
+    ![](/images/vEdgeSite20_Templates/01_copydcvpn0.PNG)
 
-    | Section             | Field            | Global or Device Specific (drop down) | Value                              |
-    |---------------------|------------------|---------------------------------------|------------------------------------|
-    |                     | Template Name    | NA                                    | *DC-vEdge_MPLS*                    |
-    |                     | Description      | NA                                    | *MPLS interface for the DC-vEdges* |
-    | Basic Configuration | Shutdown         | Global                                | No                                 |
-    | Basic Configuration | Interface Name   | Device Specific                       | *vpn0_mpls_if_name*                |
-    | Basic Configuration | IPv4 Address     | Device Specific                       | *vpn0_mpls_if_ip_add*              |
-    | Tunnel              | Tunnel Interface | Global                                | On                                 |
-    | Tunnel              | Color            | Device Specific                       | *vpn0_mpls_if_color*               |
-    | Tunnel              | Restrict         | Global                                | On                                 |
+    ![](/images/vEdgeSite20_Templates/02_rename.PNG)
 
-    ![](/images/DC-vEdge_Templates/29_name_if_ip.PNG)
+2. Locate the *Site20-vpn0* template just created and click on the three dots at the end of it. Click on **Edit**. Identify the IPv4 Route section - there should be a route populated there for 0.0.0.0/0. Edit this route by clicking on the **pencil** icon
 
-    ![](/images/DC-vEdge_Templates/30_tunn_mpls_update.PNG)
+    ![](/images/vEdgeSite20_Templates/03_vpn0route.PNG)
 
-This completes the configuration of the MPLS VPN Interface Feature Template.
+3. Click on **2 Next Hop**
 
-<br/>
+    ![](/images/vEdgeSite20_Templates/04_2nhclick.PNG)
 
-{% include callout.html content="**Task List**
-<br/><br/>
+4. Click on the remove icon for the second next hop
 
-- [Creating the Site 20 VPN Feature Templates](#creating-the-site-20-vpn-feature-templates)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 and VPN512 Feature Template~~](#creating-the-vpn0-and-vpn512-feature-template)
-    <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the INET and MPLS VPN Interface Feature Template](#creating-the-inet-and-mpls-vpn-interface-feature-template)
-    <br/>
-- [Modifying a Device Template and Attaching Devices](#modifying-a-device-template-and-attaching-devices)
+    ![](/images/vEdgeSite20_Templates/05_removempls.PNG)
 
-<br/>
+5. Edit the name of the INET next hop to represent something more generic, like *vpn0_next_hop*. We will use this VPN0 Template for both the vEdges at Site 20. Click on **Save Changes**
 
-" type="primary" %}
+    ![](/images/vEdgeSite20_Templates/06_nh_save.PNG)
 
-### Creating the VPN0 and VPN512 Feature Template
+6. Make sure there is just **1 Next Hop** populated and click on **Save Changes** again
 
-Just like before, we will make a copy of the DC-vEdge_INET Feature Template and use that for our VPN 512 Management Interface Template.
+    ![](/images/vEdgeSite20_Templates/07_sc.PNG)
 
-1. Locate the DC-vEdge_INET template created before, click on the 3 dots at the end and choose to **Copy** the template
+7. Click on **Update** on the main Feature Template screen
 
-    ![](/images/DC-vEdge_Templates/31_copyinet_forvpn512_2.PNG)
+    ![](/images/vEdgeSite20_Templates/08_upd.PNG)
 
-2. Rename it to *DC-vEdge_mgmt_int* with a Description of *MGMT interface for the DC-vEdges*. Click on **Copy**
-
-    ![](/images/DC-vEdge_Templates/32_rename.PNG)
-
-3. Click on the 3 dots next to the newly created template and choose to **Edit**. Populate the details in the template as per the following table and click on **Update**. The Tunnel Interface has been set to Off
-
-    | Section             | Field            | Global or Device Specific (drop down) | Value                              |
-    |---------------------|------------------|---------------------------------------|------------------------------------|
-    |                     | Template Name    | NA                                    | *DC-vEdge_mgmt_int*                |
-    |                     | Description      | NA                                    | *MGMT interface for the DC-vEdges* |
-    | Basic Configuration | Shutdown         | Global                                | No                                 |
-    | Basic Configuration | Interface Name   | Device Specific                       | *vpn512_mgmt_if_name*              |
-    | Basic Configuration | IPv4 Address     | Device Specific                       | *vpn512_mgmt_if_ip_add*            |
-    | Tunnel              | Tunnel Interface | Global                                | Off                                |
-
-    ![](/images/DC-vEdge_Templates/33_name_ifname_ip.PNG)
-
-    ![](/images/DC-vEdge_Templates/34_Tunnoff_Update.PNG)
-
-We have creatd the VPN 512 Interface Template.
+This completes the configuration of the VPN 0 Feature Template for Site 20.
 
 <br/>
 
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- [~~Creating the Site 20 VPN Feature Templates~~](#creating-the-site-20-vpn-feature-templates)
+- [Creating the Site 20 Feature Templates](#creating-the-site-20-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 and VPN512 Feature Template~~](#creating-the-vpn0-and-vpn512-feature-template)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the INET and MPLS VPN Interface Feature Template](#creating-the-inet-and-mpls-vpn-interface-feature-template)
     <br/>
@@ -121,105 +86,119 @@ We have creatd the VPN 512 Interface Template.
 
 ### Creating the INET and MPLS VPN Interface Feature Template
 
-Most of the work has already been done, with respect to creating the building blocks for our Device Templates. All that's left is ensuring we create a Device Template with the corresponding Feature Templates and associate the Devices with the Template.
+We will copy and edit the *DCvEdge-MPLS* Interface Feature Template for our INET and MPLS VPN Interface Feature Templates at Site 20.
 
-1. Navigate to the **Configuration -> Templates** section and make sure you're on the **Device** tab. Click on **Create Template -> From Feature Template**
+1. Navigate to the **Configuration -> Templates** section and make sure you're on the **Feature** tab. Click on the three dots next to the *DCvEdge-MPLS* and click on **Copy**
 
-    ![](/images/DC-vEdge_Templates/35_createdevtemp.PNG)
+    ![](/images/vEdgeSite20_Templates/09_intcopy.PNG)
 
-2. Choose Device Model as **vEdge Cloud**, and give the Template a name of *DCvEdge_dev_temp*. Give it a Description of *Device template for the DC-vEdges*
+2. Rename the Template to *Site20_vpn0_int* and the Description as *VPN0 Interface for Site20 devices*. Click on **Copy**
 
-    ![](/images/DC-vEdge_Templates/36_name_devtype.PNG)
+    ![](/images/vEdgeSite20_Templates/10_copyrename.PNG)
 
-3. Under **Transport and Management** choose the VPN 0 template as *DCvEdge-vpn0* and the VPN 512 Template as *DCvEdge-vpn512*. Click twice on **VPN Interface** under *Additional VPN 0 Templates*. This will add two VPN Interfaces where we can associate our VPN Interface Templates. Click once on **VPN Interface** under *Additional VPN 512 Templates* to add a VPN Interface for VPN 512
+3. Edit the newly created template by clicking on the 3 dots next to it and choosing Edit. Update the details as per the table below, referencing the screenshots. Click on **Update** once done
 
-    ![](/images/DC-vEdge_Templates/37_popvpntemp_clickaddvpnint.PNG)
+    | Section                | Field            | Global or Device Specific (drop down) | Value                               |
+    |------------------------|------------------|---------------------------------------|-------------------------------------|
+    |                        | Template Name    | NA                                    | *Site20_vpn0_int*                   |
+    |                        | Description      | NA                                    | *VPN0 Interface for Site20 devices* |
+    | Basic Configuration    | Shutdown         | Global                                | No                                  |
+    | Basic Configuration    | Interface Name   | Device Specific                       | *vpn0_if_name*                      |
+    | Basic Configuration    | IPv4 Address     | Device Specific                       | *vpn0_if_ip_add*                    |
+    | Tunnel                 | Tunnel Interface | Global                                | On                                  |
+    | Tunnel                 | Color            | Device Specific                       |       *vpn0_if_color*                     |
+    | Tunnel                 | Restrict         | Device Specific                       | *vpn0_if_color_restrict*            |
+    | Tunnel - Allow Service | All              | Global                                | On                                  |
 
-4. Populate the VPN Interface fields from the drop down as show below and click on **Create**
+    ![](/images/vEdgeSite20_Templates/11_vpn0name_desc_ip.PNG)
 
-    ![](/images/DC-vEdge_Templates/38_vpnint_create.PNG)
+    ![](/images/vEdgeSite20_Templates/12_tunn.PNG)
 
-5. Click on the three dots next to the newly created Device Template named *DCvEdge_dev_temp* and click on **Attach Devices**
-
-    ![](/images/DC-vEdge_Templates/39_attach.PNG)
-
-6. Move **DC-vEdge1** and **DC-vEdge2** to the list of selected devices and click on Attach
-
-    ![](/images/DC-vEdge_Templates/40_choosevedges.PNG)
-
-7. Click on the three dots next to DC-vEdge1 and choose **Edit Device Template**. Enter the details as shown below (these are the Device Specific paramters we had defined in the Feature Templates, along with some parameters that are part of the Default Templates pre-populated in the Device Template). Click on **Update** once everything has been populated exactly as shown below. This information can also be picked up from the table given in the topology section
-
-    ![](/images/DC-vEdge_Templates/41_enterdet.PNG)
-
-8. Click on the three dots next to DC-vEdge2 and choose **Edit Device Template**. Enter the details as shown below. Click on **Update** once done
-
-    ![](/images/DC-vEdge_Templates/42_enterdetvedge2.PNG)
-
-    Click on **Next** to proceed
-
-9. At this point, you can simply click on **Configure Devices** to start pushing the configuration to the devices, or you can click on an individual device on the left-hand side and followed by Config Diff and then Side by Side to view a comparison of the current configuration on the device vs. what will be pushed out. This is great for reviewing the configuration that is going to be pushed and for learning the syntax. Note that we are adding the MPLS interface and relevant configuration on our devices, which wasn't done before.
-
-    ![](/images/DC-vEdge_Templates/43_checkconfigdif.PNG)
-
-    ![](/images/DC-vEdge_Templates/44_maindiffmpls_configdev.PNG)
-
-10. On clicking on Configure Devices, you will need to put a check mark next to **Confirm configuration changes on 2 devices** and click on OK
-
-    ![](/images/DC-vEdge_Templates/45_checkconfig.PNG)
-
-11. Once complete, you should see a **Success** message against each device that was configured
-
-    ![](/images/DC-vEdge_Templates/46_success.PNG)
-
-    {% include tip.html content="In case a loss of connectivity occurs as a result of the configuration changes that were pushed to the Devices, there is an automatic rollback timer of 6 minutes which kicks in. Devices will revert to their previous configuration in this case. The rollback timer can be configured (on the final page before we choose to configure our devices, there is a hyperlink in the bottom left hand corner)" %}
-
-    ![](/images/DC-vEdge_Templates/44_maindiffmpls_configdev2.PNG)
-
-    <br/>
-
-    {% include callout.html content="**Task List**
-    <br/><br/>
-
-    - [~~Creating the Site 20 VPN Feature Templates~~](#creating-the-site-20-vpn-feature-templates)
-    <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 and VPN512 Feature Template~~](#creating-the-vpn0-and-vpn512-feature-template)
-        <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET and MPLS VPN Interface Feature Template~~](#creating-the-inet-and-mpls-vpn-interface-feature-template)
-        <br/>
-    - [Modifying a Device Template and Attaching Devices](#modifying-a-device-template-and-attaching-devices)
-
-    <br/>
-
-    " type="primary" %}
-
-## Modifying a Device Template and Attaching Devices
-
-1. Go to **Configuration -> Devices** and you should see that the two DC-vEdges are now in vManage mode
-
-    ![](/images/DC-vEdge_Templates/47_configdev_vmmode.PNG)
-
-2. On checking the main dashboard (**Dashboard -> Main Dashboard**) we should see 5 sites with full WAN connectivity (if you recall, we previously could see only 4 sites with full WAN connectivity and Site 50 wasn't showing up at all. This was because BFD sessions weren't established on the MPLS link)
-
-    ![](/images/DC-vEdge_Templates/48_maindash.PNG)
-
-3. If we click on **Full WAN Connectivity**, Site 50 now shows up
-
-    ![](/images/DC-vEdge_Templates/49_site50showsup.PNG)
-
-4. Use Putty to access **cEdge51** and issue `show bfd sessions`. We now see BFD sessions with DC-vEdge1 and DC-vEdge2, on the MPLS link
-
-    ![](/images/DC-vEdge_Templates/50_bfdsessestonce51.PNG)
-
-This completes the verification activity
+We have completed configuring the VPN 0 Interface Template for the Site 20 Devices. This template will be used for the INET and MPLS links at Site 20. Notice how easy it has become to add configuration, once the initial template has been built?
 
 <br/>
 
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- [~~Creating the Site 20 VPN Feature Templates~~](#creating-the-site-20-vpn-feature-templates)
+- [~~Creating the Site 20 Feature Templates~~](#creating-the-site-20-feature-templates)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 and VPN512 Feature Template~~](#creating-the-vpn0-and-vpn512-feature-template)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET and MPLS VPN Interface Feature Template~~](#creating-the-inet-and-mpls-vpn-interface-feature-template)
+    <br/>
+- [Modifying a Device Template and Attaching Devices](#modifying-a-device-template-and-attaching-devices)
+
+<br/>
+
+" type="primary" %}
+
+## Modifying a Device Template and Attaching Devices
+
+1. Go to **Configuration -> Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**
+
+    ![](/images/vEdgeSite20_Templates/13_copydevtemp.PNG)
+
+2. Rename the Template *vEdge_Site20_dev_temp* and give it a Description of *Device template for the Site 20 vEdges*. Click on **Copy**
+
+    ![](/images/vEdgeSite20_Templates/14_rencopy.PNG)
+
+3. Click on the three dots next to the newly created template and click on **Edit**. Update the **Transport and Management VPN** section as per the screenshot below. Remember to remove the 2nd VPN Interface under VPN 0. We will be re-using the VPN 512 Templates created for the DC-vEdges.
+
+    ![](/images/vEdgeSite20_Templates/15_update.PNG)
+
+4. Click on **Update** once done
+
+    ![](/images/vEdgeSite20_Templates/16_clickupdate.PNG)
+
+5. Click on the three dots next to the newly created *vEdge_Site20_dev_temp* Template and click on **Attach Devices**
+
+    ![](/images/vEdgeSite20_Templates/17_attach.PNG)
+
+6. Choose **vEdge20** and **vEdge21** from the list and click on **Attach**
+
+    ![](/images/vEdgeSite20_Templates/18_choosedev_clickattach.PNG)
+
+7. The two devices should show up in the list. Click on the three dots next to vEdge20 and choose to **Edit Device Template**. Populate the details as shown below and click on **Update**
+
+    ![](/images/vEdgeSite20_Templates/19_editdevtemp_popdet.PNG)
+
+8. Similarly, click on the dots next to vEdge21 and choose to **Edit Device Template**. Populate the details as shown below and click on **Update**
+
+    ![](/images/vEdgeSite20_Templates/20_editdevtemp_popdetve21.PNG)
+
+9. Both devices should now have a check mark next to them. Click on **Next**
+
+    ![](/images/vEdgeSite20_Templates/21_greencheck_next.PNG)
+
+10. You can click on **Configure Devices** or choose to view the Side-by-Side Config Diff by clicking on the Device, choosing the Config Diff box and then clicking on Side by Side. Click on **Configure Devices**
+
+    ![](/images/vEdgeSite20_Templates/22_seldev_sidebside_confdev.PNG)
+
+11. Confirm this change and click on **OK**
+
+    ![](/images/vEdgeSite20_Templates/23_confirm.PNG)
+
+12. Once the configuration updates have gone through successfully, log in to the CLI for vEdge21 and issue a `show bfd sessions`. You can also check this from the GUI by navigating to **Monitor -> Network**, clicking on vEdge21 and choosing **Real-Time -> BFD Sessions**
+
+    ![](/images/vEdgeSite20_Templates/24_success.PNG)
+
+    ![](/images/vEdgeSite20_Templates/25_showbfdsessve21.PNG)
+
+13. On the vManage GUI, navigate to **Configuration -> Devices** and you should see the two vEdges at Site 20 in vManage mode
+
+    ![](/images/vEdgeSite20_Templates/99_conf_Dev_vmmode.PNG)
+
+We have successfully placed the devices in Site 20 under the control of vManage.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Creating the Site 20 Feature Templates~~](#creating-the-site-20-feature-templates)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
     <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET and MPLS VPN Interface Feature Template~~](#creating-the-inet-and-mpls-vpn-interface-feature-template)
     <br/>
