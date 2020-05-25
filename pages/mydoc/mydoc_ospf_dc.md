@@ -1,11 +1,11 @@
 ---
-title: Icons
+title: Dynamic Service Side routing at the DC
 tags: [formatting]
 keywords: font icons, buttons, images, vectors, font awesome, glyphicons
-last_updated: July 16, 2016
-summary: "You can integrate font icons through the Font Awesome and Glyphical Halflings libraries. These libraries allow you to embed icons through their libraries delivered as a link reference. You don't need any image libraries downloaded in your project."
+last_updated: May 26, 2020
+summary: "Implementing Dynamic Service Side Routing at the DC - OSPF"
 sidebar: mydoc_sidebar
-permalink: mydoc_icons.html
+permalink: mydoc_ospf_dc.html
 folder: mydoc
 ---
 

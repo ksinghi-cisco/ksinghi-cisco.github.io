@@ -108,24 +108,24 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Tooltips
-      url: /mydoc_adding_tooltips.html
+    - title: Service Side VPNs - vEdges
+      url: /mydoc_ssv_vedges.html
       output: web, pdf
 
-    - title: Alerts
-      url: /mydoc_alerts.html
+    - title: Service Side VPNs - cEdges
+      url: /mydoc_ssv_cedges.html
       output: web, pdf
 
-    - title: Icons
-      url: /mydoc_icons.html
+    - title: Implementing OSPF at DC
+      url: /mydoc_ospf_dc.html
       output: web, pdf
 
-    - title: Images
-      url: /mydoc_images.html
+    - title: Implementing EIGRP at Site 40
+      url: /mydoc_eigrp_site40.html
       output: web, pdf
 
-    - title: Code samples
-      url: /mydoc_code_samples.html
+    - title: Implementing VRRP at Site 50
+      url: /mydoc_vrrp_site50.html
       output: web, pdf
 
     - title: Labels
