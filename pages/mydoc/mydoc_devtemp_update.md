@@ -1,11 +1,11 @@
 ---
-title: Labels
+title: Updating Device Templates with Service Side VPNs
 tags: [formatting]
 keywords: labels, buttons, bootstrap, api methods
-last_updated: July 3, 2016
-summary: "Labels are just a simple Bootstrap component that you can include in your pages as needed. They represent one of many Bootstrap options you can include in your theme."
+last_updated: May 26, 2020
+summary: "Associate the Service Side VPN Templates with the Device Templates"
 sidebar: mydoc_sidebar
-permalink: mydoc_labels.html
+permalink: mydoc_devtemp_update.html
 folder: mydoc
 ---
 
