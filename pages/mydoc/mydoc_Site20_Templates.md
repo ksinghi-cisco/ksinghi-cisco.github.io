@@ -179,7 +179,7 @@ We have completed configuring the VPN 0 Interface Template for the Site 20 Devic
 
     ![](/images/vEdgeSite20_Templates/23_confirm.PNG)
 
-12. Once the configuration updates have gone through successfully, log in to the CLI for vEdge21 and issue a `show bfd sessions`. You can also check this from the GUI by navigating to **Monitor -> Network**, clicking on vEdge21 and choosing **Real-Time -> BFD Sessions**
+12. Once the configuration updates have gone through successfully, log in to the CLI for vEdge21 and issue a `show bfd sessions`. You can also check this from the GUI by navigating to **Monitor -> Network**, clicking on vEdge21 and choosing **Real-Time -> BFD Sessions** in the Device Options. Choose Do Not Filter.
 
     ![](/images/vEdgeSite20_Templates/24_success.PNG)
 
