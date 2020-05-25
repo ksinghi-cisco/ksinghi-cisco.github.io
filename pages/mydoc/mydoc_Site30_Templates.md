@@ -1,186 +1,142 @@
 ---
-title: Tags
+title: Site 30 vEdge Templates
 audience: writer, designer
 tags: [navigation]
-last_updated: July 16, 2016
+last_updated: May 25, 2020
 keywords: tags, navigation, buttons, links, association
-summary: "Tags provide another means of navigation for your content. Unlike the table of contents, tags can show the content in a variety of arrangements and groupings. Implementing tags in this Jekyll theme is somewhat of a manual process."
+summary: "Creating Feature and Device Templates for the vEdge in Site 30"
 sidebar: mydoc_sidebar
 permalink: mydoc_Site30_Templates.html
 folder: mydoc
 ---
 
-## Add a tag to a page
-You can add tags to pages by adding `tags` in the frontmatter with values inside brackets, like this:
+<br/>
 
-```
----
-title: 5.0 Release Notes
-permalink: release_notes_5_0.html
-tags: [formatting, single_sourcing]
----
-```
+{% include callout.html content="**Task List**
+<br/><br/>
 
-## Tags overview
+- Creating the Site 30 Feature Templates
 
-{% include note.html content=" With posts, tags have a namespace that you can access with <code>posts.tags.tagname</code>, where <code>tagname</code> is the name of the tag. You can then list all posts in that tag namespace. But pages don't off this same tag namespace, so you could actually use another key instead of <code>tags</code>. Nevertheless, I'm using the same <code>tags</code> approach for posts as with pages." %}
+    <br/>
+- Modifying a Device Template and Attaching Devices
 
+<br/>
 
-To prevent tags from getting out of control and inconsistent, first make sure the tag appears in the \_data/tags.yml file. If it's not there, the tag you add to a page won't be read. I added this check just to make sure I'm using the same tags consistently and not adding new tags that don't have tag archive pages.
+" type="primary" %}
 
+##  Overview
 
-{% include note.html content="In contrast to WordPress, with Jekyll to get tags on pages you have to build out the functionality for tags so that clicking a tag name shows you all pages with that tag. Tags in Jekyll are much more manual." %}
+vEdge30 and the DC-vEdges are quite similar from a configuration standpoint. The templates already created for the DC-vEdges can be re-used for Site 30, but we will be making a copy of those templates and applying the renamed copies to the Device Template for Site 30. This is because DC and Branch sites will generally have some configuration changes down the line which will not apply to both sites. It's a good practice to keep the number of templates to a minimum, keeping in mind the treatment given to different sites. If Site 30 and the DC Site share the same template, any changes made on one will affect the other.
 
-Additionally, you must create a tag archive page similar to the other pages named tag_{tagname}.html folder. This theme doesn't auto-create tag archive pages.
+## Creating the Site 30 Feature Templates
 
-For simplicity, make all your tags single words (connect them with hyphens if necessary).
+We will set up the VPN templates for VPN 0 in Site 30 by making a copy of the *DCvEdge-vpn0* Feature Template created before. No other major changes will be made to the template itself
 
-## Setting up tags
+1. From **Configuration -> Templates -> Feature tab** search in the search box for *dc*. We should see a few templates, out of which we will be making copies of *DCvEdge-vpn0*, *DC-vEdge_INET* and *DC-vEdge_MPLS* for use at Site 30
 
-Tags have a few components.
+    ![](/images/vEdgeSite30_Templates/01_confTemp_searchdc.PNG)
 
-1. In the \_data/tags.yml file, add the tag names you want to allow. For example:
+2. Click on the three dots next to *DCvEdge-vpn0* and choose **Copy**. Rename the template to *vEdge30-vpn0* with a description of *VPN0 for the Site30 INET and MPLS link*. Click on **Copy**
 
-   ```json
-   allowed-tags:
-     - getting_started
-     - overview
-     - formatting
-     - publishing
-     - single_sourcing
-     - special_layouts
-     - content types
-   ```
+    ![](/images/vEdgeSite30_Templates/02_copyvpn0.PNG)
 
-3. Create a tag archive file for each tag in your tags_doc.yml list. Name the file following the same pattern in the tags folder, like this: tag_collaboration.html.
+3. Click on the dots next to the newly created template and choose to **Edit**. Make sure the Template Name and Description match. Click on **Update**
 
-   Each tag archive file needs only this:
+    ![](/images/vEdgeSite30_Templates/03_edittemp_updatedesc.PNG)
 
-   {% raw %}
-   ```liquid
----
-title: "Collaboration pages"
-tagName: collaboration
-search: exclude
-permalink: tag_collaboration.html
-sidebar: mydoc_sidebar
----
-{% include taglogic.html %}
-   ```
-    {% endraw %}
+4. Repeat steps 2 and 3 above, making copies of *DC-vEdge_INET* and *DC-vEdge_MPLS*, renaming them to *vEdge30_INET* and *vEdge30_MPLS* respectively. Update the descriptions as necessary, while copying the template and (if required - note that the description does not get updated at times while copying) by editing the template and choosing to **Update**
 
-   {% include note.html content="In the \_includes/mydoc folder, there's a taglogic.html file. This file (included in each tag archive file) has common logic for getting the tags and listing out the pages containing the tag in a table with summaries or truncated excerpts. You don't have to do anything with the file &mdash; just leave it there because the tag archive pages reference it." %}
+    ![](/images/vEdgeSite30_Templates/04_inet.PNG)
 
-4. Change the title, tagName, and permalink values to be specific to the tag name you just created.
+    ![](/images/vEdgeSite30_Templates/05_mpls.PNG)
 
-   By default, the \_layouts/page.html file will look for any tags on a page and insert them at the bottom of the page using this code:
+5. If we go back to the main **Configuration -> Templates -> Feature Tab**, and search for *vedge30* in the search string, there should be 3 templates visible
 
+    ![](/images/vEdgeSite30_Templates/06_3featvedge30.PNG)
 
-```liquid
-{% raw %}<div class="tags">
-{% if page.tags != null %}
-<b>Tags: </b>
-{% assign projectTags = site.data.tags.allowed-tags %}
-{% for tag in page.tags %}
-{% if projectTags contains tag %}
-<a href="{{ "tag_" | append: tag | append: ".html" }}" class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
-{% endif %}
-{% endfor %}
-{% endif %}
-</div>{% endraw %}
-```
+Thus, we have simply made copies of the DC-vEdge Feature Templates and updated the name/description so as to apply different configuration to the two Sites (Site 30 and DC) down the line, if required.
 
+<br/>
 
-Because this code appears on the \_layouts/page.html file by default, you don't need to do anything in your page to get the tags to appear. However, if you want to alter the placement or change the button color, you can do so within the \_includes/taglogic.html file.
+{% include callout.html content="**Task List**
+<br/><br/>
 
-You can change the button color by changing the class on the button from `btn-info` to one of the other button classes bootstrap provides. See [Labels][mydoc_labels] for more options on button class names.
+- [~~Creating the Site 30 Feature Templates~~](#creating-the-site-30-feature-templates)
+<br/>
 
-## Retrieving pages for a specific tag
+- [Modifying a Device Template and Attaching Devices](#modifying-a-device-template-and-attaching-devices)
 
-If you want to retrieve pages outside of a particular tag_archive page, you could use this code:
+<br/>
 
-{% raw %}
-```liquid
-Getting started pages:
-<ul>
-{% for page in site.pages %}
-{% for tag in page.tags %}
-{% if tag == "getting_started" %}
-<li><a href="{{page.url | remove: "/" }}">{{page.title}}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}
-</ul>
-```
-{% endraw %}
+" type="primary" %}
 
-Here's how that code renders:
+## Modifying a Device Template and Attaching Devices
 
-Getting started pages:
-<ul>
-{% for page in site.pages %}
-{% for tag in page.tags %}
-{% if tag == "getting_started" %}
-<li><a href="{{page.url | remove: "/" }}">{{page.title}}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}
-</ul>
+1. Go to **Configuration -> Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**. Rename the Template *vEdge30_dev_temp* and give it a Description of *Device template for the Site 30 vEdge*. Click on **Copy**
 
-If you want to sort the pages alphabetically, you have to apply a `sort` filter:
+    ![](/images/vEdgeSite30_Templates/07_devtemp.PNG)
 
-```liquid
-{% raw %}
-Getting started pages:
-<ul>
-{% assign sorted_pages = site.pages | sort: 'title' %}
-{% for page in sorted_pages %}
-{% for tag in page.tags %}
-{% if tag == "getting_started" %}
-<li><a href="{{page.url | remove: "/" }}">{{page.title}}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}
-</ul>
-{% endraw %}
-```
+2. Click on the three dots next to the newly created template and click on **Edit**. Update the **Transport and Management VPN** section as per the screenshot below. We will be re-using the VPN 512 Templates created for the DC-vEdges. Click on **Update** once done.
 
-Here's how that code renders:
+    ![](/images/vEdgeSite30_Templates/08_editdevtemp.PNG)
 
-Getting started pages:
-<ul>
-{% assign sorted_pages = site.pages | sort: 'title' %}
-{% for page in sorted_pages %}
-{% for tag in page.tags %}
-{% if tag == "getting_started" %}
-<li><a href="{{page.url | remove: "/"}}">{{page.title}}</a></li>
-{% endif %}
-{% endfor %}
-{% endfor %}
-</ul>
+3. Click on the three dots next to the newly created *vEdge30_dev_temp* Template and click on **Attach Devices**
 
-## Efficiency
-Although the tag approach here uses `for` loops, these are somewhat inefficient on a large site. Most of my tech doc projects don't have hundreds of pages (like my blog does). If your project does have hundreds of pages, this `for` loop approach with tags is going to slow down your build times.
+    ![](/images/vEdgeSite30_Templates/09_attach.PNG)
 
-Without the ability to access pages inside a universal namespace with the page type, there aren't many workarounds here for faster looping.
+4. Choose **vEdge30** from the list and click on **Attach**
 
-With posts (instead of pages), since you can access just the posts inside `posts.tag.tagname`, you can be a lot more efficient with the looping.
+    ![](/images/vEdgeSite30_Templates/10_chooseve30attach.PNG)
 
-Still, if the build times are getting long (e.g., 1 or 2 minutes per build), look into reducing the number of `for` loops on your site.
+5. The device should show up in the list. Click on the three dots next to vEdge30 and choose to **Edit Device Template**. Populate the details as shown below and click on **Update**
 
-## Empty tags?
+    ![](/images/vEdgeSite30_Templates/11_popdet_upd.PNG)
 
-If your page shows "tags:" at the bottom without any value, it could mean a couple of things:
+6. **DO NOT** click on Next or Configure Devices at this point. Log in to the CLI for vEdge30 and issue a `show bfd sessions`.
 
-* You're using a tag that isn't specified in your allowed tags list in your tags.yml file.
-* You have an empty `tags: []` property in your frontmatter.
+    ![](/images/vEdgeSite30_Templates/12_shbfdbefore.PNG)
 
-If you don't want tags to appear at all on your page, remove the tags property from your frontmatter.
+7. Back at the vManage GUI, click on **Next** and then **Configure Devices**. You can view the side-by-side difference, making note of the fact that we are adding an MPLS interface
 
-## Remembering the right tags
+    ![](/images/vEdgeSite30_Templates/13_sbs_ge00_ge01_conf.PNG)
 
-Since you may have many tags and find it difficult to remember what tags are allowed, I recommend creating a template that prepopulates all your frontmatter with all possible tags. Then just remove the tags that don't apply.
+8. Once the configuration goes through, log back into the CLI of vEdge30 and issue `show bfd sessions`. You should see BFD sessions on the mpls TLOC as well
 
-See [WebStorm Text Editor][mydoc_webstorm_text_editor] for tips on creating file templates in WebStorm.
+    ![](/images/vEdgeSite30_Templates/14_shbfd_after.PNG)
 
-{% include links.html %}
+9. On the vManage GUI, if you click on **Full WAN Connectivity** on the Main Dashboard, you will see that vEdge30 has a total of 9 BFD sessions
+
+    ![](/images/vEdgeSite30_Templates/15_ninebfdsess.PNG)
+
+10. To see the BFD sessions, we can also go to **Monitor -> Network**, click on vEdge30. Choose Real-Time from the left hand side and put **BFD Sessions** in the Device Options. Choose Do Not Filter
+
+    ![](/images/vEdgeSite30_Templates/16_mon_net_scrollreal.PNG)
+
+    ![](/images/vEdgeSite30_Templates/17_bfdsess.PNG)
+
+11. We will see the same information as what was visible on the CLI in Step 8. Note that Site40 is missing from this list. That is because we haven't added the MPLS configuration to Site 40 yet. This will be done in the next section.
+
+    ![](/images/vEdgeSite30_Templates/18_sameinfoascli.PNG)
+
+12. Navigate to **Configuration -> Devices** and you will see that all devices are now in vManage mode
+
+    ![](/images/vEdgeSite30_Templates/99_vmmode.PNG)
+
+This completes our Configuration for bringing Site 30 under the control of vManage.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Creating the Site 30 Feature Templates~~](#creating-the-site-30-feature-templates)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN0 Feature Template~~](#creating-the-vpn0-feature-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the INET and MPLS VPN Interface Feature Template~~](#creating-the-inet-and-mpls-vpn-interface-feature-template)
+    <br/>
+- [~~Modifying a Device Template and Attaching Devices~~](#modifying-a-device-template-and-attaching-devices)
+
+<br/>
+
+" type="primary" %}
