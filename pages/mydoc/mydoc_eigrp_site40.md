@@ -1,11 +1,11 @@
 ---
-title: Images
+title: Dynamic Service Side Routing at Site 40
 tags: [formatting]
 keywords: images, screenshots, vectors, svg, markdown syntax
-last_updated: July 3, 2016
-summary: "Store images in the images folder and use the image.html include to insert images. This include has several options, including figcaptions, that extract the content from the formatting."
+last_updated: May 26, 2020
+summary: "Implementing Dynamic Service Side routing at Site 40 - EIGRP"
 sidebar: mydoc_sidebar
-permalink: mydoc_images.html
+permalink: mydoc_eigrp_site40.html
 folder: mydoc
 ---
 

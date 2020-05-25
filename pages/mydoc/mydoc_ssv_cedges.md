@@ -1,11 +1,11 @@
 ---
-title: Alerts
+title: Configuring Service Side VPNs - cEdges
 tags: [formatting]
 keywords: notes, tips, cautions, warnings, admonitions
 last_updated: July 3, 2016
-summary: "You can insert notes, tips, warnings, and important alerts in your content. These notes make use of Bootstrap styling and are available through data references such as site.data.alerts.note."
+summary: "Configure the Service Side VPNs for the cEdges at Sites 40 and 50"
 sidebar: mydoc_sidebar
-permalink: mydoc_alerts.html
+permalink: mydoc_ssv_cedges.html
 folder: mydoc
 ---
 

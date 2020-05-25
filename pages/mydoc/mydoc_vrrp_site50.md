@@ -1,12 +1,11 @@
 ---
-title: Code samples
+title: Implementing VRRP at Site 50
 tags: [formatting]
 keywords: dcode samples syntax highlighting
-last_updated: July 3, 2016
-datatable: true
-summary: "You can use fenced code blocks with the language specified after the first set of backtick fences."
+last_updated: May 26, 2020
+summary: "Configuring VRRP at Site 50 for First Hop Redundancy"
 sidebar: mydoc_sidebar
-permalink: mydoc_code_samples.html
+permalink: mydoc_vrrp_site50.html
 folder: mydoc
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: Conditional logic
+title: Applying Templates to the vSmarts
 tags: [single_sourcing]
-keywords: if else logic, conditions, conditional attributes, conditional filtering
-last_updated: July 3, 2016
-summary: "You can implement advanced conditional logic that includes if statements, or statements, unless, and more. This conditional logic facilitates single sourcing scenarios in which you're outputting the same content for different audiences."
+keywords: vSmart, Templates, control policies
+last_updated: May 25, 2020
+summary: "Applying Templates to the vSmarts in order to bring them in vManage mode"
 sidebar: mydoc_sidebar
 permalink: mydoc_Templates_to_vSmarts.html
 folder: mydoc
