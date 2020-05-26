@@ -128,38 +128,16 @@ entries:
       url: /mydoc_eigrp_site40.html
       output: web, pdf
 
-    - title: Implementing VRRP at Site 50
-      url: /mydoc_vrrp_site50.html
-      output: web, pdf
-
-
-
-    - title: Links
-      url: /mydoc_hyperlinks.html
-      output: web, pdf
-
-    - title: Navtabs
-      url: /mydoc_navtabs.html
-      output: web, pdf
-
-    - title: Tables
-      url: /mydoc_tables.html
-      output: web, pdf
-
-    - title: Syntax highlighting
-      url: /mydoc_syntax_highlighting.html
-      output: web, pdf
-
-    - title: Workflow maps
-      url: /mydoc_workflow_maps.html
-      output: web, pdf
-
-  - title: Handling reviews
+  - title: Implementing Control Policies
     output: web, pdf
 
     folderitems:
-    - title: Commenting on files
-      url: /mydoc_commenting_on_files.html
+    - title: Configuring a Hub and Spoke Topology
+      url: /mydoc_hub_and_spoke.html
+      output: web, pdf
+
+    - title: Implementing a Regional Hub
+      url: /mydoc_regional_hub.html
       output: web, pdf
 
 #    - title: Git collaboration
