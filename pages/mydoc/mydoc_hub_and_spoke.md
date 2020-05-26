@@ -1,12 +1,12 @@
 ---
-title: Commenting on files
+title: Configuring a Hub and Spoke topology
 tags:
   - navigation
 keywords: "annotations, comments, feedback"
-last_updated: "November 30, 2016"
-summary: "You can add a button to your pages that allows people to add comments."
+last_updated: "May 26, 2020"
+summary: "Moving the SD-WAN topology from the default of full mesh to a Hub and Spoke"
 sidebar: mydoc_sidebar
-permalink: mydoc_commenting_on_files.html
+permalink: mydoc_hub_and_spoke.html
 folder: mydoc
 ---
 

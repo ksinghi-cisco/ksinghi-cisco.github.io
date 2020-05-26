@@ -5,7 +5,7 @@ keywords: release notes, announcements, what's new, new features
 last_updated: July 16, 2016
 summary: "Version 6.0 of the Documentation theme for Jekyll reverts back to relative links so you can view the files offline. Additionally, you can store pages in subdirectories. Templates for alerts and images are available."
 sidebar: mydoc_sidebar
-permalink: mydoc_workflow_maps.html
+permalink: mydoc_regional_hub.html
 folder: mydoc
 ---
 
@@ -35,9 +35,9 @@ You can implement workflow maps at the top of your pages. This is helpful if you
     <div class="clearfix"></div>
     </div>
     ```
-    
+
     You can have only 5 possible workflow squares across. Also, the links must be manually coded HTML like those shown, not automated Markdown links. (This is because the boxes are linked.)
-    
+
 2.  Where you want the user maps to appear, add the sidebar properties shown in red below:
 
     <pre>
@@ -53,25 +53,25 @@ You can implement workflow maps at the top of your pages. This is helpful if you
     <span class="red">box_number</span>: 1
     ---
     </pre>
-    
+
     In the page.html layout, the following code gets activated when `simple_map` equals `true`:
-    
+
     ```
     {% raw %}{% if page.simple_map == true %}
-    
+
     <script>
         $(document).ready ( function(){
             $('.box{{page.box_number}}').addClass('active');
         });
     </script>
-    
+
     {% include custom/{{page.map_name}}.html %}
-    
+
     {% endif %}{% endraw %}
     ```
-    
-    The script adds an `active` class to the box number, which automatically makes the active workflow box become highlighted based on the page you're viewing. 
-    
+
+    The script adds an `active` class to the box number, which automatically makes the active workflow box become highlighted based on the page you're viewing.
+
     The `map_name` gets used as the name of the included file.
 
 ## Complex workflow maps
@@ -83,19 +83,19 @@ The simpler user workflow allows for 5 workflow steps. If you have a more comple
     ```
     <div class="modal-body">
     <p>This is just dummy text ... Your first steps should be to get started. You will need to do the following:</p>
-    
+
         <ul>
             <li><a href="p2_sample6.html">Sample 6</a></li>
             <li><a href="p2_sample7.html">Sample 7</a></li>
             <li><a href="p2_sample8.html">Sample 8</a></li>
         </ul>
         <p>If you run into any of these setup issues, you must solve them before you can continue on.</p>
-    
+
               </div>
      ```
-     
+
      The existing usermapcomplex.html file just has 3 workflow square modals. If you need more, duplicate the modal code. In the duplicated code, make sure you make the following values in red unique (but the same within the same modal):
-     
+
      <pre>
      <button type="button" class="btn btn-default btn-lg modalButton3" data-toggle="modal" data-target="<span class="red">#myModal3</span>">Publish your app</button>
            <!-- Modal -->
@@ -120,23 +120,23 @@ The simpler user workflow allows for 5 workflow steps. If you have a more comple
     </pre>
 
     When your frontmatter contains `complex_map` equal to `true`, the following code gets activated in the page layout.html file:
-    
+
     ```
     In the page.html layout, the following code gets activated when `map` equals `true`:
-        
+
      ```
         {% raw %}{% if page.complex_map == true %}
-        
+
         <script>
             $(document).ready ( function(){
                 $('.modalButton{{page.box_number}}').addClass('active');
             });
         </script>
-        
+
         {% include custom/{{page.map_name}}.html %}
-        
+
         {% endif %}{% endraw %}
         ```
      ```
-     
+
 {% include links.html %}
