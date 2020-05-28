@@ -9,22 +9,37 @@ permalink: mydoc_Templates_to_vSmarts.html
 folder: mydoc
 ---
 
-## About Liquid and conditional statements
-If you want to create different outputs for different audiences, you can do all of this using a combination of Jekyll's Liquid markup and values in your configuration file. This is how I previously configured the theme. I had different configuration files for each output. Each configuration file specified different values for product, audience, version, and so on. Then I had different build processes that would leverage the different configuration files. It seemed like a perfect implementation of DITA-like techniques with Jekyll.
+<br/>
 
-But I soon found that having lots of separate outputs for a project was undesirable. If you have 10 different outputs that have different nuances for different audiences, it's hard to manage and maintain. In this latest version of the theme, I consolidated all information into the same output to explicitly do away with the multi-output approach.
+{% include callout.html content="**Task List**
+<br/><br/>
 
-As such, the conditional logic won't have as much play as it previously did. Instead of conditions, you'll probably want to incorporate [navtabs](mydoc_navtabs) to split up the information.
+- Configuring VPN 0 Templates for vSmarts
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 0 template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 0 Interface Template
+    <br/>
 
-However, you can still of course use conditional logic as needed.
+- Configuring VPN 512 Templates for vSmarts
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 512 template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 512 Interface Template
+    <br/>
+- Attaching vSmarts to the Device Template and Verification
 
-{% include tip.html content="Definitely check out [Liquid's documentation](http://docs.shopify.com/themes/liquid-documentation/basics) for more details about how to use operators and other liquid markup. The notes here are a small, somewhat superficial sample from the site." %}
+<br/>
 
-## Where to store filtering values
+" type="primary" %}
+
+## Configuring VPN 0 Templates for vSmarts
+
+### Configuring the main VPN 0 template
 
 You can filter content based on values that you have set either in your page's frontmatter, a config file, or in a file in your \_data folder. If you set the attribute in your config file, you need to restart the Jekyll server to see the changes. If you set the value in a file in your \_data folder or page frontmatter, you don't need to restart the server when you make changes.
 
-## Conditional logic based on config file value
+### Configuring the VPN 0 Interface Template
 
 Here's an example of conditional logic based on a value in the page's frontmatter. Suppose you have the following in your frontmatter:
 
@@ -64,33 +79,9 @@ To bake a casserole:
 
 You don't need the `elsif` or `else`. You could just use an `if` (but be sure to close it with `endif`).
 
-## Or operator
+## Configuring VPN 512 Templates for vSmarts
 
-You can use more advanced Liquid markup for conditional logic, such as an `or` command. See [Shopify's Liquid documentation](http://docs.shopify.com/themes/liquid-documentation/basics/operators) for more details.
-
-For example, here's an example using `or`:
-
-{% raw %}
-```liquid
-{% if page.audience contains "vegan" or page.audience == "vegetarian" %}
-    Then run this...
-{% endif %}
-```
-{% endraw %}
-
-Note that you have to specify the full condition each time. You can't shorten the above logic to the following:
-
-{% raw %}
-```liquid
-{% if page.audience contains "vegan" or "vegetarian" %}
-    // run this.
-{% endif %}
-```
-{% endraw %}
-
-This won't work.
-
-## Unless operator
+### Configuring the main VPN 512 template
 
 You can also use `unless` in your logic, like this:
 
@@ -106,7 +97,7 @@ When figuring out this logic, read it like this: "Run the code here *unless* thi
 
 Don't read it the other way around or you'll get confused. (It's *not* executing the code only if the condition is satisfied.)
 
-## Storing conditions in the \_data folder
+### Configuring the VPN 512 Interface Template
 
 Here's an example of using conditional logic based on a value in a data file:
 
@@ -124,7 +115,7 @@ this shows if neither of the above two if conditions are met.
 
 To use this, I would need to have a \_data folder called options where the `output` property is stored.
 
-## Specifying the location for \_data
+## Attaching vSmarts to the Device Template and Verification
 
 You can also specify a `data_source` for your data location in your configuration file. Then you aren't limited to simply using `_data` to store your data files.
 
@@ -138,19 +129,28 @@ data_source: data_alpha
 
 Then create a folder called \_data_alpha.
 
-For your beta configuration file, specify the data source like this:
+Fotr your beta configuration file, specify the data source like this:
 
-```
-data_source: data_beta
-```
+<br/>
 
-Then create a folder called \_data_beta.
+{% include callout.html content="**Task List**
+<br/><br/>
 
+- Configuring VPN 0 Templates for vSmarts
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 0 template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 0 Interface Template
+    <br/>
 
-## Conditions versus includes
+- Configuring VPN 512 Templates for vSmarts
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 512 template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 512 Interface Template
+    <br/>
+- Attaching vSmarts to the Device Template and Verification
 
-If you have a lot of conditions in your text, it can get confusing. As a best practice, whenever you insert an `if` condition, add the `endif` at the same time. This will reduce the chances of forgetting to close the if statement. Jekyll won't build if there are problems with the liquid logic.
+<br/>
 
-If your text is getting busy with a lot of conditional statements, consider putting a lot of content into includes so that you can more easily see where the conditions begin and end.
-
-{% include links.html %}
+" type="primary" %}
