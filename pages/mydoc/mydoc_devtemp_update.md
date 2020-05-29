@@ -33,12 +33,122 @@ folder: mydoc
 
 ### Updating the DC-vEdge Device Template
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [Updating vEdge Device Templates for Service Side VPNs](#updating-vedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the DC-vEdge Device Template~~](#updating-the-dc-vedge-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 20 Device Template](#updating-the-site-20-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 30 Device Template](#updating-the-site-30-device-template)
+    <br/>
+- [Updating cEdge Device Templates for Service Side VPNs](#updating-cedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 40 Device Template](#updating-the-site-40-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 50 Device Template](#updating-the-site-50-device-template)
+    <br/>
+
+" type="primary" %}
+
 ### Updating the Site 20 Device Template
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [Updating vEdge Device Templates for Service Side VPNs](#updating-vedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the DC-vEdge Device Template~~](#updating-the-dc-vedge-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 20 Device Template~~](#updating-the-site-20-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 30 Device Template](#updating-the-site-30-device-template)
+    <br/>
+- [Updating cEdge Device Templates for Service Side VPNs](#updating-cedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 40 Device Template](#updating-the-site-40-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 50 Device Template](#updating-the-site-50-device-template)
+    <br/>
+
+" type="primary" %}
+
 ### Updating the Site 30 Device Template
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Updating vEdge Device Templates for Service Side VPNs~~](#updating-vedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the DC-vEdge Device Template~~](#updating-the-dc-vedge-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 20 Device Template~~](#updating-the-site-20-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 30 Device Template~~](#updating-the-site-30-device-template)
+    <br/>
+- [Updating cEdge Device Templates for Service Side VPNs](#updating-cedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 40 Device Template](#updating-the-site-40-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 50 Device Template](#updating-the-site-50-device-template)
+    <br/>
+
+" type="primary" %}
 
 ## Updating cEdge Device Templates for Service Side VPNs
 
 ### Updating the Site 40 Device Template
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Updating vEdge Device Templates for Service Side VPNs~~](#updating-vedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the DC-vEdge Device Template~~](#updating-the-dc-vedge-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 20 Device Template~~](#updating-the-site-20-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 30 Device Template~~](#updating-the-site-30-device-template)
+    <br/>
+- [Updating cEdge Device Templates for Service Side VPNs](#updating-cedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 40 Device Template~~](#updating-the-site-40-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Updating the Site 50 Device Template](#updating-the-site-50-device-template)
+    <br/>
+
+" type="primary" %}
+
 ### Updating the Site 50 Device Template
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Updating vEdge Device Templates for Service Side VPNs~~](#updating-vedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the DC-vEdge Device Template~~](#updating-the-dc-vedge-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 20 Device Template~~](#updating-the-site-20-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 30 Device Template~~](#updating-the-site-30-device-template)
+    <br/>
+- [~~Updating cEdge Device Templates for Service Side VPNs~~](#updating-cedge-device-templates-for-service-side-vpns)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 40 Device Template~~](#updating-the-site-40-device-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Updating the Site 50 Device Template~~](#updating-the-site-50-device-template)
+    <br/>
+
+" type="primary" %}

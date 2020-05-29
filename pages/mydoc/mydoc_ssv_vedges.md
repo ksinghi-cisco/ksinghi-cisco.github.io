@@ -20,4 +20,24 @@ folder: mydoc
 
 ## Configuring the vEdge VPN 10 Feature Templates
 
+<br/>
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Configuring the vEdge VPN 10 Feature Templates~~](#configuring-the-vedge-vpn-10-feature-templates)
+<br/>
+- [Configuring the vEdge VPN 20 Feature Template](#configuring-the-vedge-vpn-20-feature-templates)
+<br/>
+
+" type="primary" %}
+
 ## Configuring the vEdge VPN 20 Feature Templates
+
+<br/>
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Configuring the vEdge VPN 10 Feature Templates~~](#configuring-the-vedge-vpn-10-feature-templates)
+<br/>
+- [~~Configuring the vEdge VPN 20 Feature Template~~](#configuring-the-vedge-vpn-20-feature-templates)
+<br/>
+
+" type="primary" %}
