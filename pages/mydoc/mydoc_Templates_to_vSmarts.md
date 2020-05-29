@@ -142,7 +142,7 @@ This completes the configuration of the Main VPN 0 Template. Continue with confi
 
 This completes the configuration of the VPN 0 Interface Template.
 
-Make sure the VPN 0 Template and the VPN 0 Interface Template just created is selected from the drop down in the Device Template we're building before proceeding to create the VPN 512 Templates.
+Make sure the VPN 0 and VPN 0 Interface Templates just created are selected from the drop down in the Device Template we're building before proceeding to create the VPN 512 Templates.
 
 <br/>
 
@@ -233,6 +233,7 @@ We have completed the Device Template (and consequently the Feature Template) co
     <br/>
 
 - [~~Configuring VPN 512 Templates for vSmarts~~](#configuring-vpn-512-templates-for-vsmarts)
+<br/>
 
 - [Attaching vSmarts to the Device Template and Verification](#attaching-vsmarts-to-the-device-template-and-verification)
 
@@ -276,7 +277,7 @@ Our Device Template for the vSmarts are set up and we now need to attach them to
 
     ![](/images/vSmart_Templates/30_vmmode.PNG)
 
-This completes our activity of attaching Device Templates to the vSmarts. 
+This completes our activity of attaching Device Templates to the vSmarts.
 
 <br/>
 
