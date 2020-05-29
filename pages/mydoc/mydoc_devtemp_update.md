@@ -9,25 +9,36 @@ permalink: mydoc_devtemp_update.html
 folder: mydoc
 ---
 
-## About labels
-Labels might come in handy for adding button-like tags next to elements, such as POST, DELETE, UPDATE methods for endpoints. You can use any classes from Bootstrap in your content.
+{% include callout.html content="**Task List**
+<br/><br/>
 
-```html
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
-```
+- Updating vEdge Device Templates for Service Side VPNs
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Updating the DC-vEdge Device Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Updating the Site 20 Device Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Updating the Site 30 Device Template
+    <br/>
+- Updating cEdge Device Templates for Service Side VPNs
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Updating the Site 40 Device Template
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Updating the Site 50 Device Template
+    <br/>
 
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
+" type="primary" %}
 
-You can have a label appear within a heading simply by including the span tag in the heading. However, you can't mix Markdown syntax with HTML, so you'd have to hard-code the heading ID for the auto-TOC to work.
+## Updating vEdge Device Templates for Service Side VPNs
 
-{% include links.html %}
+### Updating the DC-vEdge Device Template
+
+### Updating the Site 20 Device Template
+
+### Updating the Site 30 Device Template
+
+## Updating cEdge Device Templates for Service Side VPNs
+
+### Updating the Site 40 Device Template
+
+### Updating the Site 50 Device Template
