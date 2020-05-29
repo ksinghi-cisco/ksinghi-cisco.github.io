@@ -19,6 +19,8 @@ folder: mydoc
 <br/>
 " type="primary" %}
 
+{% include important.html content="Most of the steps in this section are quite repetitive and very similar to the previous section where we configured the Service Side VPN Templates for the vEdges. Thus, the steps will be quite brief, augmented by images which can be used as reference points to complete this section. This will also serve as a way to increase familiarity with creating and managing Templates. " %}
+
 ## Configuring the cEdge VPN 10 Feature Templates
 
 <br/>
