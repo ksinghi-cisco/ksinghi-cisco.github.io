@@ -39,6 +39,30 @@ folder: mydoc
 
 You can filter content based on values that you have set either in your page's frontmatter, a config file, or in a file in your \_data folder. If you set the attribute in your config file, you need to restart the Jekyll server to see the changes. If you set the value in a file in your \_data folder or page frontmatter, you don't need to restart the server when you make changes.
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [Configuring VPN 0 Templates for vSmarts](#configuring-vpn-0-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 0 template~~](#configuring-the-main-vpn-0-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the VPN 0 Interface Template](#configuring-the-vpn-0-interface-template)
+    <br/>
+
+- [Configuring VPN 512 Templates for vSmarts](#configuring-vpn-512-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the main VPN 512 template](#configuring-the-main-vpn-512-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the VPN 512 Interface Template](#configuring-the-vpn-512-interface-template)
+    <br/>
+- [Attaching vSmarts to the Device Template and Verification](#attaching-vsmarts-to-the-device-template-and-verification)
+
+<br/>
+
+" type="primary" %}
+
 ### Configuring the VPN 0 Interface Template
 
 Here's an example of conditional logic based on a value in the page's frontmatter. Suppose you have the following in your frontmatter:
@@ -79,6 +103,30 @@ To bake a casserole:
 
 You don't need the `elsif` or `else`. You could just use an `if` (but be sure to close it with `endif`).
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Configuring VPN 0 Templates for vSmarts~~](#configuring-vpn-0-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 0 template~~](#configuring-the-main-vpn-0-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 0 Interface Template~~](#configuring-the-vpn-0-interface-template)
+    <br/>
+
+- [Configuring VPN 512 Templates for vSmarts](#configuring-vpn-512-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the main VPN 512 template](#configuring-the-main-vpn-512-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the VPN 512 Interface Template](#configuring-the-vpn-512-interface-template)
+    <br/>
+- [Attaching vSmarts to the Device Template and Verification](#attaching-vsmarts-to-the-device-template-and-verification)
+
+<br/>
+
+" type="primary" %}
+
 ## Configuring VPN 512 Templates for vSmarts
 
 ### Configuring the main VPN 512 template
@@ -97,6 +145,30 @@ When figuring out this logic, read it like this: "Run the code here *unless* thi
 
 Don't read it the other way around or you'll get confused. (It's *not* executing the code only if the condition is satisfied.)
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Configuring VPN 0 Templates for vSmarts~~](#configuring-vpn-0-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 0 template~~](#configuring-the-main-vpn-0-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 0 Interface Template~~](#configuring-the-vpn-0-interface-template)
+    <br/>
+
+- [Configuring VPN 512 Templates for vSmarts](#configuring-vpn-512-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 512 template~~](#configuring-the-main-vpn-512-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the VPN 512 Interface Template](#configuring-the-vpn-512-interface-template)
+    <br/>
+- [Attaching vSmarts to the Device Template and Verification](#attaching-vsmarts-to-the-device-template-and-verification)
+
+<br/>
+
+" type="primary" %}
+
 ### Configuring the VPN 512 Interface Template
 
 Here's an example of using conditional logic based on a value in a data file:
@@ -114,6 +186,30 @@ this shows if neither of the above two if conditions are met.
 {% endraw %}
 
 To use this, I would need to have a \_data folder called options where the `output` property is stored.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Configuring VPN 0 Templates for vSmarts~~](#configuring-vpn-0-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 0 template~~](#configuring-the-main-vpn-0-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 0 Interface Template~~](#configuring-the-vpn-0-interface-template)
+    <br/>
+
+- [~~Configuring VPN 512 Templates for vSmarts~~](#configuring-vpn-512-templates-for-vsmarts)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 512 template~~](#configuring-the-main-vpn-512-template)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 512 Interface Template~~](#configuring-the-vpn-512-interface-template)
+    <br/>
+- [Attaching vSmarts to the Device Template and Verification](#attaching-vsmarts-to-the-device-template-and-verification)
+
+<br/>
+
+" type="primary" %}
 
 ## Attaching vSmarts to the Device Template and Verification
 
@@ -136,20 +232,20 @@ Fotr your beta configuration file, specify the data source like this:
 {% include callout.html content="**Task List**
 <br/><br/>
 
-- Configuring VPN 0 Templates for vSmarts
+- [~~Configuring VPN 0 Templates for vSmarts~~](#configuring-vpn-0-templates-for-vsmarts)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 0 template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 0 template~~](#configuring-the-main-vpn-0-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 0 Interface Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 0 Interface Template~~](#configuring-the-vpn-0-interface-template)
     <br/>
 
-- Configuring VPN 512 Templates for vSmarts
+- [~~Configuring VPN 512 Templates for vSmarts~~](#configuring-vpn-512-templates-for-vsmarts)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the main VPN 512 template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the main VPN 512 template~~](#configuring-the-main-vpn-512-template)
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the VPN 512 Interface Template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the VPN 512 Interface Template~~](#configuring-the-vpn-512-interface-template)
     <br/>
-- Attaching vSmarts to the Device Template and Verification
+- [~~Attaching vSmarts to the Device Template and Verification~~](#attaching-vsmarts-to-the-device-template-and-verification)
 
 <br/>
 
