@@ -31,6 +31,20 @@ Decoding the toplogy:
 
 * cEdge40 and cEdge50 will function as AppNav-XE Controllers
 
+## Device Credentials
+
+Given below are the access details for some key devices in the network
+
+| Device               | Access Method             | Username | Password   |
+|----------------------|---------------------------|----------|------------|
+| vManage              | Browser - GUI             | admin    | admin      |
+| vEdges and cEdges    | Putty                     | admin    | admin      |
+| Central Gateway      | Putty                     | admin    | admin      |
+| Ubuntu - Site 40 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 |
+| Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 |
+| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 |
+| WAAS Central Manager | Browser - GUI             | admin    | admin      |
+
 ## Network schema
 
 {% include important.html content="Needless to say, these are super important and the IP Addressing scheme should be followed as enumerated in the lab guide" %}
