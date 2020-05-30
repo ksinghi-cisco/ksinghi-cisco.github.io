@@ -34,7 +34,7 @@ The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflin
 <br/>
 " type="primary" %}
 
-## Updating the cEdge Service VPN 10 with an eigrp Template
+## Updating the cEdge Service VPN 10 with an EIGRP Template
 
 When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in css/customstyles.css.
 
