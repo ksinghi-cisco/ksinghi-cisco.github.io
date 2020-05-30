@@ -37,8 +37,8 @@ We are now going to set up the Service Side VPNs for our vEdges. The process is 
     |                           | Template Name         | NA                                    | *vedge-vpn10*                |
     |                           | Description           | NA                                    | *VPN 10 Template for vEdges* |
     | Basic Configuration       | VPN                   | Global                                | 10                           |
-    | Basic Configuration - DNS | Primary DNS Address   | Global                                | 10.2.1.5                     |
-    | Basic Configuration - DNS | Secondary DNS Address | Global                                | 10.2.1.6                     |
+    | DNS | Primary DNS Address   | Global                                | 10.2.1.5                     |
+    | DNS | Secondary DNS Address | Global                                | 10.2.1.6                     |
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
 
@@ -48,7 +48,7 @@ We are now going to set up the Service Side VPNs for our vEdges. The process is 
 
     This creates the VPN template for VPN 10. We will make a copy of this template and create an almost identical template for VPN 20 later on.
 
-4. We now create the vEdge VPN 10 Interface Template. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add New** and search for *ve*. Choose the Device as vEdge Cloud and the Template as **VPN Interface Ethernet**
+4. We now create the vEdge VPN 10 Interface Template. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add Template** and search for *ve*. Choose the Device as vEdge Cloud and the Template as **VPN Interface Ethernet**
 
     ![](/images/Service_vEdges_Templates/09_vpnint.PNG)
 
