@@ -97,8 +97,9 @@ Use the following table to copy-paste IP Addresses as and when required through 
 |         |               |                              | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.241/24      | 10.2.1.1      |
 | NA      | NA            | Ubuntu - Guacamole           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.120/24      | 10.2.1.1      |
 | NA      | NA            | Windows - Jumphost           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.221/24      | 10.2.1.1      |
-| 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.1    |
+| 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
+| 50      | NA            | Ubuntu - Site50_PC           | Network Adapter 1 | Site50-VPN30            | eth0             | 10.50.30.21/24     | 10.50.30.2    |
 
 Given below is a printable version of the table
 
-![](/images/Topology_Schema/NetworkSchema.PNG)
+![](/images/Topology_Schema/NetworkSchema_30_05_2020.PNG)
