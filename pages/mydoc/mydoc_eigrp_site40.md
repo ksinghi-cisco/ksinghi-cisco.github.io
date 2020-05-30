@@ -1,7 +1,7 @@
 ---
 title: Dynamic Service Side Routing at Site 40
 tags: [formatting]
-keywords: images, screenshots, vectors, svg, markdown syntax
+keywords: eigrp, service side routing, site 40, cedge40
 last_updated: May 26, 2020
 summary: "Implementing Dynamic Service Side routing at Site 40 - EIGRP"
 sidebar: mydoc_sidebar
@@ -9,91 +9,158 @@ permalink: mydoc_eigrp_site40.html
 folder: mydoc
 ---
 
-## Image Include Template
+{% include callout.html content="**Task List**
+<br/><br/>
+- Overview
+<br/>
+- Updating the cEdge Service VPN 10 with an EIGRP Template
+<br/>
+- Activity Verification
+<br/>
+" type="primary" %}
 
-Instead of using Markdown or HTML syntax directly in your page for images, the syntax for images has been extracted out into an image include that allows you to pass the parameters you need. Include the image.html like this:
+## Overview
+The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflings. The latter is part of Bootstrap, while the former is independent. Font icons allow you to insert icons drawn as vectors from a CDN (so you don't have any local images on your own site).
 
-```liquid
-{% raw %}
-{% include image.html file="jekyll.png" url="http://jekyllrb.com" alt="Jekyll" caption="This is a sample caption" %}
-{% endraw %}
-```
+<br/>
 
-The available include properties are as follows:
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [Updating the cEdge Service VPN 10 with an EIGRP Template](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+" type="primary" %}
 
-| Property | description |
-|-------|--------|
-| file | The name of the file. Store it in the /images folder. If you want to organize your images in subfolders, reference the subfolder path here, like this: `mysubfolder/jekyllrb.png` |
-| url | Whether to link the image to a URL |
-| alt | Alternative image text for accessibility and SEO |
-| caption | A caption for the image |
-| max-width | a maximum width for the image (in pixels). Just specify the number, not px.|
+## Updating the cEdge Service VPN 10 with an eigrp Template
 
-The properties of the include get populated into the image.html template.
-
-Here's the result:
-
-{% include image.html file="jekyll.png" url="http://jekyllrb.com" alt="Jekyll" caption="This is a sample caption" %}
-
-
-
-## Inline image includes
-
-For inline images, such as with a button that you want to appear inline with text, use the inline_image.html include, like this:
-
-```liquid
-Click the **Android SDK Manager** button {%raw%}{% include inline_image.html
-file="androidsdkmanagericon.png" alt="SDK button" %}{%endraw%}
-```
-
-Click the **Android SDK Manager** button {% include inline_image.html file="androidsdkmanagericon.png" alt="SDK button" %}
-
-The inline_image.html include properties are as follows:
-
-| Property | description |
-|-------|--------|
-| file | The name of the file |
-| type | The type of file (png, svg, and so on) |
-| alt | Alternative image text for accessibility and SEO |
-
-## SVG Images
-
-You can also embed SVG graphics. If you use SVG, you need to use the HTML syntax so that you can define a width/container for the graphic. Here's a sample embed:
-
-```liquid
-{% raw %}{% include image.html file="helpapi.svg" url="http://idratherbewriting.com/documentation-theme-jekyll/mydoc_help_api/" alt="Building a Help API" caption="A help API provides a JSON file at a web URL with content that can be pulled into different targets" max-width="600" %}{% endraw %}
-```
-
-Here's the result:
-
-
-{% include image.html file="helpapi.svg" url="http://idratherbewriting.com/documentation-theme-jekyll/mydoc_help_api/" alt="Building a Help API" caption="A help API provides a JSON file at a web URL with content that can be pulled into different targets" max-width="600" %}
-
-The stylesheet even handles SVG display in IE 9 and earlier through the following style (based on this [gist](https://gist.github.com/larrybotha/7881691)):
+When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in css/customstyles.css.
 
 ```css
-/*
- * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
- *
- * [1] IE9
- * [2] IE10+
- */
-/* 1 */
-.ie9 img[src$=".svg"] {
-    width: 100%;
-}
-/* 2 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    img[src$=".svg"] {
-        width: 100%;
-    }
+/* this part adds an icon after external links, using FontAwesome*/
+a[href^="http://"]:after, a[href^="https://"]:after {
+    content: "\f08e";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: none;
+    padding-left: 3px;
 }
 ```
 
-Also, if you're working with SVG graphics, note that Firefox does not support SVG fonts. In Illustrator, when you do a Save As with your AI file and choose SVG, to preserve your fonts, in the Font section, select "Convert to outline" as the Type (don't choose SVG in the Font section).
+<br/>
 
-Also, remove the check box for "Use textpath element for text on a path". And select "Embed" rather than "Link." The following screenshot shows the settings I use. Your graphics will look great in Firefox.
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [~~Updating the cEdge Service VPN 10 with an EIGRP Template~~](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+" type="primary" %}
 
-{% include image.html file="illustratoroptions.png" caption="Essential options for SVG with Illustrator" %}
+## Activity Verification
 
-{% include links.html %}
+Go to the [Font Awesome library](http://fortawesome.github.io/Font-Awesome/icons/) to see the available icons.
+
+The Font Awesome icons allow you to adjust their size by simply adding `fa-2x`, `fa-3x` and so forth as a class to the icon to adjust their size to two times or three times the original size. As vector icons, they scale crisply at any size.
+
+Here's an example of how to scale up a camera icon:
+
+```html
+<i class="fa fa-camera-retro"></i> normal size (1x)
+<i class="fa fa-camera-retro fa-lg"></i> fa-lg
+<i class="fa fa-camera-retro fa-2x"></i> fa-2x
+<i class="fa fa-camera-retro fa-3x"></i> fa-3x
+<i class="fa fa-camera-retro fa-4x"></i> fa-4x
+<i class="fa fa-camera-retro fa-5x"></i> fa-5x
+```
+
+Here's what they render to:
+
+<i class="fa fa-camera-retro"></i> 1x
+<i class="fa fa-camera-retro fa-lg"></i> fa-lg
+<i class="fa fa-camera-retro fa-2x"></i> fa-2x
+<i class="fa fa-camera-retro fa-3x"></i> fa-3x
+<i class="fa fa-camera-retro fa-4x"></i> fa-4x
+<i class="fa fa-camera-retro fa-5x"></i> fa-5x
+
+With Font Awesome, you always use the `i` tag with the appropriate class. You also implement `fa` as a base class first. You can use font awesome icons inside other elements. Here I'm using a Font Awesome class inside a Bootstrap alert:
+
+```html
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning: </b>This is a special warning message.
+```
+
+Here's the result:
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle fa-lg"></i> This is a special warning message.</div>
+
+The notes, tips, warnings, etc., are pre-coded with Font Awesome and stored in the alerts.yml file. That file includes the following:
+
+{% raw %}
+```yaml
+tip: '<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip: </b>'
+note: '<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b>'
+important: '<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important: </b>'
+warning: '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning: </b>'
+end: '</div>'
+
+callout_danger: '<div class="bs-callout bs-callout-danger">'
+callout_default: '<div class="bs-callout bs-callout-default">'
+callout_primary: '<div class="bs-callout bs-callout-primary">'
+callout_success: '<div class="bs-callout bs-callout-success">'
+callout_info: '<div class="bs-callout bs-callout-info">'
+callout_warning: '<div class="bs-callout bs-callout-warning">'
+
+hr_faded: '<hr class="faded"/>'
+hr_shaded: '<hr class="shaded"/>'
+```
+{% endraw %}
+
+This means you can insert a tip, note, warning, or important alert simply by using these tags.
+
+```liquid
+{% raw %}{% include note.html content="Add your note here." %}{% endraw %}
+```
+
+```liquid
+{% raw %}{% include tip.html content="Add your tip here." %}{% endraw %}
+```
+
+```liquid
+{% raw %}{% include important.html content="Add your important info here." %}{% endraw %}
+```
+
+{% raw %}
+```liquid
+{% include warning.html content="Add your warning here." %}
+```
+{% endraw %}
+
+Here's the result:
+
+{% include note.html content="Add your note here." %}
+
+{% include tip.html content="Here's my tip." %}
+
+{% include important.html content="This information is very important." %}
+
+{% include warning.html content="If you overlook this, you may die." %}
+
+The color scheme is the default colors from Bootstrap. You can modify the icons or colors as neede
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [~~Updating the cEdge Service VPN 10 with an EIGRP Template~~](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
+<br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+" type="primary" %}
