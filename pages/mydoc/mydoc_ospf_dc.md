@@ -22,9 +22,9 @@ folder: mydoc
 ## Overview
 Sites in Cisco SD-WAN will generally have an L3 device on the LAN other than the vEdges/cEdges. These devices might be servicing LAN users and advertising their routes via an IGP of choice. We need to make sure that these routes are advertised across the SD-WAN Fabric. While static routing can be used to achieve this, it is time consuming and extremely prone to errors. Thus, running a Dynamic Routing Protocol between the WAN Edge devices and the L3 devices, is usually preferred.
 
-We will run OSPF on VPN 10 in the DC with an L3 Device (called the Central Gateway). The Central Gateway has been configured with the corresponding OSPF configuration. Once OSPF neighbourship is established between the Central Gateway and our DC-vEdges, we will try to reach a route being advertised by the Central Gateway (*10.0.0.1/32*)
+We will run OSPF on VPN 10 in the DC with an L3 Device (called the Central Gateway). The Central Gateway has been configured with the corresponding OSPF configuration. Once OSPF neighbourship is established between the Central Gateway and our DC-vEdges, we will try to reach a route being advertised by the Central Gateway (*10.0.0.1/32*) from vEdge30.
 
-Given below is the section of the topology that we will be working on for this activity
+Given below is the section of the topology that we will be working on for this activity.
 
 ![](/images/DC-vEdge_ConfiguringOSPF/99_topo.PNG)
 

@@ -15,12 +15,17 @@ folder: mydoc
 <br/>
 - Updating the cEdge Service VPN 10 with an EIGRP Template
 <br/>
-- Activity Verification
+- Activity Verification and Remediation
 <br/>
 " type="primary" %}
 
 ## Overview
-The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflings. The latter is part of Bootstrap, while the former is independent. Font icons allow you to insert icons drawn as vectors from a CDN (so you don't have any local images on your own site).
+
+We will run EIGRP on VPN 10 in Site 40 with an L3 Device. The L3 device has been configured with the corresponding EIGRP configuration. Once EIGRP neighbourship is established between the L3 Device and cEdge40, we will try to reach a route being advertised by the L3 Device (*10.40.11.0/24*) from the DC-vEdges.
+
+Given below is the section of the topology that we will be working on for this activity
+
+![](/images/Site40_ConfiguringEIGRP/99_topo.PNG)
 
 <br/>
 
@@ -30,26 +35,65 @@ The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflin
 <br/>
 - [Updating the cEdge Service VPN 10 with an EIGRP Template](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
 <br/>
-- [Activity Verification](#activity-verification)
+- [Activity Verification and Remediation](#activity-verification-and-remediation)
 <br/>
 " type="primary" %}
 
 ## Updating the cEdge Service VPN 10 with an EIGRP Template
 
-When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in css/customstyles.css.
+1. Go to **Configuration -> Templates** and click on the three dots next to *cEdge_dualuplink_devtemp*. Click on **Edit**
 
-```css
-/* this part adds an icon after external links, using FontAwesome*/
-a[href^="http://"]:after, a[href^="https://"]:after {
-    content: "\f08e";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    display: inline-block;
-    text-decoration: none;
-    padding-left: 3px;
-}
-```
+    ![](/images/Site40_ConfiguringEIGRP/01_edit.PNG)
+
+2. Under **Service VPN**, click on the three dots next to the *cedge-vpn10* template and choose to **Edit** it
+
+    ![](/images/Site40_ConfiguringEIGRP/02_editssv.PNG)
+
+3. Click on **EIGRP** under **Additional Cisco VPN Templates** to add an EIGRP Template
+
+    ![](/images/Site40_ConfiguringEIGRP/03_eigrptemp.PNG)
+
+4. Click on the EIGRP drop down and click on **Create Template** to create a new EIGRP Template. We are creating our Templates on the fly over here, but could have created them before hand from the Feature Templates, if required
+
+    ![](/images/Site40_ConfiguringEIGRP/04_createtemp.PNG)
+
+5. Give the template a name of *site40-eigrp* and a Description of *EIGRP Template for Site 40 cEdge*. Populate the **Autonomous System ID** as a Device Variable with a value of *eigrp_as_num*. Click on **New Redistribute** under the Unicast Address Family -> Re-Distribute section
+
+    ![](/images/Site40_ConfiguringEIGRP/05_eigrptemp.PNG)
+
+6. No routes get redistributed into EIGRP but we want to ensure that WAN Routes are advertised into the Site 40 LAN. For this purpose, choose **OMP** and click on **Add**. This will redistribute OMP routes into EIGRP
+
+    ![](/images/Site40_ConfiguringEIGRP/06_redis.PNG)
+
+7. Under the Unicast Address Family section, click on the **Network** tab. Click on **New Network** and Enter a Global Network Prefix of *10.40.10.0/24*. Click on **Add**
+
+    ![](/images/Site40_ConfiguringEIGRP/07_nw.PNG)
+
+8. Under **Interface**, click on *Interface* to add a new one. Enter the **Interface Name** as *GigabitEthernet4* and click on **Add**. This is our LAN facing interface in VPN 10 on cEdge40
+
+    ![](/images/Site40_ConfiguringEIGRP/08_int.PNG)
+
+9. Make sure the EIGRP template looks like the image given below and click on **Save** to save the template
+
+    ![](/images/Site40_ConfiguringEIGRP/09_save.PNG)
+
+10. This should take you back to the *cedge-vpn10* Template configuration window. Populate the *site40-eigrp* template in the EIGRP field. Click on **Save**
+
+    ![](/images/Site40_ConfiguringEIGRP/10_saveagain.PNG)
+
+11. Make sure that the VPN 10 Service VPN has *Cisco VPN Interface Ethernet, EIGRP* tacked on to it and click on **Update**
+
+    ![](/images/Site40_ConfiguringEIGRP/11_upd.PNG)
+
+12. We are taken to the configuration page for the cEdge40. Enter the Autonomous System ID as *40* and click on **Next**
+
+    ![](/images/Site40_ConfiguringEIGRP/12_as.PNG)
+
+13. Review the side-by-side config diff (notice the EIGRP configuration added) and click on **Configure Devices**.
+
+    ![](/images/Site40_ConfiguringEIGRP/13_confdif.PNG)
+
+This completes the EIGRP related configuration on VPN 10 for the Site 40 cEdge.
 
 <br/>
 
@@ -59,99 +103,73 @@ a[href^="http://"]:after, a[href^="https://"]:after {
 <br/>
 - [~~Updating the cEdge Service VPN 10 with an EIGRP Template~~](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
 <br/>
-- [Activity Verification](#activity-verification)
+- [Activity Verification and Remediation](#activity-verification-and-remediation)
 <br/>
 " type="primary" %}
 
-## Activity Verification
+## Activity Verification and Remediation
 
-Go to the [Font Awesome library](http://fortawesome.github.io/Font-Awesome/icons/) to see the available icons.
+1. Log in to the CLI of cEdge40 via Putty. The username and password are `admin`. Enter `show ip eigrp vrf 10 40 neighbors` to view the EIGRP neighbours in VPN 10, AS 40. We will see one neighbour (the L3 Device)
 
-The Font Awesome icons allow you to adjust their size by simply adding `fa-2x`, `fa-3x` and so forth as a class to the icon to adjust their size to two times or three times the original size. As vector icons, they scale crisply at any size.
+    ![](/images/Site40_ConfiguringEIGRP/14_eigrpnei.PNG)
+    ```
+    show ip eigrp vrf 10 40 neighbors
+    ```
 
-Here's an example of how to scale up a camera icon:
+2. Run `show ip route vrf 10` - you should see a *10.40.11.0/24* route learnt via EIGRP
 
-```html
-<i class="fa fa-camera-retro"></i> normal size (1x)
-<i class="fa fa-camera-retro fa-lg"></i> fa-lg
-<i class="fa fa-camera-retro fa-2x"></i> fa-2x
-<i class="fa fa-camera-retro fa-3x"></i> fa-3x
-<i class="fa fa-camera-retro fa-4x"></i> fa-4x
-<i class="fa fa-camera-retro fa-5x"></i> fa-5x
-```
+    ![](/images/Site40_ConfiguringEIGRP/15_routes.PNG)
+    ```
+    show ip route vrf 10
+    ```
 
-Here's what they render to:
+3. Log in via Putty to **DC-vEdge1** and try to ping an IP in the *10.40.11.0/24* network. Type `ping vpn 10 10.40.11.1` - the pings should fail. Issue `show ip route vpn 10` and you will notice that there is no route for the *10.40.11.0/24* subnet
 
-<i class="fa fa-camera-retro"></i> 1x
-<i class="fa fa-camera-retro fa-lg"></i> fa-lg
-<i class="fa fa-camera-retro fa-2x"></i> fa-2x
-<i class="fa fa-camera-retro fa-3x"></i> fa-3x
-<i class="fa fa-camera-retro fa-4x"></i> fa-4x
-<i class="fa fa-camera-retro fa-5x"></i> fa-5x
+    ![](/images/Site40_ConfiguringEIGRP/16_dcve1noroute.PNG)
+    ```
+    ping vpn 10 10.40.11.1
+    show ip route vpn 10
+    ```
 
-With Font Awesome, you always use the `i` tag with the appropriate class. You also implement `fa` as a base class first. You can use font awesome icons inside other elements. Here I'm using a Font Awesome class inside a Bootstrap alert:
+4. This is due to the fact that EIGRP routes aren't advertised into OMP. To remedy this, we will need to modify our cEdge Template. Go to **Configuration -> Templates -> Feature tab** and click on the three dots next to *cedge-vpn10*. Choose to **Edit**
 
-```html
-<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning: </b>This is a special warning message.
-```
+    ![](/images/Site40_ConfiguringEIGRP/17_editvpn10.PNG)
 
-Here's the result:
+5. Navigate to the **Advertise OMP** section and set EIGRP to Global - **On**. Click on **Update**
 
-<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle fa-lg"></i> This is a special warning message.</div>
+    ![](/images/Site40_ConfiguringEIGRP/18_adveigrp.PNG)
 
-The notes, tips, warnings, etc., are pre-coded with Font Awesome and stored in the alerts.yml file. That file includes the following:
+6. Click **Next** on the Device page since we don't have to update any values. Note that this change will be pushed to multiple devices, even those that don't have EIGRP configured (e.g. Site 50 Devices). We need to make sure that this change is pushed to the Site 40 cEdge
 
-{% raw %}
-```yaml
-tip: '<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip: </b>'
-note: '<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b>'
-important: '<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important: </b>'
-warning: '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning: </b>'
-end: '</div>'
+    ![](/images/Site40_ConfiguringEIGRP/19_next.PNG)
 
-callout_danger: '<div class="bs-callout bs-callout-danger">'
-callout_default: '<div class="bs-callout bs-callout-default">'
-callout_primary: '<div class="bs-callout bs-callout-primary">'
-callout_success: '<div class="bs-callout bs-callout-success">'
-callout_info: '<div class="bs-callout bs-callout-info">'
-callout_warning: '<div class="bs-callout bs-callout-warning">'
+7. Check the side-by-side configuration, noting that EIGRP routes will now be advertised into OMP. Click on **Configure Devices**
 
-hr_faded: '<hr class="faded"/>'
-hr_shaded: '<hr class="shaded"/>'
-```
-{% endraw %}
+    ![](/images/Site40_ConfiguringEIGRP/20_conf.PNG)
 
-This means you can insert a tip, note, warning, or important alert simply by using these tags.
+8. Confirm the change (pushed to 3 devices) and click on OK
 
-```liquid
-{% raw %}{% include note.html content="Add your note here." %}{% endraw %}
-```
+    ![](/images/Site40_ConfiguringEIGRP/21_confirm.PNG)
 
-```liquid
-{% raw %}{% include tip.html content="Add your tip here." %}{% endraw %}
-```
+9. Wait for the change to successfully go through
 
-```liquid
-{% raw %}{% include important.html content="Add your important info here." %}{% endraw %}
-```
+    ![](/images/Site40_ConfiguringEIGRP/22_succ.PNG)
 
-{% raw %}
-```liquid
-{% include warning.html content="Add your warning here." %}
-```
-{% endraw %}
+10. Once successful, go to the CLI for **DC-vEdge1** and issue `show ip route vpn 10` again. You should see routes for *10.40.11.0/24*
 
-Here's the result:
+    ![](/images/Site40_ConfiguringEIGRP/23_dcveroute.PNG)
+    ```
+    show ip route vpn 10
+    ```
 
-{% include note.html content="Add your note here." %}
+11. Run a ping to *10.40.11.1* via the CLI `ping vpn 10 10.40.11.1`. It should be successful
 
-{% include tip.html content="Here's my tip." %}
+    ![](/images/Site40_ConfiguringEIGRP/24_pingsucc.PNG)
+    ```
+    ping vpn 10 10.40.11.1
+    ```
 
-{% include important.html content="This information is very important." %}
-
-{% include warning.html content="If you overlook this, you may die." %}
-
-The color scheme is the default colors from Bootstrap. You can modify the icons or colors as neede
+This completes the EIGRP verification and remediation activity.
 
 <br/>
 
@@ -161,6 +179,6 @@ The color scheme is the default colors from Bootstrap. You can modify the icons 
 <br/>
 - [~~Updating the cEdge Service VPN 10 with an EIGRP Template~~](#updating-the-cedge-service-vpn-10-with-an-eigrp-template)
 <br/>
-- [~~Activity Verification~~](#activity-verification)
+- [~~Activity Verification and Remediation~~](#activity-verification-and-remediation)
 <br/>
 " type="primary" %}
