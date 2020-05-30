@@ -1,15 +1,16 @@
 ---
-title: Workflow maps
+title: Setting up a Regional Hub
 tags: [formatting]
-keywords: release notes, announcements, what's new, new features
+keywords: regional hub, sd-wan, site 30
 last_updated: July 16, 2016
-summary: "Version 6.0 of the Documentation theme for Jekyll reverts back to relative links so you can view the files offline. Additionally, you can store pages in subdirectories. Templates for alerts and images are available."
+summary: "Steering all traffic from Site 20 to a Regional Hub (Site 30)."
 sidebar: mydoc_sidebar
 permalink: mydoc_regional_hub.html
 folder: mydoc
 ---
 
-## Workflow maps overview
+
+## Pre-Configuration
 
 You can implement workflow maps at the top of your pages. This is helpful if you're describing a process that involves multiple topics. See the following demos:
 
@@ -17,7 +18,7 @@ You can implement workflow maps at the top of your pages. This is helpful if you
 *  [Complex workflow maps][p2_sample6]
 
 
-## Simple workflow maps
+## Adding the Policy
 
 1.  Create an include at \_includes/custom/usermap.html, where usermap.html contains the workflow and links you want. See the usermap.html as an example. It should look something like this:
 
@@ -74,7 +75,7 @@ You can implement workflow maps at the top of your pages. This is helpful if you
 
     The `map_name` gets used as the name of the included file.
 
-## Complex workflow maps
+### Setting up Site Lists
 
 The simpler user workflow allows for 5 workflow steps. If you have a more complex workflow, with multiple possible steps, branching, and more, consider using a complex workflow map. This map uses modals to show a list of instructions and links for each step.
 
@@ -139,4 +140,35 @@ The simpler user workflow allows for 5 workflow steps. If you have a more comple
         ```
      ```
 
-{% include links.html %}
+### Adding Custom Control Policies
+
+#### Policy for Traffic from Site 20 to the Regional Hub
+
+#### Policy for Traffic from the Fabric to Site 20
+
+### Saving and Activating the Policy
+
+## Verification
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Pre-Configuration~~](#pre---configuration)
+<br/>
+- [~~Adding the Policy~~](#adding-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Setting up Site Lists~~](#setting-up-site-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Adding Custom Control policies~~](#adding-custom-control-policies)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Policy for Traffic from Site 20 to the Regional Hub~~](#policy-for-traffic-from-site-20-to-the-regional-hub)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Policy for Traffic from the Fabric to Site 20~~](#policy-for-traffic-from-the-fabric-to-site-20)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Saving and Activating the Policy~~](#saving-and-activating-the-policy)
+    <br/>
+- [~~Verification~~](#verification)
+<br/>
+
+" type="primary" %}

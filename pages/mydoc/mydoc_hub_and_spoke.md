@@ -2,15 +2,33 @@
 title: Configuring a Hub and Spoke topology
 tags:
   - navigation
-keywords: "annotations, comments, feedback"
+keywords: Control policies, hub and spoke, single vpn
 last_updated: "May 26, 2020"
-summary: "Moving the SD-WAN topology from the default of full mesh to a Hub and Spoke"
+summary: "Moving the SD-WAN topology from the default of full mesh to a Hub and Spoke for a particular VPN while leaving the other VPNs in full mesh."
 sidebar: mydoc_sidebar
 permalink: mydoc_hub_and_spoke.html
 folder: mydoc
 ---
 
-## About the review process
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Overview
+<br/>
+- Creating a DC VPN 20 Feature Template
+<br/>
+- Creating the Policy
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring Network Constructs
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Adding a Custom Control Policy
+    <br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
+## Overview
 
 If you're using the doc as code approach, you might also consider using the same techniques for reviewing the doc as people use in reviewing code. This approach will involve using Github to edit the files.
 
@@ -42,7 +60,27 @@ In your configuration file, edit the value for `github_editme_path` (or for Gitl
 
 To suppress this button, comment out the `github_editme_path` in the \_config.yml file.
 
-## Add reviewers as collaborators
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Creating a DC VPN 20 Feature Template](#creating-a-dc-vpn-20-feature-template)
+<br/>
+- [Creating the Policy](#creating-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring Network Constructs](#configuring-network-constructs)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Adding a Custom Control Policy](#adding-a-custom-control-policy)
+    <br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Creating a DC VPN 20 Feature Template
 
 If you want people to collaborate on your project so that their edits get committed to a branch on your project, you need to add them as collaborators. For your Github repo, click **Settings** and add the collaborators on the Collaborators tab using their Github usernames.
 
@@ -50,8 +88,27 @@ If you don't want to allow anyone to commit to your Github branch, don't add the
 
 {% include note.html content="When you process pull requests, you have to accept everything or nothing. You can't pick and choose which changes you'll merge. Therefore you'll probably want to edit the branch you're planning to merge or ask the contributor to make some changes to the fork before processing the pull request." %}
 
+<br/>
 
-## Workflow
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Creating a DC VPN 20 Feature Template~~](#creating-a-dc-vpn-20-feature-template)
+<br/>
+- [Creating the Policy](#creating-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring Network Constructs](#configuring-network-constructs)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Adding a Custom Control Policy](#adding-a-custom-control-policy)
+    <br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Creating the Policy
 
 Users will make edits in your "reviews" branch (or whatever you want to call it). You can then commit those edits as you make updates.
 
@@ -61,8 +118,93 @@ Note that if you're making updates online, those updates will be out of sync wit
 
 {% include warning.html content="Don't make edits both online using Github's browser-based interface AND offline on your local machine using your local tools. When you try to push from your local, you'll likely get a merge conflict error. Instead, make sure you do a pull and update on your local after making any edits online." %}
 
-## Prose.io
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Creating a DC VPN 20 Feature Template~~](#creating-a-dc-vpn-20-feature-template)
+<br/>
+- [Creating the Policy](#creating-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring Network Constructs](#configuring-network-constructs)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Adding a Custom Control Policy](#adding-a-custom-control-policy)
+    <br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+### Configuring Network Constructs
 
  Prose.io is an overlay on Github that would allow people to make comments in an easier interface. If you simply go to [prose.io](http://prose.io), it asks to authorize your Github account, and so it will read files directly from Github but in the Prose.io interface.
 
- {% include links.html %}
+ <br/>
+
+ {% include callout.html content="**Task List**
+ <br/><br/>
+
+ - [~~Overview~~](#overview)
+ <br/>
+ - [~~Creating a DC VPN 20 Feature Template~~](#creating-a-dc-vpn-20-feature-template)
+ <br/>
+ - [Creating the Policy](#creating-the-policy)
+ <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Network Constructs~~](#configuring-network-constructs)
+     <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Adding a Custom Control Policy](#adding-a-custom-control-policy)
+     <br/>
+ - [Activity Verification](#activity-verification)
+ <br/>
+
+ " type="primary" %}
+
+### Adding a Custom Control Policy
+
+fdsfsfdksfljasjdklfjskljsalkjflasjfdkn
+fdjkslfjkldsjfkls
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Creating a DC VPN 20 Feature Template~~](#creating-a-dc-vpn-20-feature-template)
+<br/>
+- [~~Creating the Policy~~](#creating-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Network Constructs~~](#configuring-network-constructs)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Adding a Custom Control Policy~~](#adding-a-custom-control-policy)
+    <br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Activity Verification
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Creating a DC VPN 20 Feature Template~~](#creating-a-dc-vpn-20-feature-template)
+<br/>
+- [~~Creating the Policy~~](#creating-the-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Network Constructs~~](#configuring-network-constructs)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Adding a Custom Control Policy~~](#adding-a-custom-control-policy)
+    <br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+
+" type="primary" %}
