@@ -9,10 +9,32 @@ permalink: mydoc_ospf_dc.html
 folder: mydoc
 ---
 
-## Font icon options
+{% include callout.html content="**Task List**
+<br/><br/>
+- Overview
+<br/>
+- Updating the vEdge Service VPN 10 with an OSPF Template
+<br/>
+- Activity Verification
+<br/>
+" type="primary" %}
+
+## Overview
 The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflings. The latter is part of Bootstrap, while the former is independent. Font icons allow you to insert icons drawn as vectors from a CDN (so you don't have any local images on your own site).
 
-## External icons
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [Updating the vEdge Service VPN 10 with an OSPF Template](#updating-the-vedge-service-vpn-10-with-an-ospf-template)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+" type="primary" %}
+
+## Updating the vEdge Service VPN 10 with an OSPF Template
 
 When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in css/customstyles.css.
 
@@ -29,7 +51,19 @@ a[href^="http://"]:after, a[href^="https://"]:after {
 }
 ```
 
-## See Font Awesome icons available
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [~~Updating the vEdge Service VPN 10 with an OSPF Template~~](#updating-the-vedge-service-vpn-10-with-an-ospf-template)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+" type="primary" %}
+
+## Activity Verification
 
 Go to the [Font Awesome library](http://fortawesome.github.io/Font-Awesome/icons/) to see the available icons.
 
@@ -121,122 +155,16 @@ Here's the result:
 
 {% include warning.html content="If you overlook this, you may die." %}
 
-The color scheme is the default colors from Bootstrap. You can modify the icons or colors as needed.
+The color scheme is the default colors from Bootstrap. You can modify the icons or colors as neede
 
-## Creating your own combinations
+<br/>
 
-You can innovate with your own combinations. Here's a similar approach with a file download icon:
-
-```html
-<div class="alert alert-success" role="alert"><i class="fa fa-download fa-lg"></i> This is a special tip about some file to download....</div>
-```
-
-And the result:
-
-<div class="alert alert-success" role="alert"><i class="fa fa-download fa-lg"></i> This is a special tip about some file to download....</div>
-
-
-Grab the right class name from the [Font Awesome library](http://fortawesome.github.io/Font-Awesome/icons/) and then implement it by following the pattern shown previously.
-
-If you want to make your fonts even larger than the 5x style, add a custom style to your stylesheet like this:
-
-```css
-.fa-10x{font-size:1700%;}
-```
-
-Then any element with the attribute `fa-10x` will be enlarged 1700%.
-
-## Glyphicon icons available
-
-Glyphicons work similarly to Font Awesome. Go to the [Glyphicons library](http://getbootstrap.com/components/#glyphicons) to see the icons available.
-
-Although the Glyphicon Halflings library doesn't provide the scalable classes like Font Awesome, there's a [StackOverflow trick](http://stackoverflow.com/questions/24960201/how-do-i-make-glyphicons-bigger-change-size)  to make the icons behave in a similar way. This theme's stylesheet (customstyles.css) includes the following to the stylesheet:
-
-```css
-.gi-2x{font-size: 2em;}
-.gi-3x{font-size: 3em;}
-.gi-4x{font-size: 4em;}
-.gi-5x{font-size: 5em;}
-```
-
-Now you just add `gi-5x` or whatever to change the size of the font icon:
-
-```html
-<span class="glyphicon glyphicon-globe gi-5x"></span>
-```
-
-And here's the result:
-
-<span class="glyphicon glyphicon-globe gi-5x"></span>
-
-Glypicons use the `span` element instead of `i` to attach their classes.
-
-Here's another example:
-
-```html
-<span class="glyphicon glyphicon-download"></span>
-```
-
-<span class="glyphicon glyphicon-download"></span>
-
-And magnified:
-
-```html
-<span class="glyphicon glyphicon-download gi-3x"></span>
-```
-
-<span class="glyphicon glyphicon-download gi-3x"></span>
-
-You can also put glyphicons inside other elements:
-
-```html
-<div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <b>Error:</b> Enter a valid email address
-</div>
-```
-
-<div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <b>Error:</b> Enter a valid email address
-</div>
-
-## Callouts
-
-The previously shown alerts might be fine for short messages, but with longer notes, the solid color takes up a bit of space. In this theme, you also have the option of using callouts, which are pretty common in Bootstrap's documentation but surprisingly not offered as an explicit element. Their styles have been copied into this theme, in a way similar to the alerts:
-
-```html
-<div class="bs-callout bs-callout-info">
- This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. </div>
-```
-
-<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-question-sign"></span> This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. </div>
-
-And here's the shortcode:
-
-{% raw %}
-```
-{{site.data.alerts.callout_info}This is a special callout information message.{{site.data.alerts.end}}
-{% endraw %}
-```
-
-Here's the result:
-
-{{site.data.alerts.callout_info}}This is a special callout information message.{{site.data.alerts.end}}
-
-You can use any of the following:
-{% raw %}
-```
-{{site.data.alerts.callout_default}}
-{{site.data.alerts.callout_primary}}
-{{site.data.alerts.callout_success}}
-{{site.data.alerts.callout_info}}
-{{site.data.alerts.callout_warning}}
-```
-{% endraw %}
-
-The only difference is the color of the left bar.
-
-Callouts are explained in a bit more detail in [Alerts][mydoc_alerts].
-
-{% include links.html %}
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Overview~~](#overview)
+<br/>
+- [~~Updating the vEdge Service VPN 10 with an OSPF Template~~](#updating-the-vedge-service-vpn-10-with-an-ospf-template)
+<br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+" type="primary" %}
