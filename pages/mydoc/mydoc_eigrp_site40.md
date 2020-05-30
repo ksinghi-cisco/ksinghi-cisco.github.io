@@ -25,7 +25,7 @@ We will run EIGRP on VPN 10 in Site 40 with an L3 Device. The L3 device has been
 
 Given below is the section of the topology that we will be working on for this activity
 
-![](/images/Site40_ConfiguringEIGRP/99_topo.PNG)
+![](/images/Site40_ConfiguringEIGRP/99_topo.png)
 
 <br/>
 
