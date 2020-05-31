@@ -83,7 +83,7 @@ Cisco SD-WAN Policies allow us to enforce a custom topology, thereby controlling
 
 ## Creating a new DC VPN 20 Feature Template
 
-{% include note.html content="This section is optional. We will be testing just inter-site traffic so the changes in this section won't come into play, but if VPN 20 has to route all traffic through the DC, it might encompass Internet traffic as well. In this event, the following configuration is needed to steer all unknown prefixes to the DC" %}
+{% include note.html content="This section is optional. We will be testing just inter-site traffic so the changes in this section won't come into play, but if VPN 20 has to route all traffic through the DC, it might encompass Internet traffic as well. In this event, the following configuration is needed to steer all unknown prefixes to the DC." %}
 
 1. Go to **Configure -> Templates -> Feature tab** on the vManage GUI
 
@@ -338,6 +338,28 @@ This completes our policy creation and activation. We will verify functionality 
 " type="primary" %}
 
 ## Activity Verification
+
+1. Log in to **cEdge40** via Putty and run `show ip route vrf 20`. When compared to the output of this command taken before we applied our policy, we see that all routes are now pointing to the DC-vEdges. Check Step 5 of [Overview](#overview) for the earlier output
+
+    ![](/images/VPN20_HnS/33_ce40routevrf20.PNG)
+
+2. On the vManage GUI, go to **Monitor -> Network** and click on **vEdge20**. Scroll down on the left-hand side and click on **Real Time**. Enter *IP Routes* in **Device Options** and choose to Filter. Filter on the basis of VPN ID 20. We will notice similar output as what was seen for cEdge40
+
+    ![](/images/VPN20_HnS/34_netmon_vpn20filt.PNG)
+
+3. Go to **Troubleshooting** and choose Trace Route. Enter the **Destination IP** as *10.30.20.2* with a VPN of *VPN - 20* and a Source/Interface of *ge0/3*. Traffic is now reaching the destination via the DC-vEdge
+
+    ![](/images/VPN20_HnS/35_goingthrudc.PNG)
+
+4. Run the traceroute for *10.40.20.2* and we see that traffic is being routed through the DC-vEdge in this case as well
+
+    ![](/images/VPN20_HnS/36_goingthrudc2.PNG)
+
+5. Try to do a traceroute to *10.40.10.2*, changing the VPN to *VPN - 10* and the Source/Interface to *ge0/2* and we will notice that VPN 10 still has full mesh connectivity
+
+    ![](/images/VPN20_HnS/37_vpn10stillfullmesh.PNG)
+
+Thus, all traffic from VPN 20 in the Branches is being steered to the DC-vEdges in a Hub and Spoke topology, whereas traffic still utilizes a Mesh topology for other VPNs.
 
 <br/>
 
