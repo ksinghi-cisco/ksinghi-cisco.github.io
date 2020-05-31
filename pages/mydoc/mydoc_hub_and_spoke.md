@@ -255,8 +255,67 @@ We will pause here since configuration of the Network Constructs is complete for
 
 ### Adding a Custom Control Policy
 
-fdsfsfdksfljasjdklfjskljsalkjflasjfdkn
-fdjkslfjkldsjfkls
+Continuing from the previous section, let's build out our Custom Control Policy to enforce a Hub and Spoke Topology on VPN 20
+
+1. You should be at the **Configure Topology and VPN Membership** page after the previous section. Click on **Add Topology** and choose **Custom Control (Route & TLOC)**
+
+    ![](/images/VPN20_HnS/27_custom.PNG)
+
+2. Specify a **Name** of *HnS-VPN20* with a Description of *Hub and Spoke for VPN 20 only*. Click on **Sequence Type** and choose to add a **Route** Control Policy
+
+    ![](/images/VPN20_HnS/28_route.PNG)
+
+3. Click on **Sequence Rule** to add a new rule
+
+    ![](/images/VPN20_HnS/29_seqrule.PNG)
+
+4. Under **Match** click on **Site** and populate *Branches* in the **Site List** (this is one of the Site Lists we had created before)
+
+    ![](/images/VPN20_HnS/29_tsitebr.PNG)
+
+5. Still under **Match**, click on **VPN** and choose *PoS* in the **VPN List**
+
+    ![](/images/VPN20_HnS/29_uvpnpos.PNG)
+
+    Through these two match conditions, we have specified that this rule applies to the site list Branches (which contains Site IDs 20, 30, 40 and 50) and to the PoS VPN (which has VPN 20 in it)
+
+6. Move over to the **Actions** tab and click on **Accept**. Then click on **TLOC** and populate *DC-TLOCs* in the **TLOC List**. Click on **Save Match and Actions**
+
+    ![](/images/VPN20_HnS/29_vactaccepttlocdctlot.PNG)
+
+7. Go to the **Default Action** and click on **Accept**. Click **Save Match and Actions**
+
+    ![](/images/VPN20_HnS/29_wdefactaccpt.PNG)
+
+8. The *HnS-VPN20* policy should look like the image below. Click on **Save Control Policy**
+
+    ![](/images/VPN20_HnS/29_wfinsave.PNG)
+
+9. Click on **Next** since we don't want to add any more Policies and then **Next** again (since we aren't doing any Application Aware Routing, Data Policies or Netflow policies as of now)
+
+    ![](/images/VPN20_HnS/29_xnxt.PNG)
+
+    ![](/images/VPN20_HnS/29_ynxt.PNG)
+
+10. You should be presented with a screen which asks for a Policy Name, among other things. This can be a bit confusing since we just gave a Policy Name before (called *HnS-VPN20*). The easiest way to wrap your head around this is think of creating a Master Policy and before we can name this Master Policy, we are asked to create Sub-Policies in it. So far, we have just created a Sub Policy and given it a name. At this point, we are being asked to give a name to our Master Policy, which will then need to be applied.
+
+    Enter a **Policy Name** of *Hub-n-Spoke-VPN20-only* and give a Policy Description of *Hub and Spoke policy for VPN 20 only*. Click on **New Site List** under HnS-VPN20 and populate *Branches* in the **Outbound Site List**. Click on **Add**
+
+    ![](/images/VPN20_HnS/30_finpoladdb4save.PNG)
+
+    {% include tip.html content="Control Policies (such as the one you just built) are enforced by vSmart. Hence, the policy you just created is from the perspective of vSmart. The application of this policy is enforced in an outbound direction towards branch sites (i.e. Branches Site List). Think of how a BGP Route-Reflector would modify the next-hop of routes it receives before sending them back out to neighbors." %}
+
+    Click on **Save Policy**
+
+11. Back at the main Policy page, we should see the *Hub-n-Spoke-VPN20-only* Master Policy created. Click on the three dots next to it and choose to **Activate** the policy
+
+    ![](/images/VPN20_HnS/31_act.PNG)
+
+12. Confirm the activation by clicking on **Activate**
+
+    ![](/images/VPN20_HnS/32_actconf.PNG)
+
+This completes our policy creation and activation. We will verify functionality in the upcoming section.
 
 <br/>
 
