@@ -1,11 +1,11 @@
 ---
-title: Build arguments
+title: Implementing Custom Traffic Engineering
 tags: [publishing]
-keywords: building, serving, serve, build
-last_updated: July 3, 2016
-summary: "You use various build arguments with your Jekyll project. You can also create shell scripts to act as shortcuts for long build commands. You can store the commands in iTerm as profiles as well."
+keywords: custom traffic engineering, path selection
+last_updated: May 29, 2020
+summary: "Influencing Path selection and facilitating custom traffic engineering in Cisco SD-WAN"
 sidebar: mydoc_sidebar
-permalink: mydoc_build_arguments.html
+permalink: mydoc_custom_te.html
 folder: mydoc
 ---
 

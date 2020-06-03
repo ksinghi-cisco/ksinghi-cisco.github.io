@@ -1,11 +1,11 @@
 ---
-title: Themes
+title: Implementing Direct Internet Access
 tags: [publishing]
-keywords: themes, styles, colors, css
-last_updated: July 3, 2016
-summary: "You can choose between two different themes (one green, the other blue) for your projects. The theme CSS is stored in the CSS folder and configured in the configuration file for each project."
+keywords: direct internet access, guest users, dia
+last_updated: June 01, 2020
+summary: "Setting up a Direct Internet Access policy for Guest Users at Site 40"
 sidebar: mydoc_sidebar
-permalink: mydoc_themes.html
+permalink: mydoc_dia.html
 folder: mydoc
 ---
 
