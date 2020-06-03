@@ -144,43 +144,23 @@ entries:
 #      url: /mydoc_git_collaboration
 #      output: web, pdf
 
-  - title: Publishing
+  - title: Implementing Data Policies and ZBF
     output: web, pdf
 
     folderitems:
-    - title: Build arguments
-      url: /mydoc_build_arguments.html
+    - title: Implementing Custom Traffic Engineering
+      url: /mydoc_custom_te.html
       output: web, pdf
 
-    - title: Themes
-      url: /mydoc_themes.html
+    - title: Implementing Direct Internet Access
+      url: /mydoc_dia.html
       output: web, pdf
 
-    - title: Generating PDFs
-      url: /mydoc_generating_pdfs.html
+    - title: ZBF configuration for Guest DIA
+      url: /mydoc_zbf_dia.html
       output: web, pdf
 
-    - title: Help APIs and UI tooltips
-      url: /mydoc_help_api.html
-      output: web, pdf
-
-    - title: Search configuration
-      url: /mydoc_search_configuration.html
-      output: web, pdf
-
-    - title: iTerm profiles
-      url: /mydoc_iterm_profiles.html
-      output: web, pdf
-
-    - title: Pushing builds to server
-      url: /mydoc_push_build_to_server.html
-      output: web, pdf
-
-    - title: Publishing on Github Pages
-      url: /mydoc_publishing_github_pages.html
-      output: web, pdf
-
-  - title: Special layouts
+  - title: Special Layouts
     output: web, pdf
 
     folderitems:
