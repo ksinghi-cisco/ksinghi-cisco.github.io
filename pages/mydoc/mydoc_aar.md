@@ -1,14 +1,15 @@
 ---
-title: Knowledge-base layout
+title: Configuring Application Aware Routing
 tags: [special_layouts]
 keywords: knowledge base, support portal, grid, doc portal
-last_updated: July 3, 2016
-summary: "This shows a sample layout for a knowledge base. Each square could link to a tag archive page. In this example, font icons from Font Awesome are used for the graphics, and the layout is pulled from the Modern Business theme. ."
+last_updated: June 3, 2020
+summary: "Manipulate the path taken by traffic based on network parameters  like latency, loss and jitter."
 sidebar: mydoc_sidebar
-permalink: mydoc_kb_layout.html
-toc: false
+permalink: mydoc_aar.html
 folder: mydoc
 ---
+
+## Overview
 
 Here's the sample knowledge-base style layout:
 

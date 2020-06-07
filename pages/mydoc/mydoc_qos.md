@@ -1,15 +1,15 @@
 ---
-title: Glossary layout
+title: Configuring Low Latency Queuing and QoS
 tags: [formatting, special_layouts]
 keywords: definitions, glossaries, terms, style guide
-last_updated: July 3, 2016
-summary: "Your glossary page can take advantage of definitions stored in a data file. This gives you the ability to reuse the same definition in multiple places. Additionally, you can use Bootstrap classes to arrange your definition list horizontally."
+last_updated: June 2, 2020
+summary: "SD-WAN allows configuration of various QoS strategies to better support your business. Configure QoS with LLQ for VoIP traffic"
 sidebar: mydoc_sidebar
-permalink: mydoc_glossary.html
-toc: false
+permalink: mydoc_qos.html
 folder: mydoc
 ---
 
+## Overview
 
 You can create a glossary for your content. First create your glossary items in a data file such as glossary.yml.
 
