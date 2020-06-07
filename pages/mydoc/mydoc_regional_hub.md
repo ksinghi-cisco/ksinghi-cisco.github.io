@@ -2,7 +2,7 @@
 title: Setting up a Regional Hub
 tags: [formatting]
 keywords: regional hub, sd-wan, site 30
-last_updated: July 16, 2016
+last_updated: May 29, 2020
 summary: "Steering all traffic from Site 20 to a Regional Hub (Site 30)."
 sidebar: mydoc_sidebar
 permalink: mydoc_regional_hub.html
@@ -96,29 +96,7 @@ Notice that all sites communicate to Site 20 via Site 30. Conversely, Site 20 pu
 
 ### Adding Custom Control Policies
 
-<br/>
-
-{% include callout.html content="**Task List**
-<br/><br/>
-
-- [~~Pre-Configuration~~](#pre-configuration)
-<br/>
-- [Adding the Policy](#adding-the-policy)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Setting up Site Lists~~](#setting-up-site-lists)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Adding Custom Control policies](#adding-custom-control-policies)
-    <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Policy for Traffic from Site 20 to the Regional Hub](#policy-for-traffic-from-site-20-to-the-regional-hub)
-    <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Policy for Traffic from the Fabric to Site 20](#policy-for-traffic-from-the-fabric-to-site-20)
-    <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Saving and Activating the Policy](#saving-and-activating-the-policy)
-    <br/>
-- [Verification](#verification)
-<br/>
-
-" type="primary" %}
+We will be adding two policies in this section - one for traffic destined to the rest of the network from Site 20 and one for traffic destined to Site 20.
 
 #### Policy for Traffic from Site 20 to the Regional Hub
 

@@ -10,12 +10,12 @@ folder: mydoc
 ---
 
 
-## PDF overview
+## Overview
 This process for creating a PDF relies on Prince XML to transform the HTML content into PDF. Prince costs about $500 per license. That might seem like a lot, but if you're creating a PDF, you're probably working for a company that sells a product, so you likely have access to some resources. There's also a free license that prints a small "P" watermark on your title page, so if you're fine with that, great.
 
 The basic approach is to generate a list of all web pages that need to be added to the PDF, and then add leverage Prince to package them up into a PDF. Once you set it up, building a pdf is just a matter of running a couple of commands. Also, creating a PDF this way gives you a lot more control and customization capabilities than with other methods for creating PDFs. If you know CSS, you can entirely customize the output.
 
-## Demo
+## Setting up Lists
 
 You can see an example of the finished product here:
 
@@ -64,13 +64,13 @@ After stopping all Jekyll instances, we build Jekyll using a special configurati
 
 The following sections explain more about the setup.
 
-## 1. Set up Prince
+### Configuring Zones
 
 Download and install [Prince](http://www.princexml.com/doc/installing/).
 
 You can install a fully functional trial version. The only difference is that the title page will have a small Prince PDF watermark.
 
-## 2. Create a new configuration file for each of your PDF targets
+### Configuring an Application List
 
 The PDF configuration file will build on the settings in the regular configuration file but will some additional fields. Here's the configuration file for the mydoc product within this theme. This configuration file is located in the pdfconfigs folder.
 
@@ -107,7 +107,7 @@ In the configuration file, customize the values for the `print_title` and `print
 
 We will access this configure file in the PDF generation script.
 
-## 3. Make sure your sidebar data file has titlepage.html and tocpage.html entries
+## Creating a Security Policy
 
 There are two template pages in the root directory that are critical to the PDF:
 
@@ -139,291 +139,8 @@ There's another file (in the root directory of the theme) that is critical to th
 
 {% include note.html content="If you have any files that you do not want to appear in the PDF, add <code>output: web</code> (rather than <code>output: pdf</code>) in the list of attributes in your sidebar. The prince-list.txt file that loops through the mydoc_sidebar.yml file to grab the URLs of each page that should appear in the PDF will skip over any items that do not list <code>output: pdf</code> in the item attributes. For example, you might not want your tag archives to appear in the PDF, but you probably will want to list them in the online help navigation." %}
 
-## 4. Customize your headers and footers
+## Applying the Policy and Verification
 
 Open up the css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
 
-Exactly how the print styling works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
-
-This style creates a page reference for a link:
-
-{% raw %}
-```css
-a[href]::after {
-    content: " (page " target-counter(attr(href), page) ")"
-}
-```
-
-You don't want cross references for any link that doesn't reference another page, so this style specifies that the content after should be blank:
-
-```css
-a[href*="mailto"]::after, a[data-toggle="tooltip"]::after, a[href].noCrossRef::after {
-    content: "";
-}
-```
-{% endraw %}
-
-{% include tip.html content="If you have a link to a file download, or some other link that shouldn't have a cross reference (such as link used in JavaScript for navtabs or collapsible sections, for example, add `noCrossRef` as a class to the link to avoid having it say \"page 0\" in the cross reference." %}
-
-This style specifies that after links to web resources, the URL should be inserted instead of the page number:
-
-```css
-a[href^="http:"]::after, a[href^="https:"]::after {
-    content: " (" attr(href) ")";
-}
-```
-
-This style sets the page margins:
-
-```css
-@page {
-    margin: 60pt 90pt 60pt 90pt;
-    font-family: sans-serif;
-    font-style:none;
-    color: gray;
-
-}
-```
-
-To set a specific style property for a particular page, you have to name the page. This allows Prince to identify the page.
-
-First you add frontmatter to the page that specifies the type. For the titlepage.html, here's the frontmatter:
-
-```yaml
----
-type: title
----
-```
-
-For the tocpage, here's the frontmatter:
-
-```yaml
----
-type: frontmatter
----
-```
-
-For the index.html page, we have this type tag (among others):
-
-```yaml
----
-type: first_page
----
-```
-
-The default_print.html layout will change the class of the `body` element based on the type value in the page's frontmatter:
-
-{% raw %}
-```liquid
-<body class="{% if page.type == "title"%}title{% elsif page.type == "frontmatter" %}frontmatter{% elsif page.type == "first_page" %}first_page{% endif %} print">
-```
-{% endraw %}
-
-Now in the css/printstyles.css file, you can assign a page name based on a specific class:
-
-```css
-body.title { page: title }
-```
-
-This means that for content inside of `body class="title"`, we can style this page in our stylesheet using `@page title`.
-
-Here's how that title page is styled:
-
-```css
-@page title {
-    @top-left {
-        content: " ";
-    }
-    @top-right {
-        content: " "
-    }
-    @bottom-right {
-        content: " ";
-    }
-    @bottom-left {
-        content: " ";
-    }
-}
-```
-
-As you can see, we don't have any header or footer content, because it's the title page.
-
-For the tocpage.html, which has the `type: frontmatter`, this is specified in the stylesheet:
-
-```css
-body.frontmatter { page: frontmatter }
-body.frontmatter {counter-reset: page 1}
-
-
-@page frontmatter {
-    @top-left {
-        content: prince-script(guideName);
-    }
-    @top-right {
-        content: prince-script(datestamp);
-    }
-    @bottom-right {
-        content: counter(page, lower-roman);
-    }
-    @bottom-left {
-        content: "youremail@domain.com";   }
-}
-```
-
-With `counter(page, lower-roman)`, we reset the page count to 1 so that the title page doesn't start the count. Then we also add some header and footer info. The page numbers start counting in lower-roman numerals.
-
-Finally, for the first page (which doesn't have a specific name), we restart the counting to 1 again and this time use regular numbers.
-
-```css
-body.first_page {counter-reset: page 1}
-
-h1 { string-set: doctitle content() }
-
-@page {
-    @top-left {
-        content: string(doctitle);
-        font-size: 11px;
-        font-style: italic;
-    }
-    @top-right {
-        content: prince-script(datestamp);
-        font-size: 11px;
-    }
-
-    @bottom-right {
-        content: "Page " counter(page);
-        font-size: 11px;
-    }
-    @bottom-left {
-        content: prince-script(guideName);
-        font-size: 11px;
-    }
-}
-```
-
-You'll see some other items in there such as `prince-script`. This means we're using JavaScript to run some functions to dynamically generate that content. These JavaScript functions are located in the \_includes/head_print.html:
-
-```js
-<script>
-    Prince.addScriptFunc("datestamp", function() {
-        return "PDF last generated: {{ site.time | date: '%B %d, %Y' }}";
-    });
-</script>
-
-<script>
-    Prince.addScriptFunc("guideName", function() {
-        return "{{site.print_title}} User Guide";
-    });
-</script>
-```
-
-There are a couple of Prince functions that are default functions from Prince. This gets the heading title of the page:
-
-```js
-        content: string(doctitle);
-```
-
-This gets the current page:
-
-```js
-        content: "Page " counter(page);
-```
-
-Because the theme uses JavaScript in the CSS, you have to add the `--javascript` tag in the Prince command (detailed later on this page).
-
-## 5. Customize and run the PDF script
-
-Duplicate the pdf-mydoc.sh file in the root directory and customize it for your specific configuration files.
-
-```
-echo 'Killing all Jekyll instances'
-kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
-clear
-
-echo "Building PDF-friendly HTML site for Mydoc ...";
-jekyll serve --detach --config _config.yml,pdfconfigs/config_mydoc_pdf.yml;
-echo "done";
-
-echo "Building the PDF ...";
-prince --javascript --input-list=_site/pdfconfigs/prince-list.txt -o pdf/mydoc.pdf;
-echo "done";
-```
-
-Note that the first part kills all Jekyll instances. This way you won't try to serve Jekyll at a port that is already occupied.
-
-The `jekyll serve` command serves up the HTML-friendly PDF configurations for our two projects. This web version is where Prince will go to get its content.
-
-The prince script issues a command to the Prince utility. JavaScript is enabled (`--javascript`), and we tell it exactly where to find the list of files (`--input-list`) &mdash; just point to the prince-list.txt file. Then we tell it where and what to output (`-o`).
-
-Make sure that the path to the prince-list.txt is correct. For the output directory, I like to output the PDF file into my project's source (into the files folder). Then when I build the web output, the PDF is included and something I can refer to.
-
-{% include note.html content="You might not want to include the PDF in your project files, since you're likely committing the PDF to Github and as a result saving the changes from one PDF version to another with each save." %}
-
-## 6. Add conditions for your new builds in the PDF config file
-
-In the PDF configuration file, there's a section that looks like this:
-
-```
-{% raw %}{% if site.product == "mydoc" %}
-pdf_sidebar: product2_sidebar
-{% endif %}
-```
-
-Point to the sidebar you want here.
-
-What this does is allow the prince-list.txt and toc.html files to iterate through the right sidebar.  Otherwise, you would need to create a unique prince-list.txt and toc.html file for each separate PDF output you have.
-
-## 7. Add a download button for the PDF
-
-You can add a download button for your PDF using some Bootstrap button code:
-
-```html
-<a target="_blank" rel="noopener" class="noCrossRef" href="/pdf/mydoc.pdf"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
-```
-
-Here's what that looks like:
-
-<a target="\_blank" class="noCrossRef" href={{ "pdf/mydoc.pdf"}}"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
-
-## JavaScript conflicts
-
-If you have JavaScript on any of your pages, Prince will note errors in Terminal like this:
-
-```
-error: TypeError: value is not an object
-```
-
-However, the PDF will still build.
-
-You need to conditionalize out any JavaScript from your PDF web output before building your PDFs. Make sure that the PDF configuration files have the `output: pdf` property.
-
-Then surround the JavaScript with conditional tags like this:
-
-```
-{% raw %}{% unless site.output == "pdf" %}
-javascript content here ...
-{% endunless %}{% endraw %}
-```
-
-For more detail about using `unless` in conditional logic, see [Conditional logic][mydoc_conditional_logic]. What this code means is "run this code unless this value is the case."
-
-## Overriding Bootstrap Print Styles
-
-The theme relies on Bootstrap's CSS for styling. However, for print media, Bootstrap applies the following style:
-
-```
-@media print{*,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important}
-```
-This is minified, but basically the `*` (asterisk) means select all, and applied the color #000 (black). As a result, the Bootstrap style strips out all color from the PDF (for Bootstrap elements).
-
-This is problematic for code snippets that have syntax highlighting. I decided to remove this de-coloring from the print output. I commented out the Bootstrap style:
-
-```
-@media print{*,:after,:before{/*color:#000!important;*/text-shadow:none!important;/*background:0 0!important*/;-webkit-box-shadow:none!important;box-shadow:none!important}
-```
-
-If you update Bootrap, make sure you make this edit. (Sorry, admittedly I couldn't figure out how to simply overwrite the `*` selector with a later style.)
-
-I did, however, remove the color from the alerts and lighten the background shading for `pre` elements. The printstyles.css has this setting.
-
-{% include links.html %}
+Exactly how the print style works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
