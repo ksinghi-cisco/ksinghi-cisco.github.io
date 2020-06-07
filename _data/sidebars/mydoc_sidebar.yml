@@ -160,32 +160,32 @@ entries:
       url: /mydoc_zbf_dia.html
       output: web, pdf
 
-  - title: Special Layouts
+  - title: Application Aware Routing and QoS
     output: web, pdf
 
     folderitems:
-    - title: Knowledge-base layout
-      url: /mydoc_kb_layout.html
+    - title: Configuring and Testing AAR
+      url: /mydoc_aar.html
       output: web, pdf
 
-    - title: Glossary layout
-      url: /mydoc_glossary.html
+    - title: Setting up Quality of Service
+      url: /mydoc_qos.html
       output: web, pdf
 
-    - title: FAQ layout
-      url: /mydoc_faq_layout.html
-      output: web, pdf
-
-    - title: Shuffle layout
-      url: /mydoc_shuffle.html
-      output: web, pdf
-
-  - title: Troubleshooting
+  - title: Cisco SD-WAN Security
     output: web, pdf
 
     folderitems:
 
-    - title: Troubleshooting
+    - title: Configuring IPS
+      url: /mydoc_troubleshooting.html
+      output: web, pdf
+
+    - title: URL Filtering Configuration
+      url: /mydoc_troubleshooting.html
+      output: web, pdf
+
+    - title: Software Defined Application Visibility and Control
       url: /mydoc_troubleshooting.html
       output: web, pdf
 
