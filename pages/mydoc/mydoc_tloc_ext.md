@@ -1,15 +1,15 @@
 ---
-title: Content reuse
+title: TLOC Extensions at Site 20
 tags: [single_sourcing]
 keywords: includes, conref, dita, transclusion, transclude, inclusion, reference
 last_updated: July 3, 2016
-summary: "You can reuse chunks of content by storing these files in the includes folder. You then choose to include the file where you need it. This works similar to conref in DITA, except that you can include the file in any content type."
+summary: "Configuring TLOC Extensions for transport redundancy."
 sidebar: mydoc_sidebar
-permalink: mydoc_content_reuse.html
+permalink: mydoc_tloc_ext.html
 folder: mydoc
 ---
 
-## About content reuse
+## Overview
 You can embed content from one file inside another using includes. Put the file containing content you want to reuse (e.g., mypage.html) inside the \_includes/custom folder and then use a tag like this:
 
 {% raw %}
@@ -28,7 +28,7 @@ See the following Jekyll cast for more info about using parameters with includes
 <iframe width="640" height="480" src="https://www.youtube.com/embed/kzpGqdEMbIs" frameborder="0" allowfullscreen></iframe>
 {% endunless %}
 
-## Page-level variables
+## Feature Templates for TLOC Extensions
 
 You can also create custom variables in your frontmatter like this:
 
@@ -43,6 +43,8 @@ thing2: Dave
 ```
 {% endraw %}
 
+### Creating the VPN Interface Template for the TLOC-EXT interface
+
 You can then access the values in those custom variables using the `page` namespace, like this:
 
 {% raw %}
@@ -52,7 +54,10 @@ thing2: {{page.thing2}}
 ```
 {% endraw %}
 
+### Creating the VPN Interface Template for the Tunnel interface
 
-I use includes all the time. Most of the includes in the \_includes directory are pulled into the theme layouts. For those includes that change, I put them inside custom and then inside a specific project folder.
+### Creating the BGP Template for the MPLS link
 
-{% include links.html %}
+## Updating the VPN and Device Templates
+
+## Activity Verification

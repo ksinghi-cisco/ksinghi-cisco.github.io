@@ -128,6 +128,14 @@ entries:
       url: /mydoc_eigrp_site40.html
       output: web, pdf
 
+  - title: TLOC Extensions
+    output: web, pdf
+
+    folderitems:
+    - title: Configuring TLOC Extensions
+      url: /mydoc_tloc_ext.html
+      output: web, pdf
+
   - title: Implementing Control Policies
     output: web, pdf
 
@@ -178,54 +186,21 @@ entries:
     folderitems:
 
     - title: Configuring IPS
-      url: /mydoc_troubleshooting.html
+      url: /mydoc_ips.html
       output: web, pdf
 
     - title: URL Filtering Configuration
-      url: /mydoc_troubleshooting.html
+      url: /mydoc_urlf.html
       output: web, pdf
 
     - title: Software Defined Application Visibility and Control
-      url: /mydoc_troubleshooting.html
+      url: /mydoc_sdavc.html
       output: web, pdf
 
-  - title: Tag archives
-    output: web
+  - title: Cloud OnRamp for SaaS
+    output: web, pdf
     folderitems:
 
-    - title: Tag archives overview
-      url: /mydoc_tag_archives_overview.html
-      output: web
-
-      subfolders:
-      - title: Tag archive pages
-        output: web
-        subfolderitems:
-
-        - title: Formatting pages
-          url: /tag_formatting.html
-          output: web
-
-        - title: Navigation pages
-          url: /tag_navigation.html
-          output: web
-
-        - title: Content types pages
-          url: /tag_content_types.html
-          output: web
-
-        - title: Publishing pages
-          url: /tag_publishing.html
-          output: web
-
-        - title: Special layout pages
-          url: /tag_special_layouts.html
-          output: web
-
-        - title: Collaboration pages
-          url: /tag_collaboration.html
-          output: web
-
-        - title: Troubleshooting pages
-          url: /tag_troubleshooting.html
-          output: web
+    - title: Configuring Cloud OnRamp for SaaS
+      url: /mydoc_conrampsaas.html
+      output: web, pdf
