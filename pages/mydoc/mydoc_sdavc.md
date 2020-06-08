@@ -1,18 +1,14 @@
 ---
-title: 10. Configure the build scripts
+title: Software Defined Application Visibility and Control
 tags:
   - publishing
 keywords: "build scripts, generating outputs, building, publishing"
-last_updated: "November 30, 2016"
-summary: "You need to customize the build scripts. These script automate the publishing of your PDFs and web outputs through shell scripts on the command line."
-series: "Getting Started"
-weight: 10
+last_updated: "June 3, 2020"
+summary: "Installing and Configuring SD-AVC in a Cisco SD-WAN environment for DPI and First Packet Identification"
 sidebar: mydoc_sidebar
-permalink: mydoc_build_scripts.html
+permalink: mydoc_sdavc.html
 folder: mydoc
 ---
-
-{% include custom/getting_started_series.html %}
 
 ## About the build scripts
 

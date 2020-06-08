@@ -1,10 +1,10 @@
 ---
-title: Atom Text Editor
+title: Configuring URL Filtering
 keywords: atom, text editor,
-last_updated: March 20, 2016
-summary: "Atom is a free text editor that is a favorite tool of many writers because it is free. This page provides some tips for using Atom."
+last_updated: June 3, 2020
+summary: "Configuring URL Filtering for DIA Guest Users"
 sidebar: mydoc_sidebar
-permalink: mydoc_atom_text_editor.html
+permalink: mydoc_urlf.html
 folder: mydoc
 ---
 
