@@ -9,6 +9,28 @@ permalink: mydoc_tloc_ext.html
 folder: mydoc
 ---
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Overview
+<br/>
+- Feature Templates for TLOC Extensions
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN Interface Template for the TLOC-EXT interface
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the VPN Interface Template for the Tunnel interface
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating the BGP Template for the MPLS link
+    <br/>
+- Updating the VPN and Device Templates
+<br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
 ## Overview
 You can embed content from one file inside another using includes. Put the file containing content you want to reuse (e.g., mypage.html) inside the \_includes/custom folder and then use a tag like this:
 
@@ -28,20 +50,29 @@ See the following Jekyll cast for more info about using parameters with includes
 <iframe width="640" height="480" src="https://www.youtube.com/embed/kzpGqdEMbIs" frameborder="0" allowfullscreen></iframe>
 {% endunless %}
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Feature Templates for TLOC Extensions](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the VPN Interface Template for the TLOC-EXT interface](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the VPN Interface Template for the Tunnel interface](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the BGP Template for the MPLS link](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [Updating the VPN and Device Templates](#updating-the-vpn-and-device-templates)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
 ## Feature Templates for TLOC Extensions
-
-You can also create custom variables in your frontmatter like this:
-
-{% raw %}
-```yaml
----
-title: Page-level variables
-permalink: page_level_variables/
-thing1: Joe
-thing2: Dave
----
-```
-{% endraw %}
 
 ### Creating the VPN Interface Template for the TLOC-EXT interface
 
@@ -54,10 +85,120 @@ thing2: {{page.thing2}}
 ```
 {% endraw %}
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Feature Templates for TLOC Extensions](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the TLOC-EXT interface~~](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the VPN Interface Template for the Tunnel interface](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the BGP Template for the MPLS link](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [Updating the VPN and Device Templates](#updating-the-vpn-and-device-templates)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
 ### Creating the VPN Interface Template for the Tunnel interface
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Feature Templates for TLOC Extensions](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the TLOC-EXT interface~~](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the Tunnel interface~~](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating the BGP Template for the MPLS link](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [Updating the VPN and Device Templates](#updating-the-vpn-and-device-templates)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
 
 ### Creating the BGP Template for the MPLS link
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Feature Templates for TLOC Extensions~~](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the TLOC-EXT interface~~](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the Tunnel interface~~](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the BGP Template for the MPLS link~~](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [Updating the VPN and Device Templates](#updating-the-vpn-and-device-templates)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
 ## Updating the VPN and Device Templates
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Feature Templates for TLOC Extensions~~](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the TLOC-EXT interface~~](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the Tunnel interface~~](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the BGP Template for the MPLS link~~](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [~~Updating the VPN and Device Templates~~](#updating-the-vpn-and-device-templates)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
 ## Activity Verification
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Feature Templates for TLOC Extensions~~](#feature-templates-for-tloc-extensions)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the TLOC-EXT interface~~](#creating-the-vpn-interface-template-for-the-tloc-ext-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the VPN Interface Template for the Tunnel interface~~](#creating-the-vpn-interface-template-for-the-tunnel-interface)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating the BGP Template for the MPLS link~~](#creating-the-bgp-template-for-the-mpls-link)
+    <br/>
+- [~~Updating the VPN and Device Templates~~](#updating-the-vpn-and-device-templates)
+<br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+
+" type="primary" %}

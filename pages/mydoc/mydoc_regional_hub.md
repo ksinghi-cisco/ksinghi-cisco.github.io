@@ -9,6 +9,29 @@ permalink: mydoc_regional_hub.html
 folder: mydoc
 ---
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Pre-Configuration
+<br/>
+- Adding the Policy
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Setting up Site Lists
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Adding Custom Control policies
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Policy for Traffic from Site 20 to the Regional Hub
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Policy for Traffic from the Fabric to Site 20
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Saving and Activating the Policy
+    <br/>
+- Verification
+<br/>
+
+" type="primary" %}
 
 ## Pre-Configuration
 
