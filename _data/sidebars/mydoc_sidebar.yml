@@ -193,7 +193,7 @@ entries:
       url: /mydoc_urlf.html
       output: web, pdf
 
-    - title: Software Defined Application Visibility and Control
+    - title: Software Defined Application Visibility and Control (SD-AVC)
       url: /mydoc_sdavc.html
       output: web, pdf
 
