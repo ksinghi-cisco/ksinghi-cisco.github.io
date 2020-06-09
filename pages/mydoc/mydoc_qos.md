@@ -9,7 +9,7 @@ permalink: mydoc_qos.html
 folder: mydoc
 ---
 
-## Overview
+## Create a Localized Policy
 
 You can create a glossary for your content. First create your glossary items in a data file such as glossary.yml.
 
@@ -51,7 +51,13 @@ impertinent
 
 The glossary works well as a link in the top navigation bar.
 
-## Horizontally styled definiton lists
+### Add a Class List and a QoS Map
+
+### Configure the IPv4 ACL Policy
+
+### Complete the localized policy and apply it
+
+## Apply the ACL and QoS Map
 
 You can also change the definition list (`dl`) class to `dl-horizontal`. This is a Bootstrap specific class. If you do, the styling looks like this:
 
@@ -105,6 +111,6 @@ For this type of list, you must use HTML. The list would then look like this:
 
 If you squish your screen small enough, at a certain breakpoint this style reverts to the regular `dl` class.
 
-Although I like the side-by-side view for shorter definitions, I found it problematic with longer definitions.
+## Activity Verification
 
 {% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 7 of the SOP" %}
