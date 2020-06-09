@@ -64,24 +64,26 @@ Use the following table to copy-paste IP Addresses as and when required through 
 |         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.5/24   | 100.100.100.1 |
 | 1       | 10.255.255.11 | DC-vEdge1                    | Network Adapter 1 | Management              | eth0             | 192.168.0.10/24    | 192.168.0.1   |
 |         |               |                              | Network Adapter 2 | MPLS10                  | ge0/1            | 192.0.2.2/30       | 192.0.2.1     |
-|         |               |                              | Network Adapter 3 | SiteDC-VPN10            | ge0/2            | 10.100.10.2/24      | 10.100.10.1    |
+|         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.2/24      | 10.100.10.1    |
 |         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.2/24      | 10.100.20.1    |
 |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.10/24  | 100.100.100.1 |
 |         | 10.255.255.12 | DC-vEdge2                    | Network Adapter 1 | Management              | eth0             | 192.168.0.11/24    | 192.168.0.1   |
 |         |               |                              | Network Adapter 2 | MPLS11                  | ge0/1            | 192.0.2.6/30       | 192.0.2.5     |
-|         |               |                              | Network Adapter 3 | SiteDC-VPN10            | ge0/2            | 10.100.10.3/24      | 10.100.10.1    |
+|         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.3/24      | 10.100.10.1    |
 |         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.3/24      | 10.100.20.1    |
 |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.11/24  | 100.100.100.1 |
 | 20      | 10.255.255.21 | vEdge20                      | Network Adapter 1 | Management              | eth0             | 192.168.0.20/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Unused                  | ge0/1            |                    |               |
+|         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE                  | ge0/1            |           192.168.25.20/24         |               |
 |         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.1/24      |               |
 |         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.1/24      |               |
 |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.20/24  | 100.100.100.1 |
+|         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge                  | ge0/4            |           192.168.26.20/24         |               |
 |         | 10.255.255.22 | vEdge21                      | Network Adapter 1 | Management              | eth0             | 192.168.0.21/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Unused                  | ge0/1            |                    |               |
+|         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE                  | ge0/1            |      192.168.25.21/24              |               |
 |         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.2/24      |               |
 |         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.2/24      |               |
 |         |               |                              | Network Adapter 5 | MPLS20                  | ge0/0            | 192.0.2.10/30      | 192.0.2.9     |
+|         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge                  | ge0/4            |           192.168.26.21/24         |               |
 | 30      | 10.255.255.31 | vEdge30                      | Network Adapter 1 | Management              | eth0             | 192.168.0.30/24    | 192.168.0.1   |
 |         |               |                              | Network Adapter 2 | MPLS30                  | ge0/1            | 192.0.2.14/30      | 192.0.2.13    |
 |         |               |                              | Network Adapter 3 | Site30-VPN10            | ge0/2            | 10.30.10.1/24      |               |
@@ -116,4 +118,4 @@ Use the following table to copy-paste IP Addresses as and when required through 
 
 Given below is a printable version of the table
 
-![](/images/Topology_Schema/NetworkSchema_30_05_2020.PNG)
+![](/images/Topology_Schema/NetworkSchema_09_06_2020.PNG)
