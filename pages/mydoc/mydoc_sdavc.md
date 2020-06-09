@@ -188,6 +188,4 @@ After you've configured all the scripts, you can run them all by running `. mydo
 
 After setting up and customizing the build scripts, run a few tests to make sure everything is generating correctly. Getting this part right is somewhat difficult and may likely require you to tinker around with the scripts a while before it works flawlessly.
 
-{% include custom/getting_started_series_next.html %}
-
-{% include links.html %}
+{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 8 of the SOP" %}

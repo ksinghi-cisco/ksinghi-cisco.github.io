@@ -376,6 +376,8 @@ This completes the configuration of TLOC Extensions at Site 20.
 
 We now see that the vEdges have established control connections over the transport connected to their counterpart at the same site. BFD sessions are also established across the platform transports. Thus, we should see control connections and bfd sessions across *mpls* on vEdge20 and across *public-internet* on vEdge21, along with their directly connected transport connections/sessions.
 
+{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 4 of the SOP" %}
+
 <br/>
 
 {% include callout.html content="**Task List**

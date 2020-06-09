@@ -245,6 +245,8 @@ Open up the css/printstyles.css file and customize what you want for the headers
 
 Exactly how the print style works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
 
+{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 6 of the SOP" %}
+
 <br/>
 
 {% include callout.html content="**Task List**

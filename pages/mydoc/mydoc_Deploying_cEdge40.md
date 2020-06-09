@@ -9,6 +9,8 @@ permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---
 
+{% include warning.html content="STOP!!!! Complete this section AFTER going through *Deploying cEdge50 and cEdge51* of this guide. Refer to the Testing Procedure, Step 1 of the SOP" %}
+
 {% include callout.html content="**Task List**
 <br/><br/>
 - Verifying the current lab setup
@@ -582,6 +584,8 @@ We have completed this section of the lab and will now need to wait for the cEdg
     ![](/images/Deploying_cEdge40/71_shsdwrun.PNG)
 
 We have completed onboarding verification
+
+{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 3 of the SOP" %}
 
 <br>
 
