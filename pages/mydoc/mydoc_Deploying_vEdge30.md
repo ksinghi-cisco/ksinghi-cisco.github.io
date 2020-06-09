@@ -32,7 +32,7 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
 | SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface | IP                | Gateway       |
 |---------|---------------|---------|-------------------|--------------|-----------|-------------------|---------------|
-| 30      | 10.255.255.31 | vEdge30 | Network Adapter 1 | Management   | eth0      | 192.168.0.30/24   | 192.168.0.1   |
+| 30      | 10.255.255.31 | vEdge30-podX | Network Adapter 1 | Management   | eth0      | 192.168.0.30/24   | 192.168.0.1   |
 |         |               |         | Network Adapter 2 | MPLS30       | ge0/1     | 192.0.2.14/30     | 192.0.2.13    |
 |         |               |         | Network Adapter 3 | Site30-VPN10 | ge0/2     | 10.30.10.2/24     |               |
 |         |               |         | Network Adapter 4 | Site30-VPN20 | ge0/3     | 10.30.20.2/24     |               |
@@ -48,7 +48,9 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. > Change the Virtual Machine name to vEdge30 and click on Next.
+4. > Change the Virtual Machine name to **vEdge30-podX** and click on Next (where X is your POD number)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **vEdge30**" %}
 
 5. Select the host assigned to you (image shown as an example only) and click on Next
 
@@ -62,9 +64,9 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
     ![](/images/Deploying_vEdge30/01_netad.PNG)
-9. Click on **Finish** to deploy your vEdge30 VM
+9. Click on **Finish** to deploy your vEdge30-podX VM
 
-10. Once the VM is deployed, right click on **vEdge30** and click Edit settings.
+10. Once the VM is deployed, right click on **vEdge30-podX** and click Edit settings.
 
 11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab).
 
@@ -75,7 +77,7 @@ We will be deploying a vEdge at Site 30 via vCenter. Make note of the following 
 14.  > Make sure the Network Adapters match with the image below and click on *OK*
     ![](/images/Deploying_vEdge30/02_addnwad.PNG)
 
-15. Click on vEdge30 and choose to power it on
+15. Click on vEdge30-podX and choose to power it on
 
 <br>
 

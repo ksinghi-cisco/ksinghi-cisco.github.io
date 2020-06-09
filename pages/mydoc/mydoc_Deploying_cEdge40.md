@@ -89,7 +89,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 
 | SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP              | Gateway       |
 |---------|---------------|---------|-------------------|--------------|------------------|-----------------|---------------|
-| 40      | 10.255.255.41 | cEdge40 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
+| 40      | 10.255.255.41 | cEdge40-podX | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.40/24 | 192.168.0.1   |
 |         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.40  | 100.100.100.1 |
 |         |               |         | Network Adapter 3 | MPLS40       | GigabitEthernet3 | 192.1.2.18/30   | 192.1.2.17    |
 |         |               |         | Network Adapter 4 | Site40-VPN10 | GigabitEthernet4 | 10.40.10.2/24   |               |
@@ -115,7 +115,9 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr1000v-univer*. Click on Next.
 
     ![](/images/Deploying_cEdge40/05_csrimage.PNG)
-5. Change the Virtual Machine name to **cEdge40** and click on Next.
+5. Change the Virtual Machine name to **cEdge40-podX** and click on Next (X is your POD number, image below doesn't reflect the podX suffix)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **cEdge40**" %}
 
     ![](/images/Deploying_cEdge40/06_renamecedge.PNG)
 6. Select the host assigned to you (image shown as an example only) and click on Next
@@ -139,7 +141,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     ![](/images/Deploying_cEdge40/10_nextcusttemp.PNG)
 
     ![](/images/Deploying_cEdge40/11_summfin.PNG)
-11. Once the VM is deployed, right click **cEdge40** and click Edit settings.
+11. Once the VM is deployed, right click **cEdge40-podX** and click Edit settings.
 
     ![](/images/Deploying_cEdge40/12_editsett.PNG)
 12. Change the memory to 8 GB and choose to **Add a new device** (top right corner). Select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
@@ -158,7 +160,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     ![](/images/Deploying_cEdge40/17_site40vpn10.PNG)
 
     ![](/images/Deploying_cEdge40/18_allnetads.PNG)
-15. Click on cEdge40 and choose to power it on
+15. Click on cEdge40-podX and choose to power it on
 
 <br>
 

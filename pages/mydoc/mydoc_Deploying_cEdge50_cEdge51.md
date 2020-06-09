@@ -39,7 +39,7 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
 
 | SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network      | Interface        | IP                | Gateway       |
 |---------|---------------|---------|-------------------|--------------|------------------|-------------------|---------------|
-| 50      | 10.255.255.51 | cEdge50 | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.50/24   | 192.168.0.1   |
+| 50      | 10.255.255.51 | cEdge50-podX | Network Adapter 1 | Management   | GigabitEthernet1 | 192.168.0.50/24   | 192.168.0.1   |
 |         |               |         | Network Adapter 2 | Internet     | GigabitEthernet2 | 100.100.100.50/24 | 100.100.100.1 |
 |         |               |         | Network Adapter 3 | Site50-VPN10 | GigabitEthernet3 | 10.50.10.2/24     |               |
 |         |               |         | Network Adapter 4 | Site50-VPN20 | GigabitEthernet4 | 10.50.20.2/24     |               |
@@ -69,7 +69,9 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
 4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *csr1000v-univer*. Click on Next.
 
     ![](/images/Deploying_cEdge50_cEdge51/01_Deploy_cEdge50.PNG)
-5. Change the Virtual Machine name to **cEdge50** or **cEdge51**, depending on the VM being deployed and click on Next.
+5. Change the Virtual Machine name to **cEdge50-podX** or **cEdge51-podX**, depending on the VM being deployed and click on Next (where X is your POD number)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to these VMs as **cEdge50** and **cEdge51**." %}
 
     |![](/images/Deploying_cEdge50_cEdge51/02_namechange.PNG)|
     |:--:|
@@ -101,14 +103,14 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
     |:--:|
     | Networks for cEdge51 |
 
-10. Click Next on **Customize Template** and then Click on **Finish** to deploy your cEdge50 and cEdge51 VM
+10. Click Next on **Customize Template** and then Click on **Finish** to deploy your cEdge50-podX and cEdge51-podX VM
 
     ![](/images/Deploying_cEdge40/10_nextcusttemp.PNG)
 
-11. Once the VM is deployed, right click **cEdge50** and/or **cEdge51** and click Edit settings (image shown as reference only).
+11. Once the VM is deployed, right click **cEdge50-podX** and/or **cEdge51-podX** and click Edit settings (image shown as reference only).
 
     ![](/images/Deploying_cEdge40/12_editsett.PNG)
-12. Click on **Add New Device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 5 for our lab). Repeat this step for a total of 5 Network Adapters. This will need to be done for each VM (cEdge50 and cEdge51)
+12. Click on **Add New Device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 5 for our lab). Repeat this step for a total of 5 Network Adapters. This will need to be done for each VM (cEdge50-podX and cEdge51-podX)
 
     |![](/images/Deploying_cEdge50_cEdge51/07_ce50addneta.PNG)|
     |:---:|
@@ -127,7 +129,7 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
     |:---:|
     | Networks on cEdge51 |
 
-15. Click on cEdge50 and/or cEdge51 and choose to power them on. Console in to the devices as well, for the next section. Wait for the cEdges to boot up completely
+15. Click on cEdge50-podX and/or cEdge51-podX and choose to power them on. Console in to the devices as well, for the next section. Wait for the cEdges to boot up completely
 
 ![](/images/Deploying_cEdge50_cEdge51/10_poweronboth.PNG)
 
