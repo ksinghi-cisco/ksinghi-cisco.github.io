@@ -9,53 +9,95 @@ permalink: mydoc_qos.html
 folder: mydoc
 ---
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Create a Localized Policy
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Add a Class List and a QoS Map
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configure the IPv4 ACL Policy
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Complete and apply the localized policy
+    <br/>
+- Apply the ACL and QoS Map
+<br/>
+- Activity Verification
+<br/>
+
+" type="primary" %}
+
 ## Create a Localized Policy
 
 You can create a glossary for your content. First create your glossary items in a data file such as glossary.yml.
 
-Then create a page and use definition list formatting, like this:
-
-fractious
-: {{site.data.glossary.fractious}}
-
-gratuitous
-: {{site.data.glossary.gratuitous}}
-
-haughty
-: {{site.data.glossary.haughty}}
-
-gratuitous
-: {{site.data.glossary.gratuitous}}
-
-impertinent
-: {{site.data.glossary.intrepid}}
-
-Here's the code:
-
-```
-{% raw %}fractious
-: {{site.data.glossary.fractious}}
-
-gratuitous
-: {{site.data.glossary.gratuitous}}
-
-haughty
-: {{site.data.glossary.haughty}}
-
-gratuitous
-: {{site.data.glossary.gratuitous}}
-
-impertinent
-: {{site.data.glossary.intrepid}}{% endraw %}
-```
-
-The glossary works well as a link in the top navigation bar.
-
 ### Add a Class List and a QoS Map
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [Create a Localized Policy](#create-a-localized-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Add a Class List and a QoS Map~~](#add-a-class-list-and-a-qos-map)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configure the IPv4 ACL Policy](#configure-the-ipv4-acl-policy)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Complete and apply the localized policy](#complete-and-apply-the-localized-policy)
+    <br/>
+- [Apply the ACL and QoS Map](#apply-the-acl-and-qos-map)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
 
 ### Configure the IPv4 ACL Policy
 
-### Complete the localized policy and apply it
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [Create a Localized Policy](#create-a-localized-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Add a Class List and a QoS Map~~](#add-a-class-list-and-a-qos-map)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configure the IPv4 ACL Policy~~](#configure-the-ipv4-acl-policy)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Complete and apply the localized policy](#complete-and-apply-the-localized-policy)
+    <br/>
+- [Apply the ACL and QoS Map](#apply-the-acl-and-qos-map)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+### Complete and apply the localized policy
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Create a Localized Policy~~](#create-a-localized-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Add a Class List and a QoS Map~~](#add-a-class-list-and-a-qos-map)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configure the IPv4 ACL Policy~~](#configure-the-ipv4-acl-policy)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Complete and apply the localized policy~~](#complete-and-apply-the-localized-policy)
+    <br/>
+- [Apply the ACL and QoS Map](#apply-the-acl-and-qos-map)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
 
 ## Apply the ACL and QoS Map
 
@@ -111,6 +153,46 @@ For this type of list, you must use HTML. The list would then look like this:
 
 If you squish your screen small enough, at a certain breakpoint this style reverts to the regular `dl` class.
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Create a Localized Policy~~](#create-a-localized-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Add a Class List and a QoS Map~~](#add-a-class-list-and-a-qos-map)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configure the IPv4 ACL Policy~~](#configure-the-ipv4-acl-policy)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Complete and apply the localized policy~~](#complete-and-apply-the-localized-policy)
+    <br/>
+- [~~Apply the ACL and QoS Map~~](#apply-the-acl-and-qos-map)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
 ## Activity Verification
 
 {% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 7 of the SOP" %}
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Create a Localized Policy~~](#create-a-localized-policy)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Add a Class List and a QoS Map~~](#add-a-class-list-and-a-qos-map)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configure the IPv4 ACL Policy~~](#configure-the-ipv4-acl-policy)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Complete and apply the localized policy~~](#complete-and-apply-the-localized-policy)
+    <br/>
+- [~~Apply the ACL and QoS Map~~](#apply-the-acl-and-qos-map)
+<br/>
+- [~~Activity Verification~~](#activity-verification)
+<br/>
+
+" type="primary" %}
