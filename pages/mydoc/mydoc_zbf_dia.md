@@ -9,11 +9,50 @@ sidebar: mydoc_sidebar
 folder: mydoc
 ---
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- Overview
+<br/>
+- Setting up Lists
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring Zones
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring an Application List
+    <br/>
+- Creating a Security Policy
+<br/>
+- Applying the Policy and Verification
+<br/>
+
+" type="primary" %}
 
 ## Overview
 This process for creating a PDF relies on Prince XML to transform the HTML content into PDF. Prince costs about $500 per license. That might seem like a lot, but if you're creating a PDF, you're probably working for a company that sells a product, so you likely have access to some resources. There's also a free license that prints a small "P" watermark on your title page, so if you're fine with that, great.
 
 The basic approach is to generate a list of all web pages that need to be added to the PDF, and then add leverage Prince to package them up into a PDF. Once you set it up, building a pdf is just a matter of running a couple of commands. Also, creating a PDF this way gives you a lot more control and customization capabilities than with other methods for creating PDFs. If you know CSS, you can entirely customize the output.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Setting up Lists](#setting-up-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring Zones](#configuring-zones)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring an Application List](#configuring-an-application-list)
+    <br/>
+- [Creating a Security Policy](#creating-a-security-policy)
+<br/>
+- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+<br/>
+
+" type="primary" %}
 
 ## Setting up Lists
 
@@ -64,11 +103,32 @@ After stopping all Jekyll instances, we build Jekyll using a special configurati
 
 The following sections explain more about the setup.
 
+
 ### Configuring Zones
 
 Download and install [Prince](http://www.princexml.com/doc/installing/).
 
 You can install a fully functional trial version. The only difference is that the title page will have a small Prince PDF watermark.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [Setting up Lists](#setting-up-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring an Application List](#configuring-an-application-list)
+    <br/>
+- [Creating a Security Policy](#creating-a-security-policy)
+<br/>
+- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+<br/>
+
+" type="primary" %}
 
 ### Configuring an Application List
 
@@ -107,6 +167,26 @@ In the configuration file, customize the values for the `print_title` and `print
 
 We will access this configure file in the PDF generation script.
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Setting up Lists~~](#setting-up-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring an Application List~~](#configuring-an-application-list)
+    <br/>
+- [Creating a Security Policy](#creating-a-security-policy)
+<br/>
+- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+<br/>
+
+" type="primary" %}
+
 ## Creating a Security Policy
 
 There are two template pages in the root directory that are critical to the PDF:
@@ -139,8 +219,48 @@ There's another file (in the root directory of the theme) that is critical to th
 
 {% include note.html content="If you have any files that you do not want to appear in the PDF, add <code>output: web</code> (rather than <code>output: pdf</code>) in the list of attributes in your sidebar. The prince-list.txt file that loops through the mydoc_sidebar.yml file to grab the URLs of each page that should appear in the PDF will skip over any items that do not list <code>output: pdf</code> in the item attributes. For example, you might not want your tag archives to appear in the PDF, but you probably will want to list them in the online help navigation." %}
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Setting up Lists~~](#setting-up-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring an Application List~~](#configuring-an-application-list)
+    <br/>
+- [~~Creating a Security Policy~~](#creating-a-security-policy)
+<br/>
+- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+<br/>
+
+" type="primary" %}
+
 ## Applying the Policy and Verification
 
 Open up the css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
 
 Exactly how the print style works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Setting up Lists~~](#setting-up-lists)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring an Application List~~](#configuring-an-application-list)
+    <br/>
+- [~~Creating a Security Policy~~](#creating-a-security-policy)
+<br/>
+- [~~Applying the Policy and Verification~~](#applying-the-policy-and-verification)
+<br/>
+
+" type="primary" %}
