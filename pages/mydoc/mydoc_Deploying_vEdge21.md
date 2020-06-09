@@ -31,7 +31,7 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
 
 | SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP               | Gateway     |
 |---------|---------------|---------|-------------------|----------------|-----------|------------------|-------------|
-| 20      | 10.255.255.22 | vEdge21 | Network Adapter 1 | Management     | eth0      | 192.168.0.21/24  | 192.168.0.1 |
+| 20      | 10.255.255.22 | vEdge21-podX | Network Adapter 1 | Management     | eth0      | 192.168.0.21/24  | 192.168.0.1 |
 |         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.21/24 |             |
 |         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.3/24    |             |
 |         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.3/24    |             |
@@ -48,7 +48,9 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. > Change the Virtual Machine name to vEdge21 and click on Next.
+4. > Change the Virtual Machine name to **vEdge21-podX** and click on Next (where X is your POD number)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **vEdge21**" %}
 
 5. Select the host assigned to you (image shown as an example only) and click on Next
 
@@ -63,11 +65,11 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_vEdge21/01_nwad.PNG)
-9. Click on **Finish** to deploy your vEdge21 VM
+9. Click on **Finish** to deploy your vEdge21-podX VM
 
     ![](/images/Deploying_vEdge21/02_summ.PNG)
 
-10. Once the VM is deployed, right click **vEdge21** and click Edit settings.
+10. Once the VM is deployed, right click **vEdge21-podX** and click Edit settings.
 
 11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 6 for our lab). Add another network device this way, for a total of 6 network adapters.
 
@@ -80,7 +82,7 @@ We will be deploying another vEdge at Site 20 via vCenter. Make note of the foll
 15.  Make sure the Network Adapters match with the image below and click on OK
     ![](/images/Deploying_vEdge21/03_addnetad.PNG)
 
-16. Click on vEdge21 and choose to power it on
+16. Click on vEdge21-podX and choose to power it on
 
 <br>
 

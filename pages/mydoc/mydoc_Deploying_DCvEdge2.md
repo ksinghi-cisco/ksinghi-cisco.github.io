@@ -38,7 +38,7 @@ We will be deploying another vEdge in our first site (the Data Center) via vCent
 
 VM Name | System IP | Network Adapter | Network | Interface | IP Address | Default Gateway
 ------- | ----- | ------------- | ------------- | ------------- | ------------- | -------------
-DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11/24 | 192.168.0.1
+DC-vEdge2-podX | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11/24 | 192.168.0.1
  || Network Adapter 2 | MPLS11 | ge0/1 | 192.0.2.6/30 | 192.0.2.5
  || Network Adapter 3 | SiteDC_VPN10 | ge0/2 | 10.100.10.3/24 | 10.100.10.1
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.3/24 | 10.100.20.1
@@ -54,7 +54,9 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. > Change the Virtual Machine name to DC-vEdge2 and click on Next.
+4. > Change the Virtual Machine name to **DC-vEdge2-podX** and click on Next (where X is your POD number, image below doesn't have the suffix of podX)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **DC-vEdge2**" %}
 
     ![](/images/Deploying_DC_vEdge2/01_CreateVM.PNG)
 
@@ -71,11 +73,11 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_DC_vEdge2/02_NetworkAdapters.PNG)
-9. Click on **Finish** to deploy your DC-vEdge2 VM
+9. Click on **Finish** to deploy your DC-vEdge2-podX VM
 
     ![](/images/Deploying_DC_vEdge2/03_Summary.PNG)
 
-10. Once the VM is deployed, right click **DC-vEdge2** and click Edit settings.
+10. Once the VM is deployed, right click **DC-vEdge2-podX** and click Edit settings.
 
 11. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab)
 
@@ -88,7 +90,7 @@ DC-vEdge2 | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168.0.11
     ![](/images/Deploying_DC_vEdge2/05_Internet.PNG)
 
     ![](/images/Deploying_DC_vEdge2/99_nwve2.PNG)
-14. Click on DC-vEdge2 and choose to power it on
+14. Click on DC-vEdge2-podX and choose to power it on
 
 <br>
 

@@ -33,7 +33,7 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 | SITE ID | SYSTEM ID     | VM      | Network Adapter   | Network        | Interface | IP                | Gateway       |
 |---------|---------------|---------|-------------------|----------------|-----------|-------------------|---------------|
-| 20      | 10.255.255.21 | vEdge20 | Network Adapter 1 | Management     | eth0      | 192.168.0.20/24   | 192.168.0.1   |
+| 20      | 10.255.255.21 | vEdge20-podX | Network Adapter 1 | Management     | eth0      | 192.168.0.20/24   | 192.168.0.1   |
 |         |               |         | Network Adapter 2 | TLOCEXT_vEdge  | ge0/1     | 192.168.25.20/24  |               |
 |         |               |         | Network Adapter 3 | Site20-VPN10   | ge0/2     | 10.20.10.2/24     |               |
 |         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.2/24     |               |
@@ -50,7 +50,9 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
     ![](/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png)
 3. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
-4. > Change the Virtual Machine name to vEdge20 and click on Next.
+4. > Change the Virtual Machine name to **vEdge20-podX** and click on Next (where X is your POD number, image below does not have the suffix of podX)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **vEdge20**" %}
 
     ![](/images/Deploying_vEdge20/01_NamevEdge20.PNG)
 
@@ -67,11 +69,11 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_vEdge20/02_nwadapters.PNG)
-9. Click on **Finish** to deploy your vEdge20 VM
+9. Click on **Finish** to deploy your vEdge20-podX VM
 
     ![](/images/Deploying_vEdge20/03_summary.PNG)
 
-10. Once the VM is deployed, right click **vEdge20** and click Edit settings.
+10. Once the VM is deployed, right click **vEdge20-podX** and click Edit settings.
 
     ![](/images/Deploying_vEdge20/04_edtisett.PNG)
 
@@ -92,7 +94,7 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 15.  Make sure the Network Adapters match with the image below and click on OK
     ![](/images/Deploying_vEdge20/99_nwad2.PNG)
 
-16. Click on vEdge20 and choose to power it on
+16. Click on vEdge20-podX and choose to power it on
 
 <br>
 

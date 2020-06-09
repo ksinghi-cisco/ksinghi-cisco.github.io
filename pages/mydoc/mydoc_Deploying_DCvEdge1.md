@@ -36,7 +36,7 @@ The vManage, vBond and vSmarts have been deployed and should be ready to accept 
 
     ![](/images/Deploying_DC_vEdge1/01_logintovmanage.PNG)
 
-2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along the top row and 2 control planes should be up
+2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along the top row and 2 control planes should be up (naming convention might vary)
 
     ![](/images/Deploying_DC_vEdge1/02_2smarts_1bond_vm.PNG)
 3. Open and log in to the vManage via the CLI - fire up Putty and double click the saved session for vManage or SSH to 192.168.0.6. Use the same credentials as the GUI.
@@ -71,11 +71,11 @@ We see that the connections are up and this completes the verification activity.
 
 ### Overview
 
-We will be deploying a vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later.
+We will be deploying a vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later. X is your POD number and is used only during vCenter related activities.
 
 VM Name | System IP | Network Adapter | Network | Interface | IP Address | Default Gateway
 ------- | | ------------- | ------------- | ------------- | ------------- | -------------
-DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.1
+DC-vEdge1-podX | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.1
  || Network Adapter 2 | MPLS10 | ge0/1 | 192.0.2.2/30 | 192.0.2.1
  || Network Adapter 3 | SiteDC_VPN10 | ge0/2 | 10.100.10.2/24 | 10.100.10.1
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.2/24 | 10.100.20.1
@@ -100,7 +100,9 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 4. Choose the **Local file** option and click on **Choose files**. Navigate to the SD-WAN images folder and select the file beginning with *viptela-edge-*. Click on Next.
 
     ![](/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG)
-5. Change the Virtual Machine name to **DC-vEdge1** and click on Next.
+5. Change the Virtual Machine name to **DC-vEdge1-podX** and click on Next (where X is your POD number, image below doesn't have the suffix of podX)
+
+    {% include note.html content="We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as **DC-vEdge1**" %}
 
     ![](/images/Deploying_DC_vEdge1/07_namedcvedge1_next.PNG)
 6. Select the host assigned to you (image shown as an example only) and click on Next
@@ -120,7 +122,7 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
 10. Click on **Finish** to deploy your DC-vEdge1 VM
 
     ![](/images/Deploying_DC_vEdge1/12_finish.PNG)
-11. Once the VM is deployed, right click **DC-vEdge1** and click Edit settings.
+11. Once the VM is deployed, right click **DC-vEdge1-podX** and click Edit settings.
 
     ![](/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png)
 12. Choose to **Add a new device** (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab)
@@ -135,7 +137,7 @@ DC-vEdge1 | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10
     ![](/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG)
 
     ![](/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG)
-15. Click on DC-vEdge1 and choose to power it on
+15. Click on the DC-vEdge1-podX VM and choose to power it on
 
     ![](/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.png)
 
