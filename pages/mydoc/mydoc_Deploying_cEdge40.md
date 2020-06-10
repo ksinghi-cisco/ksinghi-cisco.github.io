@@ -331,7 +331,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     | Section             | Field                        | Global or Device Specific (drop down) | Value                                   |
     |---------------------|------------------------------|---------------------------------------|-----------------------------------------|
-    |                     | Template Name                | NA                                    | *cedge_vpn512_dual_uplink*              |
+    |                     | Template Name                | NA                                    | *cEdge_VPN512_dual_uplink*              |
     |                     | Description                  | NA                                    | cEdge VPN 512 Template for Dual Uplinks |
     | Basic Configuration | VPN                          | Global                                | 512                                     |
     | IPv4 Route          | Update IPv4 Route - Next Hop | Device Specific                       | *vpn512_next_hop_ip_address_0*          |
