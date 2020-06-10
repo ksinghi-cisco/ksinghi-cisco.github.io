@@ -245,6 +245,8 @@ Use the following information in this section (some of the information will be u
 
 ### Copying and Modifying Feature Templates
 
+{% include note.html content="The Feature and Device Templates enumerated here and in the next section might already be created for you. However, it is a good practice to go through the steps below and validate the settings in the templates. This will help in familiarization with the lab setup and with fixing any deltas that might exist. If you don't see them in the configuration, please add the templates and follow the steps as enumerated below." %}
+
 Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefulness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
 
 We will make use of the templates that were created for cEdge40, repurposing them for cEdge50 and cEdge51 through the use of Device Specific parameters.

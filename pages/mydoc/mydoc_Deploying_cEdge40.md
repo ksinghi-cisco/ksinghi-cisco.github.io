@@ -254,6 +254,8 @@ Use the following information in this section (some of the information will be u
 
 ### Setting up Feature Templates
 
+{% include note.html content="The Feature and Device Templates enumerated here and in the next section might already be created for you. However, it is a good practice to go through the steps below and validate the settings in the templates. This will help in familiarization with the lab setup and with fixing any deltas that might exist. If you don't see them in the configuration, please add the templates and follow the steps as enumerated below." %}
+
 Templates are the key configuration components of the Cisco SD-WAN solution. They help with deploying large scale solutions with minimal effort. While there is quite a lot of initial configuration that goes into setting up these templates, their usefulness is highlighted when we're looking at onboarding multiple devices in a quick and efficient manner, reusing generic templates for devices.
 
 Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-SD-WAN-Design-2018OCT.pdf){:target="_blank"} to access the SD-WAN Design Guide which has a section on **Configuration Templates**.
@@ -413,7 +415,7 @@ The feature templates created in the previous sections are referenced in Device 
     | Transport and Management VPN | Cisco VPN 512 |                              | cEdge_VPN512_dual_uplink |
     | Transport and Management VPN | Cisco VPN 512 | Cisco VPN Interface Ethernet | cedge-vpn512-int-dual    |
 
-    
+
 
     ![](/images/Deploying_cEdge40/46_vpn0_vpn512_feattempsel.PNG)
 
