@@ -79,7 +79,7 @@ In our example, we will assume that the requirement is to send FTP traffic over 
 
 ## Deploying a Policy
 
-We begin by creating a Policy and identifying **Groups of Interest** (or interesting traffic). The policy is then expanded to encompass an ACL.
+We begin by creating a Policy and identifying **Groups of Interest** (or interesting traffic). The policy is then expanded to encompass a Data Policy.
 
 ### Setting up Groups of Interest and Traffic Rules
 
