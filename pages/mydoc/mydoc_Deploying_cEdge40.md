@@ -410,6 +410,8 @@ The feature templates created in the previous sections are referenced in Device 
     | Transport and Management VPN | Cisco VPN 512 |                              | cEdge_VPN512_dual_uplink |
     | Transport and Management VPN | Cisco VPN 512 | Cisco VPN Interface Ethernet | cedge-vpn512-int-dual    |
 
+    {% include important.html content="To get the option of selecting a **Cisco VPN Interface Ethernet** as shown below, click on **Cisco VPN Interface Ethernet** on the right hand side under the **Additional Templates** portion of the screen. This applies to both the VPN 0 and the VPN 512 sections" %}
+
     ![](/images/Deploying_cEdge40/46_vpn0_vpn512_feattempsel.PNG)
 
 4. Once created, the Device Template will need to be attached to a Device for it to take effect. Click on the three dots (right-hand side) and click on **Attach Devices**
