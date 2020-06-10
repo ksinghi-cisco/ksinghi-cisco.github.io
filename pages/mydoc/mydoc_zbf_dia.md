@@ -30,9 +30,9 @@ folder: mydoc
 " type="primary" %}
 
 ## Overview
-This process for creating a PDF relies on Prince XML to transform the HTML content into PDF. Prince costs about $500 per license. That might seem like a lot, but if you're creating a PDF, you're probably working for a company that sells a product, so you likely have access to some resources. There's also a free license that prints a small "P" watermark on your title page, so if you're fine with that, great.
+Since we have users on the Guest network accessing the Internet through the DIA VPN, we might want to lock down what they can/cannot access. Cisco SD-WAN has an in-built Zone Based Firewall which can perform Deep Packet Inspection, allowing and/or blocking/inspecting traffic as need be. While this is a slightly stripped down version of a ZBF, it is quite robust in functionality and offers an intuitive GUI (in the form of vManage) for deploying Firewall Rules.
 
-The basic approach is to generate a list of all web pages that need to be added to the PDF, and then add leverage Prince to package them up into a PDF. Once you set it up, building a pdf is just a matter of running a couple of commands. Also, creating a PDF this way gives you a lot more control and customization capabilities than with other methods for creating PDFs. If you know CSS, you can entirely customize the output.
+In this section we will be configuring and deploying a Zone Based Firewall in our network. Guest users will be able to access most Web content but they won't be able to access Web based emails (like Gmail). We will see the corresponding activity on the ZBF in the CLI and on the GUI.
 
 <br/>
 
@@ -56,59 +56,32 @@ The basic approach is to generate a list of all web pages that need to be added 
 
 ## Setting up Lists
 
-You can see an example of the finished product here:
+We start off by configuring a few Lists that form the building blocks of our ZBF. The following lists will be created
 
-<a target="\_blank" class="noCrossRef" href="{{ "pdf/mydoc.pdf"}}"><button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> PDF Download</button></a>
-
-To generate the PDF, browse to the theme's directory in your terminal and run this script:
-
-```bash
-. pdf-mydoc.sh
-```
-
-This builds a PDF for the documentation in the theme. Look in the **pdf** folder for the output, and see the "last generated date" to confirm that you generated the PDF.
-
-To build a PDF for the other sample projects, run these commands:
-
-```bash
-. pdf-product1.sh
-```
-
-or
-
-```bash
-. pdf-product2.sh
-```
-
-You can see the details of the script in these files in the theme's root directory. For example, open pdf-mydoc.sh. It contains the following:
-
-```bash
-# Note that .sh scripts work only on Mac. If you're on Windows, install Git Bash and use that as your client.
-
-echo 'Kill all Jekyll instances'
-kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
-clear
-
-echo "Building PDF-friendly HTML site for Mydoc ...";
-bundle exec jekyll serve --detach --config _config.yml,pdfconfigs/config_mydoc_pdf.yml;
-echo "done";
-
-echo "Building the PDF ...";
-prince --javascript --input-list=_site/pdfconfigs/prince-list.txt -o pdf/mydoc.pdf;
-
-echo "Done. Look in the pdf directory to see if it printed successfully."
-```
-
-After stopping all Jekyll instances, we build Jekyll using a special configuration file that specifies a unique stylesheet. The build contains a file (prince-list.txt) that contains a list of all pages to be included in the PDF. We feed this list into a Prince command to build the PDF.
-
-The following sections explain more about the setup.
-
+* Zone List for identifying the Guest and Outside zones
+* Application List for identifying webmail traffic and allowing all other TCP traffic to ports 80 and 443
 
 ### Configuring Zones
 
-Download and install [Prince](http://www.princexml.com/doc/installing/).
+1. On the vManage GUI, go to **Configuration -> Security**
 
-You can install a fully functional trial version. The only difference is that the title page will have a small Prince PDF watermark.
+    ![](/images/AppFW_DIA/01_sec.PNG)
+
+2. Click on **Custom Options** in the top right corner of the screen and click on **Lists**
+
+    ![](/images/AppFW_DIA/02_lists.PNG)
+
+3. Click on **Zones** on the left-hand side and choose to create a **New Zone List**. Give the Zone List Name as *Guest* and Add VPN as *30*. Click on **Add**
+
+    ![](/images/AppFW_DIA/03_zl.PNG)
+
+4. Click on **New Zone List** again and give the Zone List Name as *Outside*. Specify the Add VPN as *0*. Click on **Add**
+
+    ![](/images/AppFW_DIA/04_out.PNG)
+
+5. Make sure that there are two Zone Lists in the configuration and move to the next section of the guide (while staying on the same page)
+
+    ![](/images/AppFW_DIA/05_2zl_app.PNG)
 
 <br/>
 
@@ -132,40 +105,19 @@ You can install a fully functional trial version. The only difference is that th
 
 ### Configuring an Application List
 
-The PDF configuration file will build on the settings in the regular configuration file but will some additional fields. Here's the configuration file for the mydoc product within this theme. This configuration file is located in the pdfconfigs folder.
+1. From the previous section, click on **Application** in the top left corner of the screen after verifying that both the Zone Lists are visible
 
-```yaml
-destination: _site/
-url: "http://127.0.0.1:4010"
-baseurl: "/mydoc-pdf"
-port: 4010
-output: pdf
-product: mydoc
-print_title: Jekyll theme for documentation — mydoc product
-print_subtitle: version 5.0
-output: pdf
-defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page_print"
-      comments: true
-      search: true
+    ![](/images/AppFW_DIA/05_2zl_app.PNG)
 
-pdf_sidebar: mydoc_sidebar
-```
+2. Once Application is selected, click on **New Application List** and give the Application List Name of *Guest-Inspect*. Choose *Webmail* from the drop down, making sure all the sub-items under webmail are selected as well
 
-{% include note.html content="Although you're creating a PDF, you must still build an HTML web target before running Prince. Prince will pull from the HTML files and from the file-list for the TOC." %}
+    ![](/images/AppFW_DIA/06_app.PNG)
 
-Note that the default page layout specified by this configuration file is `page_print`. This layout strips out all the sections that shouldn't appear in the print PDF, such as the sidebar and top navigation bar.
+3. Click on **Add** to add this Application List
 
-Also note that there's a `output: pdf` property in case you want to make some of your content unique to PDF output. For example, you could add conditional logic that checks whether `site.output` is `pdf` or `web`. If it's `pdf`, then include information only for the PDF, and so on. If you're using nav tabs, you'll definitely want to create an alternative experience in the PDF.
+    ![](/images/AppFW_DIA/07_add.PNG)
 
-In the configuration file, customize the values for the `print_title` and `print_subtitle` that you want. These will appear on the title page of the PDF.
-
-We will access this configure file in the PDF generation script.
+We have created an Application List which can potentially identify Gmail, Mail.ru etc. traffic. We will now create our policy.
 
 <br/>
 
@@ -189,35 +141,71 @@ We will access this configure file in the PDF generation script.
 
 ## Creating a Security Policy
 
-There are two template pages in the root directory that are critical to the PDF:
+1. On the vManage GUI, navigate to **Configuration -> Security** and click on **Add Security Policy**
 
-* titlepage.html
-* tocpage.html
+    ![](/images/AppFW_DIA/08_addsec.PNG)
 
-These pages should appear in your sidebar YML file (in this product, mydoc_sidebar.yml):
+2. Choose **Guest Access** and click on Proceed
 
-```yaml
-- title:
-  output: pdf
-  type: frontmatter
-  folderitems:
-  - title:
-    url: /titlepage.html
-    output: pdf
-    type: frontmatter
-  - title:
-    url: /tocpage.html
-    output: pdf
-    type: frontmatter
-```
+    ![](/images/AppFW_DIA/09_guest.PNG)
 
-Leave these pages here in your sidebar. (The `output: pdf` property means they won't appear in your online TOC because the conditional logic of the sidebar.html checks whether `web` is equal to `pdf` or not before including the item in the web version of the content.)
+3. Under Firewall, choose to **Add Firewall Policy**. Click on *Create New*
 
-The code in the tocpage.html is mostly identical to that of the sidebar.html page. This is essential for Prince to create the page numbers correctly with cross references.
+    ![](/images/AppFW_DIA/10_fw.PNG)
 
-There's another file (in the root directory of the theme) that is critical to the PDF generation process: prince-list.txt. This file simply iterates through the items in your sidebar and creates a list of links. Prince will consume the list of links from prince-list.txt and create a running PDF that contains all of the pages listed, with appropriate cross references and styling for them all.
+4. Click on **Apply Zone Pairs**
 
-{% include note.html content="If you have any files that you do not want to appear in the PDF, add <code>output: web</code> (rather than <code>output: pdf</code>) in the list of attributes in your sidebar. The prince-list.txt file that loops through the mydoc_sidebar.yml file to grab the URLs of each page that should appear in the PDF will skip over any items that do not list <code>output: pdf</code> in the item attributes. For example, you might not want your tag archives to appear in the PDF, but you probably will want to list them in the online help navigation." %}
+    ![](/images/AppFW_DIA/11_azp.PNG)
+
+5. Set the **Source Zone** as *Guest* and the **Destination Zone** as *Outside*. Click on **Save**
+
+    ![](/images/AppFW_DIA/12_szp.PNG)
+
+6. Ensure that *Guest* appears under Sources and *Outside* appears under Destinations. Give the Policy a name of *Guest-FW* and a Description of *Guest Traffic Firewall**. Click on **Add Rule**
+
+    ![](/images/AppFW_DIA/13_seq.PNG)
+
+7. Click on **Source Data Prefix** and choose *Guest-Site40* as the **IPv4 Prefix List**. Click on the Green **Save** button (be careful, don't click on the Blue Save button)
+
+    ![](/images/AppFW_DIA/14_sdp.PNG)
+
+8. Click on **Application List** and select the *Guest-Inspect* list we created. Click on the Green **Save** button (again, please don't click on the Blue Save button)
+
+    ![](/images/AppFW_DIA/15_applist.PNG)
+
+9. Give the Firewall Rule a name of *Inspect Web App Guest* and set the Action as **Inspect**. Click on **Save** (this time, we click the Blue Save button). Ensure that the Source Data Prefix and the Application List is populated
+
+    ![](/images/AppFW_DIA/16_ins.PNG)
+
+10. Click on **Add Rule** again and select the **Source Data Prefix** IPv4 Prefix List as *Guest-Site40*. Click on the Green **Save** button
+
+    ![](/images/AppFW_DIA/20_sdp.PNG)
+
+11. Click on **Destination Ports** and set the Destination Ports as *80 443* (there is a space between the port numbers). Click on the Green **Save** button
+
+    ![](/images/AppFW_DIA/18_port.PNG)
+
+12. Make sure the Firewall Rule looks like the image below and specify a Name of *TCP Guest Pass Web*. Specify the **Action** as *Pass* and put a check mark against Log. Click on the Blue **Save** button
+
+    ![](/images/AppFW_DIA/21_save.PNG)
+
+13. Make sure the Firewall Policy looks as below and click on **Save Firewall Policy**
+
+    ![](/images/AppFW_DIA/22_savefwpol.PNG)
+
+14. Click on **Next** and then **Next** again at the URL Filtering and TLS/SSL Decryption sections
+
+    ![](/images/AppFW_DIA/23_next.PNG)
+
+    ![](/images/AppFW_DIA/24_next_urlflater.PNG)
+
+    ![](/images/AppFW_DIA/25_next.PNG)
+
+15. At the Policy Summary page, give a Security Policy Name of *Site40-Guest-DIA* and a Description of *Guest Policy for Site 40*. Under Additional Policy Settings set the TCP SYN Flood Limit to Enabled and 5000. Enable **Audit Trail** as well and click on **Save Policy**
+
+    ![](/images/AppFW_DIA/26_save.PNG)
+
+This completes the process of creating the Security Policy.
 
 <br/>
 
@@ -241,9 +229,35 @@ There's another file (in the root directory of the theme) that is critical to th
 
 ## Applying the Policy and Verification
 
-Open up the css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
+1. Go to **Configuration -> Templates** and click on the three dots next to the *cEdge_dualuplink_devtemp* Device Template. Choose to **Edit** it
 
-Exactly how the print style works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
+    ![](/images/AppFW_DIA/27_devtemp.PNG)
+
+2. Under the **Additional Templates** section, populate the **Security Policy** as *Site40-Guest-DIA* and click on **Update**
+
+    ![](/images/AppFW_DIA/28_secpol_upd.PNG)
+
+3. Choose **Next** and then **Configure Devices** to push the Security Policy to cEdge40
+
+    ![](/images/AppFW_DIA/29_next.PNG)
+
+    ![](/images/AppFW_DIA/30_sbs.PNG)
+
+4. Open the Console session to the Site 40 PC (log in to vCenter -> locate the site40pc VM and open the Web Console) and navigate to www.facebook.com. It should work indicating that Web Traffic is allowed. Log in to the cEdge40 CLI via Putty and issue a `show logg`. We should see some activity there
+
+    ![](/images/AppFW_DIA/31_fb.PNG)
+
+    ![](/images/AppFW_DIA/32_snipshlog.PNG)
+
+5. Open up a few tabs on the Site 40 PC (2 to 3 of them) and try to access www.gmail.com on all tabs. This should fail
+
+    ![](/images/AppFW_DIA/33_gmailnw.PNG)
+
+6. On the vManage GUI, navigate to **Dashboard -> Security** and you should see spikes in the Firewall Enforcement Dashlet
+
+    ![](/images/AppFW_DIA/34_dashsec.PNG)
+
+Thus, our ZBF is working as expected, blocking webmail traffic on the Guest VPN while allowing other traffic on ports 80 and 443.
 
 {% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 6 of the SOP" %}
 
