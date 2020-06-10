@@ -415,7 +415,7 @@ We will be generating a Bootstrap file for each cEdge and placing it in the flas
 
     ![](/images/Deploying_cEdge50_cEdge51/27_ce50down.PNG)
 
-4. From the Jumphost Desktop, start TFTPD64. Click on **Browse** and choose the Downloads folder (or wherever the renamed .cfg file has been stored). Make sure the 192.168.0.X IP is chosen from the Server Interface drop down in TFTPD64. Copy the name of the file (beginning with CSR) by going to the file location. You can click on copy in TFTPD64 itself, but the name doesn't get copied sometimes
+4. From the Jumphost Desktop, start TFTPD64. Click on **Browse** and choose the Downloads folder (or wherever the renamed .cfg file has been stored). Make sure the 192.168.0.X IP is chosen from the Server Interface drop down in TFTPD64. Copy the name of the file (beginning with CSR) by going to the file location. You can click on copy in TFTPD64 itself, but the name doesn't get copied sometimes. Click on **show dir** to view the files in the currently chosen folder. Clicking on **copy** copies the highlighted file name, but it is a bit flaky on the newer versions of TFTD64
 
     {% include tip.html content="On bootup, a cEdge looks for a file on it's USB port (if a bootable USB drive is connected) and in bootflash:. The file name must match as above for Cloud type devices (i.e. CSR1K). For physical devices, the file name should be *ciscosdwan.cfg*. If the file is present on the USB drive and in bootflash:, the one in bootflash: takes precedence" %}
 
