@@ -290,7 +290,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/29_devspec.PNG)
 
-8. Make sure you have **1 Next Hop** showing up in the IPv4 Route window and click on **Add** again. Once on the main Template page, click on **Create** to create your Feature Template
+8. Make sure you have **1 Next Hop** showing up in the IPv4 Route window and click on **Add** again. Once on the main Template page, click on **Save** to create your Feature Template
 
     ![](/images/Deploying_cEdge40/30_clickadd.PNG)
 
@@ -298,7 +298,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/32_addftemp_csr_vpnint.PNG)
 
-10. Populate the details as shown in the table below. Screenshots may be used as reference. Click on **Create** at the end to create your Feature Template.
+10. Populate the details as shown in the table below. Screenshots may be used as reference. Click on **Save** at the end to create your Feature Template.
 
     | Section                    | Field                        | Global or Device Specific (drop down) | Value                                                         |
     |----------------------------|------------------------------|---------------------------------------|---------------------------------------------------------------|
@@ -329,7 +329,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/37_vpn512_edit_descdoesntchangesometimes.PNG)
 
-14. Populate the details as follows. To populate the IPv4 Route, click on the edit (pencil icon) next to the existing IPv4 Route and then click on **1 Next Hop**. Edit and click on **Save Changes**
+14. Populate the details as follows. To populate the IPv4 Route, click on the edit (pencil icon) next to the existing IPv4 Route and then click on **1 Next Hop**. Edit and click on **Update Changes**
 
     | Section             | Field                        | Global or Device Specific (drop down) | Value                                   |
     |---------------------|------------------------------|---------------------------------------|-----------------------------------------|
@@ -348,7 +348,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/41_copyintfor512.PNG)
 
-16. Click on the three dots next to the newly copied template and choose to **Edit** it. Populate the details as given in the table below and click on **Save Changes**
+16. Click on the three dots next to the newly copied template and choose to **Edit** it. Populate the details as given in the table below and click on **Update Changes**
 
     | Section                    | Field                        | Global or Device Specific (drop down) | Value                                                           |
     |----------------------------|------------------------------|---------------------------------------|-----------------------------------------------------------------|
