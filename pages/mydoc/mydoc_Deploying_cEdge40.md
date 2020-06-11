@@ -298,7 +298,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/32_addftemp_csr_vpnint.PNG)
 
-10. Populate the details as shown in the table below. Screenshots may be used as reference. Cick on **Create** at the end to create your Feature Template.
+10. Populate the details as shown in the table below. Screenshots may be used as reference. Click on **Create** at the end to create your Feature Template.
 
     | Section                    | Field                        | Global or Device Specific (drop down) | Value                                                         |
     |----------------------------|------------------------------|---------------------------------------|---------------------------------------------------------------|
