@@ -81,7 +81,7 @@ While the Site40 cEdge is already in vManage mode, we will be looking at updatin
 
 ### Creating the MPLS VPN Interface Feature Template
 
-1. Go to **Configuration -> Templates -> Feature tab**. Click on the three dots next to the *cEdge-vpn0-int-dual* template and click on **Copy**.
+1. Go to **Configuration -> Templates -> Feature tab**. Click on the three dots next to the *cedge-vpn0-int-dual* template and click on **Copy**.
 
     ![](/images/cEdgeSite40_Templates/01_copy.PNG)
 

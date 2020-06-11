@@ -193,7 +193,7 @@ We have created our VPN512 Feature Template
 
 We are now going to set up the VPN Interface Feature Templates for the Internet link. This template specifies the configuration for the interfaces in a VPN. There will be two interfaces in VPN 0 (INET and MPLS) and one interface in VPN 512. Let's start off with configuring the INET interface.
 
-1. From **Configuration -> Templates** on the Feature tab, Add a new template. Search for *ved* in the search box and choose the vEdge Cloud Device. Click on **VPN Interface Ethernet** to start craeting our VPN Interface Template
+1. From **Configuration -> Templates** on the Feature tab, Add a new template. Search for *ved* in the search box and choose the vEdge Cloud Device. Click on **VPN Interface Ethernet** to start creating our VPN Interface Template
 
     ![](/images/DC-vEdge_Templates/24_addtempvpnint.PNG)
 
