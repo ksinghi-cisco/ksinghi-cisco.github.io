@@ -73,6 +73,8 @@ We see that the connections are up and this completes the verification activity.
 
 We will be deploying a vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later. X is your POD number and is used only during vCenter related activities.
 
+{% include note.html content="We will be using vEdge Clouds and CSR1000v images which are software images and don't support the standard Day 0 onboarding options. They do have a tweaked version of the Day 0 onboarding which we will be implementing later on in the lab. Hardware devices can do Day 0 onboarding (Zero Touch Provisioning)" %}
+
 VM Name | System IP | Network Adapter | Network | Interface | IP Address | Default Gateway
 ------- | | ------------- | ------------- | ------------- | ------------- | -------------
 DC-vEdge1-podX | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168.0.10/24 | 192.168.0.1
@@ -375,6 +377,7 @@ This completes the verification activity.
 
     ![](/images/Deploying_DC_vEdge1/40_sampleoutput2.PNG)    
 
+    Use `no debug vdaemon all` to disable the debug
 
 This completes our onboarding activity for DC-vEdge1.
 

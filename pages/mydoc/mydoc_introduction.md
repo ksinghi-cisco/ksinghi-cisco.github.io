@@ -116,6 +116,6 @@ Use the following table to copy-paste IP Addresses as and when required through 
 | 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
 | 50      | NA            | Ubuntu - Site50_PC           | Network Adapter 1 | Site50-VPN30            | eth0             | 10.50.30.21/24     | 10.50.30.2    |
 
-Given below is a printable version of the table
+Given below is a printable version of the table (Right click -> **Save Image As** and save it to a preferred location. Then open the image and print, if required)
 
 ![](/images/Topology_Schema/NetworkSchema_09_06_2020.PNG)
