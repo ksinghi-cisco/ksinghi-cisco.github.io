@@ -85,7 +85,7 @@ While the Site40 cEdge is already in vManage mode, we will be looking at updatin
 
     ![](/images/cEdgeSite40_Templates/01_copy.PNG)
 
-2. Rename the template to *cEdge-vpn0-int-dual_mpls* with a Description of *cEdge VPN 0 Interface Template for devices with a dual uplink - MPLS*. Click on **Copy**
+2. Rename the template to *cedge-vpn0-int-dual_mpls* with a Description of *cEdge VPN 0 Interface Template for devices with a dual uplink - MPLS*. Click on **Copy**
 
     ![](/images/cEdgeSite40_Templates/02_mpls.PNG)
 
