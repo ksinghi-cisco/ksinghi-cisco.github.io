@@ -35,7 +35,7 @@ exclude:
 
 feedback_subject_line: Cisco SWAT SD-WAN Lab Guide Feedback
 
-feedback_email: ksinghi@cisco.com
+feedback_email: swat_labops@cisco.com
 # used as a contact email for the Feedback link in the top navigation bar
 
 # feedback_disable: true
