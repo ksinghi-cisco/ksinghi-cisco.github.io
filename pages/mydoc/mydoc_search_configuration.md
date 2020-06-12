@@ -34,58 +34,11 @@ The search.json file already tries to strip out content that would otherwise mak
 
 I've found that including the `body` field in the search creates too many problems, and so I've removed `body` from the search. You can see the results of including the `body` by adding this along with the other fields in search.json:
 
-{% raw %}
-```json
-      "body": "{{ page.content | strip_html | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' | replace: '	', '    '  }}",
-```
-{% endraw %}
-
-Note that the last replace, `| replace: '^t', '    ' `, looks for any tab character and replaces it with four spaces. (Tab characters invalidate JSON.) If you run into other problematic formatting, you can use regex expressions to find and replace the content. See [Regular Expressions](http://www.ultraedit.com/support/tutorials_power_tips/ultraedit/regular_expressions.html) for details on finding and replacing code.
+Nsote that the last replace, `| replace: '^t', '    ' `, looks for any tab character and replaces it with four spaces. (Tab characters invalidate JSON.) If you run into other problematic formatting, you can use regex expressions to find and replace the content. See [Regular Expressions](http://www.ultraedit.com/support/tutorials_power_tips/ultraedit/regular_expressions.html) for details on finding and replacing code.
 
 It's possible that the formatting may not account for all the scenarios that would invalidate the JSON. (Sometimes it's an extra comma after the last item that makes it invalid.)
 
 Note that including the body in the search creates other problems as well. The search results show the most immediate matches in the JSON file. If several topics have matches for the keyword in the body, these matches might appear before other files that have matches in the title, summary, or keywords. This is because this simple search does not provide any weighting mechanisms for the content.
-
-## Customizing search results
-
-At some point, you may want to customize the search results more. Here's a little more detail that will be helpful. The search.json file retrieves various page values:
-
-```json
-{% raw %}---
-title: search
-layout: none
-search: exclude
----
-
-[
-{% for page in site.pages %}
-{% unless page.search == "exclude" %}
-{
-"title": "{{ page.title | escape }}",
-"tags": "{{ page.tags }}",
-"keywords": "{{page.keywords}}",
-"url": "{{ page.url | remove: "/"}}",
-"summary": "{{page.summary | strip }}"
-},
-{% endunless %}
-{% endfor %}
-
-{% for post in site.posts %}
-
-{
-"title": "{{ post.title | escape }}",
-"tags": "{{ post.tags }}",
-"keywords": "{{post.keywords}}",
-"url": "{{ post.url }}",
-"summary": "{{post.summary | strip }}"
-}
-{% unless forloop.last %},{% endunless %}
-{% endfor %}
-
-]
-{% endraw %}
-```
-
 The \_includes/topnav.html file then makes use of these values:
 
 ```html

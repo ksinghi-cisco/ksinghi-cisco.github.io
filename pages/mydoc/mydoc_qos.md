@@ -134,31 +134,7 @@ You can also change the definition list (`dl`) class to `dl-horizontal`. This is
 
 For this type of list, you must use HTML. The list would then look like this:
 
-```html
-{% raw %}<dl class="dl-horizontal">
-
-<dt id="fractious">fractious</dt>
-<dd>{{site.data.glossary.fractious}}</dd>
-
-<dt id="gratuitous">gratuitous</dt>
-<dd>{{site.data.glossary.gratuitous}}</dd>
-
-<dt id="haughty">haughty</dt>
-<dd>{{site.data.glossary.haughty}}</dd>
-
-<dt id="benchmark_id">gratuitous</dt>
-<dd>{{site.data.glossary.gratuitous}}</dd>
-
-<dt id="impertinent">impertinent</dt>
-<dd>{{site.data.glossary.impertinent}}</dd>
-
-<dt id="intrepid">intrepid</dt>
-<dd>{{site.data.glossary.intrepid}}</dd>
-
-</dl>{% endraw %}
-```
-
-If you squish your screen small enough, at a certain breakpoint this style reverts to the regular `dl` class.
+Idf you squish your screen small enough, at a certain breakpoint this style reverts to the regular `dl` class.
 
 <br/>
 
