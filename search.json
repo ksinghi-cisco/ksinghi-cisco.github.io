@@ -12,6 +12,7 @@ search: exclude
 "tags": "{{ page.tags }}",
 "keywords": "{{page.keywords}}",
 "url": "{{ page.url | remove: "/"}}",
+"body": "{{ page.content | strip_html | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' | replace: '	', '    '  }}",
 "summary": "{{page.summary | strip }}"
 }
 {% unless forloop.last and site.posts.size < 1 %},{% endunless %}

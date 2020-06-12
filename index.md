@@ -4,7 +4,7 @@ keywords: getting started
 tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
-summary: These brief instructions will help you become familiar with the SWAT SD-WAN Labs.
+summary: These brief instructions will help you become familiar with the SWAT SD-WAN Lab Guide conventions.
 ---
 
 {% include warning.html content="Please disable the side navigation bar if viewing this on a mobile device/small screen (there is an option to do so in the top navigation menu). The sidebar doesn't work too well with small screen devices" %}
