@@ -63,10 +63,10 @@
       $(document).ready(function(){
           $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
           $('table.display').DataTable( {
-              paging: false,
+              paging: true,
               stateSave: true,
               searching: true
-              ordering: false
+
           });
        });
     </script>

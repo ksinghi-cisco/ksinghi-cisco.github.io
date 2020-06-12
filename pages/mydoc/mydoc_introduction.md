@@ -1,7 +1,6 @@
 ---
 title: Network Details
 sidebar: mydoc_sidebar
-datatable: true
 permalink: mydoc_introduction.html
 folder: mydoc
 ---
@@ -54,7 +53,7 @@ Given below are the access details for some key devices in the network
 
 {% include important.html content="Needless to say, these are super important and the IP Addressing scheme should be followed as enumerated in the lab guide" %}
 
-Use the following table to copy-paste IP Addresses as and when required through the course of the lab. There are multiple pages and the Search function can be used to filter results.
+Use the following table to copy-paste IP Addresses as and when required through the course of the lab.
 
 <div class="datatable-begin"></div>
 
