@@ -33,7 +33,7 @@ folder: mydoc
 |--------------------|---------------------------------------|---------------|
 | Ingress ACL - IPv4 | Global                                | On            |
 |      ^^              | Global                                | Impair-PL-AAR |
-|                    | Global                                | On            |
+|     ^^               | Global                                | On            |
 |                    | Global                                | Impair-PL-AAR |
 
 ## Create a Localized Policy
