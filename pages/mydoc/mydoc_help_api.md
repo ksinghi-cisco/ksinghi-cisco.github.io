@@ -65,17 +65,7 @@ Create pages inside your new tooltips collection (that is, inside the \_tooltips
 
 Here's an example:
 
-```yaml
-{% raw %}
----
-doc_id: basketball
-product: mydoc
----
-
-{{site.data.definitions.basketball}}{% endraw %}
-```
-
-(Note: Avoid using `id`, as it seems to generate out as `/tooltips/basketball` instead of just `basketball.)
+(Noqte: Avoid using `id`, as it seems to generate out as `/tooltips/basketball` instead of just `basketball.)
 
 You need to create a separate file for each tooltip you want to deliver.  
 
@@ -85,54 +75,7 @@ The product attribute is required in the frontmatter to distinguish the tooltips
 
 Now it's time to create a JSON file with Liquid code that iterates through our tooltip collection and grabs the information from each tooltip file.
 
-Inside your project's pages directory (e.g., mydoc), add a file called "tooltips.json." (You can use whatever name you want.) Add the following to your JSON file:
-
-{% raw %}
-```liquid
----
-layout: null
-search: exclude
----
-
-{
-"entries":
-[
-{% for page in site.tooltips %}
-{
-"doc_id": "{{ page.doc_id }}",
-"body": "{{ page.content | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' }}"
-} {% unless forloop.last %},{% endunless %}
-{% endfor %}
-]
-}
-
-```
-{% endraw %}
-
-This code will loop through all pages in the tooltips collection and insert the `id` and `body` into key-value pairs for the JSON code. Here's an example of what that looks like after it's processed by Jekyll in the site build:
-
-```json
-{
-  "entries": [
-    {
-      "doc_id": "baseball",
-      "body": "{{site.data.definitions.baseball}}"
-    },
-    {
-      "doc_id": "basketball",
-      "body": "{{site.data.definitions.basketball}}"
-    },
-    {
-      "doc_id": "football",
-      "body": "{{site.data.definitions.football}}"
-    },
-    {
-      "doc_id": "soccer",
-      "body": "{{site.data.definitions.soccer}}"
-    }
-  ]
-}
-```
+Tshis code will loop through all pages in the tooltips collection and insert the `id` and `body` into key-value pairs for the JSON code. Here's an example of what that looks like after it's processed by Jekyll in the site build:
 
 You can also view the same JSON file here: <a target="_blank" rel="noopener" href="tooltips.json">tooltips.json</a>.
 
@@ -205,37 +148,7 @@ If you don't have CORS enabled, users will see a CORS error/warning message in t
 
 ## 7. Explain how developers can access the help
 
-Developers can access the help using the `.get` method from jQuery, among other methods. Here's an example of how to get tooltips for basketball, baseball, football, and soccer:
-
-```js
-{% raw %}var url = "tooltips.json";
-
-         $.get( url, function( data ) {
-
-          /* Bootstrap popover text is defined inside a data-content attribute inside an element. That's
-          why I'm using attr here. If you just want to insert content on the page, use append and remove the data-content argument from the parentheses.*/
-
-             $.each(data.entries, function(i, page) {
-                 if (page.doc_id == "basketball") {
-                     $( "#basketball" ).attr( "data-content", page.body );
-                 }
-
-                 if (page.doc_id == "baseball") {
-                     $( "#baseball" ).attr( "data-content", page.body );
-                 }
-                 if (page.doc_id == "football") {
-                     $( "#football" ).attr( "data-content", page.body );
-                 }
-
-                 if (page.doc_id == "soccer") {
-                     $( "#soccer" ).attr( "data-content", page.body );
-                 }
-
-
-                 });
-             });{% endraw %}
-```
-
+Developers can access the help using the `.get` method
 View the <a target="_blank" rel="noopener" href="tooltips.html" class="noCrossRef">tooltip demo</a> for a demonstration. See the source code for full code details.
 
 The `url` in the demo is relative, but you could equally point it to an absolute path on a remote host assuming CORS is enabled on the host.
@@ -277,51 +190,7 @@ Note that even though you reference a Bootstrap JS script, Bootstrap's popovers 
 
 View the source code of the <a target="_blank" rel="noopener" href="tooltips.html" class="noCrossRef">tooltip demo</a> for the full comments.
 
-## 8. Create easy links to embed the help in your help site
-
-You might also want to insert the same content into different parts of your help site. For example, if you have tooltips providing definitions for fields, you'll probably want to create a page in your help that lists those same definitions.
-
-You could use the same method developers use to pull help content into their applications. But it will probably be easier to simply use Jekyll's tags for doing it.
-
-Here's how you would reuse the content:
-
-
-```html
-{% raw %}<h2>Reuse Demo</h2>
-
-
-<table>
-<thead>
-<tr>
-<th>Sport</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td>Basketball</td>
-<td>{{site.data.definitions.basketball}}</td>
-</tr>
-
-<tr>
-<td>Baseball</td>
-<td>{{site.data.definitions.baseball}}</td>
-</tr>
-
-<tr>
-<td>Football</td>
-<td>{{site.data.definitions.football}}</td>
-</tr>
-
-<tr>
-<td>Soccer</td>
-<td>{{site.data.definitions.soccer}}</td>
-</tr>
-</tbody>
-</table>{% endraw %}
-```
-
+## 8. Create easy links to embed the help in your help
 And here's the code:
 
 <h2>Reuse Demo</h2>
