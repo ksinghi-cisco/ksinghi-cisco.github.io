@@ -35,22 +35,27 @@ Decoding the toplogy:
 
 Given below are the access details for some key devices in the network
 
-| Device               | Access Method             | Username | Password   |
-|----------------------|---------------------------|----------|------------|
-| vManage              | Browser - GUI             | admin    | admin      |
-| vEdges and cEdges    | Putty                     | admin    | admin      |
-| Central Gateway      | Putty                     | admin    | admin      |
-| Ubuntu - Site 40 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 |
-| Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 |
-| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 |
-| WAAS Central Manager | Browser - GUI             | admin    | admin      |
+<div class="datatable-begin"></div>
+
+| Device               | Access Method             |  Username | Password   | IP Address |
+|----------------------|---------------------------|----------|------------|---|
+| vManage              | Browser - GUI             | admin    | admin      | 192.168.0.6 |
+| vEdges and cEdges    | Putty                     | admin    | admin      | Various |
+| Central Gateway      | Putty                     | admin    | admin      | 192.168.0.1 |
+| Ubuntu - Site 40 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.40.30.21 |
+| Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.50.10.21 |
+| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | POD Dependent |
+| WAAS Central Manager | Browser - GUI             | admin    | admin      | 10.40.30.123 |
+
+<div class="datatable-end"></div>
 
 ## Network schema
 
 {% include important.html content="Needless to say, these are super important and the IP Addressing scheme should be followed as enumerated in the lab guide" %}
 
-Use the following table to copy-paste IP Addresses as and when required through the course of the lab.
+Use the following table to copy-paste IP Addresses as and when required through the course of the lab. There are multiple pages and the Search function can be used to filter results.
 
+<div class="datatable-begin"></div>
 
 | SITE ID | SYSTEM ID     | VM                           | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
 |---------|---------------|------------------------------|-------------------|-------------------------|------------------|--------------------|---------------|
@@ -115,6 +120,8 @@ Use the following table to copy-paste IP Addresses as and when required through 
 | NA      | NA            | Windows - Jumphost           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.221/24      | 10.2.1.1      |
 | 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
 | 50      | NA            | Ubuntu - Site50_PC           | Network Adapter 1 | Site50-VPN30            | eth0             | 10.50.30.21/24     | 10.50.30.2    |
+
+<div class="datatable-end"></div>
 
 Given below is a printable version of the table (Right click -> **Save Image As** and save it to a preferred location. Then open the image and print, if required)
 
