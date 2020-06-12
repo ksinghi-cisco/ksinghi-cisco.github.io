@@ -36,6 +36,8 @@ We will now shift focus to setting up our DIA site at Site40. Guest users will c
 
 3. Navigate to the console window/tab and click on the *sdwan* user to log in. The password is *C1sco12345*
 
+    {% include note.html content="If the machine hangs at the login window and doesn't show the Ubuntu Desktop, please power off and power on the Site40PC VM for your POD." %}
+
     ![](/images/DataPol_DIA/03_ubuntu.PNG)
 
 4. Click on the Ubuntu equivalent of the Start button - it's the button in the bottom left hand corner and search for **terminal**. Open the terminal application
