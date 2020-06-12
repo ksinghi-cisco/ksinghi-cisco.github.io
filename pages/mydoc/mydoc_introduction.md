@@ -1,6 +1,7 @@
 ---
 title: Network Details
 sidebar: mydoc_sidebar
+datatable: true
 permalink: mydoc_introduction.html
 folder: mydoc
 ---
