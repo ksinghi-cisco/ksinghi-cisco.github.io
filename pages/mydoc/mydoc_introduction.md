@@ -11,7 +11,7 @@ Given below is the lab topology being used for the SWAT SD-WAN Labs
 
 {% include note.html content="There might be minor differences in the topology being used versus what you see here. We will keep this updated as far as possible" %}
 
-![](/images/Topology_Schema/SD-WAN_Lab_11_06_2020.PNG)
+![](/images/Topology_Schema/SD-WAN_Lab_13_06_2020.PNG)
 
 Decoding the toplogy:
 
