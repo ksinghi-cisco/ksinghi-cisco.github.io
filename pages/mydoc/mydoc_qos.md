@@ -29,6 +29,13 @@ folder: mydoc
 
 " type="primary" %}
 
+| Field              | Global or Device Specific (drop down) | Value         |
+|--------------------|---------------------------------------|---------------|
+| Ingress ACL - IPv4 | Global                                | On            |
+|      ^^              | Global                                | Impair-PL-AAR |
+|                    | Global                                | On            |
+|                    | Global                                | Impair-PL-AAR |
+
 ## Create a Localized Policy
 
 You can create a glossary for your content. First create your glossary items in a data file such as glossary.yml.
