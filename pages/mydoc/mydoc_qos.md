@@ -29,14 +29,9 @@ folder: mydoc
 <br/>
 
 " type="primary" %}
+</br>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
-<html>
-
- <body>
-
-  <table cellspacing="0" border="0" class="display">
+<table cellspacing="0" border="0" class="display">
 	<colgroup span="9" width="64"></colgroup>
 	<tr>
 		<td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=9 height="19" align="center" valign=bottom bgcolor="#4472C4"><b><font face="Century Gothic" color="#FFFFFF">SWAT SD-WAN LAB SET UP</font></b></td>
@@ -211,11 +206,7 @@ folder: mydoc
 		<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000" align="center" valign=middle bgcolor="#4472C4"><font face="Century Gothic" color="#000000">100.100.100.1</font></td>
 	</tr>
 
-  </table>
-<!-- ************************************************************************** -->
- </body>
-
-</html>
+</table>
 
 ## Create a Localized Policy
 
