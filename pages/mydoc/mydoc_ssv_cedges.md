@@ -23,7 +23,7 @@ folder: mydoc
 
 ## Configuring the cEdge VPN 10 Feature Templates
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CS1000V Device Type, along with selecting the **Cisco VPN** template
+1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -78,7 +78,7 @@ This completes the configuration of the VPN 10 Feature Templates for the cEdges.
 
 As indicated before, creating the templates is a repetitive task so we will be going through pretty much the same steps as before, changing *vpn10* to *vpn20* wherever applicable.
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CS1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn20* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
+1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn20* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -130,7 +130,7 @@ This completes the configuration of the VPN 20 Feature Templates for the cEdges.
 
 As indicated before, creating the templates is a repetitive task so we will be going through pretty much the same steps as before, changing *vpn10* to *vpn30* wherever applicable.
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CS1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn30* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
+1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn30* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -156,11 +156,11 @@ As indicated before, creating the templates is a repetitive task so we will be g
 
     | Section             | Field          | Global or Device Specific (drop down) | Value                                  |
     |---------------------|----------------|---------------------------------------|----------------------------------------|
-    |                     | Template Name  | NA                                    | *cedge-vpn20-int*                      |
-    |                     | Description    | NA                                    | *VPN 20 Interface Template for cEdges* |
+    |                     | Template Name  | NA                                    | *cedge-vpn30-int*                      |
+    |                     | Description    | NA                                    | *VPN 30 Interface Template for cEdges* |
     | Basic Configuration | Shutdown       | Global                                | No                                     |
-    | Basic Configuration | Interface Name | Device Specific                       | *vpn20_if_name*                        |
-    | Basic Configuration | IPv4 Address/ prefix-length   | Device Specific                       | *vpn20_if_ipv4_address*                |
+    | Basic Configuration | Interface Name | Device Specific                       | *vpn30_if_name*                        |
+    | Basic Configuration | IPv4 Address/ prefix-length   | Device Specific                       | *vpn30_if_ipv4_address*                |
 
     ![](/images/Service_cEdges_Templates/09_vpn30intconf.PNG)
 
