@@ -56,15 +56,17 @@ Given below are the access details for some key devices in the network
 
 Use the following table to copy-paste IP Addresses as and when required through the course of the lab. There is a search function which is super handy - search with the name of the VM you are looking for so as to return complete results.
 
-If the POD assigned to you is in location SLC,
+* If the POD assigned to you is in location SLC,
 
-y (in the table below) is 1
-X is your POD number
+    * y (in the table below) is 1
+    * X is your POD number
 
-If the POD assigned to you is in location GHI
+<br>
 
-y (in the table below) is 2
-X is your POD number
+* If the POD assigned to you is in location GHI
+
+    * y (in the table below) is 2
+    * X is your POD number
 
 VM names need to be used accordingly.
 
