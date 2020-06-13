@@ -56,6 +56,18 @@ Given below are the access details for some key devices in the network
 
 Use the following table to copy-paste IP Addresses as and when required through the course of the lab. There is a search function which is super handy - search with the name of the VM you are looking for so as to return complete results.
 
+If the POD assigned to you is in location SLC,
+
+y (in the table below) is 1
+X is your POD number
+
+If the POD assigned to you is in location GHI
+
+y (in the table below) is 2
+X is your POD number
+
+VM names need to be used accordingly.
+
 <div class="datatable-begin"></div>
 
 | VM TAG <br> FOR IDENTIFICATION ONLY <br> NOT USED IN THE LAB | SITE ID | SYSTEM ID     | VM Name                     | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
@@ -116,9 +128,9 @@ Use the following table to copy-paste IP Addresses as and when required through 
 | O <br> WAAS                                                   |         |               | sdwan-slc/ghi-waa50-podX    | Network Adapter 1 | Site50-VPN30            | Virtual 1/0      | 10.50.30.46/24     | 10.50.30.1    |
 | P <br> Central GW                                             | NA      | NA            | sdwan-slc/ghi-gw-podX       | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
 | P <br> Central GW                                             |         |               |                             | Network Adapter 2 | WAN-Trunk               | GigabitEthernet2 | All DGs point here |               |
-| P <br> Central GW                                             |         |               |                             | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.241/24      | 10.2.1.1      |
-| Q <br> Guacamole                                              | NA      | NA            | sdwan-slc/ghi-guac-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.120/24      | 10.2.1.1      |
-| R <br> Jumphost                                               | NA      | NA            | sdwan-slc/ghi-jump-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.221/24      | 10.2.1.1      |
+| P <br> Central GW                                             |         |               |                             | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.y.1.24X/24      | 10.y.1.1      |
+| Q <br> Guacamole                                              | NA      | NA            | sdwan-slc/ghi-guac-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.y.1.20X/24      | 10.y.1.1      |
+| R <br> Jumphost                                               | NA      | NA            | sdwan-slc/ghi-jump-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.y.1.22X/24      | 10.y.1.1      |
 | S <br> Site 40 PC                                             | 40      | NA            | sdwan-slc/ghi-site40pc-podX | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
 | T <br> Site 50 PC                                             | 50      | NA            | sdwan-slc/ghi-site50pc-podX | Network Adapter 1 | Site50-VPN10            | eth0             | 10.50.10.21/24     | 10.50.10.100  |
 
