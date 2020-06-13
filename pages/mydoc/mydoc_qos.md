@@ -35,7 +35,7 @@ While Application Aware Routing allows us to choose the path taken by traffic an
 
 Let's assume that our Corporate VPN (VPN 10) has, among other traffic, VoIP packets flowing through it. We would want to follow some QoS strategy to ensure that these VoIP (RTP, Video and Signalling) packets are placed in a Low Latency Queue, with corresponding strategies for other types of traffic.
 
-QoS in the SD-WAN world is implemented via Localized Policies. Differences in Localized and Centralized Policies can be found [over here](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/vedge/policies-book/Policy-basics.html){:target="_blank"}_.
+
 
 ## Create a Localized Policy
 
