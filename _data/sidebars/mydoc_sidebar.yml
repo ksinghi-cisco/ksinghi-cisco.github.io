@@ -128,6 +128,10 @@ entries:
       url: /mydoc_eigrp_site40.html
       output: web, pdf
 
+    - title: Configuring VRRP at Site 50
+      url: /mydoc_vrrp_site50.html
+      output: web, pdf
+
   - title: TLOC Extensions
     output: web, pdf
 
