@@ -31,28 +31,7 @@ folder: mydoc
 " type="primary" %}
 </br>
 
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-        <table cellspacing="0" border="0" class="display">
-	       <colgroup span="9" width="64"></colgroup>
-	          <tr>
-		            <td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=9 height="19" align="center" valign=bottom bgcolor="#4472C4"><b><font face="Century Gothic" color="#FFFFFF">SWAT SD-WAN LAB SET UP</font></b></td>
-		      </tr>
-	          <tr>
-		            <td style="border-top: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000" height="20" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">SITE ID</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">SYSTEM ID</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">VM</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">Network Adapter</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">Network</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">Interface</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">VLAN</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">IP</font></b></td>
-		            <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font face="Century Gothic" color="#000000">Gateway</font></b></td>
-	          </tr>
-        </table>
-</html>
+
 
 ## Create a Localized Policy
 
