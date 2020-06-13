@@ -3,6 +3,7 @@ title: Configuring Low Latency Queuing and QoS
 tags: [formatting, special_layouts]
 keywords: definitions, glossaries, terms, style guide
 last_updated: June 2, 2020
+datatable: true
 summary: "SD-WAN allows configuration of various QoS strategies to better support your business. Configure QoS with LLQ for VoIP traffic"
 sidebar: mydoc_sidebar
 permalink: mydoc_qos.html
@@ -29,12 +30,16 @@ folder: mydoc
 
 " type="primary" %}
 
+<div class="datatable-begin"></div>
+
 | Field              | Global or Device Specific (drop down) | Value         |
 |--------------------|---------------------------------------|---------------|
 | Ingress ACL - IPv4 | Global                                | On            |
 |      ^^              | Global                                | Impair-PL-AAR |
 |     ^^               | Global                                | On            |
 |                    | Global                                | Impair-PL-AAR |
+
+<div class="datatable-end"></div>
 
 ## Create a Localized Policy
 
