@@ -3,7 +3,7 @@ title: Configuring Low Latency Queuing and QoS
 tags: [formatting, special_layouts]
 keywords: definitions, glossaries, terms, style guided
 last_updated: June 2, 2020
-datatable: true
+
 summary: "SD-WAN allows configuration of various QoS strategies to better support your business. Configure QoS with LLQ for VoIP traffic"
 sidebar: mydoc_sidebar
 permalink: mydoc_qos.html

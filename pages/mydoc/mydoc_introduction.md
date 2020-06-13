@@ -1,6 +1,7 @@
 ---
 title: Network Details
 sidebar: mydoc_sidebar
+datatable: true
 permalink: mydoc_introduction.html
 folder: mydoc
 ---
@@ -57,69 +58,69 @@ Use the following table to copy-paste IP Addresses as and when required through 
 
 <div class="datatable-begin"></div>
 
-| SITE ID | SYSTEM ID     | VM                           | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
-|---------|---------------|------------------------------|-------------------|-------------------------|------------------|--------------------|---------------|
-| 1000    | 10.255.255.1  | vManage                      | Network Adapter 1 | Management              | eth1             | 192.168.0.6/24     | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.2/24   | 100.100.100.1 |
-|         | 10.255.255.2  | vBond                        | Network Adapter 1 | Management              | eth1             | 192.168.0.7/24     | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.3/24   | 100.100.100.1 |
-|         | 10.255.255.3  | vSmart                       | Network Adapter 1 | Management              | eth1             | 192.168.0.8/24     | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.4/24   | 100.100.100.1 |
-|         | 10.255.255.4  | vSmart2                      | Network Adapter 1 | Management              | eth1             | 192.168.0.9/24     | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.5/24   | 100.100.100.1 |
-| 1       | 10.255.255.11 | DC-vEdge1                    | Network Adapter 1 | Management              | eth0             | 192.168.0.10/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | MPLS10                  | ge0/1            | 192.0.2.2/30       | 192.0.2.1     |
-|         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.2/24      | 10.100.10.1    |
-|         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.2/24      | 10.100.20.1    |
-|         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.10/24  | 100.100.100.1 |
-|         | 10.255.255.12 | DC-vEdge2                    | Network Adapter 1 | Management              | eth0             | 192.168.0.11/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | MPLS11                  | ge0/1            | 192.0.2.6/30       | 192.0.2.5     |
-|         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.3/24      | 10.100.10.1    |
-|         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.3/24      | 10.100.20.1    |
-|         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.11/24  | 100.100.100.1 |
-| 20      | 10.255.255.21 | vEdge20                      | Network Adapter 1 | Management              | eth0             | 192.168.0.20/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE                  | ge0/1            |           192.168.25.20/24         |               |
-|         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.1/24      |               |
-|         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.1/24      |               |
-|         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.20/24  | 100.100.100.1 |
-|         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge                  | ge0/4            |           192.168.26.20/24         |               |
-|         | 10.255.255.22 | vEdge21                      | Network Adapter 1 | Management              | eth0             | 192.168.0.21/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE                  | ge0/1            |      192.168.25.21/24              |               |
-|         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.2/24      |               |
-|         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.2/24      |               |
-|         |               |                              | Network Adapter 5 | MPLS20                  | ge0/0            | 192.0.2.10/30      | 192.0.2.9     |
-|         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge                  | ge0/4            |           192.168.26.21/24         |               |
-| 30      | 10.255.255.31 | vEdge30                      | Network Adapter 1 | Management              | eth0             | 192.168.0.30/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | MPLS30                  | ge0/1            | 192.0.2.14/30      | 192.0.2.13    |
-|         |               |                              | Network Adapter 3 | Site30-VPN10            | ge0/2            | 10.30.10.1/24      |               |
-|         |               |                              | Network Adapter 4 | Site30-VPN20            | ge0/3            | 10.30.20.1/24      |               |
-|         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.30/24  | 100.100.100.1 |
-| 40      | 10.255.255.41 | cEdge40                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.40/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | GigabitEthernet2 | 100.100.100.40     | 100.100.100.1 |
-|         |               |                              | Network Adapter 3 | MPLS40                  | GigabitEthernet3 | 192.1.2.18/30      | 192.1.2.17    |
-|         |               |                              | Network Adapter 4 | Site40-VPN10            | GigabitEthernet4 | 10.40.10.1/24      |               |
-|         |               |                              | Network Adapter 5 | Site40-VPN20            | GigabitEthernet5 | 10.40.20.1/24      |               |
-|         |               |                              | Network Adapter 6 | Site40-VPN30            | GigabitEthernet6 | 10.40.30.1/24      |               |
-| 50      | 10.255.255.51 | cEdge50                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.50/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | Internet                | GigabitEthernet2 | 100.100.100.50/24  | 100.100.100.1 |
-|         |               |                              | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.1/24      |               |
-|         |               |                              | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.1/24      |               |
-|         |               |                              | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.1/24      |               |
-|         | 10.255.255.52 | cEdge51                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.51/24    | 192.168.0.1   |
-|         |               |                              | Network Adapter 2 | MPLS50                  | GigabitEthernet2 | 192.1.2.22/30      | 192.1.2.21    |
-|         |               |                              | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.2/24      |               |
-|         |               |                              | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.2/24      |               |
-|         |               |                              | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.2/24      |               |
-| NA      | NA            | WAAS Central Manager         | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.123/24    | 10.40.30.1    |
-|         |               | WAAS Application Accelerator | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.46/24     | 10.40.30.1    |
-|         |               | WAAS Application Accelerator | Network Adapter 1 | Site50-VPN30            | Virtual 1/0      | 10.50.30.46/24     | 10.50.30.1    |
-| NA      | NA            | CentralGateway               | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
-|         |               |                              | Network Adapter 2 | WAN-Trunk               | GigabitEthernet2 | All DGs point here |               |
-|         |               |                              | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.241/24      | 10.2.1.1      |
-| NA      | NA            | Ubuntu - Guacamole           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.120/24      | 10.2.1.1      |
-| NA      | NA            | Windows - Jumphost           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.221/24      | 10.2.1.1      |
-| 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
-| 50      | NA            | Ubuntu - Site50_PC           | Network Adapter 1 | Site50-VPN30            | eth0             | 10.50.30.21/24     | 10.50.30.2    |
+| VM TAG </br> FOR IDENTIFICATION ONLY </br> NOT USED IN THE LAB | SITE ID | SYSTEM ID     | VM                           | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
+|----------------------------------------------------------------|---------|---------------|------------------------------|-------------------|-------------------------|------------------|--------------------|---------------|
+| A                                                              | 1000    | 10.255.255.1  | vManage                      | Network Adapter 1 | Management              | eth1             | 192.168.0.6/24     | 192.168.0.1   |
+| A                                                              |         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.2/24   | 100.100.100.1 |
+| B                                                              |         | 10.255.255.2  | vBond                        | Network Adapter 1 | Management              | eth1             | 192.168.0.7/24     | 192.168.0.1   |
+| B                                                              |         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.3/24   | 100.100.100.1 |
+| C                                                              |         | 10.255.255.3  | vSmart                       | Network Adapter 1 | Management              | eth1             | 192.168.0.8/24     | 192.168.0.1   |
+| C                                                              |         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.4/24   | 100.100.100.1 |
+| D                                                              |         | 10.255.255.4  | vSmart2                      | Network Adapter 1 | Management              | eth1             | 192.168.0.9/24     | 192.168.0.1   |
+| D                                                              |         |               |                              | Network Adapter 2 | Internet                | eth0             | 100.100.100.5/24   | 100.100.100.1 |
+| E                                                              | 1       | 10.255.255.11 | DC-vEdge1                    | Network Adapter 1 | Management              | eth0             | 192.168.0.10/24    | 192.168.0.1   |
+| E                                                              |         |               |                              | Network Adapter 2 | MPLS10                  | ge0/1            | 192.0.2.2/30       | 192.0.2.1     |
+| E                                                              |         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.2/24     | 10.100.10.1   |
+| E                                                              |         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.2/24     | 10.100.20.1   |
+| E                                                              |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.10/24  | 100.100.100.1 |
+| F                                                              |         | 10.255.255.12 | DC-vEdge2                    | Network Adapter 1 | Management              | eth0             | 192.168.0.11/24    | 192.168.0.1   |
+| F                                                              |         |               |                              | Network Adapter 2 | MPLS11                  | ge0/1            | 192.0.2.6/30       | 192.0.2.5     |
+| F                                                              |         |               |                              | Network Adapter 3 | SiteDC_VPN10            | ge0/2            | 10.100.10.3/24     | 10.100.10.1   |
+| F                                                              |         |               |                              | Network Adapter 4 | SiteDC-VPN20            | ge0/3            | 10.100.20.3/24     | 10.100.20.1   |
+| F                                                              |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.11/24  | 100.100.100.1 |
+| G                                                              | 20      | 10.255.255.21 | vEdge20                      | Network Adapter 1 | Management              | eth0             | 192.168.0.20/24    | 192.168.0.1   |
+| G                                                              |         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE           | ge0/1            | 192.168.25.20/24   |               |
+| G                                                              |         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.2/24      |               |
+| G                                                              |         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.2/24      |               |
+| G                                                              |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.20/24  | 100.100.100.1 |
+| G                                                              |         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge          | ge0/4            | 192.168.26.20/24   |               |
+| H                                                              |         | 10.255.255.22 | vEdge21                      | Network Adapter 1 | Management              | eth0             | 192.168.0.21/24    | 192.168.0.1   |
+| H                                                              |         |               |                              | Network Adapter 2 | TLOCEXT_vEDGE           | ge0/1            | 192.168.25.21/24   |               |
+| H                                                              |         |               |                              | Network Adapter 3 | Site20-VPN10            | ge0/2            | 10.20.10.3/24      |               |
+| H                                                              |         |               |                              | Network Adapter 4 | Site20-VPN20            | ge0/3            | 10.20.20.3/24      |               |
+| H                                                              |         |               |                              | Network Adapter 5 | MPLS20                  | ge0/0            | 192.0.2.10/30      | 192.0.2.9     |
+| H                                                              |         |               |                              | Network Adapter 6 | TLOCEXT2_vEdge          | ge0/4            | 192.168.26.21/24   |               |
+| I                                                              | 30      | 10.255.255.31 | vEdge30                      | Network Adapter 1 | Management              | eth0             | 192.168.0.30/24    | 192.168.0.1   |
+| I                                                              |         |               |                              | Network Adapter 2 | MPLS30                  | ge0/1            | 192.0.2.14/30      | 192.0.2.13    |
+| I                                                              |         |               |                              | Network Adapter 3 | Site30-VPN10            | ge0/2            | 10.30.10.2/24      |               |
+| I                                                              |         |               |                              | Network Adapter 4 | Site30-VPN20            | ge0/3            | 10.30.20.2/24      |               |
+| I                                                              |         |               |                              | Network Adapter 5 | Internet                | ge0/0            | 100.100.100.30/24  | 100.100.100.1 |
+| J                                                              | 40      | 10.255.255.41 | cEdge40                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.40/24    | 192.168.0.1   |
+| J                                                              |         |               |                              | Network Adapter 2 | Internet                | GigabitEthernet2 | 100.100.100.40     | 100.100.100.1 |
+| J                                                              |         |               |                              | Network Adapter 3 | MPLS40                  | GigabitEthernet3 | 192.1.2.18/30      | 192.1.2.17    |
+| J                                                              |         |               |                              | Network Adapter 4 | Site40-VPN10            | GigabitEthernet4 | 10.40.10.2/24      |               |
+| J                                                              |         |               |                              | Network Adapter 5 | Site40-VPN20            | GigabitEthernet5 | 10.40.20.2/24      |               |
+| J                                                              |         |               |                              | Network Adapter 6 | Site40-VPN30            | GigabitEthernet6 | 10.40.30.2/24      |               |
+| K                                                              | 50      | 10.255.255.51 | cEdge50                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.50/24    | 192.168.0.1   |
+| K                                                              |         |               |                              | Network Adapter 2 | Internet                | GigabitEthernet2 | 100.100.100.50/24  | 100.100.100.1 |
+| K                                                              |         |               |                              | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.2/24      |               |
+| K                                                              |         |               |                              | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.2/24      |               |
+| K                                                              |         |               |                              | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.2/24      |               |
+| L                                                              |         | 10.255.255.52 | cEdge51                      | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.51/24    | 192.168.0.1   |
+| L                                                              |         |               |                              | Network Adapter 2 | MPLS50                  | GigabitEthernet2 | 192.1.2.22/30      | 192.1.2.21    |
+| L                                                              |         |               |                              | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.3/24      |               |
+| L                                                              |         |               |                              | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.3/24      |               |
+| L                                                              |         |               |                              | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.3/24      |               |
+| M                                                              | NA      | NA            | WAAS Central Manager         | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.123/24    | 10.40.30.1    |
+| N                                                              |         |               | WAAS Application Accelerator | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.46/24     | 10.40.30.1    |
+| O                                                              |         |               | WAAS Application Accelerator | Network Adapter 1 | Site50-VPN30            | Virtual 1/0      | 10.50.30.46/24     | 10.50.30.1    |
+| P                                                              | NA      | NA            | CentralGateway               | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
+| P                                                              |         |               |                              | Network Adapter 2 | WAN-Trunk               | GigabitEthernet2 | All DGs point here |               |
+| P                                                              |         |               |                              | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.241/24      | 10.2.1.1      |
+| Q                                                              | NA      | NA            | Ubuntu - Guacamole           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.120/24      | 10.2.1.1      |
+| R                                                              | NA      | NA            | Windows - Jumphost           | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.221/24      | 10.2.1.1      |
+| S                                                              | 40      | NA            | Ubuntu - Site40_PC           | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
+| T                                                              | 50      | NA            | Ubuntu - Site50_PC           | Network Adapter 1 | Site50-VPN30            | eth0             | 10.50.10.21/24     | 10.50.10.100  |
 
 <div class="datatable-end"></div>
 
