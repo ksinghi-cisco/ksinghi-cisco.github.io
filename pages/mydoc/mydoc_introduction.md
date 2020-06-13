@@ -58,7 +58,7 @@ Use the following table to copy-paste IP Addresses as and when required through 
 
 <div class="datatable-begin"></div>
 
-| VM TAG </br> FOR IDENTIFICATION ONLY </br> NOT USED IN THE LAB | SITE ID | SYSTEM ID     | VM Name                     | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
+| VM TAG \n FOR IDENTIFICATION ONLY \n NOT USED IN THE LAB | SITE ID | SYSTEM ID     | VM Name                     | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
 |----------------------------------------------------------------|---------|---------------|-----------------------------|-------------------|-------------------------|------------------|--------------------|---------------|
 | A </br> vManage                                                | 1000    | 10.255.255.1  | sdwan-slc/ghi-vmanage-podX  | Network Adapter 1 | Management              | eth1             | 192.168.0.6/24     | 192.168.0.1   |
 | A </br> vManage                                                |         |               |                             | Network Adapter 2 | Internet                | eth0             | 100.100.100.2/24   | 100.100.100.1 |
