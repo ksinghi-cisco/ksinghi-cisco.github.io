@@ -326,7 +326,9 @@ This completes the configuration of our QoS Policy in VPN 10 at Site 40.
 
     | Address     | Netmask       | Gateway    | DNS                                    |
     |-------------|---------------|------------|----------------------------------------|
-    | 10.40.10.21 | 255.255.255.0 | 10.40.10.2 | Automatic - Off <br> <br> 10.2.1.5, 10.2.1.6 |
+    | 10.40.10.21 | 255.255.255.0 | 10.40.10.2 | Automatic - Off <br> <br> 10.y.1.5, 10.y.1.6 |
+
+    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/AAR_LLQ/83_staticsave.PNG)
 
