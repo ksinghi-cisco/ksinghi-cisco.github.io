@@ -29,7 +29,7 @@ folder: mydoc
 <br/>
 
 " type="primary" %}
-</br>
+<br/>
 
 While Application Aware Routing allows us to choose the path taken by traffic and switch paths based on SLA parameters, QoS strategies in SD-WAN allow packets to be marked with standard DSCP values which are then utilized to prioritize packets accordingly.
 
@@ -100,7 +100,7 @@ QoS in the SD-WAN world is implemented via Localized Policies. Differences in Lo
 
     ![](/images/AAR_LLQ/46_savepol.PNG)
 
-    Notice that the Queue 0 Forwarding Class is populated as **Control**. Control network traffic (not related to VoIP) is also included in Queue0 by default.
+    Notice that the Queue 0 Forwarding Class is populated as **Control**. Control network traffic (not related to VoIP) is also included in Queue 0 by default. Any traffic that's mapped to Queue 0 is regarded as LLQ traffic.
 
 This completes the QoS Map configuration. We will continue with building our Main Policy in the next section.
 
