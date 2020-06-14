@@ -13,7 +13,7 @@ folder: mydoc
 
 * A workstation with Windows or MacOS installed
 
-* Cisco AnyConnect. This can be downloaded from [here](https://ghi-vpn.swat4partners.com){target="_blank"} after logging in with the credentials provided
+* Cisco AnyConnect. This can be downloaded from [here](https://ghi-vpn.swat4partners.com){:target="_blank"} after logging in with the credentials provided
 
 * A stable internet connection that has standard Cisco AnyConnect ports allowed
 
