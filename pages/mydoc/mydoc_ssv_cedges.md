@@ -34,10 +34,12 @@ folder: mydoc
     |                           | Template Name         | NA                                    | *cedge-vpn10*                |
     |                           | Description           | NA                                    | *VPN 10 Template for the cEdges* |
     | Basic Configuration       | VPN                   | Global                                | 10                           |
-    | DNS | Primary DNS Address   | Global                                | 10.2.1.5                     |
-    | DNS | Secondary DNS Address | Global                                | 10.2.1.6                     |
+    | DNS | Primary DNS Address   | Global                                | 10.y.1.5                     |
+    | DNS | Secondary DNS Address | Global                                | 10.y.1.6                     |
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
+
+    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/02_sett.PNG)
 
@@ -89,10 +91,12 @@ As indicated before, creating the templates is a repetitive task so we will be g
     |                           | Template Name         | NA                                    | *cedge-vpn20*                |
     |                           | Description           | NA                                    | *VPN 20 Template for the cEdges* |
     | Basic Configuration       | VPN                   | Global                                | 20                           |
-    | DNS | Primary DNS Address   | Global                                | 10.2.1.5                     |
-    | DNS | Secondary DNS Address | Global                                | 10.2.1.6                     |
+    | DNS | Primary DNS Address   | Global                                | 10.y.1.5                     |
+    | DNS | Secondary DNS Address | Global                                | 10.y.1.6                     |
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
+
+    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/04_vpn20.PNG)
 
@@ -141,10 +145,12 @@ As indicated before, creating the templates is a repetitive task so we will be g
     |                           | Template Name         | NA                                    | *cedge-vpn30*                |
     |                           | Description           | NA                                    | *VPN 30 Template for the cEdges* |
     | Basic Configuration       | VPN                   | Global                                | 30                           |
-    | DNS | Primary DNS Address   | Global                                | 10.2.1.5                     |
-    | DNS | Secondary DNS Address | Global                                | 10.2.1.6                     |
+    | DNS | Primary DNS Address   | Global                                | 10.y.1.5                     |
+    | DNS | Secondary DNS Address | Global                                | 10.y.1.6                     |
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
+
+    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/05_vpn30.PNG)
 

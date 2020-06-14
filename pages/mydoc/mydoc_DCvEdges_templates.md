@@ -63,7 +63,7 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
     ![](/images/DC-vEdge_Templates/04_tempnamedescvpn.PNG)
 
-6. Populate the Primary and Secondary DNS Address as 10.2.1.5 and 10.2.1.6 respectively. Set the drop down to **Global** in order to enter the IPs. The option to enter the Secondary DNS server will pop up once the Primary is populated
+6. Populate the Primary and Secondary DNS Address as 10.y.1.5 and 10.y.1.6 respectively, where y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on). Set the drop down to **Global** in order to enter the IPs. The option to enter the Secondary DNS server will pop up once the Primary is populated
 
     ![](/images/DC-vEdge_Templates/05_dns.PNG)
 
