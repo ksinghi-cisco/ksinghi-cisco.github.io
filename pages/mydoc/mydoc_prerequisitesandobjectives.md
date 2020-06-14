@@ -53,7 +53,7 @@ This lab has multiple use cases that are covered as part of the tasks. We are wo
 * Implementing Service VPNs and Dynamic Service Side routing using OSPF and EIGRP
 
   * Establishing OSPF adjacencies at DC with route redistribution
-  * Establishing OSPF adjacencies at Site 40 with route redistribution
+  * Establishing EIGRP adjacencies at Site 40 with route redistribution
   * Configuring VRRP at Site 50
 
 * Implementing TLOC Extensions with eBGP Peering
