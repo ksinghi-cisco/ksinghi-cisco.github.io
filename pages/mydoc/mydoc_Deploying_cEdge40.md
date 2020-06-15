@@ -122,6 +122,8 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     ![](/images/Deploying_cEdge40/06_renamecedge.PNG)
 6. Select the host assigned to you (image shown as an example only) and click on Next
 
+    {% include note.html content="If the screen gets stuck over here at **Validating** then close Chrome and open the vCenter in Internet Explorer, going through the same steps. Deployment should go through. This is a known issue with Google Chrome." %}
+
     ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
 7. Review the details shown and click on Next.  Select the **Large** option (4 vCPUs and 4 GB RAM) and click on Next
 
