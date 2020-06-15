@@ -12,61 +12,118 @@ folder: mydoc
 
 ## Uploading the AVC Image to vManage
 
-The mydoc project has 5 build scripts and a script that runs them all. These scripts will require a bit of detail to configure. Every team member who is publishing on the project should set up their folder structure in the way described here.
+In order to deploy the Software Defined Application Visibility and Control (SD-AVC) module to the network, we will first need to upload the image to vManage. In this case, vManage acts as the SD-AVC controller and the cEdges act as SD-AVC Agents.
+
+1. On the vManage GUI, go to **Maintenance -> Software Repository**
+
+    ![](/images/SD-AVC/01_sw.PNG)
+
+2. Click on **Virtual Images** and then click on **Upload Virtual Image**. Choose **vManage** and click on **Browse**. Make sure you're in the SD-WAN Deployment Files folder (which should be on the Desktop of your Jumphost) and select the file starting with *sdavc_viptela...*. Click on **Open**
+
+    ![](/images/SD-AVC/02_up.PNG)
+
+3. Click on **Upload** and the image should get uploaded to vManage
+
+    ![](/images/SD-AVC/03_upl.PNG)
+
+    ![](/images/SD-AVC/04_uping.PNG)
+
+
 
 ## Enabling AVC on vManage and Verification
 
-Your command-line terminal opens up to your user name (for example, `Users/tjohnson`). I like to put all of my projects from repositories into a subfolder under my username called "projects." This makes it easy to get to the projects from the command line. You can vary from the project organization I describe here, but following the pattern I outline will make configuration easier.
+1. Once the image is uploaded, navigate to **Administration -> Cluster Management**
 
-To set up your projects:
+    ![](/images/SD-AVC/05_clm.PNG)
 
-1. Set up your Jekyll theme in a folder called "docs." All of the source files for every project the team is working on should live in this directory. Most likely you already either downloaded or cloned the jekyll-documentation-theme. Just rename the folder to "docs" and move it into the projects folder as shown here.
-2. In the same root directory where the docs folder is, create another directory parallel to docs called doc_outputs. 
+2. Click on the three dots next to **localhost** and click on **Edit**
 
-   Thus, your folder structure should be something like this:
+    ![](/images/SD-AVC/06_edit.PNG)
 
-   ```
-   projects
-   - docs
-   - doc_outputs
-   ```
+3. Enter the username of *admin* and a password of *admin*. Put a check mark next to SD-AVC (this will automatically check Application Server as well) and click on **Update**
 
-   The docs folder contains the source of all your files, while the doc_outputs contains the site outputs.
+    ![](/images/SD-AVC/07_sdavc.PNG)
+
+4. The vManage will reboot once we click on **OK**. Click **OK** and the vManage should go down. It will take approximately 10 minutes for the server to come back up completely
+
+    ![](/images/SD-AVC/08_reboot.PNG)
+
+    ![](/images/SD-AVC/09_rebooting.PNG)
+
+5. After the vManage comes up, log in to the GUI and navigate to **Administration -> Cluster Management**. The SD-AVC column should have a green check mark
+
+    ![](/images/SD-AVC/10_ver.PNG)
+
+6. Log in to the CLI for vManage via Putty and run the command `request nms container-manager status`. We should see the sd-avc container UP on vManage
+
+    ![](/images/SD-AVC/11_output.PNG)
+    ```
+    request nms container-manager status
+    ```
+
+7. We can also run `request nms-container sdavc_container status` and `request nms-container sdavc_container diag` and this should show that the sdavc_container is UP, along with a few more details of the container itself
+
+    ![](/images/SD-AVC/12_output2.PNG)
+    ```
+    request nms-container sdavc_container status
+    request nms-container sdavc_container diag
+    ```
 
 ## Checking Policy configuration for AVC
 
-For the mydocs project, you'll see a series of build scripts for each project. There are 5 build scripts, described in the following sections. Note that you really only need to run the last one, e.g., mydoc_all.sh, because it runs all of the build scripts. But you have to make sure each script is correctly configured so that they all build successfully.
+The configuration we had done for QoS also had the relevant configuration required for SD-AVC to function. Our policy configuration done for QoS coincidentally allows the cEdge to become an SD-AVC Agent as well. In this section, we will review the configuration in place for the cEdges to become SD-AVC agents.
 
-{% include tip.html content="In the descriptions of the build scripts, \"mydoc\" is used as the sample project. Substitute in whatever your real project name is." %}
+{% include important.html content="No changes need to be made in this section. It is just for information and review purpose." %}
+
+1. On the vManage GUI, navigate to **Configuration -> Policies** and click on the **Localized Policy** tab. Locate the *QoS_Policy* created before and click on the three dots next to it. Choose to **Edit** (we won't be making any changes, just review)
+
+    ![](/images/SD-AVC/99_qos.PNG)
+
+2. Go to the **Policy Overview** tab and make note of the name of the Policy (*QoS_Policy*). Under **Policy Settings**, the **Application** check box has been checked - this is what triggers configuration that makes the cEdge an SD-AVC Agent. Click on **Cancel** to exit out of the Policy
+
+    ![](/images/SD-AVC/98_polover.PNG)
+
+3. This policy is called in the Device Template. Navigate to **Configuration -> Templates** and click on the three dots next to *cedge_dualuplink_devtemp*. Choose to **Edit** (we won't be making any changes, just review)
+
+    ![](/images/SD-AVC/97_devtemp.PNG)
+
+4. Under the Additional Templates section, we have the *QoS_Policy* Policy populated, which ensures that the cEdge40 device is configured for SD-AVC. Click **Cancel** to exit out of the Device Template
+
+    ![](/images/SD-AVC/96_qos.PNG)
 
 ## Verification
 
-Here's what this script looks like:
+1. Open a new browser window/tab and navigate to https://192.168.0.6:10502/. This is the SD-AVC portal running as a container on vManage. Notice that one device is being monitored by SD-AVC and it is showing some traffic with the specific application layer protocol seen (output might vary). Click on the *Devices 1* too view details about the Device
 
-```
-echo 'Killing all Jekyll instances'
-kill -9 $(ps aux | grep '[j]ekyll' | awk '{print $2}')
-clear
+    ![](/images/SD-AVC/13_avcgui.PNG)
 
+2. We are taken to the Device Specific AVC page for cEdge40. At the top, we have a summary of the statistics and insights from AVC's standpoint
 
-echo "Building PDF-friendly HTML site for Mydoc Writers ..."
-jekyll serve --detach --config configs/mydoc/config_writers.yml,configs/mydoc/config_writers_pdf.yml
-echo "done"
+    ![](/images/SD-AVC/14_stats.PNG)
 
-echo "Building PDF-friendly HTML site for Mydoc Designers ..."
-jekyll serve --detach --config configs/mydoc/config_designers.yml,configs/mydoc/config_designers_pdf.yml
-echo "done"
+3. Log in to the CLI of cEdge40 via Putty and run the command `show avc sd-service info summary`. You should see that the cEdge is connected to the SD-AVC controller, along with details of the controller
 
-echo "All done serving up the PDF-friendly sites. Now let's generate the PDF files from these sites."
-echo "Now run . mydoc_2_multibuild_pdf.sh"
-```
+    ![](/images/SD-AVC/15_cever1.PNG)
+    ```
+    show avc sd-service info summary
+    ```
 
-After killing all existing Jekyll instances that may be running, this script serves up a PDF friendly version of the docs (in HTML format) at the destination specified in the configuration file.
+4. We can also run `show avc sd-service info connect` to view detailed information about the connection to the Controller
 
-Each of your configuration files needs to have a destination like this: `../doc_outputs/mydoc/adtruth-java`. That is, the project should build in the doc_outputs folder, in a subfolder that matches the project name.
+    ![](/images/SD-AVC/16_cever2.PNG)
 
-The purpose of this script is to make a version of the HTML output that is friendly to the Prince XML PDF generator. This version of the output strips out the sidebar, topnav, and other components to just render a bare-bones HTML representation of the content.
+5. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui). Log in using the credentials provided and click on the sdwan-slc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open Firefox and go to youtube.com and facebook.com. For good measure, open about 4 tabs of these sites
 
-Customize the script with your own PDF configuration file names.
+    ![](/images/SD-AVC/17_tab_fb_yt.PNG)
 
-## Sample Policy Configuration (Information Only)
+6. Once the sites have loaded, click on **Application Visibility** (top left-hand corner) and you should notice the AVC controller detect YouTube and Facebook traffic
+
+    ![](/images/SD-AVC/18_avc_details.PNG)
+
+7. This information can be viewed on vManage as well. From the vManage GUI, navigate to **Monitor -> Network**. Click on cEdge40 and then click on **DPI Applications**. Choose the **Web** traffic and you will notice Youtube and Facebook traffic pop up over there with detailed statistics associated with the traffic
+
+    ![](/images/SD-AVC/19_vmanage.PNG)
+
+This completes SD-AVC setup and verification.
+
+{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 8 of the SOP" %}
