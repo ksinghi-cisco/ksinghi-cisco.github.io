@@ -89,6 +89,8 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 5. Select the host assigned to you (image shown as an example only) and click on Next
 
+    {% include note.html content="If the screen gets stuck over here at **Validating** then close Chrome and open the vCenter in Internet Explorer, going through the same steps. Deployment should go through. This is a known issue with Google Chrome." %}
+
     ![](/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG)
 6. Review the details shown and click on Next
 
