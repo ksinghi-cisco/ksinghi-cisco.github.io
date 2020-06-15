@@ -370,6 +370,14 @@ This completes the configuration of TLOC Extensions at Site 20.
 
     ![](/images/TLOC_Ext/30_ve20bfd.PNG)
 
+    {% include note.html content="If you get output that looks like the image below for vEdge20 (i.e. there are 3 mpls TLOC control connections and 2 public-internet connections, issue a `clear control connections`, wait for a couple of minutes and run `show control connections` again. The output should match with what we see above." %}
+
+    ![](/images/TLOC_Ext/99_upd1.PNG)
+
+    Issued `clear control connections`
+
+    ![](/images/TLOC_Ext/99_upd2.PNG)
+
 2. Similarly, log in to vEdge21 and compare the output of the same commands ([click here](#overview) to compare the output). Commands are again `show control connections` and `show bfd sessions`
 
     ![](/images/TLOC_Ext/29_ve21cc.PNG)
