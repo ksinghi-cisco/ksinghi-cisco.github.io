@@ -103,7 +103,7 @@ We will be performing some initial configuration in the network before it can su
 
     ![](/images/SD-WAN_Security_IPS/95_plus.PNG)
 
-7. Go to the **IPv4** tab and click on **Manual** for the IPv4 Method. Enter details as given below and click on **Add**
+7. Go to the **IPv4** tab and click on **Manual** for the IPv4 Method. Enter details as given below and click on **Add**. Over here, y is *1* if you're connected to the SLC DC and *2* if you're connected to the GHI DC. The email sent with lab access details should enumerate which DC you're POD is on
 
     | Address     | Netmask       | Gateway    | DNS                                    |
     |-------------|---------------|------------|----------------------------------------|
