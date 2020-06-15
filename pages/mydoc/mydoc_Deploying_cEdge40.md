@@ -562,7 +562,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
     ![](/images/Deploying_cEdge40/64_liveview.PNG)
 
-3. Navigate to **Dashboards -> Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 6 WAN Edges
+3. Navigate to **Dashboards -> Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 8 WAN Edges (or 6 WAN Edges, depending on the scenario chosen while requesting for these labs)
 
     ![](/images/Deploying_cEdge40/65_4sites_6WE.PNG)
 
