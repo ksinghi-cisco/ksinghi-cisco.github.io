@@ -8,14 +8,24 @@ permalink: mydoc_Deploying_vEdge20.html
 folder: mydoc
 ---
 
+<br>
+
 {% include callout.html content="**Task List**
 <br/><br/>
 - Creating the vEdge20 VM
 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Overview
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Deploying the vEdge20 VM on vCenter
+    <br/>
 - Onboarding vEdge20
 <br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bootstrapping vEdge20 (Initial Configuration)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Installing certificates and activating the vEdge
+    <br/>
+- Onboarding Verification
+<br/>
 
 " type="primary" %}
 
@@ -39,6 +49,27 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 |         |               |         | Network Adapter 4 | Site20-VPN20   | ge0/3     | 10.20.20.2/24     |               |
 |         |               |         | Network Adapter 5 | Internet       | ge0/0     | 100.100.100.20/24 | 100.100.100.1 |
 |         |               |         | Network Adapter 6 | TLOCEXT2_vEdge | ge0/4     | 192.168.26.20/24  |               |
+
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [Creating the vEdge20 VM](creating-the-vedge20-vm)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Deploying the vEdge20 VM on vCenter](#deploying-the-vedge20-vm-on-vcenter)
+    <br/>
+- [Onboarding vEdge20](#onboarding-vedge20)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping vEdge20 (Initial Configuration)](#bootstrapping-vedge20-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+
+" type="primary" %}
 
 ### Deploying the vEdge20 VM on vCenter
 <br>
@@ -100,12 +131,20 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the vEdge20 VM~~
+- [~~Creating the vEdge20 VM~~](creating-the-vedge20-vm)
 <br/>
-- Onboarding vEdge20
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the vEdge20 VM on vCenter~~](#deploying-the-vedge20-vm-on-vcenter)
+    <br/>
+- [Onboarding vEdge20](#onboarding-vedge20)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping vEdge20 (Initial Configuration)](#bootstrapping-vedge20-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
 
 " type="primary" %}
 
@@ -177,6 +216,25 @@ Use the following information in this section (some of the information will be u
 
 <br>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Creating the vEdge20 VM~~](creating-the-vedge20-vm)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the vEdge20 VM on vCenter~~](#deploying-the-vedge20-vm-on-vcenter)
+    <br/>
+- [Onboarding vEdge20](#onboarding-vedge20)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping vEdge20 (Initial Configuration)~~](#bootstrapping-vedge20-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+
+" type="primary" %}
+
 ### Installing certificates and activating the vEdge
 
 1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
@@ -236,12 +294,20 @@ This completes the Onboarding section for vEdge20
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the vEdge20 VM~~
+- [~~Creating the vEdge20 VM~~](creating-the-vedge20-vm)
 <br/>
-- ~~Onboarding vEdge20~~
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the vEdge20 VM on vCenter~~](#deploying-the-vedge20-vm-on-vcenter)
+    <br/>
+- [~~Onboarding vEdge20~~](#onboarding-vedge20)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping vEdge20 (Initial Configuration)~~](#bootstrapping-vedge20-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
 
 " type="primary" %}
 
@@ -286,11 +352,19 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the vEdge20 VM~~
+- [~~Creating the vEdge20 VM~~](creating-the-vedge20-vm)
 <br/>
-- ~~Onboarding vEdge20~~
-<br/>
-- ~~Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the vEdge20 VM on vCenter~~](#deploying-the-vedge20-vm-on-vcenter)
+    <br/>
+- [~~Onboarding vEdge20~~](#onboarding-vedge20)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping vEdge20 (Initial Configuration)~~](#bootstrapping-vedge20-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [~~Onboarding Verification~~](#onboarding-verification)
+<br/>
 
 " type="primary" %}

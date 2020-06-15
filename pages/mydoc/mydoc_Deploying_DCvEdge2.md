@@ -9,14 +9,24 @@ permalink: mydoc_Deploying_DCvEdge2.html
 folder: mydoc
 ---
 
+<br>
+
 {% include callout.html content="**Task List**
 <br/><br/>
 - Creating the DC-vEdge2 VM
 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Overview
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Deploying the DC-vEdge2 VM on vCenter
+    <br/>
 - Onboarding DC-vEdge2
 <br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bootstrapping DC-vEdge2 (Initial Configuration)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Installing certificates and activating the vEdge
+    <br/>
+- Onboarding Verification
+<br/>
 - Helpful debugs and logs
 <br/>
 
@@ -43,6 +53,29 @@ DC-vEdge2-podX | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168
  || Network Adapter 3 | SiteDC_VPN10 | ge0/2 | 10.100.10.3/24 | 10.100.10.1
  || Network Adapter 4 | SiteDC-VPN20 | ge0/3 | 10.100.20.3/24 | 10.100.20.1
  || Network Adapter 5 | Internet | ge0/0 | 100.100.100.11/24 | 100.100.100.1
+
+ <br>
+
+ {% include callout.html content="**Task List**
+ <br/><br/>
+ - [Creating the DC-vEdge2 VM](creating-the-dc-vedge2-vm)
+ <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+     <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Deploying the DC-vEdge2 VM on vCenter](#deploying-the-dc-vedge2-vm-on-vcenter)
+     <br/>
+ - [Onboarding DC-vEdge2](#onboarding-dc-vedge2)
+ <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping DC-vEdge2 (Initial Configuration)](#bootstrapping-dc-vedge2-initial-configuration)
+     <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+     <br/>
+ - [Onboarding Verification](#onboarding-verification)
+ <br/>
+ - [Helpful debugs and logs](#helpful-debugs-and-logs)
+ <br/>
+
+ " type="primary" %}
 
 ### Deploying the DC-vEdge2 VM on vCenter
 <br>
@@ -96,13 +129,21 @@ DC-vEdge2-podX | 10.255.255.12 | Network Adapter 1 | Management | eth0 | 192.168
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the DC-vEdge2 VM~~
+- [~~Creating the DC-vEdge2 VM~~](creating-the-dc-vedge2-vm)
 <br/>
-- Onboarding DC-vEdge2
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the DC-vEdge2 VM on vCenter~~](#deploying-the-dc-vedge2-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge2](#onboarding-dc-vedge2)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping DC-vEdge2 (Initial Configuration)](#bootstrapping-dc-vedge2-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -174,6 +215,27 @@ Use the following information in this section (some of the information will be u
 
 <br>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Creating the DC-vEdge2 VM~~](creating-the-dc-vedge2-vm)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the DC-vEdge2 VM on vCenter~~](#deploying-the-dc-vedge2-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge2](#onboarding-dc-vedge2)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge2 (Initial Configuration)~~](#bootstrapping-dc-vedge2-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
+<br/>
+
+" type="primary" %}
+
 ### Installing certificates and activating the vEdge
 
 1. Type `vshell` and  enter `scp admin@192.168.0.6:ROOTCA.pem .` to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH'd in to the vEdge (there is a dot at the end of the scp command). Enter `yes` when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
@@ -231,13 +293,21 @@ This completes the Onboarding section for DC-vEdge2
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the DC-vEdge2 VM~~
+- [~~Creating the DC-vEdge2 VM~~](creating-the-dc-vedge2-vm)
 <br/>
-- ~~Onboarding DC-vEdge2~~
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the DC-vEdge2 VM on vCenter~~](#deploying-the-dc-vedge2-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge2~~](#onboarding-dc-vedge2)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge2 (Initial Configuration)~~](#bootstrapping-dc-vedge2-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -275,13 +345,21 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the DC-vEdge2 VM~~
+- [~~Creating the DC-vEdge2 VM~~](creating-the-dc-vedge2-vm)
 <br/>
-- ~~Onboarding DC-vEdge2~~
-<br/>
-- ~~Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the DC-vEdge2 VM on vCenter~~](#deploying-the-dc-vedge2-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge2~~](#onboarding-dc-vedge2)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge2 (Initial Configuration)~~](#bootstrapping-dc-vedge2-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [~~Onboarding Verification~~](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -309,15 +387,24 @@ This completes the verification activity.
 This completes our onboarding activity for DC-vEdge2.
 
 <br>
+
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Creating the DC-vEdge2 VM~~
+- [~~Creating the DC-vEdge2 VM~~](creating-the-dc-vedge2-vm)
 <br/>
-- ~~Onboarding DC-vEdge2~~
-<br/>
-- ~~Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- ~~Helpful debugs and logs~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the DC-vEdge2 VM on vCenter~~](#deploying-the-dc-vedge2-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge2~~](#onboarding-dc-vedge2)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge2 (Initial Configuration)~~](#bootstrapping-dc-vedge2-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [~~Onboarding Verification~~](#onboarding-verification)
+<br/>
+- [~~Helpful debugs and logs~~](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
