@@ -25,9 +25,9 @@ folder: mydoc
 
 ## Overview
 
-Tags provide alternate groupings for your content. In the documentation for this theme, there are a number of equally plausible ways I could have grouped the content. The folder names and items I chose for each item could have been grouped in other ways with good reason.
+With the changing network landscape, the way in which applications are consumed has also undergone a massive overhaul. Applications being hosted in the cloud (Public/Private) are a common occurrence, rather than the exception.
 
-Tags allow you to go beyond the traditional hierarchical classification and provide other groupings. For example, the same item can belong to two different groups. You can also introduce other dimensions not used in your table of contents, such as platform-specific tags or audience-specific tags.
+Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a vQoE score (Viptela Quality of Experience). Loss and latency are used to calculate the vQoE score and based on this, the solution routes traffic to the Cloud Application via the optimal path. The vQoE value is calculated periodically to ensure persistent optimal application performance.
 
 <br/>
 
@@ -45,6 +45,7 @@ Tags allow you to go beyond the traditional hierarchical classification and prov
 
 ## Prerequisite configuration for Cloud OnRamp
 
+1. 
 <br/>
 
 {% include callout.html content="**Task List**
