@@ -19,6 +19,8 @@ folder: mydoc
 
 {% include note.html content="It is recommended to open this Lab Guide on one screen and perform lab activities on another" %}
 
+{% include important.html content="It is HIGHLY recommended to use Google Chrome. Download the Clipboard Permission Manager Extension for Chrome. While accessing the POD via Guacamole, allow Clipboard Permission Manager access and you will be able to copy-paste content directly into the Guacamole window (Guacamole has an inconvenient way of handling copy-paste operations)." %}
+
 
 ### What should you know?
 
