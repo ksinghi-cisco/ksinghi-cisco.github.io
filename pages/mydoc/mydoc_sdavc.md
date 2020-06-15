@@ -10,6 +10,20 @@ permalink: mydoc_sdavc.html
 folder: mydoc
 ---
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- Uploading the AVC Image to vManage
+<br/>
+- Enabling AVC on vManage and Verification
+<br/>
+- Checking Policy configuration for AVC
+<br/>
+- Verification
+<br/>
+" type="primary" %}
+
 ## Uploading the AVC Image to vManage
 
 In order to deploy the Software Defined Application Visibility and Control (SD-AVC) module to the network, we will first need to upload the image to vManage. In this case, vManage acts as the SD-AVC controller and the cEdges act as SD-AVC Agents.
@@ -28,7 +42,19 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
 
     ![](/images/SD-AVC/04_uping.PNG)
 
+<br/>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
+<br/>
+- [Enabling AVC on vManage and Verification](#enabling-avc-on-vmanage-and-verification)
+<br/>
+- [Checking Policy configuration for AVC](#checking-policy-configuration-for-avc)
+<br/>
+- [Verification](#verification)
+<br/>
+" type="primary" %}
 
 ## Enabling AVC on vManage and Verification
 
@@ -69,6 +95,20 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
     request nms-container sdavc_container diag
     ```
 
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
+<br/>
+- [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
+<br/>
+- [Checking Policy configuration for AVC](#checking-policy-configuration-for-avc)
+<br/>
+- [Verification](#verification)
+<br/>
+" type="primary" %}
+
 ## Checking Policy configuration for AVC
 
 The configuration we had done for QoS also had the relevant configuration required for SD-AVC to function. Our policy configuration done for QoS coincidentally allows the cEdge to become an SD-AVC Agent as well. In this section, we will review the configuration in place for the cEdges to become SD-AVC agents.
@@ -90,6 +130,20 @@ The configuration we had done for QoS also had the relevant configuration requir
 4. Under the Additional Templates section, we have the *QoS_Policy* Policy populated, which ensures that the cEdge40 device is configured for SD-AVC. Click **Cancel** to exit out of the Device Template
 
     ![](/images/SD-AVC/96_qos.PNG)
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
+<br/>
+- [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
+<br/>
+- [~~Checking Policy configuration for AVC~~](#checking-policy-configuration-for-avc)
+<br/>
+- [Verification](#verification)
+<br/>
+" type="primary" %}
 
 ## Verification
 
@@ -127,3 +181,17 @@ The configuration we had done for QoS also had the relevant configuration requir
 This completes SD-AVC setup and verification.
 
 {% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 8 of the SOP" %}
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
+<br/>
+- [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
+<br/>
+- [~~Checking Policy configuration for AVC~~](#checking-policy-configuration-for-avc)
+<br/>
+- [~~Verification~~](#verification)
+<br/>
+" type="primary" %}
