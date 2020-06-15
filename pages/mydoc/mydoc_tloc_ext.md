@@ -328,11 +328,13 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
     ![](/images/TLOC_Ext/27_vcopydevtemp.PNG)
 
-17. Choose to **Edit** the newly created *vEdge_Site20_dev_temp_nat* via the three dots next to it and update the VPN Interface field under **Transport & Management VPN** to reflect the VPN Interface template we created in step 14/15. The name of the newly created VPN Interface template is *site20_vpn_int_nat*. Click on **Update**
+17. Choose to **Edit** the newly created *vEdge_Site20_dev_temp_nat* via the three dots next to it and update the VPN Interface field under **Transport & Management VPN** to reflect the VPN Interface template we created in step 14/15. The name of the newly created VPN Interface template is *site20_vpn0_int_nat*. Click on **Update**
 
     ![](/images/TLOC_Ext/27_wvpnintnat_upd.PNG)
 
 18. Click on the three dots next to the *vEdge_Site20_dev_temp_nat* device template and click on **Attach**. Choose the vEdge20 device and Attach it. Click Next/Configure Device as the prompts pop up (nothing will need to be populated since we're using a device template copied from before with NAT set to On)
+
+    {% include important.html content="Wait for the template to attach. If it gives an error/failure then the templates will go out of sync. To resync, click on the three dots next to *vEdge_Site20_dev_temp* and choose **Change Device Values**. Hit Next and Configure Devices. Now try step 18 above again." %}
 
     ![](/images/TLOC_Ext/27_xattachve20_next_conf.PNG)
 
