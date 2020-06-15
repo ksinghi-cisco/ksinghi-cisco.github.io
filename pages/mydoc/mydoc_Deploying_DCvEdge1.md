@@ -9,16 +9,26 @@ permalink: mydoc_Deploying_DCvEdge1.html
 folder: mydoc
 ---
 
+<br>
+
 {% include callout.html content="**Task List**
 <br/><br/>
 - Verifying the existing lab setup
 <br/>
 - Creating the DC-vEdge1 VM
 <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Overview
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Deploying the VM on vCenter
+    <br/>
 - Onboarding DC-vEdge1
 <br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bootstrapping DC-vEdge1 (Initial Configuration)
     <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Installing certificates and activating the vEdge
+    <br/>
+- Onboarding Verification
+<br/>
 - Helpful debugs and logs
 <br/>
 
@@ -54,15 +64,23 @@ We see that the connections are up and this completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the existing lab setup~~
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- Creating the DC-vEdge1 VM
+- [Creating the DC-vEdge1 VM](creating-the-dc-vedge1-vm)
 <br/>
-- Onboarding DC-vEdge1
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Overview](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Deploying the VM on vCenter](#deploying-the-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge1](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping DC-vEdge1 (Initial Configuration)](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -86,6 +104,31 @@ DC-vEdge1-podX | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168
 {% include tip.html content="Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment." %}
 
 {% include tip.html content="There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options." %}
+
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
+<br/>
+- [Creating the DC-vEdge1 VM](creating-the-dc-vedge1-vm)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Deploying the VM on vCenter](#deploying-the-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge1](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping DC-vEdge1 (Initial Configuration)](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
+<br/>
+
+" type="primary" %}
 
 ### Deploying the VM on vCenter
 <br>
@@ -147,15 +190,23 @@ DC-vEdge1-podX | 10.255.255.11 | Network Adapter 1 | Management | eth0 | 192.168
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the existing lab setup~~
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- ~~Creating the DC-vEdge1 VM~~
+- [~~Creating the DC-vEdge1 VM~~](creating-the-dc-vedge1-vm)
 <br/>
-- Onboarding DC-vEdge1
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the VM on vCenter~~](#deploying-the-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge1](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Bootstrapping DC-vEdge1 (Initial Configuration)](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -235,6 +286,30 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/24_loginusingadminadmin.PNG)
 
+<br>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
+<br/>
+- [~~Creating the DC-vEdge1 VM~~](creating-the-dc-vedge1-vm)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the VM on vCenter~~](#deploying-the-vm-on-vcenter)
+    <br/>
+- [Onboarding DC-vEdge1](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge1 (Initial Configuration)~~](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installing certificates and activating the vEdge](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
+<br/>
+
+" type="primary" %}
 
 ### Installing certificates and activating the vEdge
 
@@ -300,15 +375,23 @@ This completes the Onboarding section for DC-vEdge1
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the existing lab setup~~
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- ~~Creating the DC-vEdge1 VM~~
+- [~~Creating the DC-vEdge1 VM~~](creating-the-dc-vedge1-vm)
 <br/>
-- ~~Onboarding DC-vEdge1~~
-<br/>
-- Onboarding Verification
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the VM on vCenter~~](#deploying-the-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge1~~](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge1 (Initial Configuration)~~](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [Onboarding Verification](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -342,15 +425,23 @@ This completes the verification activity.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the existing lab setup~~
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- ~~Creating the DC-vEdge1 VM~~
+- [~~Creating the DC-vEdge1 VM~~](creating-the-dc-vedge1-vm)
 <br/>
-- ~~Onboarding DC-vEdge1~~
-<br/>
-- ~~Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- Helpful debugs and logs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the VM on vCenter~~](#deploying-the-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge1~~](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge1 (Initial Configuration)~~](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [~~Onboarding Verification~~](#onboarding-verification)
+<br/>
+- [Helpful debugs and logs](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
@@ -382,17 +473,26 @@ This completes the verification activity.
 This completes our onboarding activity for DC-vEdge1.
 
 <br>
+
 {% include callout.html content="**Task List**
 <br/><br/>
-- ~~Verifying the existing lab setup~~
+- [~~Verifying the existing lab setup~~](#verifying-the-existing-lab-setup)
 <br/>
-- ~~Creating the DC-vEdge1 VM~~
+- [~~Creating the DC-vEdge1 VM~~](creating-the-dc-vedge1-vm)
 <br/>
-- ~~Onboarding DC-vEdge1~~
-<br/>
-- ~~Onboarding Verification~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Overview~~](#overview)
     <br/>
-- ~~Helpful debugs and logs~~
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Deploying the VM on vCenter~~](#deploying-the-vm-on-vcenter)
+    <br/>
+- [~~Onboarding DC-vEdge1~~](#onboarding-dc-vedge1)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Bootstrapping DC-vEdge1 (Initial Configuration)~~](#bootstrapping-dc-vedge1-initial-configuration)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Installing certificates and activating the vEdge~~](#installing-certificates-and-activating-the-vedge)
+    <br/>
+- [~~Onboarding Verification~~](#onboarding-verification)
+<br/>
+- [~~Helpful debugs and logs~~](#helpful-debugs-and-logs)
 <br/>
 
 " type="primary" %}
