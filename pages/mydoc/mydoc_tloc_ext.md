@@ -334,6 +334,8 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
 18. Click on the three dots next to the *vEdge_Site20_dev_temp_nat* device template and click on **Attach**. Choose the vEdge20 device and Attach it. Click Next/Configure Device as the prompts pop up (nothing will need to be populated since we're using a device template copied from before with NAT set to On)
 
+    {% include important.html content="Wait for the template to attach. If it gives an error/failure then the templates will go out of sync. To resync, click on the three dots next to *vEdge_Site20_dev_temp* and choose **Change Device Values**. Hit Next and Configure Devices. Now try step 18 above again." %}
+
     ![](/images/TLOC_Ext/27_xattachve20_next_conf.PNG)
 
 This completes the configuration of TLOC Extensions at Site 20.
