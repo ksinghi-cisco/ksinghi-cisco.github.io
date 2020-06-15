@@ -328,7 +328,7 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
     ![](/images/TLOC_Ext/27_vcopydevtemp.PNG)
 
-17. Choose to **Edit** the newly created *vEdge_Site20_dev_temp_nat* via the three dots next to it and update the VPN Interface field under **Transport & Management VPN** to reflect the VPN Interface template we created in step 14/15. The name of the newly created VPN Interface template is *site20_vpn_int_nat*. Click on **Update**
+17. Choose to **Edit** the newly created *vEdge_Site20_dev_temp_nat* via the three dots next to it and update the VPN Interface field under **Transport & Management VPN** to reflect the VPN Interface template we created in step 14/15. The name of the newly created VPN Interface template is *site20_vpn0_int_nat*. Click on **Update**
 
     ![](/images/TLOC_Ext/27_wvpnintnat_upd.PNG)
 
