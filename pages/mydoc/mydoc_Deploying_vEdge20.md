@@ -336,7 +336,7 @@ This completes the Onboarding section for vEdge20
 
     ![](/images/Deploying_vEdge20/17_vedge20controlgui.PNG)
 
-5. On the main dashboard, notice that we now have three WAN Edges onboarded on DNAC. The two sites also have WAN connectivity since BFD sessions have been established.
+5. On the main dashboard, notice that we now have three WAN Edges onboarded on vManage. The two sites also have WAN connectivity since BFD sessions have been established.
 
     ![](/images/Deploying_vEdge20/98_dash.PNG)
 
