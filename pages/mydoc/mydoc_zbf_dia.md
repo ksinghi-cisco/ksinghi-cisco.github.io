@@ -253,7 +253,7 @@ This completes the process of creating the Security Policy.
 
     ![](/images/AppFW_DIA/33_gmailnw.PNG)
 
-6. On the vManage GUI, navigate to **Dashboard -> Security** and you should see spikes in the Firewall Enforcement Dashlet
+6. On the vManage GUI, navigate to **Dashboard -> Security** and you should see spikes in the Firewall Enforcement dashlet (continue with the lab and check back after approximately 15 minutes to see this)
 
     ![](/images/AppFW_DIA/34_dashsec.PNG)
 

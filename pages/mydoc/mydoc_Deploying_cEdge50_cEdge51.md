@@ -332,7 +332,7 @@ The feature templates created in the previous sections are referenced in Device 
 
     ![](/images/Deploying_cEdge50_cEdge51/94_copy.PNG)
 
-3. Click on the three dots next to the newly copied template and choose to **Edit** it. Make sure the details under **Transport and Management VPN** are populated as below, updating VPN0 and VPN0 Interface templates with the ones we just created. VPN512 templates are being re-used from before. Click on **Update** once done
+3. Click on the three dots next to the newly copied template and choose to **Edit** it. Make sure the details under **Transport and Management VPN** are populated as below, updating VPN0 and VPN0 Interface templates with the ones we just created. **VPN512 templates are being re-used from before**. Click on **Update** once done
 
     {% include tip.html content="You can create templates on the fly if the template hasn't already been created. This can be done via the **Create Template** hyperlink from the drop down menu" %}
 
