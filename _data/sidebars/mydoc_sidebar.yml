@@ -24,7 +24,7 @@ entries:
     folderitems:
 
     - title: How to Connect to the SWAT SD-WAN Labs
-      url: /mydoc_connect.html
+      url: /index.html
       output: web, pdf
 
   - title: Overview
@@ -32,7 +32,7 @@ entries:
     folderitems:
 
     - title: Conventions used in this document
-      url: /index.html
+      url: /mydoc_Overview.html
       output: web, pdf
       type: homepage
 
