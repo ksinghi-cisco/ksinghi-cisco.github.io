@@ -1,4 +1,4 @@
-repository: ksinghi-cisco/ksinghi-cisco.github.io
+repository: swat-sdwanlab/swat-sdwanlab.github.io
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
@@ -118,7 +118,7 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 # url: http://idratherbewriting.com
 # baseurl: /documentation-theme-jekyll
 
-url: ksinghi-cisco.github.io
-baseurl: /ksinghi-cisco.github.io
+url: swat-sdwanlab.github.io
+baseurl: /swat-sdwanlab.github.io
 
 github: [metadata]
