@@ -19,6 +19,14 @@ entries:
       output: pdf
       type: frontmatter
 
+  - title: Connecting to the SWAT Labs
+    output: web, pdf
+    folderitems:
+
+    - title: How to Connect to the SWAT SD-WAN Labs
+      url: /mydoc_connect.html
+      output: web, pdf
+
   - title: Overview
     output: web, pdf
     folderitems:
