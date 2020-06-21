@@ -67,19 +67,23 @@ Install AnyConnect and move on to the **Connect to the Cisco SWAT SD-WAN Labs** 
 
     ![](/images/Connect/05_unch.PNG)
 
-4. Once unchecked, close the Preferences window and click on **Connect** again - the warning should not show up anymore. Click on **Connect Anyway** in the Security Warning
+4. Once unchecked, close the Preferences window and click on **Connect** again - the error should not show up anymore. Click on **Connect Anyway** in the Security Warning
 
     ![](/images/Connect/06_sec.PNG)
 
-5. You should be prompted for your username/password and provided with a drop down to select a Group. Please make sure you choose the correct Group as per your POD and enter the VPN credentials provided for your POD. Click on **OK**
+5. Click on **Connect Anyway** if you've skipped over here from Step 2. If you've come from Step 4, this is already done and you can proceed.
+
+    ![](/images/Connect/06_sec.PNG)
+
+6. You should be prompted for your username/password and provided with a drop down to select a Group. Please make sure you choose the correct Group as per your POD and enter the VPN credentials provided for your POD. Click on **OK**
 
     ![](/images/Connect/07_creds.PNG)
 
-6. You should be presented with a popup - click on **Accept**
+7. You should be presented with a popup - click on **Accept**
 
     ![](/images/Connect/08_accept.PNG)
 
-7. The VPN connection should be successful and the window will auto-minimize. Open AnyConnect and you should see your connection status to the Cisco SWAT SD-WAN Labs
+8. The VPN connection should be successful and the window will auto-minimize. Open AnyConnect and you should see your connection status to the Cisco SWAT SD-WAN Labs
 
     ![](/images/Connect/09_succ.PNG)
 
