@@ -8,6 +8,8 @@ permalink: mydoc_Deploying_vEdge21.html
 folder: mydoc
 ---
 
+{% include warning.html content="This section might already be done, depending on your selected Lab Scenario. Most lab work will start [from here](mydoc_Deploying_vEdge30.html). The configuration given below can be used to review what was done to bring the Site up. If this VM is already deployed (check via vCenter), you **Do Not** need to perform these lab activities." %}
+
 <br>
 
 {% include callout.html content="**Task List**
