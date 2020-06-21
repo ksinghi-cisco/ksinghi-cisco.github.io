@@ -9,6 +9,8 @@ permalink: mydoc_Deploying_cEdge50_cEdge51.html
 folder: mydoc
 ---
 
+{% include warning.html content="This section might already be done, depending on your selected Lab Scenario. The configuration given below can be used to review what was done to bring the Site up. If this VM is already deployed (check via vCenter), you **Do Not** need to perform these lab activities. Move to the [next section](mydoc_DCvEdges_templates.html)" %}
+
 {% include callout.html content="**Task List**
 <br/><br/>
 
