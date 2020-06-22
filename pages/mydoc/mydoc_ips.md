@@ -419,7 +419,7 @@ Since it takes approximately 5 minutes for the install process to go through, th
     ```
     copy scp: bootflash:
     utd signature update file bootflash:UTD-STD-SIGNATURE-29130-115-S.pkg
-    <br>
+    
     ```
 
 4. Run `show utd engine standard status` to check if the signature package version matches with the image below
