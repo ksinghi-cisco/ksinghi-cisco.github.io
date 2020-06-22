@@ -141,4 +141,4 @@ VM names need to be used accordingly.
 
 Given below is a printable version of the table (Right click -> **Save Image As** and save it to a preferred location. Then open the image and print, if required)
 
-![](/images/Topology_Schema/NetworkSchema_22_06_2020.PNG)
+![](/images/Topology_Schema/NetworkSchema_22_06_2020_2.PNG)
