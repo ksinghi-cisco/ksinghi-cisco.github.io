@@ -45,7 +45,8 @@ Given below are the access details for some key devices in the network
 | Central Gateway      | Putty                     | admin    | admin      | 192.168.0.1 |
 | Ubuntu - Site 40 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.40.30.21 |
 | Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.50.10.21 |
-| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | POD Dependent |
+| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | 10.2.1.22X <br> <br> X is your POD number |
+| vCenter | Browser - GUI             | sdwanpodX <br><br> X is your POD number <br> <br> *e.g. sdwanpod5*   | C1sco12345     | 10.2.1.50 |
 | WAAS Central Manager | Browser - GUI             | admin    | admin      | 10.40.30.123 |
 
 <div class="datatable-end"></div>
@@ -140,4 +141,4 @@ VM names need to be used accordingly.
 
 Given below is a printable version of the table (Right click -> **Save Image As** and save it to a preferred location. Then open the image and print, if required)
 
-![](/images/Topology_Schema/NetworkSchema_09_06_2020.PNG)
+![](/images/Topology_Schema/NetworkSchema_22_06_2020.PNG)
