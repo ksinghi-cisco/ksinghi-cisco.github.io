@@ -413,9 +413,13 @@ Since it takes approximately 5 minutes for the install process to go through, th
 
     ![](/images/SD-WAN_Security_IPS/26_copysigcentgw.PNG)
 
+    Once the image is copied over to the bootflash: of cEdge40, run the command `utd signature update file bootflash:UTD-STD-SIGNATURE-29130-115-S.pkg`. Confirm the signature update
+
     ![](/images/SD-WAN_Security_IPS/27_instsign.PNG)
     ```
     copy scp: bootflash:
+    utd signature update file bootflash:UTD-STD-SIGNATURE-29130-115-S.pkg
+    <cr>
     ```
 
 4. Run `show utd engine standard status` to check if the signature package version matches with the image below
