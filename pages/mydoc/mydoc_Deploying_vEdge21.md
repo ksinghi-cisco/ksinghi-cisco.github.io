@@ -161,7 +161,7 @@ Use the following information in this section (some of the information will be u
 
     {% include note.html content="From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to `admin`." %}
 
-3. >Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+3. >Enter the configuration enumerated below. Unfortunately, this will need to be typed out since the console isn't copy-paste friendly
 
     ![](/images/Deploying_vEdge21/04_bootstrap.PNG)
     ```

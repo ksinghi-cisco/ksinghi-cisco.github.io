@@ -244,7 +244,7 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge1/20_login_adminadminresettoadmin.PNG)
 
-3. Enter the configuration enumerated below. Unfortunatley, this will need to be typed out since the console isn't copy-paste friendly
+3. Enter the configuration enumerated below. Unfortunately, this will need to be typed out since the console isn't copy-paste friendly
 
     ![](/images/Deploying_DC_vEdge1/21_Enterbootstrap_typeincons.PNG)
 
