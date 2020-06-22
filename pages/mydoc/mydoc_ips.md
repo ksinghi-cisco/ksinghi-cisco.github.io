@@ -99,7 +99,7 @@ We will be performing some initial configuration in the network before it can su
 
     ![](/images/SD-WAN_Security_IPS/96_remcp.PNG)
 
-6. Click on the *+* next to Wired
+6. If you still see a cog wheel/gear icon next to *Wired*, click on it and choose to **Remove Connection Profile** again. Once the *+* icon can be seen next to **Wired**, click on it
 
     ![](/images/SD-WAN_Security_IPS/95_plus.PNG)
 
@@ -111,13 +111,25 @@ We will be performing some initial configuration in the network before it can su
 
     ![](/images/SD-WAN_Security_IPS/94_ip.PNG)
 
-8. On the vManage GUI, go to **Configuration -> Policies** and locate the *Site40-Guest-DIA*. Click on the three dots next to it and choose to **Activate**. Confirm the Activation
+9. Back at the vCenter GUI, right click on your Site 40 PC and choose **Edit Settings**
+
+    ![](/images/SD-WAN_Security_IPS/91_es.PNG)
+
+10. Click on the drop down next to **Network Adapter 1** and click on **Browse**
+
+    ![](/images/SD-WAN_Security_IPS/90_nw.PNG)
+
+11. Choose the *Site40-VPN30* network and click on **OK**. This should take you to the Edit Settings page, click on **OK** again
+
+    ![](/images/SD-WAN_Security_IPS/89_okok.PNG)
+
+12. On the vManage GUI, go to **Configuration -> Policies** and locate the *Site40-Guest-DIA*. Click on the three dots next to it and choose to **Activate**. Confirm the Activation
 
     ![](/images/SD-WAN_Security_IPS/01_act.PNG)
 
     ![](/images/SD-WAN_Security_IPS/02_conf.PNG)
 
-9. Go back to the console for the Site 40 PC and open Terminal. (**Start -> search for terminal -> click on the icon**). Type `ping 8.8.8.8` and hit Enter to verify Internet connectivity
+13. Go back to the console for the Site 40 PC and open Terminal. (**Start -> search for terminal -> click on the icon**). Type `ping 8.8.8.8` and hit Enter to verify Internet connectivity
 
     ![](/images/SD-WAN_Security_IPS/03_int.PNG)
 
@@ -266,9 +278,9 @@ Configuration of the Security Policy continues in the next section.
 
     | Policy Name | Signature Set | Inspection Mode | Alerts Log Level |
     |-------------|---------------|-----------------|------------------|
-    | *Guest-IPS* | Security      | Detection       | Info             |
+    | *Guest-IPS* | Security      | Protection       | Info             |
 
-    ![](/images/SD-WAN_Security_IPS/16_pol.PNG)
+    ![](/images/SD-WAN_Security_IPS/88_protect.PNG)
 
 4. Back at the main Security Policy page, click on **Next** 5 times
 
@@ -327,7 +339,7 @@ The Application List attached to the Firewall Policy that we had earlier will ne
 
     ![](/images/SD-WAN_Security_IPS/92_app.PNG)
 
-4. Click outside the box and choose to **Save** the Application List
+4. Click outside the box and choose to **Save** the Application List. Click on **Activate**, if prompted
 
     ![](/images/SD-WAN_Security_IPS/18_ydummyapplsagain.PNG)
 
@@ -455,7 +467,7 @@ Since it takes approximately 5 minutes for the install process to go through, th
 
 3. Back at the cEdge40 CLI, issue `show utd engine standard logging events`. You should see alerts triggered as a result of running the ips.sh file (this file attempts to download some simulated malware). Thus, our IPS engine is working as expected
 
-    ![](/images/SD-WAN_Security_IPS/31_sign.PNG)
+    ![](/images/SD-WAN_Security_IPS/87_drop.PNG)
 
 4. We can view this information on the vManage GUI as well. Go to **Dashboard -> Security** and you should see some Signature hits. The dashboard does take some time to get populated, though (it's never too soon for another cup of tea/coffee!)
 
