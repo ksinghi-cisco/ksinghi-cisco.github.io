@@ -35,9 +35,9 @@ Connecting to the Cisco SWAT SD-WAN Labs is encompassed in this section. You wil
 
 * The Data Center (SLC or GHI) your POD is scheduled on and the POD number, along with the group
 * VPN Credentials and connection information
-* IP Address of the Jumphost
+* IP Address of the Jumphost/Guacamole
 
-All lab activities need to be performed through the Jumphost.
+All lab activities need to be performed through the Jumphost/Guacamole.
 
 ## Downloading and Installing Cisco AnyConnect
 
