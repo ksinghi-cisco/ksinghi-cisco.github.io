@@ -536,7 +536,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
 At this point, we have completed onboarding verification
 
-{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 2 of the SOP. Also, go through the 2 sections we skipped after you take the snapshots." %}
+
 
 <br>
 

@@ -180,7 +180,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
 This completes SD-AVC setup and verification.
 
-{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 8 of the SOP" %}
+
 
 <br/>
 

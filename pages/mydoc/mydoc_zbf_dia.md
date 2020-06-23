@@ -259,7 +259,7 @@ This completes the process of creating the Security Policy.
 
 Thus, our ZBF is working as expected, blocking webmail traffic on the Guest VPN while allowing other traffic on ports 80 and 443.
 
-{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 6 of the SOP" %}
+
 
 <br/>
 

@@ -371,7 +371,7 @@ An extended ping directly from the Router yields unpredictable results, with tra
 This completes our QoS activity verification.
 
 
-{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 7 of the SOP" %}
+
 
 <br/>
 
