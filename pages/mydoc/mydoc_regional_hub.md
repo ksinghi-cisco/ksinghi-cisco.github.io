@@ -304,7 +304,7 @@ This completes the configuration of our Policy for making Site 30 a Regional Hub
 
 This completes the configuration of our Regional Hub.
 
-{% include warning.html content="STOP!!!! Time to take a snapshot. Refer to the Testing Procedure, Step 5 of the SOP" %}
+
 
 <br/>
 

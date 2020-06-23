@@ -7,7 +7,7 @@ sidebar: mydoc_sidebar
 folder: mydoc
 ---
 
-{% include warning.html content="STOP!!!! Complete this section AFTER going through *Deploying cEdge50 and cEdge51* of this guide. Refer to the Testing Procedure, Step 1 of the SOP" %}
+
 
 <br>
 
