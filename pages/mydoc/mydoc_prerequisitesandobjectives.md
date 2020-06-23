@@ -94,6 +94,6 @@ This lab has multiple use cases that are covered as part of the tasks. We are wo
 
 
 
-* WAAS Integration with SD-WAN using AppNav-XE
+
 
 Happy Labbing!
