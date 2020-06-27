@@ -1,90 +1,109 @@
 ---
-title: Connecting to the Cisco SWAT SD-WAN Lab Environment
+title: Scenarios and Lab Tasks
 keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 last_updated: June 6, 2020
 tags: [getting_started]
-summary: "Understanding the connection methodology for accessing the SWAT SD-WAN Lab Environment"
+summary: "Check which Lab Tasks need to be completed, based on the chosen scenario."
 sidebar: mydoc_sidebar
 permalink: index.html
 
 ---
 
-{% include warning.html content="Please disable the side navigation bar if viewing this on a mobile device/small screen (there is an option to do so in the top navigation menu). The sidebar doesn't work too well with small screen devices. If the top navigation menu is not visible, look for a menu icon (three lines)" %}
+{% include important.html content="Please navigate to the Lab Scenario chosen by you during registration and make note of the lab tasks that have been pre-configured and the tasks that need to be configured. All lab sections are viewable for reference. If a SWAT contact is assisting with these labs, please check with him/her for the lab tasks which need to be configured by you." %}
 
-## Introduction
+{% include warning.html content="Please disable the side navigation bar if viewing this on a mobile device/small screen (there is an option to do so in the top navigation menu). The sidebar doesn't work too well with small screen devices. If the top navigation menu is not visible, look for a menu icon (three lines) in the top right corner." %}
 
-Welcome to the Cisco SWAT SD-WAN Labs. Please take a moment to go through this and the Overview section, which will cover important information about the lab.
-
-Lab activities start from **Bringing up the DC-vEdges** but some sections might already be done, based on the chosen scenario. For most cases, Lab Activities should go as per the following order:
-
-* Deploying Devices in Site 20 and Site 30
-
-    * Deploying vEdge30 - Dual uplink
-
-* Deploying Devices in Site 40 and Site 50
-
-    * Deploying cEdge40 - Dual uplink
-
-* Configuring Templates
-
-Note that we are skipping a couple of portions of the lab (namely *Bringing up the DC vEdges, Deploying vEdge20 - Single INET uplink, Deploying vEdge21 - Single MPLS uplink, Deploying cEdge50 and cEdge51*) since these Sites have already been deployed. The sections are kept in the guide for reference.
-
-(The rest of the sections are to be followed in order)
-
-Connecting to the Cisco SWAT SD-WAN Labs is encompassed in this section. You will receive an email with the following information (or it will be provided to you by your SWAT contact):
-
-* The Data Center (SLC or GHI) your POD is scheduled on and the POD number, along with the group
-* VPN Credentials and connection information
-* IP Address of the Jumphost/Guacamole
-
-All lab activities need to be performed through the Jumphost/Guacamole.
-
-## Downloading and Installing Cisco AnyConnect
-
-{% include note.html content="This section needs to be done only if you **don't** have AnyConnect already installed on your workstation." %}
-
-1. [Click over here](https://14.140.162.5){:target="_blank"} and you should be prompted to enter the VPN credentials. Choose the correct Group and enter the credentials provided for your POD. Click on **Login**. The URL is https://14.140.162.5/, for reference
-
-    ![](/images/Connect/01_any.PNG)
-
-2. Once logged in, click on **Continue** and you should get a prompt to Download AnyConnect for your OS (Windows or Mac). Click on the Download button and save the file. Click on **Instructions** (lower right-hand corner) for a step by step procedure on how to install Cisco AnyConnect for your OS, if you are running into issues with it
-
-    ![](/images/Connect/02_ins.PNG)
-
-Install AnyConnect and move on to the **Connect to the Cisco SWAT SD-WAN Labs** section.
-
-## Connect to the Cisco SWAT SD-WAN Labs
-
-1. Once AnyConnect is installed, enter the destination URL provided to you in the email or by the SWAT contact and click on **Connect**
-
-    ![](/images/Connect/03_enter.PNG)
-
-2. If you get an error like the one below, click on **Change Setting**, else skip to Step 5
-
-    ![](/images/Connect/04_warn.PNG)
-
-3. After clicking on **Change Setting**, make sure you **uncheck** the last option in the Preferences tab - i.e. **Block connections to untrusted servers** should be **unchecked**
-
-    ![](/images/Connect/05_unch.PNG)
-
-4. Once unchecked, close the Preferences window and click on **Connect** again - the error should not show up anymore. Click on **Connect Anyway** in the Security Warning
-
-    ![](/images/Connect/06_sec.PNG)
-
-5. Click on **Connect Anyway** if you've skipped over here from Step 2. If you've come from Step 4, this is already done and you can proceed.
-
-    ![](/images/Connect/06_sec.PNG)
-
-6. You should be prompted for your username/password and provided with a drop down to select a Group. Please make sure you choose the correct Group as per your POD and enter the VPN credentials provided for your POD. Click on **OK**
-
-    ![](/images/Connect/07_creds.PNG)
-
-7. You should be presented with a popup - click on **Accept**
-
-    ![](/images/Connect/08_accept.PNG)
-
-8. The VPN connection should be successful and the window will auto-minimize. Open AnyConnect and you should see your connection status to the Cisco SWAT SD-WAN Labs
-
-    ![](/images/Connect/09_succ.PNG)
-
-You should now be able to RDP to the Jumphost for your POD. If things aren't working as expected, please use the **Need Help?** link at the top of the page (or check with your SWAT contact) to send an email to our support team and someone will get in touch with you at the earliest. If the Need Help? link isn't visible, there should be a menu on the top-right of the screen. Click on it to display the Top Navigation Bar.
+<div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Cisco SD-WAN Deployment</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Cisco SD-WAN Configuration and Administration</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Cisco SD-WAN Policies, Security, AAR and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Cisco SD-WAN Data Policies, Security and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Cisco SD-WAN Advanced Data Policies, Security and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Cisco SD-WAN Security and Cloud OnRamp with SaaS</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Cisco SD-WAN Security<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Cisco SD-WAN Cloud OnRamp and WAAS</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br><br><br>Bringing up the DC-vEdges<br><br>Deploying Devices in Site 20 and Site 30<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<bR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br><br>Deploying Devices in Site 40 and Site 50<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br><br>Configuring Templates<br>Implementing Dynamic Service Side Routing<br>TLOC Extensions<br>Implementing Control Policies<br>Implementing Data Policies and ZBF<br>Application Aware Routing and QoS<br>Cisco SD-WAN Security<br><br><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br><br>Connecting to the SWAT Labs<br>Overview<br>Cloud OnRamp for SaaS<br>WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+</div>
+<!-- /.panel-group -->

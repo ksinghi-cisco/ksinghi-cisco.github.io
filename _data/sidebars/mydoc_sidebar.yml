@@ -19,12 +19,16 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Connecting to the SWAT Labs
+  - title: Readme First
     output: web, pdf
     folderitems:
 
-    - title: How to Connect to the SWAT SD-WAN Labs
+    - title: Scenario based Lab Tasks
       url: /index.html
+      output: web, pdf
+
+    - title: How to Connect to the SWAT SD-WAN Labs
+      url: /mydoc_connect.html
       output: web, pdf
 
   - title: Overview
