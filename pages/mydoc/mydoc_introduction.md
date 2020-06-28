@@ -139,4 +139,4 @@ VM names need to be used accordingly.
 
 <div class="datatable-end"></div>
 
-[Click here](https://github.com/swat-sdwanlab/swat-sdwanlab.github.io/blob/gh-pages/images/Topology_Schema/NetworkSchema_22_06_2020_2.PNG) to download a printable version of this table, for reference.
+[Click here](https://github.com/swat-sdwanlab/swat-sdwanlab.github.io/blob/gh-pages/images/Topology_Schema/NetworkSchema_22_06_2020_2.PNG){:target="_blank"} to download a printable version of this table, for reference.
