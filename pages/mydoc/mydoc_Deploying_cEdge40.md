@@ -145,7 +145,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
 11. Once the VM is deployed, right click **cEdge40-podX** and click Edit settings.
 
     ![](/images/Deploying_cEdge40/12_editsett.PNG)
-12. Change the memory to 8 GB and choose to **Add a new device** (top right corner). Select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
+12. Change the memory to **8 GB** (needed since we will be deploying an IPS module on this cEdge, which requires a minimum of 8 GB RAM) and choose to **Add a new device** (top right corner). Select Network Adapter to add one (since our deployed VM has only 3 Network Adapters but we will need 6 for our lab). Do this twice more for a grand total of 6 Network Adapters
 
     ![](/images/Deploying_cEdge40/13_mem8gb.PNG)
 
