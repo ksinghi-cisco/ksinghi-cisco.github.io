@@ -1,11 +1,11 @@
 destination: _site/
 url: "http://127.0.0.1:4010"
 baseurl: "/mydoc-pdf"
-port: 4010
+port: 4020
 output: pdf
 product: mydoc
-print_title: Jekyll theme for documentation — mydoc product
-print_subtitle: version 6.0
+print_title: Cisco SD-WAN Deployment, Configuration and Administration
+print_subtitle: SWAT Lab Guide
 output: pdf
 defaults:
   -
