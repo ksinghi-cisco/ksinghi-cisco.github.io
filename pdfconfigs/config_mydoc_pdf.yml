@@ -1,7 +1,7 @@
 destination: _site/
 url: "http://127.0.0.1:4010"
 baseurl: "/mydoc-pdf"
-port: 4020
+port: 4010
 output: pdf
 product: mydoc
 print_title: Cisco SD-WAN Deployment, Configuration and Administration
