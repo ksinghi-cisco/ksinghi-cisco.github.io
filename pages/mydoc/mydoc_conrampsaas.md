@@ -165,7 +165,7 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 
     ![](/images/Cloud_OnRamp/27_ve30inet.PNG)
 
-2. Scroll down to the **ACL/QOS** section and specify a **Shaping Rate (Kbps)** of *2*. This will inject delay on our INET link connected to vEdge30. Click on **Update**
+2. Scroll down to the **ACL/QOS** section and specify a **Shaping Rate (Kbps)** of *1*. This will inject delay on our INET link connected to vEdge30. Click on **Update**
 
     ![](/images/Cloud_OnRamp/28_shaper.PNG)
 
@@ -176,6 +176,10 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 4. Wait for some time and traffic to the chosen Application from vEdge30 (check via Cloud icon -> Cloud onRamp for SaaS -> click on the Application) should have a DIA status of **gateway**, indicating that the DC Gateway is being used to contact Amazon AWS (in this example). The local/remote color is *mpls* with the system-ip of the gateway being used
 
     ![](/images/Cloud_OnRamp/30_redierect.PNG)
+
+    The vQoE score might vary, as shown in the image below (it usually takes approximately 15 to 20 minutes for the expected results to show up)
+
+    ![](/images/Cloud_OnRamp/123_vqoemightvary.PNG)
 
 5. Go back to the *vEdge30-INET* Feature template (refer to Steps 1 and 2 of this section) and set the **Shaping Rate (Kbps)** to the Default value. Click on **Update**. Click on **Next/Configure Devices**
 
