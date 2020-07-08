@@ -139,10 +139,10 @@ VM names need to be used accordingly.
 | R <br> Jumphost                                               | NA      | NA            | sdwan-slc/ghi-jump-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.y.1.22X/24      | 10.y.1.1      |
 | S <br> Site 40 PC                                             | 40      | NA            | sdwan-slc/ghi-site40pc-podX | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
 | T <br> Site 50 PC                                             | 50      | NA            | sdwan-slc/ghi-site50pc-podX | Network Adapter 1 | Site50-VPN10            | eth0             | 10.50.10.21/24     | 10.50.10.100  |
-| U </br> Site 30 AD | 30 | NA | sdwan-slc/ghi-ad-podX       | Network Adapter 1 | Site30-VPN10            | eth0 | 10.30.10.50/24 | 10.30.10.2 |
-| U </br> Site 30 AD |    |    |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1 | 10.2.1.18X     |            |
-| V </br> Site 30 PC | 30 | NA | sdwan-slc/ghi-site30pc-podX | Network Adapter 1 | Site30-VPN10            | eth0 | 10.30.10.21/24 | 10.30.10.2 |
-| V </br> Site 30 PC |    |    |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1 | 10.2.1.16X     |            |
+| U <br> Site 30 AD | 30 | NA | sdwan-slc/ghi-ad-podX       | Network Adapter 1 | Site30-VPN10            | eth0 | 10.30.10.50/24 | 10.30.10.2 |
+| U <br> Site 30 AD |    |    |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1 | 10.2.1.18X     |            |
+| V <br> Site 30 PC | 30 | NA | sdwan-slc/ghi-site30pc-podX | Network Adapter 1 | Site30-VPN10            | eth0 | 10.30.10.21/24 | 10.30.10.2 |
+| V <br> Site 30 PC |    |    |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1 | 10.2.1.16X     |            |
 
 <div class="datatable-end"></div>
 
