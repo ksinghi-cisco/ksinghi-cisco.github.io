@@ -213,6 +213,10 @@ entries:
       url: /mydoc_sdavc.html
       output: web, pdf
 
+    # - title: Cisco SD-WAN and Umbrella
+     # url: /mydoc_umbrella.html
+    #  output: web, pdf
+
   - title: Cloud OnRamp for SaaS
     output: web, pdf
     folderitems:
