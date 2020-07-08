@@ -73,7 +73,7 @@ We will start by enabling NAT on the Internet interface and then continue with o
 
     ![](/images/DataPol_DIA/06_edittemp.PNG)
 
-2. Scroll down to the **NAT** section and set NAT to a Global value of *On*. Clock on **Update**
+2. Scroll down to the **NAT** section and set NAT to a Global value of *On*. Click on **Update**
 
     ![](/images/DataPol_DIA/07_nat.PNG)
 
