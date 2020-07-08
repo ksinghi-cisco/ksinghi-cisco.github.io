@@ -43,8 +43,8 @@ Given below are the access details for some key devices in the network
 | vManage              | Browser - GUI             | admin    | admin      | 192.168.0.6 |
 | vEdges and cEdges    | Putty                     | admin    | admin      | Various |
 | Central Gateway      | Putty                     | admin    | admin      | 192.168.0.1 |
-| Ubuntu - Site 40 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.40.30.21 |
-| Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.50.10.21 |
+| Ubuntu - Site 40 PC  | vCenter Console | sdwan    | C1sco12345 | 10.40.30.21 |
+| Ubuntu - Site 50 PC  | vCenter Console | sdwan    | C1sco12345 | 10.50.10.21 |
 | Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | 10.2.1.22X <br> <br> X is your POD number |
 | vCenter | Browser - GUI             | sdwanpodX <br><br> X is your POD number <br> <br> *e.g. sdwanpod5*   | C1sco12345     | 10.2.1.50 |
 | Site 30 AD <br> <br> Domain: swatsdwanlab.com  | RDP/Guacamole | administrator   | C1sco12345 | 10.30.10.50 |
