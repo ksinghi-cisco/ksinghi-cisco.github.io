@@ -16,19 +16,31 @@ folder: mydoc
 
 - Overview
 <br/>
-- Creating and Activating the AAR Policy
+- Pre-Work
 <br/>
-- Viewing modified traffic flows and current network statistics
+- Enabling Site 30 for DIA
 <br/>
-- Configuring a Policer to simulate network impairment
+- Life without Cisco Umbrella
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Creating a Policer List
+- Basic Configuration for Umbrella
+<br/>
+- Making Umbrella Ours
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- API Keys and AD Configuration
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- DC Configuration Download
     <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring the IPv4 ACL Policy
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- AD Connectors
     <br/>
-- Applying the Policer on the MPLS link
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Roaming Computer Configuration
+    <br/>
+- Building a DNS Policy
 <br/>
-- Viewing changed statistics and resultant traffic flows
+- Setting up IPSEC Tunnels
+<br/>
+- Configuring a Firewall Policy
+<br/>
+- Configuring a Web Policy
 <br/>
 
 " type="primary" %}
@@ -56,24 +68,36 @@ To check existing traffic flows, follow the steps below:
 
 - [~~Overview~~](#overview)
 <br/>
-- [Creating and Activating the AAR Policy](#creating-and-activating-the-aar-policy)
+- [Pre-Work](#pre-work)
 <br/>
-- [Viewing modified traffic flows and current network statistics](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [Enabling Site 30 for DIA](#enabling-site-30-for-dia)
 <br/>
-- [Configuring a Policer to simulate network impairment](#configuring-a-policer-to-simulate-network-impairment)
+- [Life without Cisco Umbrella](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating a Policer List](#creating-a-policer-list)
+- [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the IPv4 ACL Policy](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
     <br/>
-- [Applying the Policer on the MPLS link](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
 
-## Creating and Activating the AAR Policy
+## Pre-Work
 
 We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
 
@@ -122,24 +146,36 @@ We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
+- [~~Pre-Work~~](#pre-work)
 <br/>
-- [Viewing modified traffic flows and current network statistics](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [Enabling Site 30 for DIA](#enabling-site-30-for-dia)
 <br/>
-- [Configuring a Policer to simulate network impairment](#configuring-a-policer-to-simulate-network-impairment)
+- [Life without Cisco Umbrella](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating a Policer List](#creating-a-policer-list)
+- [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the IPv4 ACL Policy](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
     <br/>
-- [Applying the Policer on the MPLS link](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
 
-## Viewing modified traffic flows and current network statistics
+## Enabling Site 30 for DIA
 
 To view the changes made by the Policy on our network, follow the steps below.
 
@@ -164,30 +200,78 @@ To view the changes made by the Policy on our network, follow the steps below.
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
+- [~~Pre-Work~~](#pre-work)
 <br/>
-- [~~Viewing modified traffic flows and current network statistics~~](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
 <br/>
-- [Configuring a Policer to simulate network impairment](#configuring-a-policer-to-simulate-network-impairment)
+- [Life without Cisco Umbrella](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Creating a Policer List](#creating-a-policer-list)
+- [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the IPv4 ACL Policy](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
     <br/>
-- [Applying the Policer on the MPLS link](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
 
-## Configuring a Policer to simulate network impairment
+## Life without Umbrella
 
 In order to simulate impairment in the network (Packet Loss and Latency), we can use a Policer and a Shaper. Over here, we will configure a Policer which will be applied to the MPLS link in order to simulate Packet Loss.
 
 Later on, we will leverage a Shaper to simulate Latency.
 
-### Creating a Policer List
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
+<br/>
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
+<br/>
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+## Basic Configuration for Umbrella
 
 1. On the vManage GUI, navigate to **Configuration -> Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
 
@@ -211,24 +295,36 @@ Later on, we will leverage a Shaper to simulate Latency.
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
+- [~~Pre-Work~~](#pre-work)
 <br/>
-- [~~Viewing modified traffic flows and current network statistics~~](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
 <br/>
-- [Configuring a Policer to simulate network impairment](#configuring-a-policer-to-simulate-network-impairment)
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating a Policer List~~](#creating-a-policer-list)
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring the IPv4 ACL Policy](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
     <br/>
-- [Applying the Policer on the MPLS link](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
 
-### Configuring the IPv4 ACL Policy
+## Making Umbrella ours
 
 1. Go to the **Localized Policy** tab and click on **Add Policy**
 
@@ -263,31 +359,7 @@ Later on, we will leverage a Shaper to simulate Latency.
 
 We have completed configuration of our Policer. It needs to be applied to a link in order to simulate network impairment.
 
-<br/>
-
-{% include callout.html content="**Task List**
-<br/><br/>
-
-- [~~Overview~~](#overview)
-<br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
-<br/>
-- [~~Viewing modified traffic flows and current network statistics~~](#viewing-modified-traffic-flows-and-current-network-statistics)
-<br/>
-- [~~Configuring a Policer to simulate network impairment~~](#configuring-a-policer-to-simulate-network-impairment)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating a Policer List~~](#creating-a-policer-list)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the IPv4 ACL Policy~~](#configuring-the-ipv4-acl-policy)
-    <br/>
-- [Applying the Policer on the MPLS link](#applying-the-policer-on-the-mpls-link)
-<br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
-<br/>
-
-" type="primary" %}
-
-## Applying the Policer on the MPLS link
+### API Keys and AD Configuration
 
 1. Navigate to **Configuration -> Templates -> Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
 
@@ -337,24 +409,36 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
+- [~~Pre-Work~~](#pre-work)
 <br/>
-- [~~Viewing modified traffic flows and current network statistics~~](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
 <br/>
-- [~~Configuring a Policer to simulate network impairment~~](#configuring-a-policer-to-simulate-network-impairment)
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating a Policer List~~](#creating-a-policer-list)
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the IPv4 ACL Policy~~](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
     <br/>
-- [~~Applying the Policer on the MPLS link~~](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [Viewing changed statistics and resultant traffic flows](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
 
-## Viewing changed statistics and resultant traffic flows
+### DC Configuration Download
 
 1. Navigate to **Monitor -> Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
 
@@ -385,19 +469,259 @@ This completes the Application Aware Routing section of the lab.
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Creating and Activating the AAR Policy~~](#creating-and-activating-the-aar-policy)
+- [~~Pre-Work~~](#pre-work)
 <br/>
-- [~~Viewing modified traffic flows and current network statistics~~](#viewing-modified-traffic-flows-and-current-network-statistics)
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
 <br/>
-- [~~Configuring a Policer to simulate network impairment~~](#configuring-a-policer-to-simulate-network-impairment)
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Creating a Policer List~~](#creating-a-policer-list)
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring the IPv4 ACL Policy~~](#configuring-the-ipv4-acl-policy)
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
     <br/>
-- [~~Applying the Policer on the MPLS link~~](#applying-the-policer-on-the-mpls-link)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
 <br/>
-- [~~Viewing changed statistics and resultant traffic flows~~](#viewing-changed-statistics-and-resultant-traffic-flows)
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+### AD Connectors
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
+<br/>
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+### Roaming Computer Configuration
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Making Umbrella Ours~~](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Roaming Computer Configuration~~](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
+<br/>
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+## Building a DNS Policy
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Making Umbrella Ours~~](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Roaming Computer Configuration~~](#roaming-computer-configuration)
+    <br/>
+- [~~Building a DNS Policy~~](#building-a-dns-policy)
+<br/>
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+## Setting up IPSEC Tunnels
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Making Umbrella Ours~~](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Roaming Computer Configuration~~](#roaming-computer-configuration)
+    <br/>
+- [~~Building a DNS Policy~~](#building-a-dns-policy)
+<br/>
+- [~~Setting up IPSEC Tunnels~~](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+## Configuring a Firewall Policy
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Making Umbrella Ours~~](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Roaming Computer Configuration~~](#roaming-computer-configuration)
+    <br/>
+- [~~Building a DNS Policy~~](#building-a-dns-policy)
+<br/>
+- [~~Setting up IPSEC Tunnels~~](#setting-up-ipsec-tunnels)
+<br/>
+- [~~Configuring a Firewall Policy~~](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+## Configuring a Web Policy
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Making Umbrella Ours~~](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~DC Configuration Download~~](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~AD Connectors~~](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Roaming Computer Configuration~~](#roaming-computer-configuration)
+    <br/>
+- [~~Building a DNS Policy~~](#building-a-dns-policy)
+<br/>
+- [~~Setting up IPSEC Tunnels~~](#setting-up-ipsec-tunnels)
+<br/>
+- [~~Configuring a Firewall Policy~~](#configuring-a-firewall-policy)
+<br/>
+- [~~Configuring a Web Policy~~](#configuring-a-web-policy)
 <br/>
 
 " type="primary" %}
