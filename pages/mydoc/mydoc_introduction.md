@@ -12,7 +12,7 @@ Given below is the lab topology being used for the SWAT SD-WAN Labs
 
 {% include note.html content="There might be minor differences in the topology being used versus what you see here. We will keep this updated as far as possible" %}
 
-![](/images/Topology_Schema/SD-WAN_Lab_15_06_2020.PNG)
+![](/images/Topology_Schema/SD-WAN_Lab_09_07_2020.PNG)
 
 Decoding the toplogy:
 
@@ -38,7 +38,7 @@ Given below are the access details for some key devices in the network
 
 <div class="datatable-begin"></div>
 
-| Device               | Access Method             |  Username | Password   | IP Address |
+| Device               | Access Method             |  Username | Password   | IP Address/URL |
 |----------------------|---------------------------|----------|------------|---|
 | vManage              | Browser - GUI             | admin    | admin      | 192.168.0.6 |
 | vEdges and cEdges    | Putty                     | admin    | admin      | Various |
@@ -47,6 +47,9 @@ Given below are the access details for some key devices in the network
 | Ubuntu - Site 50 PC  | vCenter Console/Guacamole | sdwan    | C1sco12345 | 10.50.10.21 |
 | Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | 10.2.1.22X <br> <br> X is your POD number |
 | vCenter | Browser - GUI             | sdwanpodX <br><br> X is your POD number <br> <br> *e.g. sdwanpod5*   | C1sco12345     | 10.2.1.50 |
+| Site 30 AD <br> <br> Domain: swatsdwanlab.com  | RDP/Guacamole | administrator   | C1sco12345 | 10.30.10.50 |
+| Site 30 PC  | RDP/Guacamole | swatsdwanlab\sdwan    | C1sco12345 | 10.30.10.21 |
+| Cisco Umbrella  | Browser - GUI | ghi.pod0X@gmail.com <br> <br> X is your POD number    | C1sco@12345 | login.umbrella.com |
 | WAAS Central Manager | Browser - GUI             | admin    | admin      | 10.40.30.123 |
 
 <div class="datatable-end"></div>
