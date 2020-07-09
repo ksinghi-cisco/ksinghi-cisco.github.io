@@ -27,7 +27,7 @@ folder: mydoc
 - Making Umbrella Ours
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- API Keys and AD Configuration
-<br/>
+    <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- DC Configuration Download
     <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- AD Connectors
@@ -47,19 +47,17 @@ folder: mydoc
 
 ## Overview
 
-While we can use Traffic Engineering to steer traffic towards a particular preferred transport, Application Aware Routing takes things to a different level by not only allowing us to punt traffic over a preferred path, but also define SLA parameters for traffic to be redirected if network conditions aren't favourable for the type of traffic.
+Cisco Umbrella offers flexible, cloud-delivered security when and how you need it. It combines multiple security functions into one solution, so you can extend protection to devices, remote users, and distributed locations anywhere. Umbrella is the easiest way to effectively protect your users everywhere in minutes.
 
-To set a baseline, we will first see how traffic flows on VPN 10 (let's assume that this VPN has Voice traffic in it). We will then implement AAR and SLA Classes to route traffic out a preferred transport and switch the chosen transport if SLA parameters are not met.
+The Umbrella portfolio includes, among others, the following Security functions:
 
-To check existing traffic flows, follow the steps below:
+* DNS Layer Security
 
-1. Navigate to **Monitor -> Network** and select **cEdge40** from the list. Scroll down on the left-hand side and click on **Troubleshooting**. Choose **Simulate Flows**. Choose a VPN of *VPN - 10* and a Source/Interface of *GigabitEthernet4*. Enter the Destination IP as *10.100.10.2* and click on **Simulate**. Notice that traffic is attempting to use all available transports
+* Cloud-delivered Firewall (IPSEC Tunnel)
 
-    ![](/images/AAR_LLQ/01_path.PNG)
+* Secure Web Gateway (IPSEC Tunnel)
 
-2. Click on **Advanced Options** and enter the DSCP value as 46 (i.e. VoIP RTP traffic). Click on **Simulate**. This traffic also uses all possible transports, which might not be ideal for our network
-
-    ![](/images/AAR_LLQ/02_path46.PNG)
+In this section, we will deploy DNS Layer Security as an Umbrella feature and then see how SD-WAN can simplify Tunnel creation and Cloud-Delivered Firewall/SWG functionality.
 
 <br/>
 
@@ -99,31 +97,58 @@ To check existing traffic flows, follow the steps below:
 
 ## Pre-Work
 
-We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
+We will need to change a few settings with respect to the DNS servers to ensure that the Umbrella infrastructure isn't utilized by the SD-WAN solution. As of now, all DNS traffic is being queried via the Umbrella resolvers.
 
-1. On the vManage GUI, go to **Configuration -> Policies** and click **Add Policy**. Click on **Next** twice (till you get to the Configure Traffic Rules page) and click on **Add Policy** under Application Aware Routing. We thus have an overarching Policy (let's call it the Main Policy) and an application-aware routing policy within it. As of now, we will configure the AAR routing policy. Towards the end, we will enter the details of the Main Policy
+1. We will first connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
 
-    ![](/images/AAR_LLQ/03_pol_next2_add.PNG)
+    Alternatively, you can RDP to 10.2.1.16X (where X is your POD number) from the Jumphost. RDP to the Site 30 PC will only work from the Jumphost
 
-2. Give this AAR Policy a name of *VPN10-AAR* and a Description of *Transport Preference for Traffic in VPN 10*. Click on **Sequence Type** and then click on **Sequence Rule**. Under Match, select DSCP and enter a DSCP value of **46** under Match Conditions
+    | Connection Method | Username | Password |
+    | --- | ---- | ---- |
+    | Guacamole | sdwanpod | C1sco12345 |
+    | RDP | swatsdwanlab\sdwan | C1sco12345 |
 
-    ![](/images/AAR_LLQ/04_aarpol.PNG)
+    ![](/images/Umbrella_SDWAN_2/01_guac.PNG)
 
-3. Click on the Actions tab and choose **SLA Class List**. Click on the box under SLA Class and choose **New SLA Class List**
+    ![](/images/Umbrella_SDWAN_2/01_site30pc.PNG)
 
-    ![](/images/AAR_LLQ/05_newsla.PNG)
+    vCenter (accessible via the bookmark or 10.2.1.50/ui and the credentials provided for your POD) can also be used to console to the Site30 PC
 
-4. Give the SLA Class a Name of *Voice-SLA* and specify the **Loss %** as *1*. Enter *200* for the **Latency** and *15* for the **Jitter**. Click on **Save**
+    ![](/images/Umbrella_SDWAN_2/01_vcc.PNG)
 
-    ![](/images/AAR_LLQ/06_vsla.PNG)
+2. Depending on the connection method, you may need to enter credentials again to log in to the Site 30 PC. Please enter the credentials shown below, if prompted
 
-5. Still under actions, select the *Voice-SLA* SLA Class that we just created and set the Preferred Color to *mpls*. Click on **Save Match and Actions**
+    | Connection Method | Username | Password |
+    | --- | ---- | ---- |
+    | Guacamole | Not Required | Not Required |
+    | RDP | swatsdwanlab\sdwan | C1sco12345 |
+    | vCenter | swatsdwanlab\sdwan | C1sco12345 |
 
-    ![](/images/AAR_LLQ/07_actsave.PNG)
+    ![](/images/Umbrella_SDWAN_2/02_login.PNG)
 
-6. Ensure your App Route looks like the image below and click on **Save Application Aware Routing Policy**. Click **Next**
+3. Click on **Start** and type **cmd**. Click on the *Command Prompt* App that pops up in the search results
 
-    ![](/images/AAR_LLQ/08_save.PNG)
+    ![](/images/Umbrella_SDWAN_2/03_cmd.PNG)
+
+4. Type `ipconfig` and Hit Enter. Also, type `ping 10.0.0.1` and Hit Enter. The pings should work. On typing `ping 8.8.8.8`, the pings should fail indicating that there is no Internet connectivity
+
+    ![](/images/Umbrella_SDWAN_2/04_ipping.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/05_noint.PNG)
+
+    ```
+    ipconfig
+    ping 10.0.0.1
+    ping 8.8.8.8
+    ```
+
+5. Go to the vManage GUI and navigate to **Configuration => Templates**
+
+    ![](/images/Umbrella_SDWAN_2/06_temp.PNG)
+
+6. Click on the **Feature** tab and locate the *vEdge30-vpn0* Feature Template. Click on the three dots next to it and choose to **Edit**
+
+    ![](/images/Umbrella_SDWAN_2/07_edit.PNG)
 
 7. At the **Apply Policies to Sites and VPNs** page, give the Policy a Name of *AAR-VPN10* and a Description of *Transport Preference for VPN 10*. Click on the Application Aware Routing tab and click on **New Site List and VPN List**. Under **Select Site List** choose *Branches* and *DC*. Under **Select VPN List** choose *Corporate*. Click on *Add*
 
@@ -179,7 +204,7 @@ We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
 
 To view the changes made by the Policy on our network, follow the steps below.
 
-1. On the vManage GUI, go to **Monitor -> Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
+1. On the vManage GUI, go to **Monitor => Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
 
     ![](/images/AAR_LLQ/13_regtraf.PNG)
 
@@ -273,7 +298,7 @@ Later on, we will leverage a Shaper to simulate Latency.
 
 ## Basic Configuration for Umbrella
 
-1. On the vManage GUI, navigate to **Configuration -> Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
+1. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
 
     ![](/images/AAR_LLQ/17_lppolicer.PNG)
 
@@ -361,7 +386,7 @@ We have completed configuration of our Policer. It needs to be applied to a link
 
 ### API Keys and AD Configuration
 
-1. Navigate to **Configuration -> Templates -> Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
+1. Navigate to **Configuration => Templates => Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
 
     ![](/images/AAR_LLQ/26_copyint.PNG)
 
@@ -384,7 +409,7 @@ We have completed configuration of our Policer. It needs to be applied to a link
 
     ![](/images/AAR_LLQ/29_aclupd.PNG)
 
-5. Under **Configuration -> Templates** go to the **Device** tab and locate the *cedge_dualuplink_devtemp* template. Click on the three dots next to it and choose to **Edit**
+5. Under **Configuration => Templates** go to the **Device** tab and locate the *cedge_dualuplink_devtemp* template. Click on the three dots next to it and choose to **Edit**
 
     ![](/images/AAR_LLQ/30_editdevtemp.PNG)
 
@@ -440,7 +465,7 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
 ### DC Configuration Download
 
-1. Navigate to **Monitor -> Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
+1. Navigate to **Monitor => Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
 
     ![](/images/AAR_LLQ/33_pl.PNG)
 
@@ -452,11 +477,11 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
     ![](/images/AAR_LLQ/35_plaar.PNG)
 
-4. We will now revert the configuration to what it was pre-impairment. Go to **Configuration -> Templates** and locate the *cEdge_dualuplink_devtemp*. Click on the three dots next to it and **Edit**. Change the Cisco VPN Interface Ethernet value under **Transport & Management VPN** back to *cedge-vpn0-int-dual_mpls* and click on **Update**
+4. We will now revert the configuration to what it was pre-impairment. Go to **Configuration => Templates** and locate the *cEdge_dualuplink_devtemp*. Click on the three dots next to it and **Edit**. Change the Cisco VPN Interface Ethernet value under **Transport & Management VPN** back to *cedge-vpn0-int-dual_mpls* and click on **Update**
 
     ![](/images/AAR_LLQ/36_rev.PNG)
 
-5. Wait for approximately 3 minutes and head over to **Monitor -> Network -> cEdge40 -> Troubleshooting -> Traffic Flows**. Enter the same details as in Step 3 above and click on **Simulate**. VoIP traffic should traverse over the MPLS link again
+5. Wait for approximately 3 minutes and head over to **Monitor => Network => cEdge40 => Troubleshooting => Traffic Flows**. Enter the same details as in Step 3 above and click on **Simulate**. VoIP traffic should traverse over the MPLS link again
 
     ![](/images/AAR_LLQ/37_waitmpls.PNG)
 

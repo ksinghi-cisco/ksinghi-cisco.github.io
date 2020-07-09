@@ -33,7 +33,7 @@ While the Site40 cEdge is already in vManage mode, we will be looking at updatin
 
 ### Updating the VPN0 Feature Template
 
-1. Go to **Configuration -> Templates -> Feature tab**. Click on the three dots next to the *cEdge_VPN0_dual_uplink* template and click on **Edit**. Scroll down to the IPv4 Route section and click on pencil icon to update the default route
+1. Go to **Configuration => Templates => Feature tab**. Click on the three dots next to the *cEdge_VPN0_dual_uplink* template and click on **Edit**. Scroll down to the IPv4 Route section and click on pencil icon to update the default route
 
     ![](/images/cEdgeSite40_Templates/08_editvpn0temp_addipv4route.PNG)
 
@@ -81,7 +81,7 @@ While the Site40 cEdge is already in vManage mode, we will be looking at updatin
 
 ### Creating the MPLS VPN Interface Feature Template
 
-1. Go to **Configuration -> Templates -> Feature tab**. Click on the three dots next to the *cedge-vpn0-int-dual* template and click on **Copy**.
+1. Go to **Configuration => Templates => Feature tab**. Click on the three dots next to the *cedge-vpn0-int-dual* template and click on **Copy**.
 
     ![](/images/cEdgeSite40_Templates/01_copy.PNG)
 
@@ -122,7 +122,7 @@ While the Site40 cEdge is already in vManage mode, we will be looking at updatin
 
 We now need to associate the template created in the previous step with the Device Template being used by cEdge40.
 
-1. Go to **Configuration -> Templates** and make sure you're on the Device tab. Click on the three dots next to the *cEdge_dualuplink_devtemp* template. Click on **Edit**.
+1. Go to **Configuration => Templates** and make sure you're on the Device tab. Click on the three dots next to the *cEdge_dualuplink_devtemp* template. Click on **Edit**.
 
     ![](/images/cEdgeSite40_Templates/06_editdevtemp.PNG)
 
@@ -142,7 +142,7 @@ We now need to associate the template created in the previous step with the Devi
 
     ![](/images/cEdgeSite40_Templates/18_confsucc.PNG)
 
-6. Go to **Monitor -> Network** and choose **vEdge30** (yes, we're choosing vEdge30 and not the cEdge we just configured). Click on **Real Time** and specify **BFD Sessions** in the Device Options field. Choose Do Not Filter
+6. Go to **Monitor => Network** and choose **vEdge30** (yes, we're choosing vEdge30 and not the cEdge we just configured). Click on **Real Time** and specify **BFD Sessions** in the Device Options field. Choose Do Not Filter
 
     ![](/images/cEdgeSite40_Templates/19_mon_net_ve30_real_bfd_dnf.PNG)
 

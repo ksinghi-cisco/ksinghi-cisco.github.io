@@ -35,7 +35,7 @@ Since our Feature Templates for Service Side VPNs are ready, we will now update 
 
 ### Updating the DC-vEdge Device Template
 
-1. On the vManage GUI, go to **Configuration -> Templates**. You should be on the **Device** tab. Locate the *DCvEdge_dev_temp* and click on the 3 dots next to it. Choose to **Edit** the template
+1. On the vManage GUI, go to **Configuration => Templates**. You should be on the **Device** tab. Locate the *DCvEdge_dev_temp* and click on the 3 dots next to it. Choose to **Edit** the template
 
     ![](/images/Update_Dev_Temp_SSV/01_editdc.PNG)
 
@@ -63,7 +63,7 @@ Since our Feature Templates for Service Side VPNs are ready, we will now update 
 
     ![](/images/Update_Dev_Temp_SSV/07_upd.PNG)
 
-8. Enter the details as shown in the figure below and click on **Next**. These details can be found in the Overview -> Topology and IP Addressing section of the guide
+8. Enter the details as shown in the figure below and click on **Next**. These details can be found in the Overview => Topology and IP Addressing section of the guide
 
     ![](/images/Update_Dev_Temp_SSV/08_dcdet.PNG)
 
@@ -100,7 +100,7 @@ Since our Feature Templates for Service Side VPNs are ready, we will now update 
 
 Follow the same steps as the previous section, making changes as required.
 
-1. From **Configuration -> Templates** locate the *vedge_Site20_dev_temp* Device Template and click on the three dots. Choose to **Edit**.
+1. From **Configuration => Templates** locate the *vedge_Site20_dev_temp* Device Template and click on the three dots. Choose to **Edit**.
 
 2. Scroll to the **Service VPN** section and click on **Add VPN**. Move *vedge-vpn10* to the list of Selected VPN Templates and click on **Next**
 
@@ -110,7 +110,7 @@ Follow the same steps as the previous section, making changes as required.
 
     ![](/images/Update_Dev_Temp_SSV/11_site20.PNG)
 
-5. Enter the details as shown below and click on **Next**. Click on **Configure Devices** and confirm the selection. You can also reference the table in the Overview -> Topology and IP Addressing section of the guide for the device details
+5. Enter the details as shown below and click on **Next**. Click on **Configure Devices** and confirm the selection. You can also reference the table in the Overview => Topology and IP Addressing section of the guide for the device details
 
     ![](/images/Update_Dev_Temp_SSV/12_site20det.PNG)
 
@@ -142,7 +142,7 @@ Follow the same steps as the previous section, making changes as required.
 
 Follow the same steps as the previous section, making changes as required.
 
-1. From **Configuration -> Templates** locate the *vedge30_dev_temp* Device Template and click on the three dots. Choose to **Edit**.
+1. From **Configuration => Templates** locate the *vedge30_dev_temp* Device Template and click on the three dots. Choose to **Edit**.
 
 2. Scroll to the **Service VPN** section and click on **Add VPN**. Move *vedge-vpn10* to the list of Selected VPN Templates and click on **Next**
 
@@ -152,7 +152,7 @@ Follow the same steps as the previous section, making changes as required.
 
     ![](/images/Update_Dev_Temp_SSV/13_site30.PNG)
 
-5. Enter the details as shown below and click on **Next**. Click on **Configure Devices**. You can also reference the table in the Overview -> Topology and IP Addressing section of the guide for the device details
+5. Enter the details as shown below and click on **Next**. Click on **Configure Devices**. You can also reference the table in the Overview => Topology and IP Addressing section of the guide for the device details
 
     ![](/images/Update_Dev_Temp_SSV/14_site30det.PNG)
 
@@ -184,7 +184,7 @@ The cEdges will have 3 Service Side VPNs associated (VPN 10, VPN 20 and VPN 30) 
 
 ### Updating the Site 40 Device Template
 
-1. While on **Configuration -> Templates**, click on the three dots next to *cEdge_dualuplink_devtemp* and choose to **Edit**. Scroll down to the **Service VPN** section and click on **Add VPN**. Move *cedge-vpn10* to the list of Selected VPN Templates. Click on **Next**
+1. While on **Configuration => Templates**, click on the three dots next to *cEdge_dualuplink_devtemp* and choose to **Edit**. Scroll down to the **Service VPN** section and click on **Add VPN**. Move *cedge-vpn10* to the list of Selected VPN Templates. Click on **Next**
 
     ![](/images/Update_Dev_Temp_SSV/15_cedgevpn10.PNG)
 
@@ -214,7 +214,7 @@ The cEdges will have 3 Service Side VPNs associated (VPN 10, VPN 20 and VPN 30) 
 
     ![](/images/Update_Dev_Temp_SSV/21_upd.PNG)
 
-5. Click on the three dots next to the device and choose **Edit Device Template**. Enter the details as shown (details are also available in the Overview -> Topology and IP Addressing section of the lab guide). Click on **Update**
+5. Click on the three dots next to the device and choose **Edit Device Template**. Enter the details as shown (details are also available in the Overview => Topology and IP Addressing section of the lab guide). Click on **Update**
 
     ![](/images/Update_Dev_Temp_SSV/22_editdevtemp.PNG)
 
@@ -249,7 +249,7 @@ This completes the configuration of the Site 40 cEdges for Service Side VPNs.
 
 ### Updating the Site 50 Device Template
 
-1. From **Configuration -> Templates**, choose to **Edit** the *cEdge-single-uplink* Template
+1. From **Configuration => Templates**, choose to **Edit** the *cEdge-single-uplink* Template
 
     ![](/images/Update_Dev_Temp_SSV/24_singleuplinkedit.PNG)
 

@@ -41,7 +41,7 @@ To set a baseline, we will first see how traffic flows on VPN 10 (let's assume t
 
 To check existing traffic flows, follow the steps below:
 
-1. Navigate to **Monitor -> Network** and select **cEdge40** from the list. Scroll down on the left-hand side and click on **Troubleshooting**. Choose **Simulate Flows**. Choose a VPN of *VPN - 10* and a Source/Interface of *GigabitEthernet4*. Enter the Destination IP as *10.100.10.2* and click on **Simulate**. Notice that traffic is attempting to use all available transports
+1. Navigate to **Monitor => Network** and select **cEdge40** from the list. Scroll down on the left-hand side and click on **Troubleshooting**. Choose **Simulate Flows**. Choose a VPN of *VPN - 10* and a Source/Interface of *GigabitEthernet4*. Enter the Destination IP as *10.100.10.2* and click on **Simulate**. Notice that traffic is attempting to use all available transports
 
     ![](/images/AAR_LLQ/01_path.PNG)
 
@@ -77,7 +77,7 @@ To check existing traffic flows, follow the steps below:
 
 We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
 
-1. On the vManage GUI, go to **Configuration -> Policies** and click **Add Policy**. Click on **Next** twice (till you get to the Configure Traffic Rules page) and click on **Add Policy** under Application Aware Routing. We thus have an overarching Policy (let's call it the Main Policy) and an application-aware routing policy within it. As of now, we will configure the AAR routing policy. Towards the end, we will enter the details of the Main Policy
+1. On the vManage GUI, go to **Configuration => Policies** and click **Add Policy**. Click on **Next** twice (till you get to the Configure Traffic Rules page) and click on **Add Policy** under Application Aware Routing. We thus have an overarching Policy (let's call it the Main Policy) and an application-aware routing policy within it. As of now, we will configure the AAR routing policy. Towards the end, we will enter the details of the Main Policy
 
     ![](/images/AAR_LLQ/03_pol_next2_add.PNG)
 
@@ -143,7 +143,7 @@ We will now set up an AAR Policy for VoIP (i.e. DSCP 46) traffic.
 
 To view the changes made by the Policy on our network, follow the steps below.
 
-1. On the vManage GUI, go to **Monitor -> Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
+1. On the vManage GUI, go to **Monitor => Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
 
     ![](/images/AAR_LLQ/13_regtraf.PNG)
 
@@ -189,7 +189,7 @@ Later on, we will leverage a Shaper to simulate Latency.
 
 ### Creating a Policer List
 
-1. On the vManage GUI, navigate to **Configuration -> Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
+1. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
 
     ![](/images/AAR_LLQ/17_lppolicer.PNG)
 
@@ -289,7 +289,7 @@ We have completed configuration of our Policer. It needs to be applied to a link
 
 ## Applying the Policer on the MPLS link
 
-1. Navigate to **Configuration -> Templates -> Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
+1. Navigate to **Configuration => Templates => Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
 
     ![](/images/AAR_LLQ/26_copyint.PNG)
 
@@ -312,7 +312,7 @@ We have completed configuration of our Policer. It needs to be applied to a link
 
     ![](/images/AAR_LLQ/29_aclupd.PNG)
 
-5. Under **Configuration -> Templates** go to the **Device** tab and locate the *cedge_dualuplink_devtemp* template. Click on the three dots next to it and choose to **Edit**
+5. Under **Configuration => Templates** go to the **Device** tab and locate the *cedge_dualuplink_devtemp* template. Click on the three dots next to it and choose to **Edit**
 
     ![](/images/AAR_LLQ/30_editdevtemp.PNG)
 
@@ -356,7 +356,7 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
 ## Viewing changed statistics and resultant traffic flows
 
-1. Navigate to **Monitor -> Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
+1. Navigate to **Monitor => Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
 
     ![](/images/AAR_LLQ/33_pl.PNG)
 
@@ -368,11 +368,11 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
     ![](/images/AAR_LLQ/35_plaar.PNG)
 
-4. We will now revert the configuration to what it was pre-impairment. Go to **Configuration -> Templates** and locate the *cEdge_dualuplink_devtemp*. Click on the three dots next to it and **Edit**. Change the Cisco VPN Interface Ethernet value under **Transport & Management VPN** back to *cedge-vpn0-int-dual_mpls* and click on **Update**
+4. We will now revert the configuration to what it was pre-impairment. Go to **Configuration => Templates** and locate the *cEdge_dualuplink_devtemp*. Click on the three dots next to it and **Edit**. Change the Cisco VPN Interface Ethernet value under **Transport & Management VPN** back to *cedge-vpn0-int-dual_mpls* and click on **Update**
 
     ![](/images/AAR_LLQ/36_rev.PNG)
 
-5. Wait for approximately 3 minutes and head over to **Monitor -> Network -> cEdge40 -> Troubleshooting -> Traffic Flows**. Enter the same details as in Step 3 above and click on **Simulate**. VoIP traffic should traverse over the MPLS link again
+5. Wait for approximately 3 minutes and head over to **Monitor => Network => cEdge40 => Troubleshooting => Traffic Flows**. Enter the same details as in Step 3 above and click on **Simulate**. VoIP traffic should traverse over the MPLS link again
 
     ![](/images/AAR_LLQ/37_waitmpls.PNG)
 

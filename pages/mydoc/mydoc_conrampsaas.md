@@ -45,7 +45,7 @@ Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a v
 
 ## Prerequisite configuration for Cloud OnRamp
 
-1. On the vManage GUI, navigate to **Configuration -> Templates -> Feature Tab**. Locate the *vEdge30_INET* template and click on the three dots next to it. Choose to **Edit** the template
+1. On the vManage GUI, navigate to **Configuration => Templates => Feature Tab**. Locate the *vEdge30_INET* template and click on the three dots next to it. Choose to **Edit** the template
 
     ![](/images/Cloud_OnRamp/06_edit.PNG)
 
@@ -55,7 +55,7 @@ Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a v
 
 3. Click on **Next** and **Configure Device**. There are no changes to be made here since we are simply enabling NAT on the interface.
 
-4. On the vManage GUI, go to **Configuration -> Templates -> Feature Tab**. Locate the *DC-vEdge_INET* template and click on the three dots next to it. Choose to **Edit** the template
+4. On the vManage GUI, go to **Configuration => Templates => Feature Tab**. Locate the *DC-vEdge_INET* template and click on the three dots next to it. Choose to **Edit** the template
 
     ![](/images/Cloud_OnRamp/08_dcnat.PNG)
 
@@ -85,7 +85,7 @@ We have enabled NAT on all the interfaces that will be communicating directly wi
 
 Go through the following steps in order to configure Cloud OnRamp for SaaS in our SD-WAN network.
 
-1. On the vManage GUI, navigate to **Administration -> Settings**
+1. On the vManage GUI, navigate to **Administration => Settings**
 
     ![](/images/Cloud_OnRamp/11_set.PNG)
 
@@ -133,7 +133,7 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 
     ![](/images/Cloud_OnRamp/22_attgw.PNG)
 
-13. If you go to **Configuration -> Cloud OnRamp for SaaS** (or click the Cloud icon and go to Cloud onRamp for SaaS), you should see the selected Application with 3 Devices attached to it. Click on the Application and the three Devices should be tagged with a vQoE Status of Bad. Their vQoE score is 0.0, indicating that information hasn't been collected to arrive at a score. We will need to wait for some time (another tea/coffee?)
+13. If you go to **Configuration => Cloud OnRamp for SaaS** (or click the Cloud icon and go to Cloud onRamp for SaaS), you should see the selected Application with 3 Devices attached to it. Click on the Application and the three Devices should be tagged with a vQoE Status of Bad. Their vQoE score is 0.0, indicating that information hasn't been collected to arrive at a score. We will need to wait for some time (another tea/coffee?)
 
     ![](/images/Cloud_OnRamp/23_waitforcalc.PNG)
 
@@ -161,7 +161,7 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 
 ## Verification and Testing
 
-1. Navigate to **Configuration -> Template -> Feature Tab** and locate the *vEdge30_INET* template. Click on the three dots next to it and choose to **Edit**
+1. Navigate to **Configuration => Template => Feature Tab** and locate the *vEdge30_INET* template. Click on the three dots next to it and choose to **Edit**
 
     ![](/images/Cloud_OnRamp/27_ve30inet.PNG)
 
@@ -173,7 +173,7 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 
     ![](/images/Cloud_OnRamp/29_sbs.PNG)
 
-4. Wait for some time and traffic to the chosen Application from vEdge30 (check via Cloud icon -> Cloud onRamp for SaaS -> click on the Application) should have a DIA status of **gateway**, indicating that the DC Gateway is being used to contact Amazon AWS (in this example). The local/remote color is *mpls* with the system-ip of the gateway being used
+4. Wait for some time and traffic to the chosen Application from vEdge30 (check via Cloud icon => Cloud onRamp for SaaS => click on the Application) should have a DIA status of **gateway**, indicating that the DC Gateway is being used to contact Amazon AWS (in this example). The local/remote color is *mpls* with the system-ip of the gateway being used
 
     ![](/images/Cloud_OnRamp/30_redierect.PNG)
 
@@ -185,11 +185,11 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 
     ![](/images/Cloud_OnRamp/31_def.PNG)
 
-6. Navigate to **Monitor -> Network** and click on **Tunnel**. Make sure all the public-internet Tunnel Endpoints are selected. You should see the latency on the link drop
+6. Navigate to **Monitor => Network** and click on **Tunnel**. Make sure all the public-internet Tunnel Endpoints are selected. You should see the latency on the link drop
 
     ![](/images/Cloud_OnRamp/32_afterremoving.PNG)
 
-7. Cloud OnRamp for SaaS takes a few minutes to converge, so monitor the **Cloud icon -> Cloud onRamp for SaaS -> Application** page - in time, you should see vEdge30 sending data via the local internet breakout
+7. Cloud OnRamp for SaaS takes a few minutes to converge, so monitor the **Cloud icon => Cloud onRamp for SaaS => Application** page - in time, you should see vEdge30 sending data via the local internet breakout
 
     ![](/images/Cloud_OnRamp/33_backtoloc.PNG)
 

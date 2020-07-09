@@ -31,7 +31,7 @@ folder: mydoc
 
 The Cisco SD-WAN solution builds a full mesh topology by default and there isn't any traffic engineering that is in place out of the box. The ability to steer application traffic per the network requirements via a specific path is something that can be achieved via data policies. We can leverage data policies to match specific traffic and send it via the preferred transport. To verify current functionality:
 
-1. Log in to the vManage GUI and navigate to **Monitor -> Network**
+1. Log in to the vManage GUI and navigate to **Monitor => Network**
 
     ![](/images/DataPol_TrafficEng/01_mon.PNG)
 
@@ -83,7 +83,7 @@ We begin by creating a Policy and identifying **Groups of Interest** (or interes
 
 ### Setting up Groups of Interest and Traffic Rules
 
-1. On the vManage GUI, navigate to **Configuration -> Policies**.
+1. On the vManage GUI, navigate to **Configuration => Policies**.
 
     ![](/images/DataPol_TrafficEng/07_pol.PNG)
 
@@ -201,7 +201,7 @@ We have now deployed our Policy.
 
 In order to verify that traffic flows have changed, we will be comparing the output in the [Overview](#overview) section to out put which will be taken here.
 
-1. On the vManage GUI, go to **Monitor -> Network** and select vEdge30. Scroll down to **Troubleshooting** on the left-hand side and click on **Simulate Flows**
+1. On the vManage GUI, go to **Monitor => Network** and select vEdge30. Scroll down to **Troubleshooting** on the left-hand side and click on **Simulate Flows**
 
     ![](/images/DataPol_TrafficEng/02_ve30.PNG)
 

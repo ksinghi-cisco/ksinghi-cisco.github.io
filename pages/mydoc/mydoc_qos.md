@@ -43,7 +43,7 @@ QoS in the SD-WAN world is implemented via Localized Policies. Differences in Lo
 
 ### Add a Class List and a QoS Map
 
-1. On the vManage GUI, click on **Configuration -> Policies** and choose the **Localized Policy** tab. Click on **Add Policy**
+1. On the vManage GUI, click on **Configuration => Policies** and choose the **Localized Policy** tab. Click on **Add Policy**
 
     ![](/images/AAR_LLQ/38_addpolqos.PNG)
 
@@ -190,7 +190,7 @@ This completes the QoS Map configuration. We will continue with building our Mai
 
     ![](/images/AAR_LLQ/54_namesaved.PNG)
 
-2. Navigate to **Configuration -> Templates** and locate the *cedge_dualuplink_devtemp* Device Template. Click on the three dots next to it and choose to **Edit**. Click on **Additional Templates**
+2. Navigate to **Configuration => Templates** and locate the *cedge_dualuplink_devtemp* Device Template. Click on the three dots next to it and choose to **Edit**. Click on **Additional Templates**
 
     ![](/images/AAR_LLQ/55_edit.PNG)
 
@@ -234,7 +234,7 @@ To apply the configuration, we will be modifying the Service VPN 10 interface su
 
 The QoS Map will be applied in the outbound direction on the WAN interfaces (INET and MPLS)
 
-1. Navigate to **Configuration -> Templates -> Feature Tab** and locate the *cedge-vpn10-int* Feature Template. Click on the three dots next to it and choose to **Copy** the Template. Give a name of *cedge-vpn10-int-qos* to the copied template with a Description of *VPN 10 Interface Template for cEdges with QoS* and click on **Copy**
+1. Navigate to **Configuration => Templates => Feature Tab** and locate the *cedge-vpn10-int* Feature Template. Click on the three dots next to it and choose to **Copy** the Template. Give a name of *cedge-vpn10-int-qos* to the copied template with a Description of *VPN 10 Interface Template for cEdges with QoS* and click on **Copy**
 
     ![](/images/AAR_LLQ/99_copy_int_temp.PNG)
 
@@ -242,7 +242,7 @@ The QoS Map will be applied in the outbound direction on the WAN interfaces (INE
 
     ![](/images/AAR_LLQ/98_acl_vpn10.PNG)
 
-3. Navigate to the Device tab in **Configuration -> Templates** and locate the *cedge_dualuplink_devtemp*. Click on the three dots next to it and choose **Edit**
+3. Navigate to the Device tab in **Configuration => Templates** and locate the *cedge_dualuplink_devtemp*. Click on the three dots next to it and choose **Edit**
 
     ![](/images/AAR_LLQ/91_vpn10int.PNG)
 
@@ -258,7 +258,7 @@ The QoS Map will be applied in the outbound direction on the WAN interfaces (INE
 
     ![](/images/AAR_LLQ/88_sbs.PNG)
 
-7. Head back over to **Configuration -> Template -> Feature Tab** and locate the *cedge-vpn0-int-dual* template. Click on the three dots next to it and click **Edit**. We will be updating the VPN 0 Internet interface with the QoS Map we created before
+7. Head back over to **Configuration => Template => Feature Tab** and locate the *cedge-vpn0-int-dual* template. Click on the three dots next to it and click **Edit**. We will be updating the VPN 0 Internet interface with the QoS Map we created before
 
     ![](/images/AAR_LLQ/97_vpn0.PNG)
 
@@ -270,7 +270,7 @@ The QoS Map will be applied in the outbound direction on the WAN interfaces (INE
 
     ![](/images/AAR_LLQ/95_sbs.PNG)
 
-10. Under the **Configuration -> Template -> Feature Tab** locate the *cedge-vpn0-int-dual_mpls* template. Click on the three dots next to it and click **Edit**. We will be updating the VPN 0 MPLS interface with the QoS Map we created before
+10. Under the **Configuration => Template => Feature Tab** locate the *cedge-vpn0-int-dual_mpls* template. Click on the three dots next to it and click **Edit**. We will be updating the VPN 0 MPLS interface with the QoS Map we created before
 
     ![](/images/AAR_LLQ/94_vpn0_mpls_qos.PNG)
 

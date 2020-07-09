@@ -43,7 +43,7 @@ Unlike before, we will create a Device Template and set up our Feature Templates
 
 ### Configuring the main VPN 0 template
 
-1. Go to **Configuration -> Templates**
+1. Go to **Configuration => Templates**
 
     ![](/images/vSmart_Templates/01_temp.PNG)
 
@@ -249,7 +249,7 @@ We have completed the Device Template (and consequently the Feature Template) co
 
 Our Device Template for the vSmarts are set up and we now need to attach them to the Template.
 
-1. Click on **Configuration -> Templates** (if not already there) and click the three dots next to the *vSmart-dev-temp* we just created. Click on **Attach Devices**
+1. Click on **Configuration => Templates** (if not already there) and click the three dots next to the *vSmart-dev-temp* we just created. Click on **Attach Devices**
 
     ![](/images/vSmart_Templates/23_attach.PNG)
 
@@ -277,7 +277,7 @@ Our Device Template for the vSmarts are set up and we now need to attach them to
 
     ![](/images/vSmart_Templates/29_succ.PNG)
 
-8. Navigate to **Configuration -> Devices** and go to the **Controllers** tab. You should see the vSmarts in vManage mode
+8. Navigate to **Configuration => Devices** and go to the **Controllers** tab. You should see the vSmarts in vManage mode
 
     ![](/images/vSmart_Templates/30_vmmode.PNG)
 

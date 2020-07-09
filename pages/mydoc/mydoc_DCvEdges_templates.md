@@ -43,7 +43,7 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
 ### Creating the VPN0 Feature Template
 
-1. On the vManage GUI, navigate to **Configuration -> Templates**
+1. On the vManage GUI, navigate to **Configuration => Templates**
 
     ![](/images/DC-vEdge_Templates/01_conftemp.PNG)
 
@@ -123,7 +123,7 @@ In this section, we will be creating feature templates for our DC-vEdges. We wil
 
 We will make use of the just created VPN 0 Feature Template to create our VPN 512 Feature Template.
 
-1. On the **Configuration -> Templates** page navigate to the Feature tab and look for *DCvEdge-vpn0*. Click on the three dots for this template and click on **Copy**
+1. On the **Configuration => Templates** page navigate to the Feature tab and look for *DCvEdge-vpn0*. Click on the three dots for this template and click on **Copy**
 
     ![](/images/DC-vEdge_Templates/14_copytemp.PNG)
 
@@ -193,7 +193,7 @@ We have created our VPN512 Feature Template
 
 We are now going to set up the VPN Interface Feature Templates for the Internet link. This template specifies the configuration for the interfaces in a VPN. There will be two interfaces in VPN 0 (INET and MPLS) and one interface in VPN 512. Let's start off with configuring the INET interface.
 
-1. From **Configuration -> Templates** on the Feature tab, Add a new template. Search for *ved* in the search box and choose the vEdge Cloud Device. Click on **VPN Interface Ethernet** to start creating our VPN Interface Template
+1. From **Configuration => Templates** on the Feature tab, Add a new template. Search for *ved* in the search box and choose the vEdge Cloud Device. Click on **VPN Interface Ethernet** to start creating our VPN Interface Template
 
     ![](/images/DC-vEdge_Templates/24_addtempvpnint.PNG)
 
@@ -246,7 +246,7 @@ This completes the configuration of our INET Interface Feature Template. Notice 
 
 We are now going to set up the VPN Interface Feature Template for the MPLS link, making a copy from the INET template that we created in the previous section.
 
-1. Identify the *DC-vEdge_INET* Feature Template from **Configuration -> Templates -> Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *DC-vEdge_MPLS* with a Description of *MPLS interface for the DC-vEdges*. Click on **Copy**
+1. Identify the *DC-vEdge_INET* Feature Template from **Configuration => Templates => Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *DC-vEdge_MPLS* with a Description of *MPLS interface for the DC-vEdges*. Click on **Copy**
 
     ![](/images/DC-vEdge_Templates/28_mpls_namedesccopy.PNG)
 
@@ -350,7 +350,7 @@ We have creatd the VPN 512 Interface Template.
 
 Most of the work has already been done, with respect to creating the building blocks for our Device Templates. All that's left is ensuring we create a Device Template with the corresponding Feature Templates and associate the Devices with the Template.
 
-1. Navigate to the **Configuration -> Templates** section and make sure you're on the **Device** tab. Click on **Create Template -> From Feature Template**
+1. Navigate to the **Configuration => Templates** section and make sure you're on the **Device** tab. Click on **Create Template => From Feature Template**
 
     ![](/images/DC-vEdge_Templates/35_createdevtemp.PNG)
 
@@ -428,11 +428,11 @@ Most of the work has already been done, with respect to creating the building bl
 
 ## Activity Verification
 
-1. Go to **Configuration -> Devices** and you should see that the two DC-vEdges are now in vManage mode
+1. Go to **Configuration => Devices** and you should see that the two DC-vEdges are now in vManage mode
 
     ![](/images/DC-vEdge_Templates/47_configdev_vmmode.PNG)
 
-2. On checking the main dashboard (**Dashboard -> Main Dashboard**) we should see 5 sites with full WAN connectivity (if you recall, we previously could see only 4 sites with full WAN connectivity and Site 50 wasn't showing up at all. This was because BFD sessions weren't established on the MPLS link)
+2. On checking the main dashboard (**Dashboard => Main Dashboard**) we should see 5 sites with full WAN connectivity (if you recall, we previously could see only 4 sites with full WAN connectivity and Site 50 wasn't showing up at all. This was because BFD sessions weren't established on the MPLS link)
 
     ![](/images/DC-vEdge_Templates/48_maindash.PNG)
 

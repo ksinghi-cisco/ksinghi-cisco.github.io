@@ -69,7 +69,7 @@ We have thus verified that the Guest VPN user (with an IP of 10.40.30.21) doesn'
 
 We will start by enabling NAT on the Internet interface and then continue with our Policy.
 
-1. On the vManage GUI, navigate to **Configuration -> Templates -> Feature Tab**. Locate the *cedge-vpn0-int-dual* template created before and click on the three dots next to it. Choose to **Edit** the template
+1. On the vManage GUI, navigate to **Configuration => Templates => Feature Tab**. Locate the *cedge-vpn0-int-dual* template created before and click on the three dots next to it. Choose to **Edit** the template
 
     ![](/images/DataPol_DIA/06_edittemp.PNG)
 
@@ -85,7 +85,7 @@ We will start by enabling NAT on the Internet interface and then continue with o
 
     NAT should now be enabled on the public-internet transport
 
-4. Navigate to **Configuration -> Policies** on the vManage GUI and click on **Add Policy**
+4. Navigate to **Configuration => Policies** on the vManage GUI and click on **Add Policy**
 
     ![](/images/DataPol_DIA/10_addpol.PNG)
 

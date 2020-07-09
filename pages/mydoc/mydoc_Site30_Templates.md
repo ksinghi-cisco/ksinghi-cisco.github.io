@@ -32,7 +32,7 @@ vEdge30 and the DC-vEdges are quite similar from a configuration standpoint. The
 
 We will set up the VPN templates for VPN 0 in Site 30 by making a copy of the *DCvEdge-vpn0* Feature Template created before. No other major changes will be made to the template itself
 
-1. From **Configuration -> Templates -> Feature tab** search in the search box for *dc*. We should see a few templates, out of which we will be making copies of *DCvEdge-vpn0*, *DC-vEdge_INET* and *DC-vEdge_MPLS* for use at Site 30
+1. From **Configuration => Templates => Feature tab** search in the search box for *dc*. We should see a few templates, out of which we will be making copies of *DCvEdge-vpn0*, *DC-vEdge_INET* and *DC-vEdge_MPLS* for use at Site 30
 
     ![](/images/vEdgeSite30_Templates/01_confTemp_searchdc.PNG)
 
@@ -50,7 +50,7 @@ We will set up the VPN templates for VPN 0 in Site 30 by making a copy of the *D
 
     ![](/images/vEdgeSite30_Templates/05_mpls.PNG)
 
-5. If we go back to the main **Configuration -> Templates -> Feature Tab**, and search for *vedge30* in the search string, there should be 3 templates visible
+5. If we go back to the main **Configuration => Templates => Feature Tab**, and search for *vedge30* in the search string, there should be 3 templates visible
 
     ![](/images/vEdgeSite30_Templates/06_3featvedge30.PNG)
 
@@ -72,7 +72,7 @@ Thus, we have simply made copies of the DC-vEdge Feature Templates and updated t
 
 ## Modifying a Device Template and Attaching Devices
 
-1. Go to **Configuration -> Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**. Rename the Template *vEdge30_dev_temp* and give it a Description of *Device template for the Site 30 vEdge*. Click on **Copy**
+1. Go to **Configuration => Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**. Rename the Template *vEdge30_dev_temp* and give it a Description of *Device template for the Site 30 vEdge*. Click on **Copy**
 
     ![](/images/vEdgeSite30_Templates/07_devtemp.PNG)
 
@@ -108,7 +108,7 @@ Thus, we have simply made copies of the DC-vEdge Feature Templates and updated t
 
     ![](/images/vEdgeSite30_Templates/15_ninebfdsess.PNG)
 
-10. To see the BFD sessions, we can also go to **Monitor -> Network**, click on vEdge30. Choose Real-Time from the left hand side and put **BFD Sessions** in the Device Options. Choose Do Not Filter
+10. To see the BFD sessions, we can also go to **Monitor => Network**, click on vEdge30. Choose Real-Time from the left hand side and put **BFD Sessions** in the Device Options. Choose Do Not Filter
 
     ![](/images/vEdgeSite30_Templates/16_mon_net_scrollreal.PNG)
 
@@ -118,7 +118,7 @@ Thus, we have simply made copies of the DC-vEdge Feature Templates and updated t
 
     ![](/images/vEdgeSite30_Templates/18_sameinfoascli.PNG)
 
-12. Navigate to **Configuration -> Devices** and you will see that all devices are now in vManage mode
+12. Navigate to **Configuration => Devices** and you will see that all devices are now in vManage mode
 
     ![](/images/vEdgeSite30_Templates/99_vmmode.PNG)
 

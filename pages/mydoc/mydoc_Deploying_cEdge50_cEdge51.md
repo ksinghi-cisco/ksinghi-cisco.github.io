@@ -255,7 +255,7 @@ Templates are the key configuration components of the Cisco SD-WAN solution. The
 
 We will make use of the templates that were created for cEdge40, repurposing them for cEdge50 and cEdge51 through the use of Device Specific parameters.
 
-1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
+1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) => Templates**
 
     ![](/images/Deploying_cEdge40/22_gototemp.PNG)
 
@@ -326,7 +326,7 @@ We are done with creating feature templates for the initial onboarding of cEdge5
 The feature templates created in the previous sections are referenced in Device Templates. Devices are then attached to Device Templates which pushes configuration to them, in line with the settings in the Feature templates. The general workflow for templates is given below
 ![](/images/Deploying_cEdge40/99_DevTemp_Flow.PNG)
 
-1. Go to **Configuration -> Templates** and click on the three dots next to the Device Template named *cEdge_dualuplink_devtemp*. Click on **Copy**
+1. Go to **Configuration => Templates** and click on the three dots next to the Device Template named *cEdge_dualuplink_devtemp*. Click on **Copy**
 
     ![](/images/Deploying_cEdge50_cEdge51/95_copydevtemp.PNG)
 
@@ -375,7 +375,7 @@ The feature templates created in the previous sections are referenced in Device 
 
     {% include note.html content="The IP Address/Default Gateway of the VPN 0 Interface for cEdge51 is of the MPLS link. The corresponding color has been selected here, setting it to restrict. This means that the tunnel will only build tunnels with TLOCs of the same color" %}
 
-8. Click on the entry in the Device List to view the configuration that will be pushed to the device. Notice that the vBond IP and the Organization Name have been populated. These are taken from the vManage **Administration -> Settings** page, where they need to be populated. Click on **Configure** to configure the device.
+8. Click on the entry in the Device List to view the configuration that will be pushed to the device. Notice that the vBond IP and the Organization Name have been populated. These are taken from the vManage **Administration => Settings** page, where they need to be populated. Click on **Configure** to configure the device.
 
 Since this isn't a device that exists (as of now), the configuration push is scheduled for later, when a device is associated with this Device Name (the one ending in 73F2). This is done in the next section
 
@@ -409,7 +409,7 @@ We will be generating a Bootstrap file for each cEdge and placing it in the flas
 
 {% include note.html content="While we are placing the Bootstrap file in flash for the lab, this can be put on a USB drive and plugged into the cEdge. This is usually done at a staging facility, post which the device is shipped to the customer site. Once they plug it in and power it on, the bootstrap configuration file allows the device to come up and establish control connections" %}
 
-1. Go to **Configuration -> Devices**
+1. Go to **Configuration => Devices**
 
     ![](/images/Deploying_cEdge40/52_config_dev_edit.PNG)
 
@@ -492,11 +492,11 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
 ## Onboarding Verification
 
-1. On the vManage GUI, go to **Monitor -> Network**. You should see cEdge50 and cEdge51 successfully added on vManage.
+1. On the vManage GUI, go to **Monitor => Network**. You should see cEdge50 and cEdge51 successfully added on vManage.
 
     ![](/images/Deploying_cEdge50_cEdge51/93_cedge5051vm.PNG)
 
-2. Clicking on cEdge50 or cEdge51 and going to **Troubleshooting -> Control Connections (Live View)** will show us that the cEdges have established control connections with vManage and the vSmarts. We can check this via the CLI `show sdwan control connections` as well
+2. Clicking on cEdge50 or cEdge51 and going to **Troubleshooting => Control Connections (Live View)** will show us that the cEdges have established control connections with vManage and the vSmarts. We can check this via the CLI `show sdwan control connections` as well
 
     | ![](/images/Deploying_cEdge50_cEdge51/33_ce50shconcon.PNG) |
     |:---:|
@@ -510,7 +510,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
     show sdwan control connections
     ```
 
-3. Navigate to **Dashboards -> Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 8 WAN Edges
+3. Navigate to **Dashboards => Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 8 WAN Edges
 
     ![](/images/Deploying_cEdge50_cEdge51/92_maindash.PNG)
 

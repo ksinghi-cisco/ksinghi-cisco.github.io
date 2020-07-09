@@ -226,7 +226,7 @@ Use the following information in this section (some of the information will be u
     vshell
     scp admin@192.168.0.6:ROOTCA.pem .
     ```
-2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration => Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
 
     ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
 

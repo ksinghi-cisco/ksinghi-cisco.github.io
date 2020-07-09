@@ -261,7 +261,7 @@ Templates are the key configuration components of the Cisco SD-WAN solution. The
 
 Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-SD-WAN-Design-2018OCT.pdf){:target="_blank"} to access the SD-WAN Design Guide which has a section on **Configuration Templates**.
 
-1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) -> Templates**
+1. On the vManage GUI, navigate to **Configuration (the cog wheel icon on the left) => Templates**
 
     ![](/images/Deploying_cEdge40/22_gototemp.PNG)
 
@@ -394,7 +394,7 @@ We are done with creating feature templates (for now) and while it was a lot of 
 The feature templates created in the previous sections are referenced in Device Templates. Devices are then attached to Device Templates which pushes configuration to them, in line with the settings in the Feature templates. The general workflow for templates is given below
 ![](/images/Deploying_cEdge40/99_DevTemp_Flow.PNG)
 
-1. From the **Configuration -> Templates** window, make sure you're on the **Device** tab and click on **Create Template**. Choose to create a template From Feature Template
+1. From the **Configuration => Templates** window, make sure you're on the **Device** tab and click on **Create Template**. Choose to create a template From Feature Template
 
     ![](/images/Deploying_cEdge40/44_devtemp_fromfeat.PNG)
 
@@ -436,7 +436,7 @@ The feature templates created in the previous sections are referenced in Device 
 
     ![](/images/Deploying_cEdge40/50_enterdevdet.PNG)
 
-8. Click on the entry in the Device List to view the configuration that will be pushed to the device. Notice that the vBond IP and the Organization Name have been populated. These are taken from the vManage **Administration -> Settings** page, where they need to be populated. Click on **Configure** to configure the device.
+8. Click on the entry in the Device List to view the configuration that will be pushed to the device. Notice that the vBond IP and the Organization Name have been populated. These are taken from the vManage **Administration => Settings** page, where they need to be populated. Click on **Configure** to configure the device.
 
     ![](/images/Deploying_cEdge40/51_configprev_ou_vb_vman.PNG)
 
@@ -472,7 +472,7 @@ We will be generating a Bootstrap file and placing it in the flash of the device
 
 {% include note.html content="While we are placing the Bootstrap file in flash for the lab, this can be put on a USB drive and plugged into the cEdge. This is usually done at a staging facility, post which the device is shipped to the customer site. Once they plug it in and power it on, the bootstrap configuration file allows the device to come up and establish control connections" %}
 
-1. Go to **Configuration -> Devices**
+1. Go to **Configuration => Devices**
 
     ![](/images/Deploying_cEdge40/52_config_dev_edit.PNG)
 
@@ -553,7 +553,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
 ## Onboarding Verification
 
-1. On the vManage GUI, go to **Monitor -> Network**. You should see the cEdge40 successfully added on vManage.
+1. On the vManage GUI, go to **Monitor => Network**. You should see the cEdge40 successfully added on vManage.
 
     ![](/images/Deploying_cEdge40/63_mon_net_cedge.PNG)
 
@@ -561,7 +561,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
 
     ![](/images/Deploying_cEdge40/64_liveview.PNG)
 
-3. Navigate to **Dashboards -> Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 8 WAN Edges (or 6 WAN Edges, depending on the scenario chosen while requesting for these labs)
+3. Navigate to **Dashboards => Main Dashboard** and we will see 4 Sites with Full WAN connectivity and 8 WAN Edges (or 6 WAN Edges, depending on the scenario chosen while requesting for these labs)
 
     ![](/images/Deploying_cEdge40/65_4sites_6WE.PNG)
 
@@ -577,7 +577,7 @@ We have completed this section of the lab and will now need to wait for the cEdg
     ```
     {% include tip.html content="Inject `sdwan` in show commands that would normally be used on vEdges and they should work on cEdges" %}
 
-6. On **Configuration -> Devices** in the vManage GUI, you will notice that the cEdge is in vManage mode. This is because we have attached a Device Template to it. Changes to the cEdge can only be made from vManage now. We will be converting the rest of the devices (which are in **CLI** mode right now) to vManage mode over the course of the next few sections
+6. On **Configuration => Devices** in the vManage GUI, you will notice that the cEdge is in vManage mode. This is because we have attached a Device Template to it. Changes to the cEdge can only be made from vManage now. We will be converting the rest of the devices (which are in **CLI** mode right now) to vManage mode over the course of the next few sections
 
     ![](/images/Deploying_cEdge40/68_confdev_vmanagemode.PNG)
 

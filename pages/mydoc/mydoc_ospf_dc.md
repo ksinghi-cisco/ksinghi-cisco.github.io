@@ -42,7 +42,7 @@ Given below is the section of the topology that we will be working on for this a
 
 ## Updating the vEdge Service VPN 10 with an OSPF Template
 
-1. Go to **Configuration -> Templates** and click on the three dots next to *DCvEdge_dev_temp*. Click on **Edit**
+1. Go to **Configuration => Templates** and click on the three dots next to *DCvEdge_dev_temp*. Click on **Edit**
 
     ![](/images/DC-vEdge_ConfiguringOSPF/01_edittemp.PNG)
 
@@ -125,7 +125,7 @@ This completes the OSPF related configuration on VPN 10 for the DC-vEdges.
 
 ## Activity Verification
 
-1. On the vManage GUI, navigate to **Monitor -> Network**. Click on **DC-vEdge1** and then on **Real Time**. Enter *OSPF Neighbors* in the **Device Options** and choose *Do Not Filter*, if prompted. You should see 2 OSPF Neighbors (Central Gateway and DC-vEdge2)
+1. On the vManage GUI, navigate to **Monitor => Network**. Click on **DC-vEdge1** and then on **Real Time**. Enter *OSPF Neighbors* in the **Device Options** and choose *Do Not Filter*, if prompted. You should see 2 OSPF Neighbors (Central Gateway and DC-vEdge2)
 
     ![](/images/DC-vEdge_ConfiguringOSPF/18_ospfneigh.PNG)
 

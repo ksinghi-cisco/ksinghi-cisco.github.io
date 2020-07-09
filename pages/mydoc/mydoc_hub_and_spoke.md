@@ -34,7 +34,7 @@ Cisco SD-WAN builds out a full mesh network between sites by default for all VPN
 
 Cisco SD-WAN Policies allow us to enforce a custom topology, thereby controlling the data flow within our network. We will be setting up a Hub and Spoke topology for VPN 20 at all Branch sites, steering data to the DC site, post which it will be routed to its destination. Other VPNs in the network will retain full mesh connectivity. First, let's check the current status of the connectivity.
 
-1. Log in to the vManage GUI and navigate to **Monitor -> Network**
+1. Log in to the vManage GUI and navigate to **Monitor => Network**
 
     ![](/images/VPN20_HnS/01_HnS.PNG)
 
@@ -85,7 +85,7 @@ Cisco SD-WAN Policies allow us to enforce a custom topology, thereby controlling
 
 {% include note.html content="This section is optional. We will be testing just inter-site traffic so the changes in this section won't come into play, but if VPN 20 has to route all traffic through the DC, it might encompass Internet traffic as well. In this event, the following configuration is needed to steer all unknown prefixes to the DC." %}
 
-1. Go to **Configure -> Templates -> Feature tab** on the vManage GUI
+1. Go to **Configure => Templates => Feature tab** on the vManage GUI
 
     ![](/images/VPN20_HnS/05_feat.PNG)
 
@@ -105,7 +105,7 @@ Cisco SD-WAN Policies allow us to enforce a custom topology, thereby controlling
 
     ![](/images/VPN20_HnS/09_routesave.PNG)
 
-6. Go to **Configuration -> Templates -> Device Tab** and locate the *DCvEdge_dev_temp*. Click on the three dots to the template and choose to **Edit**
+6. Go to **Configuration => Templates => Device Tab** and locate the *DCvEdge_dev_temp*. Click on the three dots to the template and choose to **Edit**
 
     ![](/images/VPN20_HnS/10_editdevtemp.PNG)
 
@@ -170,7 +170,7 @@ We will now start enforcement of the Hub and Spoke topology via Control Policies
 
 ### Configuring Network Constructs
 
-1. First, let's create our overarching policy. Through this policy, we will create our Network Constructs. Click on **Configuration -> Policies** in the vManage GUI to start configuring the Policy
+1. First, let's create our overarching policy. Through this policy, we will create our Network Constructs. Click on **Configuration => Policies** in the vManage GUI to start configuring the Policy
 
     ![](/images/VPN20_HnS/18_pol.PNG)
 
@@ -343,7 +343,7 @@ This completes our policy creation and activation. We will verify functionality 
 
     ![](/images/VPN20_HnS/33_ce40routevrf20.PNG)
 
-2. On the vManage GUI, go to **Monitor -> Network** and click on **vEdge20**. Scroll down on the left-hand side and click on **Real Time**. Enter *IP Routes* in **Device Options** and choose to Filter. Filter on the basis of VPN ID 20. We will notice similar output as what was seen for cEdge40
+2. On the vManage GUI, go to **Monitor => Network** and click on **vEdge20**. Scroll down on the left-hand side and click on **Real Time**. Enter *IP Routes* in **Device Options** and choose to Filter. Filter on the basis of VPN ID 20. We will notice similar output as what was seen for cEdge40
 
     ![](/images/VPN20_HnS/34_netmon_vpn20filt.PNG)
 

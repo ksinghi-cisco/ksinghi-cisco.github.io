@@ -85,7 +85,7 @@ Towards the end of the lab, we will copy and modify the VPN 0 feature template u
 
 ### Creating the VPN Interface Template for the TLOC-EXT interface
 
-1. On the vManage GUI, click on **Configuration -> Templates** and go to the **Feature** tab. click on **Add Template** and search for *vedge*. Select *vEdge Cloud* from the list and choose **VPN Interface Ethernet** to create an Interface Template
+1. On the vManage GUI, click on **Configuration => Templates** and go to the **Feature** tab. click on **Add Template** and search for *vedge*. Select *vEdge Cloud* from the list and choose **VPN Interface Ethernet** to create an Interface Template
 
     ![](/images/TLOC_Ext/03_addtemp.PNG)
 
@@ -130,7 +130,7 @@ This completes configuration of the VPN Interface Template for TLOC Extension in
 
 ### Creating the VPN Interface Template for the Tunnel interface
 
-1. Navigate to **Configuration -> Templates -> Feature tab** and search for *tloc*. You should get one template (the one we just created). Click on the three dots next to it and choose **Copy**
+1. Navigate to **Configuration => Templates => Feature tab** and search for *tloc*. You should get one template (the one we just created). Click on the three dots next to it and choose **Copy**
 
     ![](/images/TLOC_Ext/06_copy.PNG)
 
@@ -189,7 +189,7 @@ This completes the configuration of our second feature template.
 
 We will now set up the BGP template for eBGP peering on the MPLS link. This is so that the TLOC extension subnet (192.168.26.0/24 in this case) can be advertised to the MPLS network.
 
-1. On the vManage GUI, go to **Configuration -> Templates -> Feature tab**. Click on **Add Template** and search for *vedge*. Select *vEdge Cloud* and scroll down to the Other Templates section. Choose **BGP**
+1. On the vManage GUI, go to **Configuration => Templates => Feature tab**. Click on **Add Template** and search for *vedge*. Select *vEdge Cloud* and scroll down to the Other Templates section. Choose **BGP**
 
     ![](/images/TLOC_Ext/12_bgptemp.PNG)
 
@@ -242,7 +242,7 @@ This completes the configuration of our BGP Template.
 
 We will start by updating the existing VPN template for Site 20 (named *Site20-vpn0*) to include a default route with a next hop to the corresponding TLOC Extension interface (i.e. to *192.168.26.21* on vEdge20 and *192.168.25.20* on vEdge21). Device Specific variables will be used.
 
-1. Navigate to **Configuration -> Templates -> Feature tab** on the vManage GUI. Search for *site20* and you should see the *Site20-vpn0* template. Click on the three dots next to it and choose to **Edit**
+1. Navigate to **Configuration => Templates => Feature tab** on the vManage GUI. Search for *site20* and you should see the *Site20-vpn0* template. Click on the three dots next to it and choose to **Edit**
 
     ![](/images/TLOC_Ext/15_vpn0edit.PNG)
 
@@ -274,7 +274,7 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
     ![](/images/TLOC_Ext/22_conf.PNG)
 
-9. To edit the Device Template and bring everything together, navigate to **Configuration -> Templates** on the vManage GUI. Make sure you're on the Device tab and locate the *vedge_Site20_dev_temp* template. Click on the three dots next to it and choose to **Edit**
+9. To edit the Device Template and bring everything together, navigate to **Configuration => Templates** on the vManage GUI. Make sure you're on the Device tab and locate the *vedge_Site20_dev_temp* template. Click on the three dots next to it and choose to **Edit**
 
     ![](/images/TLOC_Ext/23_editdevtemp.PNG)
 
@@ -316,7 +316,7 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
     {% include tip.html content="It's important to make another change to the Internet transport so that our TLOC Extension configuration works as expected. We need to enable NAT on the VPN Interface associated with the Internet link. Unfortunately, NAT can't be enabled/disabled via Device Specific parameters so we will need to copy the VPN Interface template, tweak it and then copy the Device Template to reference the new VPN Interface template. We will then attach vEdge20 to this template." %}
 
-14. From the vManage GUI, navigate to **Configuration -> Templates**. On the Feature tab, search for *vpn0*. Locate the *site20_vpn0_int* template and make a copy of it, renaming to *site20_vpn_int_nat* and updating the description accordingly
+14. From the vManage GUI, navigate to **Configuration => Templates**. On the Feature tab, search for *vpn0*. Locate the *site20_vpn0_int* template and make a copy of it, renaming to *site20_vpn_int_nat* and updating the description accordingly
 
     ![](/images/TLOC_Ext/27_tcopyvpn0ints20_nat.PNG)
 
@@ -324,7 +324,7 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
 
     ![](/images/TLOC_Ext/27_uadd_nat.PNG)
 
-16. Make sure you're on the **Configuration -> Templates** Device tab and locate the *vEdge_Site20_dev_temp* template. Make a copy of it, renaming to *vEdge_Site20_dev_temp_nat* and updating the description accordingly
+16. Make sure you're on the **Configuration => Templates** Device tab and locate the *vEdge_Site20_dev_temp* template. Make a copy of it, renaming to *vEdge_Site20_dev_temp_nat* and updating the description accordingly
 
     ![](/images/TLOC_Ext/27_vcopydevtemp.PNG)
 

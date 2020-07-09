@@ -22,7 +22,7 @@ folder: mydoc
 
 URL Filtering allows networks to block traffic to certain sites by utilizing URL-based policies. It is implemented using the Snort Engine.
 
-1. On the vManage GUI, navigate to **Configuration -> Security**. Locate the *Guest-FW-IPS-DIA* policy and click on the three dots next to it. Choose to **Edit** the policy. We will add URL Filtering capabilities to the same policy which we used for IPS deployment
+1. On the vManage GUI, navigate to **Configuration => Security**. Locate the *Guest-FW-IPS-DIA* policy and click on the three dots next to it. Choose to **Edit** the policy. We will add URL Filtering capabilities to the same policy which we used for IPS deployment
 
     ![](/images/SD-WAN_Security_URLF/01_sec.PNG)
 
