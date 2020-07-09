@@ -246,7 +246,7 @@ Use the following information in this section (some of the information will be u
     vshell
     scp admin@192.168.0.6:ROOTCA.pem .
     ```
-2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration -> Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
+2. Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to **Configuration => Devices** (from the left-hand side, click on the cog wheel to access the configuration options)
 
     ![](/images/Deploying_DC_vEdge1/26_config_devices.png)
 
@@ -326,7 +326,7 @@ This completes the Onboarding section for vEdge20
     ```
     {% include tip.html content="You can also issue `show control connections-history` in the event of failures to find out why is the connection not working as expected. A few helpful commands are `show certificate installed`, `show certificate root-ca-cert`, `show control local-properties` and `show certificate validity`. Most of these commands give us details about the status of certificates on the device and are helpful in ascertaining the root cause of failure when control connections aren't getting established." %}
 
-2. On the vManage GUI, navigate to **Monitor -> Network Devices** (the computer icon on the left-hand side)
+2. On the vManage GUI, navigate to **Monitor => Network Devices** (the computer icon on the left-hand side)
 
     ![](/images/Deploying_DC_vEdge1/34_monitor_network.png)
 
@@ -334,7 +334,7 @@ This completes the Onboarding section for vEdge20
 
     ![](/images/Deploying_vEdge20/16_vedge20inlist.PNG)
 
-4. Click on vEdge20 and navigate to **Troubleshooting -> Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
+4. Click on vEdge20 and navigate to **Troubleshooting => Control Connections(Live view)**. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage
 
     ![](/images/Deploying_vEdge20/17_vedge20controlgui.PNG)
 
@@ -342,7 +342,7 @@ This completes the Onboarding section for vEdge20
 
     ![](/images/Deploying_vEdge20/98_dash.PNG)
 
-6. This can be verified from the **Monitor -> Network** page as well, where we will see active BFD sessions on all devices. Via CLI, this can be checked using `show bfd sessions`
+6. This can be verified from the **Monitor => Network** page as well, where we will see active BFD sessions on all devices. Via CLI, this can be checked using `show bfd sessions`
 
     ![](/images/Deploying_vEdge20/97_mon.PNG)
 

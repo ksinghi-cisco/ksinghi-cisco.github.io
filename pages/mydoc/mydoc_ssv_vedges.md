@@ -22,7 +22,7 @@ folder: mydoc
 
 We are now going to set up the Service Side VPNs for our vEdges. The process is very similar to what we've done in the past, and many of the tasks are repetitive in nature.
 
-1. Click on **Configuration -> Templates -> Feature Tab**
+1. Click on **Configuration => Templates => Feature Tab**
 
     ![](/images/Service_vEdges_Templates/01_tempf.PNG)
 
@@ -50,7 +50,7 @@ We are now going to set up the Service Side VPNs for our vEdges. The process is 
 
     This creates the VPN template for VPN 10. We will make a copy of this template and create an almost identical template for VPN 20 later on.
 
-4. We now create the vEdge VPN 10 Interface Template. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add Template** and search for *ve*. Choose the Device as vEdge Cloud and the Template as **VPN Interface Ethernet**
+4. We now create the vEdge VPN 10 Interface Template. While on the **Configuration => Templates => Feature Tab** page, click on **Add Template** and search for *ve*. Choose the Device as vEdge Cloud and the Template as **VPN Interface Ethernet**
 
     ![](/images/Service_vEdges_Templates/09_vpnint.PNG)
 

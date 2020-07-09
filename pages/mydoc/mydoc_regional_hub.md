@@ -41,7 +41,7 @@ In this section, we will ensure that whenever communication has to happen in/out
 
 Notice that all sites communicate to Site 20 via Site 30. Conversely, Site 20 punts all outbound traffic to Site 30.
 
-1. We will first deactivate the Hub and Spoke policy created for VPN 20. On the vManage GUI, navigate to **Configuration -> Policies** and click on the three dots next to the *Hub-n-Spoke-VPN20-only* policy. Choose to **Deactivate** it
+1. We will first deactivate the Hub and Spoke policy created for VPN 20. On the vManage GUI, navigate to **Configuration => Policies** and click on the three dots next to the *Hub-n-Spoke-VPN20-only* policy. Choose to **Deactivate** it
 
     ![](/images/Regional_Hub/01_deact.PNG)
 
@@ -49,7 +49,7 @@ Notice that all sites communicate to Site 20 via Site 30. Conversely, Site 20 pu
 
     ![](/images/Regional_Hub/02_cnf.PNG)
 
-3. Verify that traffic for VPN 20 is now flowing per the default Mesh topology. Navigate to **Monitor -> Network** and click on **vEdge20**. Scroll down on the left-hand side to **Real Time** and enter *IP Routes* in the Device Options. Choose to Filter on the basis of VPN ID 20
+3. Verify that traffic for VPN 20 is now flowing per the default Mesh topology. Navigate to **Monitor => Network** and click on **vEdge20**. Scroll down on the left-hand side to **Real Time** and enter *IP Routes* in the Device Options. Choose to Filter on the basis of VPN ID 20
 
     ![](/images/Regional_Hub/03_routesupd.PNG)
 
@@ -81,7 +81,7 @@ Notice that all sites communicate to Site 20 via Site 30. Conversely, Site 20 pu
 
 ### Setting up Site Lists
 
-1. Go to **Configuration -> Policies** and click on **Add Policy**
+1. Go to **Configuration => Policies** and click on **Add Policy**
 
     ![](/images/Regional_Hub/04_addnewpol.PNG)
 
@@ -276,7 +276,7 @@ This completes the configuration of our Policy for making Site 30 a Regional Hub
 
 ## Verification
 
-1. On the vManage GUI, navigate to **Monitor -> Network** and click on **vEdge20**. Scroll down to Troubleshooting (on the left-hand side) and click on Trace Route. Enter the Destination IP as *10.100.10.1* with a VPN of *VPN - 10* and a Source/Interface of *ge0/2*. Click on **Start**
+1. On the vManage GUI, navigate to **Monitor => Network** and click on **vEdge20**. Scroll down to Troubleshooting (on the left-hand side) and click on Trace Route. Enter the Destination IP as *10.100.10.1* with a VPN of *VPN - 10* and a Source/Interface of *ge0/2*. Click on **Start**
 
     ![](/images/Regional_Hub/24_trafficthrureg.PNG)
 
@@ -290,7 +290,7 @@ This completes the configuration of our Policy for making Site 30 a Regional Hub
 
     ![](/images/Regional_Hub/26_tunnve21.PNG)
 
-4. Go to **Troubleshooting -> Trace Route** and enter the same details as before (i.e. a Destination of *10.100.10.1*, VPN of *VPN - 10* and a Source/Interface of *ge0/2*). Click on **Start**
+4. Go to **Troubleshooting => Trace Route** and enter the same details as before (i.e. a Destination of *10.100.10.1*, VPN of *VPN - 10* and a Source/Interface of *ge0/2*). Click on **Start**
 
     ![](/images/Regional_Hub/27_ve21gui.PNG)
 

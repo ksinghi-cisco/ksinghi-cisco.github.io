@@ -123,13 +123,13 @@ We will be performing some initial configuration in the network before it can su
 
     ![](/images/SD-WAN_Security_IPS/89_okok.PNG)
 
-12. On the vManage GUI, go to **Configuration -> Policies** and locate the *Site40-Guest-DIA*. Click on the three dots next to it and choose to **Activate**. Confirm the Activation
+12. On the vManage GUI, go to **Configuration => Policies** and locate the *Site40-Guest-DIA*. Click on the three dots next to it and choose to **Activate**. Confirm the Activation
 
     ![](/images/SD-WAN_Security_IPS/01_act.PNG)
 
     ![](/images/SD-WAN_Security_IPS/02_conf.PNG)
 
-13. Go back to the console for the Site 40 PC and open Terminal. (**Start -> search for terminal -> click on the icon**). Type `ping 8.8.8.8` and hit Enter to verify Internet connectivity
+13. Go back to the console for the Site 40 PC and open Terminal. (**Start => search for terminal => click on the icon**). Type `ping 8.8.8.8` and hit Enter to verify Internet connectivity
 
     ![](/images/SD-WAN_Security_IPS/03_int.PNG)
 
@@ -164,7 +164,7 @@ We have set the Site 40 PC back to what it was, before our QoS section.
 
 ### Upload Image to vManage
 
-1. On the vManage GUI, go to **Maintenance -> Software Repository**
+1. On the vManage GUI, go to **Maintenance => Software Repository**
 
     ![](/images/SD-WAN_Security_IPS/04_sw.PNG)
 
@@ -219,7 +219,7 @@ A Security Policy will be applied to the Device Template for cEdge40 to trigger 
 
 ### Firewall Policy Update
 
-1. On the vManage GUI, navigate to **Configuration -> Security** and choose **Add Security Policy**. Select **Custom** and click on **Proceed**
+1. On the vManage GUI, navigate to **Configuration => Security** and choose **Add Security Policy**. Select **Custom** and click on **Proceed**
 
     ![](/images/SD-WAN_Security_IPS/10_custom.PNG)
 
@@ -327,7 +327,7 @@ This completes the configuration of our Security Policy.
 
 The Application List attached to the Firewall Policy that we had earlier will need to be instantiated again before we can use it. For that, we will make a dummy modification to the Application List
 
-1. On the vManage GUI, go to **Configuration -> Security**. Click on **Custom Lists** (top right-hand corner) and choose **Lists**
+1. On the vManage GUI, go to **Configuration => Security**. Click on **Custom Lists** (top right-hand corner) and choose **Lists**
 
     ![](/images/SD-WAN_Security_IPS/93_list.PNG)
 
@@ -343,7 +343,7 @@ The Application List attached to the Firewall Policy that we had earlier will ne
 
     ![](/images/SD-WAN_Security_IPS/18_ydummyapplsagain.PNG)
 
-5. Go to **Configuration -> Templates** and click on the three dots next to *cedge_dualuplink_devtemp*. Click on **Edit**
+5. Go to **Configuration => Templates** and click on the three dots next to *cedge_dualuplink_devtemp*. Click on **Edit**
 
     ![](/images/SD-WAN_Security_IPS/19_editdevtemp.PNG)
 
@@ -359,7 +359,7 @@ The Application List attached to the Firewall Policy that we had earlier will ne
 
     ![](/images/SD-WAN_Security_IPS/22_appinstsched.PNG)
 
-9. Navigate to **Configuration -> Devices** and locate the cEdge40 Device. You will notice that the Device Status is **Service Install Pending** (might have to scroll to the right or remove columns to see this)
+9. Navigate to **Configuration => Devices** and locate the cEdge40 Device. You will notice that the Device Status is **Service Install Pending** (might have to scroll to the right or remove columns to see this)
 
     ![](/images/SD-WAN_Security_IPS/23_devstat_removecolumns.PNG)
 
@@ -394,7 +394,7 @@ Since it takes approximately 5 minutes for the install process to go through, th
 
 ## Verifying installation and performing signature updates
 
-1. After you're done with the cup of tea/coffee, check the **Configuration -> Devices** page again. cEdge40 should now be **In Sync**
+1. After you're done with the cup of tea/coffee, check the **Configuration => Devices** page again. cEdge40 should now be **In Sync**
 
     ![](/images/SD-WAN_Security_IPS/24_insync.PNG)
 
@@ -473,7 +473,7 @@ Since it takes approximately 5 minutes for the install process to go through, th
 
     ![](/images/SD-WAN_Security_IPS/87_drop.PNG)
 
-4. We can view this information on the vManage GUI as well. Go to **Dashboard -> Security** and you should see some Signature hits. The dashboard does take some time to get populated, though (it's never too soon for another cup of tea/coffee!)
+4. We can view this information on the vManage GUI as well. Go to **Dashboard => Security** and you should see some Signature hits. The dashboard does take some time to get populated, though (it's never too soon for another cup of tea/coffee!)
 
     ![](/images/SD-WAN_Security_IPS/32_signhits.PNG)
 

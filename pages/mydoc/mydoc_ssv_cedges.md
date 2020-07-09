@@ -23,7 +23,7 @@ folder: mydoc
 
 ## Configuring the cEdge VPN 10 Feature Templates
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template
+1. Create a new VPN Template by navigating to **Configuration => Templates => Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -45,7 +45,7 @@ folder: mydoc
 
     ![](/images/Service_cEdges_Templates/03_ompsave.PNG)
 
-3. We will now create the VPN 10 Interface Template for cEdges. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**
+3. We will now create the VPN 10 Interface Template for cEdges. While on the **Configuration => Templates => Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**
 
     ![](/images/Service_cEdges_Templates/06_vpn10int.PNG)
 
@@ -80,7 +80,7 @@ This completes the configuration of the VPN 10 Feature Templates for the cEdges.
 
 As indicated before, creating the templates is a repetitive task so we will be going through pretty much the same steps as before, changing *vpn10* to *vpn20* wherever applicable.
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn20* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
+1. Create a new VPN Template by navigating to **Configuration => Templates => Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn20* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -100,7 +100,7 @@ As indicated before, creating the templates is a repetitive task so we will be g
 
     ![](/images/Service_cEdges_Templates/04_vpn20.PNG)
 
-3. We will now create the VPN 20 Interface Template for cEdges. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**. Once again, alternatively, make a copy of the *cedge-vpn10-int* template and rename it to *cedge-vpn20-int*, updating the description. Then Edit this newly created template and **Update** (followed in step 4 below)
+3. We will now create the VPN 20 Interface Template for cEdges. While on the **Configuration => Templates => Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**. Once again, alternatively, make a copy of the *cedge-vpn10-int* template and rename it to *cedge-vpn20-int*, updating the description. Then Edit this newly created template and **Update** (followed in step 4 below)
 
     ![](/images/Service_cEdges_Templates/06_vpn10int.PNG)
 
@@ -134,7 +134,7 @@ This completes the configuration of the VPN 20 Feature Templates for the cEdges.
 
 As indicated before, creating the templates is a repetitive task so we will be going through pretty much the same steps as before, changing *vpn10* to *vpn30* wherever applicable.
 
-1. Create a new VPN Template by navigating to **Configuration -> Templates -> Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn30* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
+1. Create a new VPN Template by navigating to **Configuration => Templates => Feature Tab** and choosing to **Add Template**. Search for *csr* and select the CSR1000V Device Type, along with selecting the **Cisco VPN** template. Alternatively, you can create a copy of the *cedge-vpn10* template, rename it to *cedge-vpn30* and then edit the specifics clicking on **Update** to save the changes (followed in step 2 below).
 
     ![](/images/Service_cEdges_Templates/01_add.PNG)
 
@@ -154,7 +154,7 @@ As indicated before, creating the templates is a repetitive task so we will be g
 
     ![](/images/Service_cEdges_Templates/05_vpn30.PNG)
 
-3. We will now create the VPN 30 Interface Template for cEdges. While on the **Configuration -> Templates -> Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**. Once again, alternatively, make a copy of the *cedge-vpn10-int* template and rename it to *cedge-vpn30-int*, updating the description. Then Edit this newly created template and **Update** (followed in step 4 below)
+3. We will now create the VPN 30 Interface Template for cEdges. While on the **Configuration => Templates => Feature Tab** page, click on **Add Template** and search for *csr*. Choose the Device as CSR1000v and the Template as **Cisco VPN Interface Ethernet**. Once again, alternatively, make a copy of the *cedge-vpn10-int* template and rename it to *cedge-vpn30-int*, updating the description. Then Edit this newly created template and **Update** (followed in step 4 below)
 
     ![](/images/Service_cEdges_Templates/06_vpn10int.PNG)
 

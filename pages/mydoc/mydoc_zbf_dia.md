@@ -63,7 +63,7 @@ We start off by configuring a few Lists that form the building blocks of our ZBF
 
 ### Configuring Zones
 
-1. On the vManage GUI, go to **Configuration -> Security**
+1. On the vManage GUI, go to **Configuration => Security**
 
     ![](/images/AppFW_DIA/01_sec.PNG)
 
@@ -141,7 +141,7 @@ We have created an Application List which can potentially identify Gmail, Mail.r
 
 ## Creating a Security Policy
 
-1. On the vManage GUI, navigate to **Configuration -> Security** and click on **Add Security Policy**
+1. On the vManage GUI, navigate to **Configuration => Security** and click on **Add Security Policy**
 
     ![](/images/AppFW_DIA/08_addsec.PNG)
 
@@ -229,7 +229,7 @@ This completes the process of creating the Security Policy.
 
 ## Applying the Policy and Verification
 
-1. Go to **Configuration -> Templates** and click on the three dots next to the *cEdge_dualuplink_devtemp* Device Template. Choose to **Edit** it
+1. Go to **Configuration => Templates** and click on the three dots next to the *cEdge_dualuplink_devtemp* Device Template. Choose to **Edit** it
 
     ![](/images/AppFW_DIA/27_devtemp.PNG)
 
@@ -243,7 +243,7 @@ This completes the process of creating the Security Policy.
 
     ![](/images/AppFW_DIA/30_sbs.PNG)
 
-4. Open the Console session to the Site 40 PC (log in to vCenter -> locate the site40pc VM and open the Web Console) and navigate to www.facebook.com. It should work indicating that Web Traffic is allowed. Log in to the cEdge40 CLI via Putty and issue a `show logg`. We should see some activity there
+4. Open the Console session to the Site 40 PC (log in to vCenter => locate the site40pc VM and open the Web Console) and navigate to www.facebook.com. It should work indicating that Web Traffic is allowed. Log in to the cEdge40 CLI via Putty and issue a `show logg`. We should see some activity there
 
     ![](/images/AppFW_DIA/31_fb.PNG)
 
@@ -253,7 +253,7 @@ This completes the process of creating the Security Policy.
 
     ![](/images/AppFW_DIA/33_gmailnw.PNG)
 
-6. On the vManage GUI, navigate to **Dashboard -> Security** and you should see spikes in the Firewall Enforcement dashlet (continue with the lab and check back after approximately 15 minutes to see this)
+6. On the vManage GUI, navigate to **Dashboard => Security** and you should see spikes in the Firewall Enforcement dashlet (continue with the lab and check back after approximately 15 minutes to see this)
 
     ![](/images/AppFW_DIA/34_dashsec.PNG)
 

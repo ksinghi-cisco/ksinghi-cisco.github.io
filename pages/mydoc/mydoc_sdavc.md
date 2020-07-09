@@ -28,7 +28,7 @@ folder: mydoc
 
 In order to deploy the Software Defined Application Visibility and Control (SD-AVC) module to the network, we will first need to upload the image to vManage. In this case, vManage acts as the SD-AVC controller and the cEdges act as SD-AVC Agents.
 
-1. On the vManage GUI, go to **Maintenance -> Software Repository**
+1. On the vManage GUI, go to **Maintenance => Software Repository**
 
     ![](/images/SD-AVC/01_sw.PNG)
 
@@ -58,7 +58,7 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
 
 ## Enabling AVC on vManage and Verification
 
-1. Once the image is uploaded, navigate to **Administration -> Cluster Management**
+1. Once the image is uploaded, navigate to **Administration => Cluster Management**
 
     ![](/images/SD-AVC/05_clm.PNG)
 
@@ -76,7 +76,7 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
 
     ![](/images/SD-AVC/09_rebooting.PNG)
 
-5. After the vManage comes up, log in to the GUI and navigate to **Administration -> Cluster Management**. The SD-AVC column should have a green check mark
+5. After the vManage comes up, log in to the GUI and navigate to **Administration => Cluster Management**. The SD-AVC column should have a green check mark
 
     ![](/images/SD-AVC/10_ver.PNG)
 
@@ -115,7 +115,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
 {% include important.html content="No changes need to be made in this section. It is just for information and review purpose." %}
 
-1. On the vManage GUI, navigate to **Configuration -> Policies** and click on the **Localized Policy** tab. Locate the *QoS_Policy* created before and click on the three dots next to it. Choose to **Edit** (we won't be making any changes, just review)
+1. On the vManage GUI, navigate to **Configuration => Policies** and click on the **Localized Policy** tab. Locate the *QoS_Policy* created before and click on the three dots next to it. Choose to **Edit** (we won't be making any changes, just review)
 
     ![](/images/SD-AVC/99_qos.PNG)
 
@@ -123,7 +123,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
     ![](/images/SD-AVC/98_polover.PNG)
 
-3. This policy is called in the Device Template. Navigate to **Configuration -> Templates** and click on the three dots next to *cedge_dualuplink_devtemp*. Choose to **Edit** (we won't be making any changes, just review)
+3. This policy is called in the Device Template. Navigate to **Configuration => Templates** and click on the three dots next to *cedge_dualuplink_devtemp*. Choose to **Edit** (we won't be making any changes, just review)
 
     ![](/images/SD-AVC/97_devtemp.PNG)
 
@@ -174,7 +174,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
     ![](/images/SD-AVC/18_avc_details.PNG)
 
-7. This information can be viewed on vManage as well. From the vManage GUI, navigate to **Monitor -> Network**. Click on cEdge40 and then click on **DPI Applications**. Choose the **Web** traffic and you will notice Youtube and Facebook traffic pop up over there with detailed statistics associated with the traffic
+7. This information can be viewed on vManage as well. From the vManage GUI, navigate to **Monitor => Network**. Click on cEdge40 and then click on **DPI Applications**. Choose the **Web** traffic and you will notice Youtube and Facebook traffic pop up over there with detailed statistics associated with the traffic
 
     ![](/images/SD-AVC/19_vmanage.PNG)
 

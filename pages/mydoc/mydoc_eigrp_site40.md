@@ -41,7 +41,7 @@ Given below is the section of the topology that we will be working on for this a
 
 ## Updating the cEdge Service VPN 10 with an EIGRP Template
 
-1. Go to **Configuration -> Templates** and click on the three dots next to *cEdge_dualuplink_devtemp*. Click on **Edit**
+1. Go to **Configuration => Templates** and click on the three dots next to *cEdge_dualuplink_devtemp*. Click on **Edit**
 
     ![](/images/Site40_ConfiguringEIGRP/01_edit.PNG)
 
@@ -57,7 +57,7 @@ Given below is the section of the topology that we will be working on for this a
 
     ![](/images/Site40_ConfiguringEIGRP/04_createtemp.PNG)
 
-5. Give the template a name of *site40-eigrp* and a Description of *EIGRP Template for Site 40 cEdge*. Populate the **Autonomous System ID** as a Device Variable with a value of *eigrp_as_num*. Click on **New Redistribute** under the Unicast Address Family -> Re-Distribute section
+5. Give the template a name of *site40-eigrp* and a Description of *EIGRP Template for Site 40 cEdge*. Populate the **Autonomous System ID** as a Device Variable with a value of *eigrp_as_num*. Click on **New Redistribute** under the Unicast Address Family => Re-Distribute section
 
     ![](/images/Site40_ConfiguringEIGRP/05_eigrptemp.PNG)
 
@@ -131,7 +131,7 @@ This completes the EIGRP related configuration on VPN 10 for the Site 40 cEdge.
     show ip route vpn 10
     ```
 
-4. This is due to the fact that EIGRP routes aren't advertised into OMP. To remedy this, we will need to modify our cEdge Template. Go to **Configuration -> Templates -> Feature tab** and click on the three dots next to *cedge-vpn10*. Choose to **Edit**
+4. This is due to the fact that EIGRP routes aren't advertised into OMP. To remedy this, we will need to modify our cEdge Template. Go to **Configuration => Templates => Feature tab** and click on the three dots next to *cedge-vpn10*. Choose to **Edit**
 
     ![](/images/Site40_ConfiguringEIGRP/17_editvpn10.PNG)
 

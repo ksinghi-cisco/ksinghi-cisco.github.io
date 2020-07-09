@@ -21,7 +21,7 @@ folder: mydoc
 
 ## Editing Templates to support VRRP
 
-1. On the vManage GUI, navigate to **Configuration -> Templates**
+1. On the vManage GUI, navigate to **Configuration => Templates**
 
     ![](/images/VRRP/01_temp.PNG)
 
@@ -48,7 +48,7 @@ folder: mydoc
 
     ![](/images/VRRP/05_upd.PNG)
 
-6. Go to the Device tab in **Configuration -> Templates** and locate the *cEdge-single-uplink* Device Template. Click on the three dots next to it and click **Edit**
+6. Go to the Device tab in **Configuration => Templates** and locate the *cEdge-single-uplink* Device Template. Click on the three dots next to it and click **Edit**
 
     ![](/images/VRRP/06_edit.PNG)
 

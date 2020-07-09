@@ -35,7 +35,7 @@ We can take the Feature Templates created for the DC-vEdges and use them as a st
 
 We will set up the VPN templates for VPN 0 in Site 20 by making a copy of the *DCvEdge-vpn0* Feature Template created before
 
-1. Identify the *DCvEdge-vpn0* Feature Template from **Configuration -> Templates -> Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *Site20-vpn0* with a Description of *VPN0 for the Site 20 vEdges*. Click on **Copy** again
+1. Identify the *DCvEdge-vpn0* Feature Template from **Configuration => Templates => Feature tab**. Click on the three dots in the extreme right-hand side of the template and click Copy. Name it *Site20-vpn0* with a Description of *VPN0 for the Site 20 vEdges*. Click on **Copy** again
 
     ![](/images/vEdgeSite20_Templates/01_copydcvpn0.PNG)
 
@@ -88,7 +88,7 @@ This completes the configuration of the VPN 0 Feature Template for Site 20.
 
 We will copy and edit the *DCvEdge-MPLS* Interface Feature Template for our INET and MPLS VPN Interface Feature Templates at Site 20.
 
-1. Navigate to the **Configuration -> Templates** section and make sure you're on the **Feature** tab. Click on the three dots next to the *DCvEdge-MPLS* and click on **Copy**
+1. Navigate to the **Configuration => Templates** section and make sure you're on the **Feature** tab. Click on the three dots next to the *DCvEdge-MPLS* and click on **Copy**
 
     ![](/images/vEdgeSite20_Templates/09_intcopy.PNG)
 
@@ -135,7 +135,7 @@ We have completed configuring the VPN 0 Interface Template for the Site 20 Devic
 
 ## Modifying a Device Template and Attaching Devices
 
-1. Go to **Configuration -> Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**
+1. Go to **Configuration => Templates** and make sure you're on the Device tab. Click on the three dots next to the *DCvEdge_dev_temp*. Click on **Copy**
 
     ![](/images/vEdgeSite20_Templates/13_copydevtemp.PNG)
 
@@ -179,13 +179,13 @@ We have completed configuring the VPN 0 Interface Template for the Site 20 Devic
 
     ![](/images/vEdgeSite20_Templates/23_confirm.PNG)
 
-12. Once the configuration updates have gone through successfully, log in to the CLI for vEdge21 and issue a `show bfd sessions`. You can also check this from the GUI by navigating to **Monitor -> Network**, clicking on vEdge21 and choosing **Real-Time -> BFD Sessions** in the Device Options. Choose Do Not Filter.
+12. Once the configuration updates have gone through successfully, log in to the CLI for vEdge21 and issue a `show bfd sessions`. You can also check this from the GUI by navigating to **Monitor => Network**, clicking on vEdge21 and choosing **Real-Time => BFD Sessions** in the Device Options. Choose Do Not Filter.
 
     ![](/images/vEdgeSite20_Templates/24_success.PNG)
 
     ![](/images/vEdgeSite20_Templates/25_showbfdsessve21.PNG)
 
-13. On the vManage GUI, navigate to **Configuration -> Devices** and you should see the two vEdges at Site 20 in vManage mode
+13. On the vManage GUI, navigate to **Configuration => Devices** and you should see the two vEdges at Site 20 in vManage mode
 
     ![](/images/vEdgeSite20_Templates/99_conf_Dev_vmmode.PNG)
 
