@@ -99,7 +99,7 @@ In this section, we will deploy DNS Layer Security as an Umbrella feature and th
 
 We will need to change a few settings with respect to the DNS servers to ensure that the Umbrella infrastructure isn't utilized by the SD-WAN solution. As of now, all DNS traffic is being queried via the Umbrella resolvers.
 
-1. We will first connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
+1. Connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
 
     Alternatively, you can RDP to 10.2.1.16X (where X is your POD number) from the Jumphost. RDP to the Site 30 PC will only work from the Jumphost
 
@@ -150,19 +150,142 @@ We will need to change a few settings with respect to the DNS servers to ensure 
 
     ![](/images/Umbrella_SDWAN_2/07_edit.PNG)
 
-7. At the **Apply Policies to Sites and VPNs** page, give the Policy a Name of *AAR-VPN10* and a Description of *Transport Preference for VPN 10*. Click on the Application Aware Routing tab and click on **New Site List and VPN List**. Under **Select Site List** choose *Branches* and *DC*. Under **Select VPN List** choose *Corporate*. Click on *Add*
+7. Scroll to the **DNS** section and update the **Primary DNS Address (IPv4)** to *8.8.8.8* and the **Secondary DNS Address (IPv4)** to *4.2.2.2*
 
-    ![](/images/AAR_LLQ/09_name.PNG)
+    ![](/images/Umbrella_SDWAN_2/08_dns.PNG)
 
-8. Click on **Save Policy** in the lower middle part of the screen to save our AAR Policy
+8. Locate the **IPv4 Route** section and click on the pencil icon to edit the **0.0.0.0/0** route
 
-    ![](/images/AAR_LLQ/10_savepol.PNG)
+    ![](/images/Umbrella_SDWAN_2/09_pencil.PNG)
 
-9. Click on the three dots next to the *AAR-VPN10* policy we just created and choose to **Activate** it. Click on **Activate** again
+9. Click on **2 Next Hop** and remove the *vpn0_mpls_next_hop* option by clicking on the red minus icon
 
-    ![](/images/AAR_LLQ/11_act.PNG)
+    ![](/images/Umbrella_SDWAN_2/10_2nh.PNG)
 
-    ![](/images/AAR_LLQ/12_actconf.PNG)
+    ![](/images/Umbrella_SDWAN_2/11_remmpls.PNG)
+
+10. Click on **Save Changes**
+
+    ![](/images/Umbrella_SDWAN_2/12_save.PNG)
+
+11. Ensure that the **Update IPv4 Route** window shows **1 Next Hop** and click on **Save Changes**
+
+    ![](/images/Umbrella_SDWAN_2/13_save.PNG)
+
+12. Click on **New IPv4 Route** and enter a Prefix of *192.0.2.0/24*. Click on **Add Next Hop**
+
+    ![](/images/Umbrella_SDWAN_2/14_nr.PNG)
+
+13. Click on **Add Next Hop** again
+
+    ![](/images/Umbrella_SDWAN_2/15_anh.PNG)
+
+14. Enter a Global value of *192.0.2.13* in the **Address** field and click on **Add**
+
+    ![](/images/Umbrella_SDWAN_2/16_nh.PNG
+
+15. Click on **Add** again to add the route
+
+    ![](/images/Umbrella_SDWAN_2/17_add.PNG)
+
+16. We will be adding 2 more routes. Repeat steps 12 to 15 for the routes enumerated below, using the images as reference
+
+    | Field                  | Global or Device Specific (Drop Down) | Value        |
+    |------------------------|---------------------------------------|--------------|
+    | Prefix                 | Global                                | 192.1.2.0/24 |
+    | Add Next Hop - Address | Global                                | 192.0.2.13   |
+
+    | Field                  | Global or Device Specific (Drop Down) | Value        |
+    |------------------------|---------------------------------------|--------------|
+    | Prefix                 | Global                                | 192.168.26.0/24 |
+    | Add Next Hop - Address | Global                                | 192.0.2.13   |
+
+    ![](/images/Umbrella_SDWAN_2/18_another.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/19_nh.PNG)
+
+17. Make sure there are 4 routes created, as shown below and click on **Update**
+
+    ![](/images/Umbrella_SDWAN_2/20_allroutesupdate.PNG)
+
+18. Click on **Next** and then **Configure Devices**. You can view the side by side configuration difference, if required. Notice that the default route pointing to the MPLS next hop is being removed and 3 routes are being added in place of it
+
+    ![](/images/Umbrella_SDWAN_2/21_sbs.PNG)
+
+19. Navigate to the **Configuration => Templates => Feature tab** and click on the three dots next to *vedge30_MPLS*. Click on **Edit**
+
+    ![](/images/Umbrella_SDWAN_2/22_edit.PNG)
+
+20. Under Tunnel, set the **Control Connection** to *Off* and click on **Update**. Click on **Next** and then **Configure Devices**
+
+    ![](/images/Umbrella_SDWAN_2/23_ccoff.PNG)
+
+21. Back at the **Configuration => Templates => Feature tab**, locate the *vEdge30_INET* Feature Template. Click on the three dots next to it and choose to **Edit**. Set **NAT** to a Global value of *On* and click on **Update**. Click **Next** and **Configure Devices** on the corresponding screens, viewing the side by side configuration difference if required
+
+    ![](/images/Umbrella_SDWAN_2/24_inetnat.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/25_nat.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/26_sbs.PNG)
+
+22. We will now add a VPN 10 Template for vEdge30 since there will be settings applicable just to this Site for Umbrella connectivity. On **Configuration => Templates => Feature tab** locate the *vedge-vpn10* Template. Click on the three dots next to it and choose **Copy**
+
+    ![](/images/Umbrella_SDWAN_2/27_copyvpn10.PNG)
+
+23. Rename the Template to *vedge30-vpn10* and update the description accordingly. Click on **Copy**
+
+    ![](/images/Umbrella_SDWAN_2/28_ren.PNG)
+
+24. Click on the three dots next to the newly copied template and choose to **Edit**
+
+    ![](/images/Umbrella_SDWAN_2/29_editvpn10.PNG)
+
+25. Update the **DNS** entries to *8.8.8.8* for the **Primary DNS Address (IPv4)** and *4.2.2.2* for the **Secondary DNS Address (IPv4)**. Click on **Update**.
+
+    ![](/images/Umbrella_SDWAN_2/30_dns.PNG)
+
+26. On the vManage GUI, navigate to **Configuration => Templates => Device Tab** and locate the *vEdge30_dev_temp* Template. Click on the three dots next to it and choose to **Edit** the template
+
+    ![](/images/Umbrella_SDWAN_2/33_editdevtemp.PNG)
+
+27. In the **Service VPN** section, select the *vedge-vpn10* Template Name entry and click on **Remove VPN**. Confirm the removal
+
+    ![](/images/Umbrella_SDWAN_2/34_remvpn.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/35_confirm.PNG)
+
+28. Click on **Add VPN** under Service VPN and move the *vedge30-vpn10* Template to the right hand side. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/36_addvpn.PNG)
+
+29. Under **Additional VPN Templates** click on *VPN Interface* and select *vedge-vpn10-int* in the **VPN Interface** drop-down. Click on **Add**
+
+    ![](/images/Umbrella_SDWAN_2/37_vpnintadd.PNG)
+
+30. Back at the Device Template, click on **Update** followed by **Next** and **Configure Devices**
+
+    ![](/images/Umbrella_SDWAN_2/38_upd_nxt_conf.PNG)
+
+31. Log in to the CentralGW via the saved Putty session (or SSH to 192.168.0.1) using the credentials below. Enter `config t` followed by `interface gig 2.31` and then `ip nat inside` to allow the VPN 10 subnet at Site 30 to be NAT'd. Type `do wr` to save the configuration done on the CentralGW
+
+    | Username | Password |
+    | --- | --- |
+    | admin | admin |
+
+    <br>
+
+    ![](/images/Umbrella_SDWAN_2/39_cgw.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/40_natins.PNG)
+
+    ```
+    config t
+    interface gig 2.31
+    ip nat inside
+    do wr
+    ```
+
+This completes the pre-work that we needed to do at Site 30.
 
 <br/>
 
@@ -202,7 +325,7 @@ We will need to change a few settings with respect to the DNS servers to ensure 
 
 ## Enabling Site 30 for DIA
 
-To view the changes made by the Policy on our network, follow the steps below.
+To facilitate 
 
 1. On the vManage GUI, go to **Monitor => Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
 
