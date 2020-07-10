@@ -33,7 +33,7 @@ folder: mydoc
 ### Overview
 <a
 	class="btn btn-large btn-primary"
-	href="javascript:intrJs().setOption('showProgress', true).start();"
+	href="javascript:introJs().setOption('showProgress', true).start();"
 	>Get a demo tour</a>
 
 <p class="lead" data-step="1" data-intro="1st Step">
