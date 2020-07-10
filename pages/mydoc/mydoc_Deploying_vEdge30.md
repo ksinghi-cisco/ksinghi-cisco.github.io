@@ -36,7 +36,10 @@ folder: mydoc
 	href="javascript:intrJs().setOption('showProgress', true).start();"
 	>Get a demo tour</a>
 
+<p class="lead" data-step="1" data-intro="1st Step">
+
 {% include warning.html content="Since we have gone through deploying vEdges multiple times by now, this section will just have the steps listed out. Images for every step has not been populated due to similarity with the previous sections. " %}
+</p>
 
 {% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous sections." %}
 
