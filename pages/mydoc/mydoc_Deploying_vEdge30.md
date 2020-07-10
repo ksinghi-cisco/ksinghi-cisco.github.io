@@ -31,10 +31,10 @@ folder: mydoc
 ## Creating the vEdge30 VM on vCenter
 
 ### Overview
-<br>
+
 
 {% include warning.html content="Since we have gone through deploying vEdges multiple times by now, this section will just have the steps listed out. Images for every step has not been populated due to similarity with the previous sections. " %}
-</p>
+
 
 {% include note.html content="The important steps which will guide you through this activity will be earmarked, indicating a delta from the previous sections." %}
 
