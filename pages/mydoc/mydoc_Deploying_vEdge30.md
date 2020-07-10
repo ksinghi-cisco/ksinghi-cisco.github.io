@@ -31,15 +31,7 @@ folder: mydoc
 ## Creating the vEdge30 VM on vCenter
 
 ### Overview
-
-<p class="lead" data-step="1" data-intro="1st Step">
-
-<a
-	class="btn btn-large btn-primary"
-	href="javascript:introJs().setOption('showProgress', true).start();"
-	>Get a demo tour</a>
-
-
+<br>
 
 {% include warning.html content="Since we have gone through deploying vEdges multiple times by now, this section will just have the steps listed out. Images for every step has not been populated due to similarity with the previous sections. " %}
 </p>
@@ -288,5 +280,3 @@ This completes the Onboarding section for vEdge30
     <br/>
 
 " type="primary" %}
-
-<script type="text/javascript" src="intro.js"></script>
