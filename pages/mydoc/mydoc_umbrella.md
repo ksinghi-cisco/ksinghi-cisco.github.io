@@ -325,21 +325,53 @@ This completes the pre-work that we needed to do at Site 30.
 
 ## Enabling Site 30 for DIA
 
-To facilitate 
+To facilitate communication to the Internet from Site 30, we will be enabling DIA at Site 30 for VPN 10.
 
-1. On the vManage GUI, go to **Monitor => Network** and click on cEdge40. Choose **Troubleshooting** from the left-hand column and click on **Simulate Flows**. Enter the VPN as *VPN - 10* and the Source/Interface as *GigabitEthernet4*. Set a Destination IP of *10.100.10.2* and click on **Simulate**. We find that traffic is taking all possible transports, just like before. This is expected since we haven't defined anything for regular traffic
+1. On the vManage GUI, go to **Configuration => Policies**
 
-    ![](/images/AAR_LLQ/13_regtraf.PNG)
+    ![](/images/Umbrella_SDWAN_2/41_confpol.PNG)
 
-2. On the same screen, click on **Advanced Options** and set the DSCP to *46*. Click on **Simulate**
+2. Click on **Custom Options** in the top right-hand corner and click on **Traffic Policy**
 
-    ![](/images/AAR_LLQ/14_dscptraf.PNG)
+    ![](/images/Umbrella_SDWAN_2/42_custop.PNG)
 
-    VoIP Traffic is now traversing the MPLS link as the preferred route. We see just one path in the image above - if 10.255.255.11 (DC-vEdge1) is rebooted and this tested again, traffic will go through 10.255.255.12 (DC-vEdge2). If Simulate is clicked multiple times, traffic does take different paths.
+3. Click on the **Traffic Data** tab and locate the *Guest-DIA* Policy. Click on the three dots next to it and choose to **Edit**
 
-3. We will now check the current network statistics. On the left-hand side go to **Tunnel** and put a check mark against all the *mpls* Tunnel Endpoints. Click on Real-Time after scrolling up to the chart and make sure Packet Loss/Latency is checked under **Chart Options**. We may see negligible packet loss occurring (let the chart run for 5 minutes before analysing, it should get updated every few seconds)
+    ![](/images/Umbrella_SDWAN_2/43_editdia.PNG)
 
-    ![](/images/AAR_LLQ/16_minorloss.PNG)
+4. Update the **Description** to *Guest DIA at Site 40 and Site 30* and make sure you're on the **Custom** Sequence Type. Click on **Sequence Rule** to add a new rule and select **Source Data Prefix** under Match (might need to use the scroll buttons so that the option becomes visible). Enter a *Source: IP Prefix* of *10.30.10.0/24* and click on **Actions**
+
+    ![](/images/Umbrella_SDWAN_2/44_upddesc_nr_sdp.PNG)
+
+5. Select the **Accept** radio button and choose **NAT VPN**. Click on **Save Match and Actions** to save this rule
+
+    ![](/images/Umbrella_SDWAN_2/45_natvpn.PNG)
+
+6. Make sure that there are two rules under the Custom Sequence Type. One rule is for Site 40 DIA and the other is for Site 30 VPN 10 (10.30.10.0/24) DIA. Click on **Save Data Policy**
+
+    ![](/images/Umbrella_SDWAN_2/46_savedp.PNG)
+
+7. Click on **Activate** and then **Configure Devices**. Confirm the configuration change and click on **OK**
+
+    ![](/images/Umbrella_SDWAN_2/47_act.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/48_confdev.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/49_conf.PNG)
+
+8. Once the configuration change has been pushed successfully, navigate to **Configuration => Policies** and click on the three dots next to the *Site40-Guest-DIA* policy. Choose to **Edit** it. Make sure you're on the **Policy Application** page and click on the **Traffic Data** tab. Click on **New Site List and VPN List**. Leave the *From Service* radio button checked and click on the **Select Site List** box. Choose *Site30*. Click on the **Select VPN List** box and choose *Corporate*. Click on **Add**. Click on **Save Policy Changes** to save the changes we just made
+
+    ![](/images/Umbrella_SDWAN_2/50_editpol_trafficdata_newsitevpn_savepol.PNG)
+
+9. Choose to **Activate** the configuration
+
+    ![](/images/Umbrella_SDWAN_2/51_act.PNG)
+
+10. Go to the Site 30 PC via your chosen connection method (Guacamole/RDP/vCenter Console) and open Command Prompt (Start => type cmd => click on Command Prompt). Type `ping 8.8.8.8` and hit Enter. Pings should work. To verify DNS resolution, type `ping www.cisco.com` and hit Enter
+
+    ![](/images/Umbrella_SDWAN_2/52_ping.PNG)
+
+We have enabled DIA at Site 30 for VPN 10.
 
 <br/>
 
