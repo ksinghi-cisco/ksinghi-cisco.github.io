@@ -634,17 +634,53 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     ![](/images/Umbrella_SDWAN_2/81_key_sec.PNG)
 
-    {% include tip.html content="If the key needs to be re-generated (usually required if the secret is misplaced) then the Refresh button will allow you to generate a new API Key and Secret." %}
+    {% include tip.html content="If the key needs to be re-generated (usually required if the secret is misplaced), the Refresh button will allow you to generate a new API Key and Secret." %}
 
-7. Go back to the AD PC
+7. Log in to the AD PC (10.2.1.18X) via your preferred method (Guacamole/RDP/vCenter Console) and click on Start. Search for Active Directory Users and Computers and open the App
 
-    ![](/images/AAR_LLQ/25_update_next_confdev.PNG)
+    ![](/images/Umbrella_SDWAN_2/82_aduac.PNG)
 
-8. You can choose to view the Side by Side or simply click on **Configure Devices**
+8. Make sure swatsdwanlab.com is expanded and right click on **Users**. Click on **New** and click on **User** to create a new user
 
-    ![](/images/AAR_LLQ/32_sbs.PNG)
+    ![](/images/Umbrella_SDWAN_2/83_newuser.PNG)
 
-This completes the implementation of our Policer on the MPLS link to simulate network impairment.
+9. Populate the fields as shown in the table below and click on **Next**
+
+    | Field | Value |
+    | :---: | :---: |
+    | First Name | OpenDNS_Connector |
+    | User logon name | OpenDNS_Connector |
+
+    {% include note.html content="The User logon name field had to match with what is given here in previous versions of vManage. The name can now be populated as a custom value, if required, but we will use the default logon name." %}
+
+    ![](/images/Umbrella_SDWAN_2/84_odns.PNG)
+
+10. Enter a password of *C1sco12345* in the Password and Confirm Password fields. Uncheck *User must change password at next logon* and check *Password never expires*. If you check Password never expires directly, it will automatically uncheck User must change password at next logon but will give a notification prompt (choose OK). Click on **Next** and then **Finish**
+
+    ![](/images/Umbrella_SDWAN_2/85_pne.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/86_fin.PNG)
+
+11. The user we just created needs to be a part of certain Groups in order to function properly. Right click on the newly created *OpenDNS_Connector* user and click on **Add to a group**
+
+    ![](/images/Umbrella_SDWAN_2/87_atg.PNG)
+
+12. Add the user to the following groups and click on **OK**:
+
+    * Event Log Readers
+    * Distributed COM Users
+    * Enterprise Read-only Domain Controllers
+
+    {% include note.html content="Enter the first few characters of the Group you want to add this User to and click on *Check Names*. That should auto-populate the Group or give you a selection to choose the group." %}
+
+    ![](/images/Umbrella_SDWAN_2/88_groups.PNG)
+
+13. Click on **OK** to confirm the addition of the user to the Groups
+
+    ![](/images/Umbrella_SDWAN_2/89_OK.PNG)
+
+
+We have generated the API Key and Secret which will be needed later in the integration with Cisco Umbrella. We have also set up an AD User which will be required for AD Connector functionality.
 
 <br/>
 
@@ -684,27 +720,45 @@ This completes the implementation of our Policer on the MPLS link to simulate ne
 
 ### DC Configuration Download
 
-1. Navigate to **Monitor => Network** and click on cEdge40. Click on **Tunnel** on the left-hand side and make sure all the **MPLS** Tunnel Endpoint entries are selected, with the public-internet entries being unchecked. Click on **Real Time** (top right corner) and the Chart Options drop-down (top left corner) is set to Loss Percentage/FEC Loss Recovery Rate. Let this run for a few minutes - you will notice a spike in Packet Loss
+To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella and syncing AD Groups and Users. This is done by downloading and running a configuration script on the Domain Controller (all read-write DCs) and by deploying an AD Connector. A user is required for the AD Connector to work - this was created in the previous section.
 
-    ![](/images/AAR_LLQ/33_pl.PNG)
+1. From your **AD PC**, open a browser and go to login.umbrella.com. Login using the username/password for your POD. Go to **Deployments => Configuration => Sites and Active Directory**
 
-2. Head over to **Troubleshooting** (left-hand side, might need to scroll down) and click on **Simulate Flows**. Enter the **VPN** as *VPN - 10*, the **Source/Interface** as *GigabitEthernet4* and the **Destination IP** as *10.100.10.2*. Click on **Simulate**. There should be no change in traffic flow for General traffic, which will still use all available transports
+    | Username <br> <br> X is your POD number | Password |
+    | :---: | :---: |
+    | ghi.pod0X@gmail.com | C1sco@12345 |
 
-    ![](/images/AAR_LLQ/34_regtrafsame.PNG)
+    ![](/images/Umbrella_SDWAN_2/90_dep_conf_sad.PNG)
 
-3. Under **Advanced Options**, set DSCP to a value of *46* and click on **Simulate**. You will notice that VoIP traffic (i.e. DSCP 46) is now taking the Internet path since MPLS doesn't conform to the SLA requirements that we defined. Compare the current traffic flow with the one in Step 2 [over here](#viewing-modified-traffic-flows-and-current-network-statistics)
+2. Click on the **Download** button in the top right-hand corner and download the **Windows Configuration script for Domain Controller**. Choose to **Keep** the file, if prompted (browser specific)
 
-    ![](/images/AAR_LLQ/35_plaar.PNG)
+    ![](/images/Umbrella_SDWAN_2/91_dwnld_dwnldconf.PNG)
 
-4. We will now revert the configuration to what it was pre-impairment. Go to **Configuration => Templates** and locate the *cEdge_dualuplink_devtemp*. Click on the three dots next to it and **Edit**. Change the Cisco VPN Interface Ethernet value under **Transport & Management VPN** back to *cedge-vpn0-int-dual_mpls* and click on **Update**
+    ![](/images/Umbrella_SDWAN_2/92_keep.PNG)
 
-    ![](/images/AAR_LLQ/36_rev.PNG)
+3. Click on Start and search for **cmd**. Click on the Command Prompt App
 
-5. Wait for approximately 3 minutes and head over to **Monitor => Network => cEdge40 => Troubleshooting => Traffic Flows**. Enter the same details as in Step 3 above and click on **Simulate**. VoIP traffic should traverse over the MPLS link again
+    ![](/images/Umbrella_SDWAN_2/93_cmd.PNG)
 
-    ![](/images/AAR_LLQ/37_waitmpls.PNG)
+4. Type `cd Downloads` to access the Downloads folder and hit Enter. Enter the `cscript` command, followed by the Configuration File you just downloaded. The file name will be different from what is shown below - enter the name of the configuration file downloaded by you (type `cscript OpenDNS` and hit Tab on the keyboard - the name will auto complete) and hit **Enter**
 
-This completes the Application Aware Routing section of the lab.
+    ![](/images/Umbrella_SDWAN_2/94_rs.PNG)
+
+5. Enter *2* when asked to Enter the IP to be used. We will be using the 10.30.10.50 IP. This is the IP that will show up on Umbrella. Proceed through the script by Entering *y* for any other prompts that show up
+
+    ![](/images/Umbrella_SDWAN_2/95_ip.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/96_yes.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/97_yes.PNG)
+
+6. The configuration script should complete successfully
+
+    ![](/images/Umbrella_SDWAN_2/98_succ.PNG)
+
+7. Head over to the Umbrella page and refresh the Sites and Active Directory page. The DC just added should show up. The status sometimes takes an hour to get updated
+
+    ![](/images/Umbrella_SDWAN_2/99_refpage.PNG)
 
 <br/>
 
