@@ -99,6 +99,8 @@ In this section, we will deploy DNS Layer Security as an Umbrella feature and th
 
 We will need to change a few settings with respect to the DNS servers to ensure that the Umbrella infrastructure isn't utilized by the SD-WAN solution. As of now, all DNS traffic is being queried via the Umbrella resolvers.
 
+Additionally, we will be working on the Site 30 PC which is part of an AD domain (swatsdwanlab.com). The Domain Controller is at 10.30.10.50, which is also acting as the DNS server for the Site 30 PC.
+
 1. Connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
 
     Alternatively, you can RDP to 10.2.1.16X (where X is your POD number) from the Jumphost. RDP to the Site 30 PC will only work from the Jumphost
@@ -371,7 +373,7 @@ To facilitate communication to the Internet from Site 30, we will be enabling DI
 
     ![](/images/Umbrella_SDWAN_2/52_ping.PNG)
 
-We have enabled DIA at Site 30 for VPN 10.
+We have enabled DIA at Site 30 for VPN 10. This will be used to showcase DNS security provided by Umbrella. Once we proceed through the lab activity and have set up Tunnels to Umbrella, the DIA configuration will be removed to force traffic out the tunnels.
 
 <br/>
 
@@ -411,9 +413,31 @@ We have enabled DIA at Site 30 for VPN 10.
 
 ## Life without Umbrella
 
-In order to simulate impairment in the network (Packet Loss and Latency), we can use a Policer and a Shaper. Over here, we will configure a Policer which will be applied to the MPLS link in order to simulate Packet Loss.
+As of now, the Site 30 PC has connectivity to the Internet and is pointing to the DNS Server of *10.30.10.50*. DNS Queries sent to this DNS Server are redirected to 8.8.8.8 or 4.2.2.2. We will run a quick check from our Site 30 PC to verify that we are NOT connected to Cisco Umbrella as of now.
 
-Later on, we will leverage a Shaper to simulate Latency.
+1. Access the Site 30 PC via your preferred method (Guacamole/RDP/vCenter Console). [Click here](#pre-work) and go through Step 1 to review how to connect to the Site 30 PC. Open a browser of your choice (Firefox and Chrome should be available) and go to welcome.umbrella.com. You can also use the bookmark for **Umbrella Test**
+
+    ![](/images/Umbrella_SDWAN_2/53_oops.PNG)
+
+    The Umbrella page should display the image shown above. This is an indication that our network isn't protected by Umbrella (yet).
+
+    If using Firefox, make sure to change the browser **Options** for Privacy and Security, setting Firefox to **Never remember history**. This will require a browser restart
+
+    ![](/images/Umbrella_SDWAN_2/72_xffxchanges.PNG)
+
+2. Access websites like www.amazon.com, www.ebay.com and www.yahoo.com by typing them out in the browser or by using the handy bookmarks available. All the sites should be accessible since we don't have any sort of access control/filtering enabled as of now
+
+    ![](/images/Umbrella_SDWAN_2/55_amazon.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/54_ebay.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/56_yahoo.PNG)
+
+3. Access internetbadguys.com by typing it out in the browser or using the bookmark. This is a website that simulates a phishing attack. Since we aren't protected, the website pops right up
+
+    ![](/images/Umbrella_SDWAN_2/57_malware.PNG)
+
+Life without Umbrella doesn't look too good if we are open to the simplest of phishing attacks. We will be incorporating a fundamental layer of protection in our network followed by a more elaborate DNS, Cloud Delivered Firewall and Secure Web Gateway solution.
 
 <br/>
 
