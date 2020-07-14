@@ -548,7 +548,7 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 
     ![](/images/Umbrella_SDWAN_2/75_ibgblocked.PNG)
 
-{% include tip.html content="This is the simplest way to redirect traffic to Umbrella. However, if a user changes the DNS Server IP Address on their PCs, they can bypass the Umbrella redirect completely, with the current configuration. It is recommended to deploy policies via vManage such that vEdges/cEdges can intercept DNS traffic destined for a manually entered DNS server (like 8.8.8.8) and redirect it to Umbrella." %}
+{% include tip.html content="This is the simplest way to redirect traffic to Umbrella. However, if a user changes the DNS Server IP Address on their PCs, they can bypass the Umbrella redirect completely. It is recommended to deploy policies via vManage such that vEdges/cEdges can intercept DNS traffic destined for a manually entered DNS server (like 8.8.8.8) and redirect it to Umbrella." %}
 
 <br/>
 
@@ -596,13 +596,13 @@ Instead, we can get extremely granular and apply a policy to a specific user/gro
 
 Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbrella are given below:
 
-* Organization (this is a numeric string, allocated by Umbrella. Not be be confused with the sd-wan organization name)
+* Organization (this is a numeric string, allocated by Umbrella. Not to be confused with the SD-WAN organization name)
 
 * API Key
 
 * Secret
 
-1. From your Jumhost, open a browser and go to login.umbrella.com. Login using the username/password for your POD
+1. From your Jumphost, open a browser and go to login.umbrella.com. Login using the username/password for your POD
 
     | Username <br> <br> X is your POD number | Password |
     | :---: | :---: |
@@ -610,34 +610,33 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     ![](/images/Umbrella_SDWAN_2/76_login.PNG)
 
-2. Rename it t0 *cedge-vpn0-int-dual_mpls-impair* and a Description *cEdge VPN 0 Interface Template for Devices with a dual uplink - MPLS with Impairment*. Click on **Copy**
+2. Once logged in, the URL will contain your Organization ID. It will vary per POD. Copy it in a notepad file on the Jumphost since we will be needing it later
 
-    ![](/images/AAR_LLQ/27_copyname.PNG)
+    ![](/images/Umbrella_SDWAN_2/77_org.PNG)
 
-3. Click on the three dots next to this newly copied template and click on **Edit**
+3. API Keys and the Secret needs to be generated on Umbrella. Navigate to **Admin => API Keys**. If the sidebar isn't visible, click on the menu icon (three horizontal lines) next to the Cisco Logo
 
-    ![](/images/AAR_LLQ/28_edit.PNG)
+    ![](/images/Umbrella_SDWAN_2/78_menu_admin_api.PNG)
 
-4. Navigate to the ACL/QoS section and modify the following fields. Click on **Update**
+4. Click on **Create API Key**
 
-    | Field                    | Global or Device Specific (drop down) | Value         |
-    |--------------------------|---------------------------------------|---------------|
-    | Ingress ACL - IPv4       | Global                                | On            |
-    | IPv4 Ingress Access List | Global                                | Impair-PL-AAR |
-    | Egress ACL - IPv4        | Global                                | On            |
-    | IPv4 Egress Access List  | Global                                | Impair-PL-AAR |
+    ![](/images/Umbrella_SDWAN_2/79_create.PNG)
 
-    ![](/images/AAR_LLQ/29_aclupd.PNG)
+5. Select the radio button next to **Umbrella Management** and click on **Create**
 
-5. Under **Configuration => Templates** go to the **Device** tab and locate the *cedge_dualuplink_devtemp* template. Click on the three dots next to it and choose to **Edit**
+    ![](/images/Umbrella_SDWAN_2/80_mgmt_create.PNG)
 
-    ![](/images/AAR_LLQ/30_editdevtemp.PNG)
+6. This will generate the API Key and Secret. Click on the copy icon next to each and paste it in the notepad which contained the Organization ID.
 
-6. Under Transport & Management VPN, update the **Cisco VPN Interface Ethernet** from *cedge-vpn0-int-dual_mpls* to *cedge-vpn0-int-dual_mpls-impair*. Make sure this is done on the VPN interface for the MPLS link
+    {% include important.html content="Make sure that the Key and Secret are copied to notepad before proceeding since the Secret is visible on this page only." %}
 
-    ![](/images/AAR_LLQ/31_mplsimpair.PNG)
+    Put a check mark next to the *To keep it secure...* statement and click on **Close**
 
-7. Scroll down to the **Additional Templates** section and update the **Policy** to *Policer-AAR-Impairment*. Click on **Update**. Click on **Next**
+    ![](/images/Umbrella_SDWAN_2/81_key_sec.PNG)
+
+    {% include tip.html content="If the key needs to be re-generated (usually required if the secret is misplaced) then the Refresh button will allow you to generate a new API Key and Secret." %}
+
+7. Go back to the AD PC
 
     ![](/images/AAR_LLQ/25_update_next_confdev.PNG)
 
