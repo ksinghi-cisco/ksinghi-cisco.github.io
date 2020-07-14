@@ -322,7 +322,7 @@ Click [here](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-S
 
     ![](/images/Deploying_cEdge40/35_copy_vpn0_temp.PNG)
 
-12. You will be prompted to name the copied template. Give it a name of *cEdge_VPN512_dual_uplink* and update the description to *cEdge VPN 512 Template for Dual Uplinks* (sometimes, the description doesn't get updated and needs to be done again when editing the template). Click on **Copy**.
+12. You will be prompted to name the copied template. Give it a name of *cEdge_VPN512_dual_uplink* and update the description to *cEdge VPN 512 Template for Dual Uplinks* (sometimes, the description doesn't get updated and needs to be done again when editing the template. Reference bug ID CSCvu19244, which is fixed in vManage version 20.1.12). Click on **Copy**.
 
     ![](/images/Deploying_cEdge40/36_vpn512_tempcopy.PNG)
 
