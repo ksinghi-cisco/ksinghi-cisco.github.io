@@ -437,7 +437,7 @@ As of now, the Site 30 PC has connectivity to the Internet and is pointing to th
 
     ![](/images/Umbrella_SDWAN_2/57_malware.PNG)
 
-Life without Umbrella doesn't look too good if we are open to the simplest of phishing attacks. We will be incorporating a fundamental layer of protection in our network followed by a more elaborate DNS, Cloud Delivered Firewall and Secure Web Gateway solution.
+Life without Umbrella doesn't look too good since we are open to the simplest of phishing attacks. We will be incorporating a fundamental layer of protection in our network followed by a more elaborate DNS Policy, Cloud Delivered Firewall and Secure Web Gateway solution.
 
 <br/>
 
@@ -477,20 +477,78 @@ Life without Umbrella doesn't look too good if we are open to the simplest of ph
 
 ## Basic Configuration for Umbrella
 
-1. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** (top right-hand corner). Under **Localized Policy** click on **Lists**
+Let's start off by giving some basic DNS-layer Security to our devices.
 
-    ![](/images/AAR_LLQ/17_lppolicer.PNG)
+1. Connect to the sdwan-ghi-ad-podX machine by logging in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-AD option.
 
-2. Click on **Policer** (left-hand side) to create Policer configuration which will simulate network impairment on our MPLS link (Packet Loss). Click on **New Policer List** and give it a name of *AAR-Impair-Policer-PL*. Specify the **Burst** as *15000* and **Exceed** as *Drop*. The **Rate** should be *7000*. Click on **Add**
+    Alternatively, you can RDP to 10.2.1.18X (where X is your POD number) from the Jumphost. RDP to the AD PC will only work from the Jumphost
 
-    | Field             | Value                 |
-    |-------------------|-----------------------|
-    | Policer List Name | AAR-Impair-Policer-PL |
-    | Burst (bps)       | 15000                 |
-    | Exceed            | Drop                  |
-    | Rate (bps)        | 7000                  |
+    | Connection Method | Username | Password |
+    | --- | ---- | ---- |
+    | Guacamole | sdwanpod | C1sco12345 |
+    | RDP | swatsdwanlab\Administrator | C1sco12345 |
 
-    ![](/images/AAR_LLQ/18_polic.PNG)
+    ![](/images/Umbrella_SDWAN_2/01_guac.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/57_xad.PNG)
+
+    vCenter (accessible via the bookmark or 10.2.1.50/ui and the credentials provided for your POD) can also be used to console to the AD PC
+
+2. Depending on the connection method, you may need to enter credentials again to log in to the AD PC. Please enter the credentials shown below, if prompted
+
+    | Connection Method | Username | Password |
+    | --- | ---- | ---- |
+    | Guacamole | Not Required | Not Required |
+    | RDP | swatsdwanlab\Administrator | C1sco12345 |
+    | vCenter | swatsdwanlab\Administrator | C1sco12345 |
+
+    If using Guacamole to access the AD PC, you will be notified to press Ctrl + Alt + Del to unlock the computer. Guacamole doesn't have an option to send key combinations. We use the Guacamole virtual keyboard to send Ctrl + Alt + Del. While on the Guacamole window, press **Ctrl + Alt + Shift** together. This will open the Guacamole settings window. Choose **On-screen keyboard** under Input Method and it should display the virtual keyboard. Using the mouse, click on *Ctrl*, then *Alt*, then *Del*
+
+    ![](/images/Umbrella_SDWAN_2/58_ad_onscreen.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/59_ctrlaltdel.PNG)
+
+    This will bring you to the login screen. Press **Ctrl + Alt + Shift** on your keyboard to bring up the Guacamole settings window again and choose **None** for the Input Method
+
+    ![](/images/Umbrella_SDWAN_2/60_none.PNG)
+
+    This will remove the virtual keyboard from the screen and you can continue typing like normal to enter the password.
+
+3. Once logged in to the AD PC, click on **Start** and search for *DNS*. Open the DNS application
+
+    ![](/images/Umbrella_SDWAN_2/61_dns.PNG)
+
+4. Select *ad.swatsdwanlab.com* and double-click Forwarders. There will be two Forwarders listed (*8.8.8.8 and 4.2.2.2*). Click on **Edit**
+
+    ![](/images/Umbrella_SDWAN_2/62_fwdedit.PNG)
+
+5. Change the Forwarder IPs to *208.67.222.222* and *208.67.220.220*. Make sure no other Forwarders are present on this window. Click on **OK**
+
+    ![](/images/Umbrella_SDWAN_2/63_opendns.PNG)
+
+6. Click on **Apply** and then **OK** to apply the configuration change
+
+    ![](/images/Umbrella_SDWAN_2/64_appOK.PNG)
+
+7. Head back to the Site 30 PC and click on the **Flush DNS** shortcut on the Desktop
+
+    ![](/images/Umbrella_SDWAN_2/71_flushdns.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/72_res.PNG)
+
+8. Close any open browsers and re-open the browser. Go to welcome.umbrella.com or use the Umbrella Test bookmark. We should see a **Welcome to Umbrella** page
+
+    ![](/images/Umbrella_SDWAN_2/73_umbrellaOK.PNG)
+
+9. Access to amazon.com and ebay.com should still be intact, since we haven't applied any policies yet
+
+    ![](/images/Umbrella_SDWAN_2/74_amazonebay.PNG)
+
+10. Enter internetbadguys.com in the browser and the traffic will be blocked. We have thus got a fundamental layer of security by simply pointing our DNS Server to the OpenDNS resolvers
+
+    ![](/images/Umbrella_SDWAN_2/75_ibgblocked.PNG)
+
+{% include tip.html content="This is the simplest way to redirect traffic to Umbrella. However, if a user changes the DNS Server IP Address on their PCs, they can bypass the Umbrella redirect completely, with the current configuration. It is recommended to deploy policies via vManage such that vEdges/cEdges can intercept DNS traffic destined for a manually entered DNS server (like 8.8.8.8) and redirect it to Umbrella." %}
 
 <br/>
 
@@ -530,44 +588,27 @@ Life without Umbrella doesn't look too good if we are open to the simplest of ph
 
 ## Making Umbrella ours
 
-1. Go to the **Localized Policy** tab and click on **Add Policy**
+The previous section ensured that DNS queries were redirected to Umbrella, giving us a basic layer of protection. To apply custom DNS policies, we will need to ensure that our setup can be uniquely identified by Umbrella, post which DNS Policies can be set up for the organization. Umbrella can be used to identify traffic coming from a public IP/IP Range. This helps with creating custom policies for a particular organization. In our lab, multiple devices will be talking to the outside world via the same Public IP, hence this approach will not work for us.
 
-    ![](/images/AAR_LLQ/19_addpol.PNG)
-
-2. Click **Next** till you are at the **Configure Access Control Lists** page. Click on **Add Access Control List Policy** and choose **Add IPv4 ACL Policy**
-
-    ![](/images/AAR_LLQ/20_acl.PNG)
-
-3. Enter a name of *Impair-PL-AAR* with a Description of *Impairment ACL*. Click on **Add ACL Sequence** and click on **Sequence Rule**. Go to the **Actions** tab and make sure the Accept radio button is selected. Choose **Policer** and select the *AAR-Impair-Policer-PL* we created before. Click on **Save Match and Actions**. Refer to the table and image below
-
-    | Step | Field                  | Value                 |
-    |------|------------------------|-----------------------|
-    | 1    | Name                   | Impair-PL-AAR         |
-    |      | Description            | Impairment ACL        |
-    | 2    | Add ACL Sequence       |                       |
-    | 3    | Sequence Rule          |                       |
-    | 4    | Actions                |                       |
-    | 5    | Policer                |                       |
-    | 6    | Policer                | AAR-Impair-Policer-PL |
-    | 7    | Save Match and Actions |                       |
-
-    ![](/images/AAR_LLQ/21_polacl.PNG)
-
-4. Click on **Save Access Control List Policy**
-
-    ![](/images/AAR_LLQ/22_save.PNG)
-
-5. On the **Policy Overview** page (this is our Main Policy), enter a Policy Name of *Policer-AAR-Impairment* and a Description of Injecting Impairment for AAR via a Policer - Packet Loss. Click on **Save Policy**
-
-    ![](/images/AAR_LLQ/23_savepol.PNG)
-
-We have completed configuration of our Policer. It needs to be applied to a link in order to simulate network impairment.
+Instead, we can get extremely granular and apply a policy to a specific user/group of users based on identities used to uniquely identify them.
 
 ### API Keys and AD Configuration
 
-1. Navigate to **Configuration => Templates => Feature Tab** and locate the *cedge-vpn0-int-dual_mpls* VPN Interface template. Click on the 3 dots next to it and choose to **Copy**
+Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbrella are given below:
 
-    ![](/images/AAR_LLQ/26_copyint.PNG)
+* Organization (this is a numeric string, allocated by Umbrella. Not be be confused with the sd-wan organization name)
+
+* API Key
+
+* Secret
+
+1. From your Jumhost, open a browser and go to login.umbrella.com. Login using the username/password for your POD
+
+    | Username <br> <br> X is your POD number | Password |
+    | :---: | :---: |
+    | ghi.pod0X@gmail.com | C1sco@12345 |
+
+    ![](/images/Umbrella_SDWAN_2/76_login.PNG)
 
 2. Rename it t0 *cedge-vpn0-int-dual_mpls-impair* and a Description *cEdge VPN 0 Interface Template for Devices with a dual uplink - MPLS with Impairment*. Click on **Copy**
 
