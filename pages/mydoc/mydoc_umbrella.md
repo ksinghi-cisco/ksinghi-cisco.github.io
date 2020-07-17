@@ -415,7 +415,7 @@ We have enabled DIA at Site 30 for VPN 10. This will be used to showcase DNS sec
 
 As of now, the Site 30 PC has connectivity to the Internet and is pointing to the DNS Server of *10.30.10.50*. DNS Queries sent to this DNS Server are redirected to 8.8.8.8 or 4.2.2.2. We will run a quick check from our Site 30 PC to verify that we are NOT connected to Cisco Umbrella as of now.
 
-1. Access the Site 30 PC via your preferred method (Guacamole/RDP/vCenter Console). [Click here](#pre-work) and go through Step 1 to review how to connect to the Site 30 PC. Open a browser of your choice (Firefox and Chrome should be available) and go to welcome.umbrella.com. You can also use the bookmark for **Umbrella Test**
+1. Access the Site 30 PC via your preferred method (Guacamole/RDP/vCenter Console). [Click here](#pre-work){:target="_blank"} and go through Step 1 to review how to connect to the Site 30 PC. Open a browser of your choice (Firefox and Chrome should be available) and go to welcome.umbrella.com. You can also use the bookmark for **Umbrella Test**
 
     ![](/images/Umbrella_SDWAN_2/53_oops.PNG)
 
@@ -590,7 +590,7 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 
 The previous section ensured that DNS queries were redirected to Umbrella, giving us a basic layer of protection. To apply custom DNS policies, we will need to ensure that our setup can be uniquely identified by Umbrella, post which DNS Policies can be set up for the organization. Umbrella can be used to identify traffic coming from a public IP/IP Range. This helps with creating custom policies for a particular organization. In our lab, multiple devices will be talking to the outside world via the same Public IP, hence this approach will not work for us.
 
-Instead, we can get extremely granular and apply a policy to a specific user/group of users based on identities used to uniquely identify them.
+Instead, we can get extremely granular and apply a policy to a specific user/group of users based on identities used to uniquely identify them. We can also pinpoint individual workstations by leveraging Cisco AnyConnect, thereby encompassing Roaming Computers in our DNS policies.
 
 ### API Keys and AD Configuration
 
@@ -604,9 +604,9 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
 1. From your Jumphost, open a browser and go to login.umbrella.com. Login using the username/password for your POD
 
-    | Username <br> <br> X is your POD number | Password |
+    | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com | C1sco@12345 |
+    | ghi.pod0X@gmail.com <br> <br> X is your POD number | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/76_login.PNG)
 
@@ -724,9 +724,9 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 
 1. From your **AD PC**, open a browser and go to login.umbrella.com. Login using the username/password for your POD. Go to **Deployments => Configuration => Sites and Active Directory**
 
-    | Username <br> <br> X is your POD number | Password |
+    | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com | C1sco@12345 |
+    | ghi.pod0X@gmail.com <br> <br> X is your POD number | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/90_dep_conf_sad.PNG)
 
@@ -798,6 +798,82 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 
 ### AD Connectors
 
+AD Connectors allow Umbrella to see your AD structure and reference AD Groups/Users in Policies.
+
+1. From the AD PC, make sure you are logged in to Umbrella and navigate to **Deployment => Configuration => Sites and Active Directory**. Click on the **Download** button in the top right-hand corner and download the **Windows Service (Active Directory Connector)**
+
+    ![](/images/Umbrella_SDWAN_2/100_dwnldadc.PNG)
+
+2. This will download a .zip file named *OpenDNS-Windows-Service.zip*. Click on the up arrow next to the downloaded file and choose to Open File Location (browser specific - Firefox has a folder icon in the list of downloads which takes you to the location)
+
+    ![](/images/Umbrella_SDWAN_2/101_zip_ocf.PNG)
+
+3. Right click on the file and choose **Extract All**
+
+    ![](/images/Umbrella_SDWAN_2/102_ext.PNG)
+
+4. The file will be extracted to the path shown in the image by default. Click on **Extract**
+
+    ![](/images/Umbrella_SDWAN_2/103_extract.PNG)
+
+5. Once extracted, the contents of the .zip will open in a new window. Double click **Setup** to start the AD Connector Installer
+
+    ![](/images/Umbrella_SDWAN_2/104_folder_setupmsi.PNG)
+
+6. Click on **Next** at the Welcome and Destination folder screens. Enter a password of *C1sco12345*, leaving the Username at the default of *OpenDNS_Connector*. These should match with the user we created in Active Directory. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/105_next.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/106_next.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/107_pwdnext.PNG)
+
+7. The credentials should be validated successfully. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/108_next.PNG)
+
+8. Click on **Install** to begin the installation and **Finish** once the installation is complete
+
+    ![](/images/Umbrella_SDWAN_2/109_install.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/110_fin.PNG)
+
+9. On the AD PC, click on Start and search for *services.msc*. Click on the **Services** Desktop app
+
+    ![](/images/Umbrella_SDWAN_2/111_services.PNG)
+
+10. Right click on **Active Directory Domain Services** and choose to *Restart* the service. Select **Yes** to restart other related services as well
+
+    ![](/images/Umbrella_SDWAN_2/112_restart.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/113_yes.PNG)
+
+11. Once the services have restarted, locate the **OpenDNS Connector** service. Right click it and *Restart* this service as well
+
+    ![](/images/Umbrella_SDWAN_2/114_ods.PNG)
+
+12. Head over to Umbrella and navigate to **Deployments => Configuration => Sites and Active Directory**. Refresh the page if you're already on it and the AD Connector will show up over there. Don't worry if you don't see a green check mark (it takes time to reflect correctly)
+
+    ![](/images/Umbrella_SDWAN_2/115_refreshsad.PNG)
+
+13. On the Umbrella GUI, go to **Policies => Management => DNS Policies** and click on **Add** to create a new DNS Policy. We won't be adding the policy right now but will just check if our AD schema is visible on Umbrella
+
+    ![](/images/Umbrella_SDWAN_2/116_check1.PNG)
+
+14. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/117_next.PNG)
+
+15. You should see **AD Groups** and **AD Users** under *All Identities*, with a number next to it (13 and 3 respectively in this screenshot). A number is an indication that Umbrella can now see our AD configuration
+
+    ![](/images/Umbrella_SDWAN_2/118_adg_adu.PNG)
+
+16. Click on **AD Users** (click on the word AD Users, don't click on the checkbox next to it) and you will see 3 Users, imported from AD indicating that AD and Umbrella have been successfully linked. Click on **Cancel**
+
+    ![](/images/Umbrella_SDWAN_2/119_aducancel.PNG)
+
+This completes the configuration needed for linking AD with Umbrella. While we can reference the AD Groups/Users in our DNS Policies, it is possible to become even more granular and link individual workstations to Umbrella, thereby encompassing the remote workers use case. We will configure this in the next section.
+
 <br/>
 
 {% include callout.html content="**Task List**
@@ -835,6 +911,88 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 " type="primary" %}
 
 ### Roaming Computer Configuration
+
+Cisco AnyConnect is used to identify Roaming Computers and include them within our DNS Policies. This is what will be leveraged in our lab environment to build and apply a DNS Policy.
+
+1. Access the Site 30 PC via your preferred method (Guacamole/RDP/vCenter Console) and log in. [Click here](#pre-work){:target="_blank"} and go through Step 1 to review how to connect to the Site 30 PC. Open the **AnyConnect** folder on the Desktop and double-click **Setup** to start installing AnyConnect
+
+    ![](/images/Umbrella_SDWAN_2/120_anyconnect.PNG)
+
+2. Enter the following credentials when prompted for a username/password and click on **Yes**
+
+    | Username | Password |
+    | :---: | :---: |
+    | administrator | C1sco12345 |
+
+    ![](/images/Umbrella_SDWAN_2/121_unpwd.PNG)
+
+3. Remove the check mark against all modules *except* **Core & VPN**, **Umbrella Roaming Security** and **Diagnostic And Reporting Tool**. Click on **Install Selected** to install the selected modules
+
+    ![](/images/Umbrella_SDWAN_2/122_services.PNG)
+
+4. Click on **OK** and **Accept** the License Agreement
+
+    ![](/images/Umbrella_SDWAN_2/123_OK.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/124_accept.PNG)
+
+5. Once installation is complete, click on **OK**
+
+    ![](/images/Umbrella_SDWAN_2/125_ok.PNG)
+
+6. Open **Cisco AnyConnect Secure Mobility Client** by clicking on Start (it will show up in the *Recently Added* section). Notice that Roaming Security is flagged as unprotected by Umbrella. We will need to copy a profile unique to our Organization so that this workstation shows up on Umbrella as a Roaming Computer
+
+    ![](/images/Umbrella_SDWAN_2/126_any_noumb.PNG)
+
+7. From the **Site 30 PC**, log in to Umbrella. [Click here](#api-keys-and-ad-configuration){:target="_blank"} and reference Step 1 to review the login procedure, but make sure you log in to Umbrella via the Site 30 PC and **not** the AD PC. Go to **Deployments => Core Identities => Roaming Computers** and click on **Roaming Client** in the top right-hand corner
+
+    ![](/images/Umbrella_SDWAN_2/127_rc_rc.PNG)
+
+8. Click on **Download Module Profile**
+
+    ![](/images/Umbrella_SDWAN_2/128_download.PNG)
+
+9. This will download a file called *OrgInfo.json*. Click on the arrow next to the file download and choose **Show in folder** (again, browser specific - Firefox has a folder icon to go to the download location)
+
+    ![](/images/Umbrella_SDWAN_2/129_shinf.PNG)
+
+10. Right click on *OrgInfo.json* and click on **Copy**
+
+    ![](/images/Umbrella_SDWAN_2/130_copy.PNG)
+
+11. Open Windows Explorer and enter the following path (you will not be able to see this folder since it's hidden by default. There is an option to view hidden files and folders in Windows, but we can browse directly to the location)- *C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\Umbrella*
+
+    ![](/images/Umbrella_SDWAN_2/131_path.PNG)
+
+12. Paste the file we copied before (OrgInfo.json)
+
+    ![](/images/Umbrella_SDWAN_2/132_paste.PNG)
+
+13. Click on **Continue**
+
+    ![](/images/Umbrella_SDWAN_2/133_cont.PNG)
+
+14. Enter the username/password as shown below
+
+    | Username | Password |
+    | :---: | :---: |
+    | administrator | C1sco12345 |
+
+    ![](/images/Umbrella_SDWAN_2/134_creds.PNG)
+
+15. Once the file is placed in the folder, it should auto-generate another folder called **data**. If this doesn't show up, close Cisco AnyConnect and re-open
+
+    ![](/images/Umbrella_SDWAN_2/135_org_dataauto.PNG)
+
+16. AnyConnect should now show that you are protected by Umbrella
+
+    ![](/images/Umbrella_SDWAN_2/136_umb.PNG)
+
+17. Back at the Umbrella GUI, refresh the **Roaming Computers** page. The Site 30 PC will show up as a Roaming Computer
+
+    ![](/images/Umbrella_SDWAN_2/137_refresh.PNG)
+
+We will use the Roaming Computer as an Identity in DNS Policies (the next section). 
 
 <br/>
 
