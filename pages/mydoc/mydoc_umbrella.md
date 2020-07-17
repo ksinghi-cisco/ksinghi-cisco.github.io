@@ -992,7 +992,7 @@ Cisco AnyConnect is used to identify Roaming Computers and include them within o
 
     ![](/images/Umbrella_SDWAN_2/137_refresh.PNG)
 
-We will use the Roaming Computer as an Identity in DNS Policies (the next section). 
+We will use the Roaming Computer as an Identity to enforce DNS Policies (the next section).
 
 <br/>
 
@@ -1032,6 +1032,124 @@ We will use the Roaming Computer as an Identity in DNS Policies (the next sectio
 
 ## Building a DNS Policy
 
+1. Log in to the Cisco Umbrella GUI (you can now log in from your own workstation since Umbrella is on the Cloud). [Click here](#api-keys-and-ad-configuration){:target="_blank"} and reference Step 1 to review the login procedure. Navigate to **Policies => Policy Components => Destination Lists**. You will notice a few default Lists already created
+
+    ![](/images/Umbrella_SDWAN_2/137_udl.PNG)
+
+2. Click on **Add** in the top right-hand corner and give your List a name of *BlockAmazon*. Leave the **This destination list is applied to** field at *DNS Policies*
+
+    ![](/images/Umbrella_SDWAN_2/137_v_add_baz.PNG)
+
+3. Scroll down to the **Destinations in this list should be** field and make sure it is set to **Blocked**. Type amazon.com in the *Enter a domain or URL* box and hit Enter (or click on Add). This should place amazon.com in the list (blocked). Click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/137_wazcomsave.PNG)
+
+4. Navigate to **Policies => Management => DNS Policies** and click on **Add** to add a new DNS Policy
+
+    ![](/images/Umbrella_SDWAN_2/138_dnspol.PNG)
+
+5. Scroll down on the **How would you like to be protected?** page and click on **Next** without making any changes
+
+    ![](/images/Umbrella_SDWAN_2/139_next.PNG)
+
+6. On the **What would you like to protect?** page, click on **Roaming Computers**. Don't click on the checkbox next to it, but on the actual phrase itself
+
+    ![](/images/Umbrella_SDWAN_2/140_rc.PNG)
+
+7. Put a check mark next to *site30pc* and it should show up in the right-hand window. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/141_next.PNG)
+
+8. Click **Next** in the Security Settings
+
+    ![](/images/Umbrella_SDWAN_2/142_next.PNG)
+
+9. Select **Moderate** on the **Limited Content Access** page and make note of the categories that are being blocked. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/143_mod.PNG)
+
+10. Search for *ebay* in the Search Box on the **Control Applications** page under **Applications to Control** and put a check mark next to eBay. Make sure it is set to **Block** and click on **Next**. Click on **Proceed** on the Application Control Change Summary page
+
+    ![](/images/Umbrella_SDWAN_2/144_blebay.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/145_proc.PNG)
+
+11. Put a check mark next o **BlockAmazon** on the **Apply Destination Lists** page. This will apply the List we created before to the policy being built right now. You should see BlockAmazon on the right hand-side under **2 Block Lists Applied**. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/146_blaznext.PNG)
+
+12. Click on **Next** on the **File Analysis** and **Set Block Page Settings** pages without making any changes
+
+    ![](/images/Umbrella_SDWAN_2/147_next.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/148_next.PNG)
+
+13. Once on the **Policy Summary** page, give your Policy a Name of *DNSPolicy1*. Click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/149_dnspol1save.PNG)
+
+14. Our DNS Policy is now created. It might take 5 minutes for the policy to be applied. Click on the *DNSPolicy1* policy and enable **SSL Decryption**. Scroll down and click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/150_finalpol.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/150_veditpolssldec.PNG)
+
+15. We are now going to test our DNS Policy, but before doing so, the Cisco Umbrella root certificate will need to be downloaded and installed on the Site 30 PC. Head over to the Site 30 PC via your preferred connection method (Guacamole/RDP/vCenter Console). [Click here](#pre-work){:target="_blank"} and go through Step 1 to review how to connect to the Site 30 PC. Double-click the **Flush DNS** icon on the Desktop to clear the DNS cache
+
+    ![](/images/Umbrella_SDWAN_2/151_flush.PNG)
+
+16. Log in to Umbrella on the Site 30 PC (login.umbrella.com). [Click here](#api-keys-and-ad-configuration){:target="_blank"} and reference Step 1 to review the login procedure, but make sure you log in to Umbrella via the Site 30 PC. Navigate to **Deployment => Configuration => Root Certificate**
+
+    ![](/images/Umbrella_SDWAN_2/152_deprootcert.PNG)
+
+17. Expand **Cisco Root Certificate Authority** and download the root CA certificate
+
+    ![](/images/Umbrella_SDWAN_2/153_dwnld_install.PNG)
+
+18. Click on Keep, if prompted and open the downloaded file. Choose **Open** in the Security Warning
+
+    ![](/images/Umbrella_SDWAN_2/154_keepopen.PNG)
+
+19. Click on **Install Certificate**
+
+    ![](/images/Umbrella_SDWAN_2/155_install.PNG)
+
+20. Select **Local Machine** and click on **Next**. Enter the credentials shown below and click on **Yes**
+
+    | Username | Password |
+    | :---: | :---: |
+    | administrator | C1sco12345 |
+
+    ![](/images/Umbrella_SDWAN_2/156_locmacnext.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/157_unpwd.PNG)
+
+21. Choose the radio button next to **Place all certificates in the following store** and click on **Browse**. Click on **Trusted Root Certification Authorities** and hit **OK**
+
+    ![](/images/Umbrella_SDWAN_2/158_trusted.PNG)
+
+22. Click on **Finish** and then **OK**. Close the browser you were using and re-open before proceeding to the next step
+
+    ![](/images/Umbrella_SDWAN_2/159_fin_ok_restbrowser.PNG)
+
+23. On the browser, go to yahoo.com. The page should open since we haven't applied any policy for it
+
+    ![](/images/Umbrella_SDWAN_2/160_yahooworks.PNG)
+
+24. Now try going to amazon.com. We will find that it is blocked with the text **The site is blocked** indicating this has been done by the administrator via a Block List. Amazon was opening before, but our company policy doesn't allow it and we have thus leveraged Cisco Umbrella's DNS Policy functionality to block specific destinations
+
+    ![](/images/Umbrella_SDWAN_2/161_amzbl.PNG)
+
+25. Try to browse to ebay.com. This will also be blocked but the text will read **This site is blocked due to content filtering**. This is because we blocked eBay in the Control Applications section of our policy
+
+    ![](/images/Umbrella_SDWAN_2/162_ebaybl.PNG)
+
+26. Try to go to poker.com. This will also be blocked (with the same text as the previous step). Over here, our **Limited Content Access** level of *Moderate* is coming in to play. Note the subtext mentioning *This site was blocked due to the following categories: Gambling*
+
+    ![](/images/Umbrella_SDWAN_2/163_pokerbl.PNG)
+
+This completes the DNS Security part of our configuration. We have successfully deployed a DNS Policy, blocking sites that are not allowed by our company policy.
+
 <br/>
 
 {% include callout.html content="**Task List**
@@ -1069,6 +1187,20 @@ We will use the Roaming Computer as an Identity in DNS Policies (the next sectio
 " type="primary" %}
 
 ## Setting up IPSEC Tunnels
+
+The main focus of SD-WAN and Umbrella integration is around Secure Internet Gateway (SIG) functionality. So far, we have run through a DNS policy which is the first layer of security  in the network. For deeper packet inspection, we can utilize Umbrella and SD-WAN's SIG functionality which will create IPSEC tunnels between our vEdges/cEdges and Cisco Umbrella. Traffic will be sent to Umbrella over the IPSEC tunnels and will be subject to Firewall and Web policies.
+
+1. Open a browser and log in to Cisco Umbrella from your Jumphost. [Click here](#api-keys-and-ad-configuration){:target="_blank"} and reference Step 1 to review the login procedure, but make sure you log in to Umbrella via the **Jumphost** and **not** any other workstation. The main overview page will show that we have 1/1 Active Roaming Client and no Active Network Tunnels
+
+    ![](/images/Umbrella_SDWAN_2/165_notunn.PNG)
+
+2. Log in to the vManage GUI (192.168.0.6) with the Username and Password given below. Navigate to **Configuration => Templates => Feature Tab** and click **Add Template**. Search for *vedge* and select the **vEdge Cloud** device. Click on **SIG Credentials** under Other Templates
+
+    ![](/images/Umbrella_SDWAN_2/166_sigcred.PNG)
+
+
+
+
 
 <br/>
 
