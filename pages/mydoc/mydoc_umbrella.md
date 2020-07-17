@@ -626,7 +626,7 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     ![](/images/Umbrella_SDWAN_2/80_mgmt_create.PNG)
 
-6. This will generate the API Key and Secret. Click on the copy icon next to each and paste it in the notepad which contained the Organization ID.
+6. This will generate the API Key and Secret. Click on the copy icon next to each and paste it in the notepad which contains the Organization ID. Save this notepad file on the Desktop of the Jumphost, giving it any name
 
     {% include important.html content="Make sure that the Key and Secret are copied to notepad before proceeding since the Secret is visible on this page only." %}
 
@@ -1194,10 +1194,80 @@ The main focus of SD-WAN and Umbrella integration is around Secure Internet Gate
 
     ![](/images/Umbrella_SDWAN_2/165_notunn.PNG)
 
-2. Log in to the vManage GUI (192.168.0.6) with the Username and Password given below. Navigate to **Configuration => Templates => Feature Tab** and click **Add Template**. Search for *vedge* and select the **vEdge Cloud** device. Click on **SIG Credentials** under Other Templates
+2. Log in to the vManage GUI via the bookmark (or go to 192.168.0.6) with the Username and Password given below. Navigate to **Configuration => Templates => Feature Tab** and click **Add Template**. Search for *vedge* and select the **vEdge Cloud** device. Click on **SIG Credentials** under Other Templates
+
+    | Username | Password |
+    | :---: | :---: |
+    | admin | admin |
 
     ![](/images/Umbrella_SDWAN_2/166_sigcred.PNG)
 
+3. Put the **Template Name** as *SIG-Creds* and a Description of *SIG Credentials*. Enter the Organization ID, Registration Key (i.e. API Key) and Secret copied and saved to notepad before. Click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/167_detsave.PNG)
+
+4. Back at the Templates page, make sure you're still on the **Feature Tab** and click on **Add Template**. Search for vedge and select **vEdge Cloud**. Click on **Secure Internet Gateway (SIG)** under VPN
+
+    ![](/images/Umbrella_SDWAN_2/168_sigtemp.PNG)
+
+5. Give it a **Template Name** of *SIG-Template* and a Description of *SIG Template*
+
+    ![](/images/Umbrella_SDWAN_2/169_sigtemplname.PNG)
+
+6. Click on **Add Tunnel** and enter the details given in the table below. Click on **Add** once done
+
+    | Parameter               | Global or Device Specific (Drop Down) | Value    |
+    |-------------------------|---------------------------------------|----------|
+    | Interface Name (1..255) | Global                                | *ipsec1* |
+    | Source Interface        | Global                                | *ge0/0*  |
+    | Data-Center             | NA                                | Primary  |
+
+    ![](/images/Umbrella_SDWAN_2/170_addtunnadd.PNG)
+
+7. Click on **Add Tunnel** again to add a second IPSEC Tunnel. Enter the details given below and click on **Add**
+
+    | Parameter               | Global or Device Specific (Drop Down) | Value    |
+    |-------------------------|---------------------------------------|----------|
+    | Interface Name (1..255) | Global                                | *ipsec2* |
+    | Source Interface        | Global                                | *ge0/0*  |
+    | Data-Center             | NA                                | Secondary  |
+
+    ![](/images/Umbrella_SDWAN_2/171_addsecsave.PNG)
+
+8. Populate *ipsec1* under Active and *ipsec2* under Backup. Click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/172_hasave.PNG)
+
+9. Log in to vEdge30 via the saved Putty session. Enter `ping global-a.vpn.sig.umbrella.com`. Pings should be successful. Press Ctrl + c to stop the pings
+
+    | Username | Password |
+    | :----: | :---: |
+    | admin | admin |
+
+    ![](/images/Umbrella_SDWAN_2/173_ping.PNG)
+    ```
+    ping global-a.vpn.sig.umbrella.com
+    ```
+
+10. Back on the vManage GUI, navigate to **Configuration => Templates**. Under the Device tab, locate the *vedge30_dev_temp* template and click on the three dots next to it. Choose to **Edit** the template
+
+    ![](/images/Umbrella_SDWAN_2/174_editdevtemp.PNG)
+
+11. Go to the **Transport & Management VPN** section click on **Secure Internet Gateway** under **Additional VPN 0 Templates**. Select the *SIG-Template* from the drop down
+
+    ![](/images/Umbrella_SDWAN_2/175_sigtemp.PNG)
+
+12. Scroll down to the **Additional Templates** section and populate *SIG-Creds* for the **SIG Credentials**. Click on **Update**
+
+    ![](/images/Umbrella_SDWAN_2/176_sigcredsupdate.PNG)
+
+13. Click on **Next**. You can view the side-by-side configuration if required. Make onte of the *secure-internet-gateway* and *ha-pairs* configuration
+
+    ![](/images/Umbrella_SDWAN_2/177_sbs1.PNG)
+
+14. If you scroll down in the configuration, *interface ipsec1* and *interface ipsec2* configuration can be viewed. Click on  **Configure Devices**
+
+    ![](/images/Umbrella_SDWAN_2/178_sbs2conf.PNG)
 
 
 
