@@ -1261,16 +1261,45 @@ The main focus of SD-WAN and Umbrella integration is around Secure Internet Gate
 
     ![](/images/Umbrella_SDWAN_2/176_sigcredsupdate.PNG)
 
-13. Click on **Next**. You can view the side-by-side configuration if required. Make onte of the *secure-internet-gateway* and *ha-pairs* configuration
+13. Click on **Next**. You can view the side-by-side configuration if required. Make note of the *secure-internet-gateway* and *ha-pairs* configuration
 
     ![](/images/Umbrella_SDWAN_2/177_sbs1.PNG)
 
-14. If you scroll down in the configuration, *interface ipsec1* and *interface ipsec2* configuration can be viewed. Click on  **Configure Devices**
+14. If you scroll down, *interface ipsec1* and *interface ipsec2* configuration can be viewed. Click on  **Configure Devices**
 
     ![](/images/Umbrella_SDWAN_2/178_sbs2conf.PNG)
 
+15. Wait for a couple of minutes and log in to the Putty session for *vedge30*. Issue the command `show ipsec ike sessions`. You will see 2 sessions which should be in a state of **IKE_UP_IPSEC_UP**. If the sessions are in any other state, wait for a couple more minutes and issue the same command again
 
+    ![](/images/Umbrella_SDWAN_2/179_sh.PNG)
 
+16. Log in to the Umbrella GUI. On the main overview page, you should see **Active Network Tunnels 2/2 Active**
+
+    ![](/images/Umbrella_SDWAN_2/180_2tunn.PNG)
+
+    This is an indication that our IPSEC Tunnels to Umbrella are up.
+
+17. Head over to the Site 30 PC and open a web browser. Click on the *Outgoing Port Tester (444)* bookmark or go to http://portquiz.net:444. The page should load correctly
+
+    ![](/images/Umbrella_SDWAN_2/164_pqwork.PNG)
+
+18. Head back over to the vManage GUI and go to **Configuration => Templates => Feature Tab**. Locate the *vedge30-vpn10* template and click on the three dots next to it. Choose to **Edit** the template
+
+    ![](/images/Umbrella_SDWAN_2/180_aeditvpn10.PNG)
+
+19. Scroll down to the **Service Route** section and click on **New Service Route**. Enter a global **Prefix** for *0.0.0.0/0* and click on **Add**. Click on **Update** followed by **Next** and **Configure Devices**
+
+    ![](/images/Umbrella_SDWAN_2/180_bservrouteaddupdatenextconfdev.PNG)
+
+    This will ensure that all the traffic hitting VPN 10 on vEdge30 is punted over the newly established IPSEC Tunnels to Umbrella.
+
+20. On the Umbrella GUI, click on **Active Network Tunnels** and you will see the naming convention automatically populated for our 2 Tunnels. Both tunnels should be in an **Active** state (if the status is unknown, wait for some time and revisit this page)
+
+    ![](/images/Umbrella_SDWAN_2/181_nettunnact.PNG)
+
+    {% include tip.html content="The naming convention can be broken down as the Site ID, followed by the word SYS (for System IP) and then the System IP of the device in question with the dots replaced by x. The last few characters reference the Interface (IF) followed by the Interface Name (ipsec1 and ipsec2 in our case)." %}
+
+We have completed IPSEC Tunnel configuration for our vEdge30 device. Through the Service Route, we have ensured that all traffic is punted over the Tunnels to Umbrella (this is not in effect yet, more changes will be made to force traffic over the Tunnels).
 
 <br/>
 
@@ -1310,6 +1339,74 @@ The main focus of SD-WAN and Umbrella integration is around Secure Internet Gate
 
 ## Configuring a Firewall Policy
 
+1. Log in to Cisco Umbrella from your Jumphost, if not already logged in. Navigate to **Policies => Management => Firewall Policy** and click on **Add** in the top right-hand corner
+
+    ![](/images/Umbrella_SDWAN_2/183_addfwpol.PNG)
+
+2. Enter the rule name as *block444*. We will be blocking TCP traffic to port 444 via this Firewall Policy
+
+    ![](/images/Umbrella_SDWAN_2/184_name.PNG)
+
+3. Scroll down and set the Protocol to TCP. Set the **Destination Ports** to **Specify Port** and enter the port number 444
+
+    ![](/images/Umbrella_SDWAN_2/185_rule.PNG)
+
+4. Set the **Rule Action** to *Block Traffic* and Enable Logging
+
+    ![](/images/Umbrella_SDWAN_2/186_blocktraf_log.PNG)
+
+5. Under **Rule Schedule** set the **Start Date** to the earliest available and make sure **Does Not Expire** is checked. Click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/186_onedayb4.PNG)
+
+6. The Firewall Policy of *block444* should show up above the **Default Rule**
+
+    ![](/images/Umbrella_SDWAN_2/187_finalfw.PNG)
+
+7. On the Site 30 PC, open a browser and go to whatismyip.com. The Public IPv4 address should show up as **14.140.162.5**. We will remove DIA configuration at Site 30 and check the Public IP again
+
+    ![](/images/Umbrella_SDWAN_2/187_fwhatismyip.PNG)
+
+8. On the vManage GUI, navigate to **Configuration => Policies** and click on the three dots next to the *Site40-Guest-DIA* policy. Click on **Edit**. Under the **Policy Application** page, click on the **Traffic Data** tab. Delete the Site30 Site List/VPN List and click on **Save Policy Changes**. Choose to **Activate** the configuration, if prompted
+
+    ![](/images/Umbrella_SDWAN_2/187_gpolrems30.PNG)
+
+9. Once the policy changes have been pushed successfully, go back to the Site 30 PC and use a browser to go to whatismyip.com again. The Public IPv4 address should now be in the 146.112.A.B address space - this is the Singapore Umbrella Server
+
+    ![](/images/Umbrella_SDWAN_2/188_disabledia.PNG)
+
+10. Use the bookmark to navigate to **Outgoing Port Tester (444)** or go to http://portquiz.net:444. The site will not load
+
+    ![](/images/Umbrella_SDWAN_2/187_hpquizfail.PNG)
+
+11. Try to access http://portquiz.net:450 and the site should load right up, indicating that TCP connections to port 444 are being blocked (in line with our Firewall Policy)
+
+    ![](/images/Umbrella_SDWAN_2/187_iport450succ.PNG)
+
+12. Other than using the Cloud Delivered Firewall to block specific ports, we can also block ICMP packets. Open a command prompt on the Site 30 PC and type `ping cisco.com`. Hit Enter. The pings should be successful
+
+    ![](/images/Umbrella_SDWAN_2/188_icmpworking.PNG)
+
+13. Go to the Umbrella GUI and navigate to **Policies => Management => Firewall Policy**. Click on **Add** to add a new policy and name it *blockicmp*
+
+    ![](/images/Umbrella_SDWAN_2/189_blockicmp1.PNG)
+
+14. Set the **Protocol** as ICMP
+
+    ![](/images/Umbrella_SDWAN_2/189_blockicmp2.PNG)
+
+15. Make sure the Start Date is the earliest available and the Rule Action is set to block traffic, with logging enabled. Click on **Save** to save the firewall policy
+
+    ![](/images/Umbrella_SDWAN_2/189_blockicmp3.PNG)
+
+    ![](/images/Umbrella_SDWAN_2/189_blockicmpfinsave.PNG)
+
+16. Wait for approximately 5 minutes and try to ping cisco.com from the Site 30 PC again. Pings should now be blocked
+
+    ![](/images/Umbrella_SDWAN_2/191_icmpblock.PNG)
+
+We have thus used a Firewall Policy to block traffic to a particular destination port and block a certain protocol. This completes our configuration of a Cloud Delivered Firewall.
+
 <br/>
 
 {% include callout.html content="**Task List**
@@ -1347,6 +1444,35 @@ The main focus of SD-WAN and Umbrella integration is around Secure Internet Gate
 " type="primary" %}
 
 ## Configuring a Web Policy
+
+We will now apply a Web Policy to all traffic traversing the IPSEC Tunnels.
+
+1. On the Umbrella GUI, navigate to **Policies => Policy Components => Destination Lists** and click on **Add**. Name the list *blockyahoo* and make sure that the **Blocked** radio button is selected. Enter *yahoo.com* in the **Enter a domain, URL, IPv4 or CIDR** box and click on **Add**. Once yahoo.com shows up in the lower half of the screen, click on **Save**
+
+    ![](/images/Umbrella_SDWAN_2/192_wp3.PNG)
+
+2. Go to **Policies => Management => Web Policies** and click on **Add**. Click **Next** on the **How would you like to be protected?** window and put a check mark next to **Tunnels** in the **What would you like to protect?** window. Click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/192_wp1.PNG)
+
+3. Click the Radio Button next to **Decrypt Blocked Traffic Only** on the **HTTP Inspection** window and click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/192_wp2.PNG)
+
+4. Click **Next** for **Security Settings**, **Limit Content Access**, **Tenant Controls** and **Control Applications**. Put a check mark next to the **blockyahoo** Destination List and click on **Next**
+
+    ![](/images/Umbrella_SDWAN_2/192_wp4.PNG)
+
+5. Click **Next** on **File Analysis**, **File Type Control** and **Set Block Page Settings**. Give the Policy a name of *Webblockyahoo* and click on **Save**. The policy should show up above the *Default Web Policy*
+
+    ![](/images/Umbrella_SDWAN_2/192_wp5.PNG)
+
+6. Wait for a few minutes and head over to the Site 30 PC. Click on the **Flush DNS** icon on the Desktop and open a new browser window. Try to access yahoo.com (you can use the bookmark). Traffic to Yahoo, which was working before, should now be blocked. Make note of the subtext *This site was blocked by the Cisco Umbrella proxy*
+
+    ![](/images/Umbrella_SDWAN_2/194_yahoobl.PNG)
+
+We have completed integration and configuration of Umbrella with our SD-WAN environment.
+
 
 <br/>
 
