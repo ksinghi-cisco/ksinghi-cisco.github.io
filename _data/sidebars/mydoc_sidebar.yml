@@ -166,7 +166,7 @@ entries:
 
 #    - title: Git collaboration
 #      url: /mydoc_git_collaboration
-#      output: web, pdf
+#      output: web
 
   - title: Implementing Data Policies and ZBF
     output: web, pdf
@@ -213,9 +213,9 @@ entries:
       url: /mydoc_sdavc.html
       output: web, pdf
 
-    # - title: Cisco SD-WAN and Umbrella
-     # url: /mydoc_umbrella.html
-    #  output: web, pdf
+    - title: Cisco SD-WAN and Umbrella
+      url: /mydoc_umbrella.html
+      output: web, pdf
 
   - title: Cloud OnRamp for SaaS
     output: web, pdf
