@@ -526,7 +526,7 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 
     ![](/images/Umbrella_SDWAN_2/63_opendns.PNG)
 
-6. Click on **Apply** and then **OK** to apply the configuration change
+6. Click on **Apply** and then **OK** to apply the configuration change. Click on Start and type **services.msc**. Hit Enter and look for the DNS Server service. Right click on it and restart the service
 
     ![](/images/Umbrella_SDWAN_2/64_appOK.PNG)
 
@@ -547,6 +547,8 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 10. Enter internetbadguys.com in the browser and the traffic will be blocked. We have thus got a fundamental layer of security by simply pointing our DNS Server to the OpenDNS resolvers
 
     ![](/images/Umbrella_SDWAN_2/75_ibgblocked.PNG)
+
+{% include note.html content="If the site still opens, Flush the DNS cache on the Site 30 PC by clicking the Flush DNS shortcut on the desktop." %}
 
 {% include tip.html content="This is the simplest way to redirect traffic to Umbrella. However, if a user changes the DNS Server IP Address on their PCs, they can bypass the Umbrella redirect completely. It is recommended to deploy policies via vManage such that vEdges/cEdges can intercept DNS traffic destined for a manually entered DNS server (like 8.8.8.8) and redirect it to Umbrella." %}
 
