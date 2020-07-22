@@ -4,7 +4,7 @@ permalink: mydoc_servicechaining.html
 tags: [publishing, single_sourcing, content_types]
 keywords: inter VPN, Service Chaining, Firewall
 last_updated: July 21, 2020
-summary: "Implementing Inter VPN Routing and Service Chaining (Firewall)."
+summary: "Implementing Inter VPN Routing between Site 20 VPN 10 and Site 30 VPN 20, along with Service Chaining (Firewall)."
 sidebar: mydoc_sidebar
 folder: mydoc
 ---
@@ -44,7 +44,7 @@ Diagrammatically, our topology will look as below:
 
 ![](/images/InterVPN_ServiceChaining/125_Topo.PNG)
 
-> The black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time.
+> The Black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time. Traffic flows directly between the two Sites.
 
 > The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br> Source IP: 10.20.10.2 or 10.20.10.3 <br>  Destination IP: 10.30.20.2
 
