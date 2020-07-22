@@ -34,9 +34,21 @@ folder: mydoc
 " type="primary" %}
 
 ## Overview
-Since we have users on the Guest network accessing the Internet through the DIA VPN, we might want to lock down what they can/cannot access. Cisco SD-WAN has an in-built Zone Based Firewall which can perform Deep Packet Inspection, allowing and/or blocking/inspecting traffic as need be. While this is a slightly stripped down version of a ZBF, it is quite robust in functionality and offers an intuitive GUI (in the form of vManage) for deploying Firewall Rules.
+As of now, devices in different VPNs cannot communicate with each other. VPN 10 devices can talk to other VPN 10 devices but not to VPN 20. In this section, we will be setting up Inter VPN routing.
 
-In this section we will be configuring and deploying a Zone Based Firewall in our network. Guest users will be able to access most Web content but they won't be able to access Web based emails (like Gmail). We will see the corresponding activity on the ZBF in the CLI and on the GUI.
+Additionally, there might be a requirement where we need to send traffic from one VPN to another through a firewall. This feature is known as Service Chaining (other devices like Load Balancers can also be part of the Service Chain) and is used widely in real-world SD-WAN Deployments.
+
+We will be focussing on ensuring devices in Site 20 VPN 10 can communicate with devices in Site 30 VPN 20. Initially, this will be direct communication between the two VPNs. A firewall will then be inserted in the path so that all traffic between the VPNs traverses the firewall, which will be located at Site-DC in VPN 40.
+
+Diagrammatically, our topology will look as below:
+
+![](/images/InterVPN_ServiceChaining/125_Topo.PNG)
+
+The black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time.
+
+> The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br>* Source IP: 10.20.10.2 or 10.20.10.3 <br> * Destination IP: 10.30.20.2
+
+>The Green arrow is the traffic flow from Site 30 VPN 20 to Site 20 VPN 10 once Service Chaining is configured. <br> <br> * Source IP: 10.30.20.2 <br> * Destination IP: 10.20.10.2 or 10.20.10.3
 
 <br/>
 
