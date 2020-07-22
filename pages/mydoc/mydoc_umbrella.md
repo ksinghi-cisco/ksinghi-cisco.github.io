@@ -184,13 +184,13 @@ Additionally, we will be working on the Site 30 PC which is part of an AD domain
 
 14. Enter a Global value of *192.0.2.13* in the **Address** field and click on **Add**
 
-    ![](/images/Umbrella_SDWAN_2/16_nh.PNG
+    ![](/images/Umbrella_SDWAN_2/16_nh.PNG)
 
 15. Click on **Add** again to add the route
 
     ![](/images/Umbrella_SDWAN_2/17_add.PNG)
 
-16. We will be adding 2 more routes. Repeat steps 12 to 15 for the routes enumerated below, using the images as reference
+16. We will be adding 2 more routes. Repeat steps 12 to 15 for the routes enumerated below, using the images as reference. These routes and the ones in the previous steps are being added to maintain BFD sessions on the MPLS link in our SD-WAN network and to ensure that the TLOC extension configured before works as expected (hence the 192.168.26.0/24 route shown below). The 192.0.2.0/24 and 192.1.2.0/24 routes being added correspond to our MPLS subnets across the SD-WAN Network
 
     | Field                  | Global or Device Specific (Drop Down) | Value        |
     |------------------------|---------------------------------------|--------------|
