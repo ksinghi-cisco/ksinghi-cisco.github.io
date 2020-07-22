@@ -44,11 +44,11 @@ Diagrammatically, our topology will look as below:
 
 ![](/images/InterVPN_ServiceChaining/125_Topo.PNG)
 
-The black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time.
+> The black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time.
 
-> The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br>* Source IP: 10.20.10.2 or 10.20.10.3 <br> * Destination IP: 10.30.20.2
+> The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br> Source IP: 10.20.10.2 or 10.20.10.3 <br>  Destination IP: 10.30.20.2
 
->The Green arrow is the traffic flow from Site 30 VPN 20 to Site 20 VPN 10 once Service Chaining is configured. <br> <br> * Source IP: 10.30.20.2 <br> * Destination IP: 10.20.10.2 or 10.20.10.3
+>The Green arrow is the traffic flow from Site 30 VPN 20 to Site 20 VPN 10 once Service Chaining is configured. <br> <br>  Source IP: 10.30.20.2 <br>  Destination IP: 10.20.10.2 or 10.20.10.3
 
 <br/>
 
