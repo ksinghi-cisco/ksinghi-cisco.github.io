@@ -530,6 +530,8 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 
     ![](/images/Umbrella_SDWAN_2/64_appOK.PNG)
 
+    ![](/images/Umbrella_SDWAN_2/199_services.PNG)
+
 7. Head back to the Site 30 PC and click on the **Flush DNS** shortcut on the Desktop
 
     ![](/images/Umbrella_SDWAN_2/71_flushdns.PNG)
