@@ -16,15 +16,19 @@ folder: mydoc
 
 - Overview
 <br/>
-- Setting up Lists
+- Configure VPN 40 on DC-vEdges
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring Zones
+- Configuration Cleanup and Routing Verification
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Configuring an Application List
-    <br/>
-- Creating a Security Policy
+- Setting up VPN Lists
 <br/>
-- Applying the Policy and Verification
+- Inter VPN Routing Policies
+<br/>
+- Inter VPN Routing Verification
+<br/>
+- Policies for Service Chaining
+<br/>
+- Activity Verification
 <br/>
 
 " type="primary" %}
@@ -41,27 +45,55 @@ In this section we will be configuring and deploying a Zone Based Firewall in ou
 
 - [~~Overview~~](#overview)
 <br/>
-- [Setting up Lists](#setting-up-lists)
+- [Configure VPN 40 on DC-vEdges](#configure-vpn-40-on-dc-vedges)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring Zones](#configuring-zones)
+- [Configuration Cleanup and Routing Verification](#configuration-cleanup-and-routing-verification)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring an Application List](#configuring-an-application-list)
-    <br/>
-- [Creating a Security Policy](#creating-a-security-policy)
+- [Setting up VPN Lists](#setting-up-vpn-lists)
 <br/>
-- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+- [Inter VPN Routing Policies](#inter-vpn-routing-policies)
+<br/>
+- [Inter VPN Routing Verification](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
 
-## Setting up Lists
+## Configure VPN 40 on DC-vEdges
 
 We start off by configuring a few Lists that form the building blocks of our ZBF. The following lists will be created
 
 * Zone List for identifying the Guest and Outside zones
 * Application List for identifying webmail traffic and allowing all other TCP traffic to ports 80 and 443
 
-### Configuring Zones
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
+<br/>
+- [Configuration Cleanup and Routing Verification](#configuration-cleanup-and-routing-verification)
+<br/>
+- [Setting up VPN Lists](#setting-up-vpn-lists)
+<br/>
+- [Inter VPN Routing Policies](#inter-vpn-routing-policies)
+<br/>
+- [Inter VPN Routing Verification](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Configuration Cleanup and Routing Verification
 
 1. On the vManage GUI, go to **Configuration => Security**
 
@@ -90,20 +122,24 @@ We start off by configuring a few Lists that form the building blocks of our ZBF
 
 - [~~Overview~~](#overview)
 <br/>
-- [Setting up Lists](#setting-up-lists)
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+- [~~Configuration Cleanup and Routing Verification~~](#configuration-cleanup-and-routing-verification)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Configuring an Application List](#configuring-an-application-list)
-    <br/>
-- [Creating a Security Policy](#creating-a-security-policy)
+- [Setting up VPN Lists](#setting-up-vpn-lists)
 <br/>
-- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+- [Inter VPN Routing Policies](#inter-vpn-routing-policies)
+<br/>
+- [Inter VPN Routing Verification](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
 
-### Configuring an Application List
+## Setting up VPN Lists
 
 1. From the previous section, click on **Application** in the top left corner of the screen after verifying that both the Zone Lists are visible
 
@@ -126,20 +162,24 @@ We have created an Application List which can potentially identify Gmail, Mail.r
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Setting up Lists~~](#setting-up-lists)
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+- [~~Configuration Cleanup and Routing Verification~~](#configuration-cleanup-and-routing-verification)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring an Application List~~](#configuring-an-application-list)
-    <br/>
-- [Creating a Security Policy](#creating-a-security-policy)
+- [~~Setting up VPN Lists~~](#setting-up-vpn-lists)
 <br/>
-- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+- [Inter VPN Routing Policies](#inter-vpn-routing-policies)
+<br/>
+- [Inter VPN Routing Verification](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
 
-## Creating a Security Policy
+## Inter VPN Routing Policies
 
 1. On the vManage GUI, navigate to **Configuration => Security** and click on **Add Security Policy**
 
@@ -214,20 +254,24 @@ This completes the process of creating the Security Policy.
 
 - [~~Overview~~](#overview)
 <br/>
-- [~~Setting up Lists~~](#setting-up-lists)
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring Zones~~](#configuring-zones)
+- [~~Configuration Cleanup and Routing Verification~~](#configuration-cleanup-and-routing-verification)
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~Configuring an Application List~~](#configuring-an-application-list)
-    <br/>
-- [~~Creating a Security Policy~~](#creating-a-security-policy)
+- [~~Setting up VPN Lists~~](#setting-up-vpn-lists)
 <br/>
-- [Applying the Policy and Verification](#applying-the-policy-and-verification)
+- [~~Inter VPN Routing Policies~~](#inter-vpn-routing-policies)
+<br/>
+- [Inter VPN Routing Verification](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
 <br/>
 
 " type="primary" %}
 
-## Applying the Policy and Verification
+## Inter VPN Routing Verification
 
 1. Go to **Configuration => Templates** and click on the three dots next to the *cEdge_dualuplink_devtemp* Device Template. Choose to **Edit** it
 
@@ -259,7 +303,57 @@ This completes the process of creating the Security Policy.
 
 Thus, our ZBF is working as expected, blocking webmail traffic on the Guest VPN while allowing other traffic on ports 80 and 443.
 
+<br/>
 
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
+<br/>
+- [~~Configuration Cleanup and Routing Verification~~](#configuration-cleanup-and-routing-verification)
+<br/>
+- [~~Setting up VPN Lists~~](#setting-up-vpn-lists)
+<br/>
+- [~~Inter VPN Routing Policies~~](#inter-vpn-routing-policies)
+<br/>
+- [~~Inter VPN Routing Verification~~](#inter-vpn-routing-verification)
+<br/>
+- [Policies for Service Chaining](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Policies for Service Chaining
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Configure VPN 40 on DC-vEdges~~](#configure-vpn-40-on-dc-vedges)
+<br/>
+- [~~Configuration Cleanup and Routing Verification~~](#configuration-cleanup-and-routing-verification)
+<br/>
+- [~~Setting up VPN Lists~~](#setting-up-vpn-lists)
+<br/>
+- [~~Inter VPN Routing Policies~~](#inter-vpn-routing-policies)
+<br/>
+- [~~Inter VPN Routing Verification~~](#inter-vpn-routing-verification)
+<br/>
+- [~~Policies for Service Chaining~~](#policies-for-service-chaining)
+<br/>
+- [Activity Verification](#activity-verification)
+<br/>
+
+" type="primary" %}
+
+## Activity Verification
 
 <br/>
 
