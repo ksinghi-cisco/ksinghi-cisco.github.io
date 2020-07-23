@@ -42,7 +42,7 @@ We will be focussing on ensuring devices in Site 20 VPN 10 can communicate with 
 
 Diagrammatically, our topology will look as below:
 
-![](/images/InterVPN_ServiceChaining/125_Topo.PNG)
+![](/images/InterVPN_ServiceChaining/125_Topo2.PNG)
 
 > The Black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time. Traffic flows directly between the two Sites.
 
