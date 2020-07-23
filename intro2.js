@@ -65,7 +65,7 @@
       /* Close introduction when pressing Escape button? */
       exitOnEsc: true,
       /* Close introduction when clicking on overlay layer? */
-      exitOnOverlayClick: false,
+      exitOnOverlayClick: true,
       /* Show step numbers in introduction? */
       showStepNumbers: false,
       /* Let user use keyboard to navigate the tour? */
@@ -87,7 +87,7 @@
       /* Padding to add after scrolling when element is not in the viewport (in pixels) */
       scrollPadding: 30,
       /* Set the overlay opacity */
-      overlayOpacity: 0.9,
+      overlayOpacity: 1.0,
       /* Precedence of positions, when auto is enabled */
       positionPrecedence: ["bottom", "top", "right", "left"],
       /* Disable an interaction with element? */
@@ -1874,10 +1874,6 @@
     DOMEvent.on(document, 'click', _removeHintTooltip, this, false);
     DOMEvent.on(window, 'resize', _reAlignHints, this, true);
   }
-
-document.addEventListener("DOMContentLoaded", function() { 
-  introJs().setOption('showProgress', true).start();
-});
 
   /**
    * Re-aligns all hint elements

@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="introjs.css" rel="stylesheet">
+<link href="introjs-modern.css" rel="stylesheet">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Installing an IPS Engine on cEdges and testing signature detection for DIA Guest users">
+<meta name="keywords" content="content_types,  groups, api, structure">
+<title>Installing and Configuring the IPS module on cEdges | Cisco SWAT SD-WAN Lab Guide</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="swat-sdwanlab.github.io" href="swat-sdwanlab.github.io/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="https://salesconnect.cisco.com/#/program/PAGE-14324" target="_blank">&nbsp;<span class="projectTitle"> Cisco SWAT</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Toggle Sidebar</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://www.cisco.com" target="_blank" rel="noopener">Cisco Systems</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">SD-WAN Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en_in/solutions/enterprise-networks/sd-wan/index.html" target="_blank" rel="noopener">Cisco SD-WAN Solution</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/solutions/design-zone/networking-design-guides/branch-wan-edge.html" target="_blank" rel="noopener">SD-WAN Design Zone</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/support/routers/sd-wan/products-installation-and-configuration-guides-list.html" target="_blank" rel="noopener">Configuration Guides</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Help and Support" href="#" onclick="javascript:window.location='mailto:swat_labops@cisco.com?subject=Cisco SWAT SD-WAN Lab Guide Feedback feedback&body=I need some help on the Installing and Configuring the IPS module on cEdges page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Installing and Configuring the IPS module on cEdges">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden; ">
+  <li class="sidebarTitle">Cisco SD-WAN </li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="Readme First" href="#">Readme First</a>
+      <ul>
+          
+          
+          
+          <li><a title="Scenario based Lab Tasks" href="index.html">Scenario based Lab Tasks</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="How to Connect to the SWAT SD-WAN Labs" href="mydoc_connect.html">How to Connect to the SWAT SD-WAN Labs</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Overview" href="#">Overview</a>
+      <ul>
+          
+          
+          
+          <li><a title="Conventions used in this document" href="mydoc_Overview.html">Conventions used in this document</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Topology, Credentials and IP Addressing" href="mydoc_introduction.html">Topology, Credentials and IP Addressing</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Prerequisites and Objectives" href="mydoc_prerequisitesandobjectives.html">Prerequisites and Objectives</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Bringing Up the DC-vEdges" href="#">Bringing Up the DC-vEdges</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying DC-vEdge1" href="mydoc_Deploying_DCvEdge1.html">Deploying DC-vEdge1</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying DC-vEdge2" href="mydoc_Deploying_DCvEdge2.html">Deploying DC-vEdge2</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 20 and Site 30" href="#">Deploying devices in Site 20 and Site 30</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying vEdge20 - Single INET uplink" href="mydoc_Deploying_vEdge20.html">Deploying vEdge20 - Single INET uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge21 - Single MPLS uplink" href="mydoc_Deploying_vEdge21.html">Deploying vEdge21 - Single MPLS uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge30 - Dual uplink" href="mydoc_Deploying_vEdge30.html">Deploying vEdge30 - Dual uplink</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 40 and Site 50" href="#">Deploying devices in Site 40 and Site 50</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying cEdge40 - Dual Uplink" href="mydoc_Deploying_cEdge40.html">Deploying cEdge40 - Dual Uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying cEdge50 and cEdge51" href="mydoc_Deploying_cEdge50_cEdge51.html">Deploying cEdge50 and cEdge51</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="" href="mydoc_lists.html"></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Configuring Templates" href="#">Configuring Templates</a>
+      <ul>
+          
+          
+          
+          <li><a title="Templates for the DC-vEdges" href="mydoc_DCvEdges_templates.html">Templates for the DC-vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 20" href="mydoc_Site20_Templates.html">vEdge Templates for Site 20</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 30" href="mydoc_Site30_Templates.html">vEdge Templates for Site 30</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="cEdge Templates for Site 40" href="mydoc_Site40_Templates.html">cEdge Templates for Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Applying Templates to vSmarts" href="mydoc_Templates_to_vSmarts.html">Applying Templates to vSmarts</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Dynamic Service Side Routing" href="#">Implementing Dynamic Service Side Routing</a>
+      <ul>
+          
+          
+          
+          <li><a title="Service Side VPNs - vEdges" href="mydoc_ssv_vedges.html">Service Side VPNs - vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Service Side VPNs - cEdges" href="mydoc_ssv_cedges.html">Service Side VPNs - cEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Updating Device Templates" href="mydoc_devtemp_update.html">Updating Device Templates</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing OSPF at DC" href="mydoc_ospf_dc.html">Implementing OSPF at DC</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing EIGRP at Site 40" href="mydoc_eigrp_site40.html">Implementing EIGRP at Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Configuring VRRP at Site 50" href="mydoc_vrrp_site50.html">Configuring VRRP at Site 50</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="TLOC Extensions" href="#">TLOC Extensions</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring TLOC Extensions" href="mydoc_tloc_ext.html">Configuring TLOC Extensions</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Control Policies" href="#">Implementing Control Policies</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring a Hub and Spoke Topology" href="mydoc_hub_and_spoke.html">Configuring a Hub and Spoke Topology</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing a Regional Hub" href="mydoc_regional_hub.html">Implementing a Regional Hub</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Data Policies and ZBF" href="#">Implementing Data Policies and ZBF</a>
+      <ul>
+          
+          
+          
+          <li><a title="Implementing Custom Traffic Engineering" href="mydoc_custom_te.html">Implementing Custom Traffic Engineering</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing Direct Internet Access" href="mydoc_dia.html">Implementing Direct Internet Access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="ZBF configuration for Guest DIA" href="mydoc_zbf_dia.html">ZBF configuration for Guest DIA</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Application Aware Routing and QoS" href="#">Application Aware Routing and QoS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring and Testing AAR" href="mydoc_aar.html">Configuring and Testing AAR</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Setting up Quality of Service" href="mydoc_qos.html">Setting up Quality of Service</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cisco SD-WAN Security" href="#">Cisco SD-WAN Security</a>
+      <ul>
+          
+          
+          
+          <li class="active"><a title="Configuring IPS" href="mydoc_ips.html">Configuring IPS</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="URL Filtering Configuration" href="mydoc_urlf.html">URL Filtering Configuration</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Software Defined Application Visibility and Control (SD-AVC)" href="mydoc_sdavc.html">Software Defined Application Visibility and Control (SD-AVC)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Cisco SD-WAN and Umbrella" href="mydoc_umbrella.html">Cisco SD-WAN and Umbrella</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cloud OnRamp for SaaS" href="#">Cloud OnRamp for SaaS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring Cloud OnRamp for SaaS" href="mydoc_conrampsaas.html">Configuring Cloud OnRamp for SaaS</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Installing and Configuring the IPS module on cEdges
+      <a
+	class="btn btn-large btn-primary"
+	href="javascript:introJs().setOption('showProgress', true).start();"
+	>Get a demo tour</a
+	>
+	</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Installing an IPS Engine on cEdges and testing signature detection for DIA Guest users</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc" data-step="1" data-intro="The Table of Contents will give a quick run down of the lab activities that need to be performed, along with serving as a navigation mechanism." data-position="left"></div>
+
+    
+
+
+    
+
+   <p><br /></p>
+
+<div class="bs-callout bs-callout-primary" data-step="2" data-intro="The Task List will allow you to keep track of what activities have been done so far." data-position="left"><strong>Task List</strong>
+<br /><br />
+- Overview
+<br />
+- Initial Configuration
+<br />
+        - Revert Site 40 PC changes and enable DIA
+<br />
+        - Upload Image to vManage
+    <br />
+- Add the Security Policy
+<br />
+        - Firewall Policy Update
+    <br />
+        - Add the IPS Policy and Finalize the Security Policy
+    <br />
+- Updating the Application List and Device Template
+<br />
+- Verifying installation and performing signature updates
+<br />
+- Activity Verification
+<br />
+
+</div>
+
+<h2 id="overview">Overview</h2>
+
+<p>An Intrusion Prevention System (IPS) allows the network to detect anomalies based on known signatures and block/report them. The IPS module in Cisco SD-WAN can be deployed on Cisco IOS-XE SD-WAN Devices, working in Detect or Prevention mode. This solution is an on-prem on-box feature providing PCI compliance.</p>
+
+<p>Snort is leveraged on Cisco SD-WAN IOS-XEW Devices for IPS and IDS capabilities.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration">Initial Configuration</a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia">Revert Site 40 PC changes and enable DIA</a>
+<br />
+        - <a href="#upload-image-to-vmanage">Upload Image to vManage</a>
+    <br />
+- <a href="#add-the-security-policy">Add the Security Policy</a>
+<br />
+        - <a href="#firewall-policy-update">Firewall Policy Update</a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy">Add the IPS Policy and Finalize the Security Policy</a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template">Updating the Application List and Device Template</a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="initial-configuration">Initial Configuration</h2>
+<p><br />
+We will be performing some initial configuration in the network before it can support the IPS module. Key points to be noted:</p>
+
+<ul>
+  <li>The cEdge should have a minimum of 4 vCPUs and 8 GB RAM (already done)</li>
+  <li>Site 40 PC settings will be reverted</li>
+  <li>Images uploaded to vManage for deployment</li>
+</ul>
+
+<h3 id="revert-site-40-pc-changes-and-enable-dia">Revert Site 40 PC changes and enable DIA</h3>
+
+<ol>
+  <li>
+    <p data-step="3" data-intro="This is a step that needs to be performed to complete a lab task. Some steps will have tables.">Log in to vCenter via the bookmark in Chrome, or via the URL (10.2.1.50/ui). Use the credentials provided for your POD. Click on <strong>Login</strong></p>
+
+    <p data-step="4" data-intro="An image will usually accompany a step, for reference." data-position="left"><img src="/images/SD-WAN_Security_IPS/99_vc.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Locate your Site 40 PC (image below shows Site40_PC, VM name for your POD should be sdwan-slc/ghi-site40pc-podX) and choose to open the console. Select Web Console, if prompted</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/98_zconsole.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Log in to the PC and click on the network icon in the top-right corner. Expand <strong>Wired Connected</strong> and click on <strong>Wired Settings</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/98_wired.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the cog wheel/gear icon</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/97_cog.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Remove Connection Profile</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/96_remcp.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>If you still see a cog wheel/gear icon next to <em>Wired</em>, click on it and choose to <strong>Remove Connection Profile</strong> again. Once the <em>+</em> icon can be seen next to <strong>Wired</strong>, click on it</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/95_plus.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to the <strong>IPv4</strong> tab and click on <strong>Manual</strong> for the IPv4 Method. Enter details as given below and click on <strong>Add</strong>. Over here, y is <em>1</em> if you’re connected to the SLC DC and <em>2</em> if you’re connected to the GHI DC. The email sent with lab access details should enumerate which DC you’re POD is on</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Netmask</th>
+          <th>Gateway</th>
+          <th>DNS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10.40.30.21</td>
+          <td>255.255.255.0</td>
+          <td>10.40.30.2</td>
+          <td>Automatic - Off <br /> <br /> 10.y.1.5, 10.y.1.6</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/SD-WAN_Security_IPS/94_ip.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Back at the vCenter GUI, right click on your Site 40 PC and choose <strong>Edit Settings</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/91_es.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the drop down next to <strong>Network Adapter 1</strong> and click on <strong>Browse</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/90_nw.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose the <em>Site40-VPN30</em> network and click on <strong>OK</strong>. This should take you to the Edit Settings page, click on <strong>OK</strong> again</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/89_okok.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>On the vManage GUI, go to <strong>Configuration =&gt; Policies</strong> and locate the <em>Site40-Guest-DIA</em>. Click on the three dots next to it and choose to <strong>Activate</strong>. Confirm the Activation</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/01_act.PNG" alt="" /></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/02_conf.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go back to the console for the Site 40 PC and open Terminal. (<strong>Start =&gt; search for terminal =&gt; click on the icon</strong>). Type <code class="language-plaintext highlighter-rouge">ping 8.8.8.8</code> and hit Enter to verify Internet connectivity</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/03_int.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>We have set the Site 40 PC back to what it was, before our QoS section.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration">Initial Configuration</a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage">Upload Image to vManage</a>
+    <br />
+- <a href="#add-the-security-policy">Add the Security Policy</a>
+<br />
+        - <a href="#firewall-policy-update">Firewall Policy Update</a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy">Add the IPS Policy and Finalize the Security Policy</a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template">Updating the Application List and Device Template</a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h3 id="upload-image-to-vmanage">Upload Image to vManage</h3>
+
+<ol>
+  <li>
+    <p>On the vManage GUI, go to <strong>Maintenance =&gt; Software Repository</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/04_sw.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the <strong>Virtual Images</strong> tab and then click <strong>Upload Virtual Image</strong>. Choose <strong>vManage</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/05_up.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Browse</strong> and make sure you’re in the <em>SD-WAN Deployment Files</em> folder. This folder can be found on the Desktop of your Jumphost. Select the file starting with <em>secapp-utd…</em> and click on <strong>Open</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/06_brose.PNG" alt="" /></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/07_utd.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Upload</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/08_upl.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Once the file is uploaded, it should show up under Virtual Images</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/09_uplded.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy">Add the Security Policy</a>
+<br />
+        - <a href="#firewall-policy-update">Firewall Policy Update</a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy">Add the IPS Policy and Finalize the Security Policy</a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template">Updating the Application List and Device Template</a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="add-the-security-policy">Add the Security Policy</h2>
+
+<p>A Security Policy will be applied to the Device Template for cEdge40 to trigger IPS installation and functionality. We will be setting up the policy over here, including the previously created Firewall Policy in our overarching Security Policy.</p>
+
+<h3 id="firewall-policy-update">Firewall Policy Update</h3>
+
+<ol>
+  <li>
+    <p>On the vManage GUI, navigate to <strong>Configuration =&gt; Security</strong> and choose <strong>Add Security Policy</strong>. Select <strong>Custom</strong> and click on <strong>Proceed</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/10_custom.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <strong>Firewall</strong>, click on <strong>Add Firewall Policy</strong> and choose <strong>Copy from Existing</strong>. We already have a Firewall Policy in place but the Security Policy type chosen for it was Guest Access, which doesn’t have an option of including an IPS policy. Hence, we will create a new custom policy which will include the Firewall Policy created before</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/11_copyfe.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <em>Guest-FW</em> as the Policy and specify the Policy Name as <em>Guest-FW_concat</em>. Give a Description of <em>Guest Traffic Firewall with IPS</em>. Click on <strong>Copy</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/12_cop.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>The Firewall Policy we just copied should show up. Click on <strong>Next</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/13_next.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>Configuration of the Security Policy continues in the next section.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy">Add the Security Policy</a>
+<br />
+        - <a href="#firewall-policy-update"><del>Firewall Policy Update</del></a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy">Add the IPS Policy and Finalize the Security Policy</a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template">Updating the Application List and Device Template</a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h3 id="add-the-ips-policy-and-finalize-the-security-policy">Add the IPS Policy and Finalize the Security Policy</h3>
+
+<ol>
+  <li>
+    <p>Under the <strong>Intrusion Prevention</strong> page, click on <strong>Add Intrusion Prevention</strong> and choose <strong>Create New</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/14_ipspol.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Target VPNs</strong> and enter a VPN of <em>30</em>. Click on <strong>Save Changes</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/15_vpn30.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Under the Intrusion Prevention - Policy Rule Configuration, enter the following details and click on <strong>Save Intrusion Prevention Policy</strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Policy Name</th>
+          <th>Signature Set</th>
+          <th>Inspection Mode</th>
+          <th>Alerts Log Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><em>Guest-IPS</em></td>
+          <td>Security</td>
+          <td>Protection</td>
+          <td>Info</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/SD-WAN_Security_IPS/88_protect.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Back at the main Security Policy page, click on <strong>Next</strong> 5 times</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/17_next5.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Enter the details as shown in the table below and click on <strong>Save Policy</strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Security Policy Name</th>
+          <th>Security Policy Description</th>
+          <th>TCP SYN Flood Limit</th>
+          <th>Audit Trail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><em>Guest-FW-IPS-DIA</em></td>
+          <td>Guest Firewall and IPS DIA</td>
+          <td>Enabled <br /> 5000</td>
+          <td>On</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/SD-WAN_Security_IPS/18_save.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>This completes the configuration of our Security Policy.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy"><del>Add the Security Policy</del></a>
+<br />
+        - <a href="#firewall-policy-update"><del>Firewall Policy Update</del></a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy"><del>Add the IPS Policy and Finalize the Security Policy</del></a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template">Updating the Application List and Device Template</a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="updating-the-application-list-and-device-template">Updating the Application List and Device Template</h2>
+
+<p>The Application List attached to the Firewall Policy that we had earlier will need to be instantiated again before we can use it. For that, we will make a dummy modification to the Application List</p>
+
+<ol>
+  <li>
+    <p>On the vManage GUI, go to <strong>Configuration =&gt; Security</strong>. Click on <strong>Custom Lists</strong> (top right-hand corner) and choose <strong>Lists</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/93_list.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the three dots next to the <em>Guest-Inspect</em> Application List and click on the <strong>pencil</strong> icon to edit it. Under <strong>Select Application</strong>, check <strong>X Font Server</strong> (or any application that you want, this is a dummy entry)</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/18_xdummyapplistupdate.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Scroll down the list and <strong>uncheck</strong> Webmail, but check all the other Applications under Webmail</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/92_app.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click outside the box and choose to <strong>Save</strong> the Application List. Click on <strong>Activate</strong>, if prompted</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/18_ydummyapplsagain.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to <strong>Configuration =&gt; Templates</strong> and click on the three dots next to <em>cedge_dualuplink_devtemp</em>. Click on <strong>Edit</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/19_editdevtemp.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Navigate to the <strong>Additional Templates</strong> section and populate the <strong>Security Policy</strong> field with the policy we just created - <em>Guest-FW-IPS-DIA</em>. Click on <strong>Update</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/20_edittempup.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Next</strong> and you can choose to view the side-by-side configuration. Click on <strong>Configure Devices</strong>. If you do choose to view the configuration, notice the UTD related commands being pushed by vManage - they are for the IPS module</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/21_sbs.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>The status of this change will show up as <strong>Done - Scheduled</strong>. This is expected since the IPS engine has to be installed on the cEdge</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/22_appinstsched.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Navigate to <strong>Configuration =&gt; Devices</strong> and locate the cEdge40 Device. You will notice that the Device Status is <strong>Service Install Pending</strong> (might have to scroll to the right or remove columns to see this)</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/23_devstat_removecolumns.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>Since it takes approximately 5 minutes for the install process to go through, this will be a perfect time to grab a cup of tea/coffee! We will validate the installation in the next section.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy"><del>Add the Security Policy</del></a>
+<br />
+        - <a href="#firewall-policy-update"><del>Firewall Policy Update</del></a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy"><del>Add the IPS Policy and Finalize the Security Policy</del></a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template"><del>Updating the Application List and Device Template</del></a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="verifying-installation-and-performing-signature-updates">Verifying installation and performing signature updates</h2>
+
+<ol>
+  <li>
+    <p>After you’re done with the cup of tea/coffee, check the <strong>Configuration =&gt; Devices</strong> page again. cEdge40 should now be <strong>In Sync</strong></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/24_insync.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Log in to the CLI of cEdge40 via Putty and enter the <code class="language-plaintext highlighter-rouge">show utd engine standard status</code> command. The <strong>Overall system status</strong> should be <em>Green</em> and the Engine should be <em>Running</em>. If the <strong>Signature</strong> is version <em>29.0.c</em>, proceed to the next step else skip to <a href="#activity-verification">Activity Verification</a></p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/25_utdstat.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> show utd engine standard status
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>To update the signatures, run the command <code class="language-plaintext highlighter-rouge">copy scp: bootflash:</code>. Details to be entered are given below, confirm the signature update</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">Address or name of remote host</th>
+          <th style="text-align: center">Source username</th>
+          <th style="text-align: center">Source filename</th>
+          <th style="text-align: center">Destination filename</th>
+          <th style="text-align: center">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">100.100.100.1</td>
+          <td style="text-align: center">admin</td>
+          <td style="text-align: center">UTD-STD-SIGNATURE-29130-115-S.pkg</td>
+          <td style="text-align: center">UTD-STD-SIGNATURE-29130-115-S.pkg</td>
+          <td style="text-align: center">admin</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/SD-WAN_Security_IPS/26_copysigcentgw.PNG" alt="" /></p>
+
+    <p>Once the image is copied over to the bootflash: of cEdge40, run the command <code class="language-plaintext highlighter-rouge">utd signature update file bootflash:UTD-STD-SIGNATURE-29130-115-S.pkg</code>. Confirm the signature update</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/27_instsign.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> copy scp: bootflash:
+ utd signature update file bootflash:UTD-STD-SIGNATURE-29130-115-S.pkg
+    
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run <code class="language-plaintext highlighter-rouge">show utd engine standard status</code> to check if the signature package version matches with the image below</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/28_succ.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> show utd engine standard status
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy"><del>Add the Security Policy</del></a>
+<br />
+        - <a href="#firewall-policy-update"><del>Firewall Policy Update</del></a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy"><del>Add the IPS Policy and Finalize the Security Policy</del></a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template"><del>Updating the Application List and Device Template</del></a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates"><del>Verifying installation and performing signature updates</del></a>
+<br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="activity-verification">Activity Verification</h2>
+
+<ol>
+  <li>
+    <p>Log in to vCenter and console in to your Site 40 PC again, like before (<a href="#revert-site-40-pc-changes-and-enable-dia">click here</a> to review the process). Open <strong>Terminal</strong> and type <code class="language-plaintext highlighter-rouge">ping 8.8.8.8</code> to verify that Internet connectivity is still there</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/29_pingworking.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Still in Terminal, run <code class="language-plaintext highlighter-rouge">.\ips.sh</code> to trigger a few HTTP connections which will trigger the IPS</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/30_ipssh.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Back at the cEdge40 CLI, issue <code class="language-plaintext highlighter-rouge">show utd engine standard logging events</code>. You should see alerts triggered as a result of running the ips.sh file (this file attempts to download some simulated malware). Thus, our IPS engine is working as expected</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/87_drop.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>We can view this information on the vManage GUI as well. Go to <strong>Dashboard =&gt; Security</strong> and you should see some Signature hits. The dashboard does take some time to get populated, though (it’s never too soon for another cup of tea/coffee!)</p>
+
+    <p><img src="/images/SD-WAN_Security_IPS/32_signhits.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>This completes the verification activity.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#initial-configuration"><del>Initial Configuration</del></a>
+<br />
+        - <a href="#revert-site-40-pc-changes-and-enable-dia"><del>Revert Site 40 PC changes and enable DIA</del></a>
+<br />
+        - <a href="#upload-image-to-vmanage"><del>Upload Image to vManage</del></a>
+    <br />
+- <a href="#add-the-security-policy"><del>Add the Security Policy</del></a>
+<br />
+        - <a href="#firewall-policy-update"><del>Firewall Policy Update</del></a>
+    <br />
+        - <a href="#add-the-ips-policy-and-finalize-the-security-policy"><del>Add the IPS Policy and Finalize the Security Policy</del></a>
+    <br />
+- <a href="#updating-the-application-list-and-device-template"><del>Updating the Application List and Device Template</del></a>
+<br />
+- <a href="#verifying-installation-and-performing-signature-updates"><del>Verifying installation and performing signature updates</del></a>
+<br />
+- <a href="#activity-verification"><del>Activity Verification</del></a>
+<br />
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2020 Cisco Systems Inc. and/or its affiliates. All rights reserved. Cisco Partner Confidential. <br />
+<span>Page last updated:</span> June 3, 2020<br/> Site last generated: Jul 23, 2020 <br />
+<p><img src="images/logo.png" alt="Cisco logo" width="150" /></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+<script type="text/javascript" src="intro2.js" href="javascript:introJs().start();"></script>
+</html>

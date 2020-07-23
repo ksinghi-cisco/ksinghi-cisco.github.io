@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="introjs.css" rel="stylesheet">
+<link href="introjs-dark.css" rel="stylesheet">
+<link href="introjs-modern.css" rel="stylesheet">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Check which Lab Tasks need to be completed, based on the chosen scenario.">
+<meta name="keywords" content="getting_started,  documentation theme, jekyll, technical writers, help authoring tools, hat replacements">
+<title>Scenarios and Lab Tasks | Cisco SWAT SD-WAN Lab Guide</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="swat-sdwanlab.github.io" href="swat-sdwanlab.github.io/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks" data-step="2" data-intro="This is the top navigation bar. You will find some helpful links and a search box over here, among other things.">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="https://salesconnect.cisco.com/#/program/PAGE-14324" target="_blank">&nbsp;<span class="projectTitle" data-step="1" data-intro="Welcome to the Cisco SWAT SD-WAN Lab. Take a moment to familiarize yourself with this Lab Guide." > Cisco SWAT</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#" data-step="4" data-intro="Use this slider to show or hide the sidebar. Set it to the off position if you are viewing this guide on a small screen."><i id="tg-sb-icon" class="fa fa-toggle-on" ></i> Toggle Sidebar</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://www.cisco.com" target="_blank" rel="noopener">Cisco Systems</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">SD-WAN Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en_in/solutions/enterprise-networks/sd-wan/index.html" target="_blank" rel="noopener">Cisco SD-WAN Solution</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/solutions/design-zone/networking-design-guides/branch-wan-edge.html" target="_blank" rel="noopener">SD-WAN Design Zone</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/support/routers/sd-wan/products-installation-and-configuration-guides-list.html" target="_blank" rel="noopener">Configuration Guides</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Help and Support" href="#" onclick="javascript:window.location='mailto:swat_labops@cisco.com?subject=Cisco SWAT SD-WAN Lab Guide Feedback feedback&body=I need some help on the Scenarios and Lab Tasks page: ' + window.location.href;" data-step="5" data-intro="If you face any issues while going through the lab, use this to send an email to our team."><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Scenarios and Lab Tasks">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden; data-step="3" data-intro="This is the sidebar. Lab activities can be found over here.">
+  <li class="sidebarTitle">Cisco SD-WAN </li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="Readme First" href="#">Readme First</a>
+      <ul>
+          
+          
+          
+          <li class="active"><a title="Scenario based Lab Tasks" href="index.html">Scenario based Lab Tasks</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="How to Connect to the SWAT SD-WAN Labs" href="mydoc_connect.html">How to Connect to the SWAT SD-WAN Labs</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Overview" href="#">Overview</a>
+      <ul>
+          
+          
+          
+          <li><a title="Conventions used in this document" href="mydoc_Overview.html">Conventions used in this document</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Topology, Credentials and IP Addressing" href="mydoc_introduction.html">Topology, Credentials and IP Addressing</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Prerequisites and Objectives" href="mydoc_prerequisitesandobjectives.html">Prerequisites and Objectives</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Bringing Up the DC-vEdges" href="#">Bringing Up the DC-vEdges</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying DC-vEdge1" href="mydoc_Deploying_DCvEdge1.html">Deploying DC-vEdge1</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying DC-vEdge2" href="mydoc_Deploying_DCvEdge2.html">Deploying DC-vEdge2</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 20 and Site 30" href="#">Deploying devices in Site 20 and Site 30</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying vEdge20 - Single INET uplink" href="mydoc_Deploying_vEdge20.html">Deploying vEdge20 - Single INET uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge21 - Single MPLS uplink" href="mydoc_Deploying_vEdge21.html">Deploying vEdge21 - Single MPLS uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge30 - Dual uplink" href="mydoc_Deploying_vEdge30.html">Deploying vEdge30 - Dual uplink</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 40 and Site 50" href="#">Deploying devices in Site 40 and Site 50</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying cEdge40 - Dual Uplink" href="mydoc_Deploying_cEdge40.html">Deploying cEdge40 - Dual Uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying cEdge50 and cEdge51" href="mydoc_Deploying_cEdge50_cEdge51.html">Deploying cEdge50 and cEdge51</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="" href="mydoc_lists.html"></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Configuring Templates" href="#">Configuring Templates</a>
+      <ul>
+          
+          
+          
+          <li><a title="Templates for the DC-vEdges" href="mydoc_DCvEdges_templates.html">Templates for the DC-vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 20" href="mydoc_Site20_Templates.html">vEdge Templates for Site 20</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 30" href="mydoc_Site30_Templates.html">vEdge Templates for Site 30</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="cEdge Templates for Site 40" href="mydoc_Site40_Templates.html">cEdge Templates for Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Applying Templates to vSmarts" href="mydoc_Templates_to_vSmarts.html">Applying Templates to vSmarts</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Dynamic Service Side Routing" href="#">Implementing Dynamic Service Side Routing</a>
+      <ul>
+          
+          
+          
+          <li><a title="Service Side VPNs - vEdges" href="mydoc_ssv_vedges.html">Service Side VPNs - vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Service Side VPNs - cEdges" href="mydoc_ssv_cedges.html">Service Side VPNs - cEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Updating Device Templates" href="mydoc_devtemp_update.html">Updating Device Templates</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing OSPF at DC" href="mydoc_ospf_dc.html">Implementing OSPF at DC</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing EIGRP at Site 40" href="mydoc_eigrp_site40.html">Implementing EIGRP at Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Configuring VRRP at Site 50" href="mydoc_vrrp_site50.html">Configuring VRRP at Site 50</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="TLOC Extensions" href="#">TLOC Extensions</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring TLOC Extensions" href="mydoc_tloc_ext.html">Configuring TLOC Extensions</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Control Policies" href="#">Implementing Control Policies</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring a Hub and Spoke Topology" href="mydoc_hub_and_spoke.html">Configuring a Hub and Spoke Topology</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing a Regional Hub" href="mydoc_regional_hub.html">Implementing a Regional Hub</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Data Policies and ZBF" href="#">Implementing Data Policies and ZBF</a>
+      <ul>
+          
+          
+          
+          <li><a title="Implementing Custom Traffic Engineering" href="mydoc_custom_te.html">Implementing Custom Traffic Engineering</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing Direct Internet Access" href="mydoc_dia.html">Implementing Direct Internet Access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="ZBF configuration for Guest DIA" href="mydoc_zbf_dia.html">ZBF configuration for Guest DIA</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Application Aware Routing and QoS" href="#">Application Aware Routing and QoS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring and Testing AAR" href="mydoc_aar.html">Configuring and Testing AAR</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Setting up Quality of Service" href="mydoc_qos.html">Setting up Quality of Service</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cisco SD-WAN Security" href="#">Cisco SD-WAN Security</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring IPS" href="mydoc_ips.html">Configuring IPS</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="URL Filtering Configuration" href="mydoc_urlf.html">URL Filtering Configuration</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Software Defined Application Visibility and Control (SD-AVC)" href="mydoc_sdavc.html">Software Defined Application Visibility and Control (SD-AVC)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Cisco SD-WAN and Umbrella" href="mydoc_umbrella.html">Cisco SD-WAN and Umbrella</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cloud OnRamp for SaaS" href="#">Cloud OnRamp for SaaS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring Cloud OnRamp for SaaS" href="mydoc_conrampsaas.html">Configuring Cloud OnRamp for SaaS</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Scenarios and Lab Tasks
+   	<a
+	class="btn btn-large btn-primary"
+	href="javascript:introJs().setOption('showProgress', true).start();"
+	data-step="7"
+	data-intro="Click here to start a tour of the page. Look for this button on other pages as well, to get an overview of that page."
+	>Get a demo tour</a
+	>
+	</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Check which Lab Tasks need to be completed, based on the chosen scenario.</div>
+	</div>
+   
+
+    
+
+
+    
+
+   <div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Please expand the Lab Scenario chosen by you during registration and make note of the lab tasks that have been pre-configured and the tasks that need to be configured. All lab sections are viewable for reference. If a SWAT contact is assisting with these labs, please check with him/her for the lab tasks which need to be configured by you.</div>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> Please disable the side navigation bar if viewing this on a mobile device/small screen (there is an option to do so in the top navigation menu). The sidebar doesn’t work too well with small screen devices. If the top navigation menu is not visible, look for a menu icon (three lines) in the top right corner.</div>
+
+<h2 id="lab-scenarios">Lab Scenarios</h2>
+
+<div class="panel-group" id="accordion"  data-step="6" data-intro="Select your lab scenario to see the lab tasks that need to be performed. If a SWAT contact is assisting you, ask him/her for the applicable scenario." data-position="left">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Cisco SD-WAN Deployment</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Cisco SD-WAN Configuration and Administration</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Cisco SD-WAN Policies, Security, AAR and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse noCrossRef">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Cisco SD-WAN Data Policies, Security and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Cisco SD-WAN Advanced Data Policies, Security and Cloud OnRamp</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Cisco SD-WAN Security and Cloud OnRamp with SaaS</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Cisco SD-WAN Security<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Cisco SD-WAN Cloud OnRamp and WAAS</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <b><u>Lab Tasks Pre-Configured (per the lab guide)</u></b> <br /><br />Bringing up the DC-vEdges<br /><br />Deploying Devices in Site 20 and Site 30<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge20 - Single INET uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge21 - Single MPLS uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying vEdge30 - Dual uplink<br /><br />Deploying Devices in Site 40 and Site 50<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge40 - Dual Uplink<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploying cEdge50 and cEdge51<br /><br />Configuring Templates<br />Implementing Dynamic Service Side Routing<br />TLOC Extensions<br />Implementing Control Policies<br />Implementing Data Policies and ZBF<br />Application Aware Routing and QoS<br />Cisco SD-WAN Security<br /><br /><b><u>Lab Tasks to be followed (per the lab guide)</u></b> <br /><br />Connecting to the SWAT Labs<br />Overview<br />Cloud OnRamp for SaaS<br />WAAS Integration with SD-WAN using AppNav-XE
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+</div>
+<!-- /.panel-group -->
+
+
+
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2020 Cisco Systems Inc. and/or its affiliates. All rights reserved. Cisco Partner Confidential. <br />
+<span>Page last updated:</span> June 6, 2020<br/> Site last generated: Jul 23, 2020 <br />
+<p><img src="images/logo.png" alt="Cisco logo" width="150" /></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+<script type="text/javascript" src="intro.js" href="javascript:introJs().start();"></script>
+</html>

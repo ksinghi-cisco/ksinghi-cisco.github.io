@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="introjs.css" rel="stylesheet">
+<link href="introjs-modern.css" rel="stylesheet">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Step by step process for deploying DC-vEdge1">
+<meta name="keywords" content="getting_started,  DC-vEdge1, onboarding, deploying, vEdge1">
+<title>Deploying and Onboarding DC-vEdge1 | Cisco SWAT SD-WAN Lab Guide</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="swat-sdwanlab.github.io" href="swat-sdwanlab.github.io/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="https://salesconnect.cisco.com/#/program/PAGE-14324" target="_blank">&nbsp;<span class="projectTitle"> Cisco SWAT</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Toggle Sidebar</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://www.cisco.com" target="_blank" rel="noopener">Cisco Systems</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">SD-WAN Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en_in/solutions/enterprise-networks/sd-wan/index.html" target="_blank" rel="noopener">Cisco SD-WAN Solution</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/solutions/design-zone/networking-design-guides/branch-wan-edge.html" target="_blank" rel="noopener">SD-WAN Design Zone</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/support/routers/sd-wan/products-installation-and-configuration-guides-list.html" target="_blank" rel="noopener">Configuration Guides</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Help and Support" href="#" onclick="javascript:window.location='mailto:swat_labops@cisco.com?subject=Cisco SWAT SD-WAN Lab Guide Feedback feedback&body=I need some help on the Deploying and Onboarding DC-vEdge1 page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Deploying and Onboarding DC-vEdge1">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden; ">
+  <li class="sidebarTitle">Cisco SD-WAN </li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="Readme First" href="#">Readme First</a>
+      <ul>
+          
+          
+          
+          <li><a title="Scenario based Lab Tasks" href="index.html">Scenario based Lab Tasks</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="How to Connect to the SWAT SD-WAN Labs" href="mydoc_connect.html">How to Connect to the SWAT SD-WAN Labs</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Overview" href="#">Overview</a>
+      <ul>
+          
+          
+          
+          <li><a title="Conventions used in this document" href="mydoc_Overview.html">Conventions used in this document</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Topology, Credentials and IP Addressing" href="mydoc_introduction.html">Topology, Credentials and IP Addressing</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Prerequisites and Objectives" href="mydoc_prerequisitesandobjectives.html">Prerequisites and Objectives</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Bringing Up the DC-vEdges" href="#">Bringing Up the DC-vEdges</a>
+      <ul>
+          
+          
+          
+          <li class="active"><a title="Deploying DC-vEdge1" href="mydoc_Deploying_DCvEdge1.html">Deploying DC-vEdge1</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying DC-vEdge2" href="mydoc_Deploying_DCvEdge2.html">Deploying DC-vEdge2</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 20 and Site 30" href="#">Deploying devices in Site 20 and Site 30</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying vEdge20 - Single INET uplink" href="mydoc_Deploying_vEdge20.html">Deploying vEdge20 - Single INET uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge21 - Single MPLS uplink" href="mydoc_Deploying_vEdge21.html">Deploying vEdge21 - Single MPLS uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge30 - Dual uplink" href="mydoc_Deploying_vEdge30.html">Deploying vEdge30 - Dual uplink</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 40 and Site 50" href="#">Deploying devices in Site 40 and Site 50</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying cEdge40 - Dual Uplink" href="mydoc_Deploying_cEdge40.html">Deploying cEdge40 - Dual Uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying cEdge50 and cEdge51" href="mydoc_Deploying_cEdge50_cEdge51.html">Deploying cEdge50 and cEdge51</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="" href="mydoc_lists.html"></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Configuring Templates" href="#">Configuring Templates</a>
+      <ul>
+          
+          
+          
+          <li><a title="Templates for the DC-vEdges" href="mydoc_DCvEdges_templates.html">Templates for the DC-vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 20" href="mydoc_Site20_Templates.html">vEdge Templates for Site 20</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 30" href="mydoc_Site30_Templates.html">vEdge Templates for Site 30</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="cEdge Templates for Site 40" href="mydoc_Site40_Templates.html">cEdge Templates for Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Applying Templates to vSmarts" href="mydoc_Templates_to_vSmarts.html">Applying Templates to vSmarts</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Dynamic Service Side Routing" href="#">Implementing Dynamic Service Side Routing</a>
+      <ul>
+          
+          
+          
+          <li><a title="Service Side VPNs - vEdges" href="mydoc_ssv_vedges.html">Service Side VPNs - vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Service Side VPNs - cEdges" href="mydoc_ssv_cedges.html">Service Side VPNs - cEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Updating Device Templates" href="mydoc_devtemp_update.html">Updating Device Templates</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing OSPF at DC" href="mydoc_ospf_dc.html">Implementing OSPF at DC</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing EIGRP at Site 40" href="mydoc_eigrp_site40.html">Implementing EIGRP at Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Configuring VRRP at Site 50" href="mydoc_vrrp_site50.html">Configuring VRRP at Site 50</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="TLOC Extensions" href="#">TLOC Extensions</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring TLOC Extensions" href="mydoc_tloc_ext.html">Configuring TLOC Extensions</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Control Policies" href="#">Implementing Control Policies</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring a Hub and Spoke Topology" href="mydoc_hub_and_spoke.html">Configuring a Hub and Spoke Topology</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing a Regional Hub" href="mydoc_regional_hub.html">Implementing a Regional Hub</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Data Policies and ZBF" href="#">Implementing Data Policies and ZBF</a>
+      <ul>
+          
+          
+          
+          <li><a title="Implementing Custom Traffic Engineering" href="mydoc_custom_te.html">Implementing Custom Traffic Engineering</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing Direct Internet Access" href="mydoc_dia.html">Implementing Direct Internet Access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="ZBF configuration for Guest DIA" href="mydoc_zbf_dia.html">ZBF configuration for Guest DIA</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Application Aware Routing and QoS" href="#">Application Aware Routing and QoS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring and Testing AAR" href="mydoc_aar.html">Configuring and Testing AAR</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Setting up Quality of Service" href="mydoc_qos.html">Setting up Quality of Service</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cisco SD-WAN Security" href="#">Cisco SD-WAN Security</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring IPS" href="mydoc_ips.html">Configuring IPS</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="URL Filtering Configuration" href="mydoc_urlf.html">URL Filtering Configuration</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Software Defined Application Visibility and Control (SD-AVC)" href="mydoc_sdavc.html">Software Defined Application Visibility and Control (SD-AVC)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Cisco SD-WAN and Umbrella" href="mydoc_umbrella.html">Cisco SD-WAN and Umbrella</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cloud OnRamp for SaaS" href="#">Cloud OnRamp for SaaS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring Cloud OnRamp for SaaS" href="mydoc_conrampsaas.html">Configuring Cloud OnRamp for SaaS</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Deploying and Onboarding DC-vEdge1
+   <a
+	class="btn btn-large btn-primary"
+	href="javascript:introJs().setOption('showProgress', true).start();"
+	>Get a demo tour</a
+	>
+	</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Step by step process for deploying DC-vEdge1</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc" data-step="1" data-intro="The Table of Contents will give a quick run down of the lab activities that need to be performed, along with serving as a navigation mechanism."></div>
+
+    
+
+
+    
+
+   <div class="alert alert-danger" role="alert" data-step="5" data-intro="Watch out for special text boxes like this one - there are Warnings, Notes, Tips and Important information styled text boxes."><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> This section might already be done, depending on your selected Lab Scenario. Most lab work will start <a href="mydoc_Deploying_vEdge30.html">from here</a>. The configuration given below can be used to review what was done to bring the Site up. If this VM is already deployed (check via vCenter), you <strong>Do Not</strong> need to perform these lab activities.</div>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary" data-step="2" data-intro="The Task List will allow you to keep track of what activities have been done so far." data-position="left"><strong>Task List</strong>
+<br /><br />
+- Verifying the existing lab setup
+<br />
+- Creating the DC-vEdge1 VM
+<br />
+        - Overview
+    <br />
+        - Deploying the VM on vCenter
+    <br />
+- Onboarding DC-vEdge1
+<br />
+        - Bootstrapping DC-vEdge1 (Initial Configuration)
+    <br />
+        - Installing certificates and activating the vEdge
+    <br />
+- Onboarding Verification
+<br />
+- Helpful debugs and logs
+<br />
+
+</div>
+
+<h2 id="verifying-the-existing-lab-setup">Verifying the existing lab setup</h2>
+
+<p>The vManage, vBond and vSmarts have been deployed and should be ready to accept control connections from vEdges and cEdges. We will start by verifying the existing setup.</p>
+
+<ol>
+  <li data-step="3" data-intro="This is a step that needs to be performed to complete a lab task. Some steps will have tables.">
+    <p>Log in to vManage by clicking on the bookmark or navigating to https://192.168.0.6. Use the following credentials:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>admin</td>
+          <td>admin</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p data-step="4" data-intro="An image will usually accompany a step, for reference." data-position="left"><img src="/images/Deploying_DC_vEdge1/01_logintovmanage.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along the top row and 2 control planes should be up (naming convention might vary)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/02_2smarts_1bond_vm.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Open and log in to the vManage via the CLI - fire up Putty and double click the saved session for vManage or SSH to 192.168.0.6. Use the same credentials as the GUI.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/03_cliver.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Issue <code class="language-plaintext highlighter-rouge">show control connections</code> and you should see the vManage talking to the vSmarts and the vBond.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/03_controlconnver.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Additionally, you can log in to the CLI for the vBond via the saved link (and the same password as the vManage) and issue a <code class="language-plaintext highlighter-rouge">show orchestrator connections</code></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/99_orcconnver.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>We see that the connections are up and this completes the verification activity.
+<br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm">Creating the DC-vEdge1 VM</a>
+<br />
+        - <a href="#overview">Overview</a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter">Deploying the VM on vCenter</a>
+    <br />
+- <a href="#onboarding-dc-vedge1">Onboarding DC-vEdge1</a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration">Bootstrapping DC-vEdge1 (Initial Configuration)</a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</a>
+    <br />
+- <a href="#onboarding-verification">Onboarding Verification</a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h2 id="creating-the-dc-vedge1-vm">Creating the DC-vEdge1 VM</h2>
+
+<h3 id="overview">Overview</h3>
+
+<p>We will be deploying a vEdge in our first site (the Data Center) via vCenter. Make note of the following information for this section. The IP Addressing will not be used for some of the Network Adapters until later. X is your POD number and is used only during vCenter related activities.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> We will be using vEdge Clouds and CSR1000v images which are software images and don’t support the standard Day 0 onboarding options. They do have a tweaked version of the Day 0 onboarding which we will be implementing later on in the lab. Hardware devices can do Day 0 onboarding (Zero Touch Provisioning)</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>VM Name</th>
+      <th>System IP</th>
+      <th>Network Adapter</th>
+      <th>Network</th>
+      <th>Interface</th>
+      <th>IP Address</th>
+      <th>Default Gateway</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DC-vEdge1-podX</td>
+      <td>10.255.255.11</td>
+      <td>Network Adapter 1</td>
+      <td>Management</td>
+      <td>eth0</td>
+      <td>192.168.0.10/24</td>
+      <td>192.168.0.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 2</td>
+      <td>MPLS10</td>
+      <td>ge0/1</td>
+      <td>192.0.2.2/30</td>
+      <td>192.0.2.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 3</td>
+      <td>SiteDC_VPN10</td>
+      <td>ge0/2</td>
+      <td>10.100.10.2/24</td>
+      <td>10.100.10.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 4</td>
+      <td>SiteDC-VPN20</td>
+      <td>ge0/3</td>
+      <td>10.100.20.2/24</td>
+      <td>10.100.20.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 5</td>
+      <td>Internet</td>
+      <td>ge0/0</td>
+      <td>100.100.100.10/24</td>
+      <td>100.100.100.1</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Plan your sites and addressing carefully. Proper planning can prevent a number of issues and will help with a successful, early deployment.</div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> There is configuration applicable only to virtual vEdges/cEdges in some of the sections. Physical vEdges are a lot easier to deploy, not only from a connectivity standpoint but also with respect to certificate exchange options.</div>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm">Creating the DC-vEdge1 VM</a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter">Deploying the VM on vCenter</a>
+    <br />
+- <a href="#onboarding-dc-vedge1">Onboarding DC-vEdge1</a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration">Bootstrapping DC-vEdge1 (Initial Configuration)</a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</a>
+    <br />
+- <a href="#onboarding-verification">Onboarding Verification</a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h3 id="deploying-the-vm-on-vcenter">Deploying the VM on vCenter</h3>
+<p><br /></p>
+
+<ol>
+  <li>
+    <p>Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Notice that no vEdges/cEdges have been deployed on the host you’ve accessed. This is expected.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/04_nositesdeployed_onlyctrl.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Right click on the host and choose to <strong>Deploy OVF Template</strong></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/05_rightclickhost_deployovf.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose the <strong>Local file</strong> option and click on <strong>Choose files</strong>. Navigate to the SD-WAN images folder and select the file beginning with <em>viptela-edge-</em>. Click on Next.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/06_chooselocalfile_vedgeimagefromfolder.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Change the Virtual Machine name to <strong>DC-vEdge1-podX</strong> and click on Next (where X is your POD number, image below doesn’t have the suffix of podX)</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> We will only use the podX suffix over here to distinguish between different VMs in our Data Center. The rest of the guide will refer to this VM as <strong>DC-vEdge1</strong></div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/07_namedcvedge1_next.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Select the host assigned to you (image shown as an example only) and click on Next</p>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If the screen gets stuck over here at <strong>Validating</strong> then close Chrome and open the vCenter in Internet Explorer, going through the same steps. Deployment should go through. This is a known issue with Google Chrome.</div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/08_leavethehostasis.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Review the details shown and click on Next</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/09_reviewdetails_next.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose the Datastore and click on Next</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/10_storage_next.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Populate the VM Networks as per the image given below</p>
+
+    <div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Please make sure that these look exactly as shown below</div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/11_populatevmnetworks_referenceipschema.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Finish</strong> to deploy your DC-vEdge1 VM</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/12_finish.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Once the VM is deployed, right click <strong>DC-vEdge1-podX</strong> and click Edit settings.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/13_rightclickdcvedge1_editsettings.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose to <strong>Add a new device</strong> (top right corner) and select Network Adapter to add one (since our deployed VM has only 4 Network Adapters but we will need 5 for our lab)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/14_addnewdev_netadapt.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the drop down next to <strong>New Network</strong> and click on <em>Browse</em></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/15_dropdown_browse.png" alt="" /></p>
+  </li>
+  <li>Choose the <strong>Internet</strong> Network and click on OK. Make sure the Network Adapters match with the second image below and click on OK again
+    <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> The Network Adapter mapping might vary based on the version of vEdge being deployed. Sometimes, trial and error is the easiest way to figure out which Network Adapter maps to which interface on the vEdge</div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/16_chooseinternet_ok_ok.PNG" alt="" /></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/17_NetworkAdaptersdcvedge1.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the DC-vEdge1-podX VM and choose to power it on</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/18_choosedcvedge_poweron.png" alt="" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm"><del>Creating the DC-vEdge1 VM</del></a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter"><del>Deploying the VM on vCenter</del></a>
+    <br />
+- <a href="#onboarding-dc-vedge1">Onboarding DC-vEdge1</a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration">Bootstrapping DC-vEdge1 (Initial Configuration)</a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</a>
+    <br />
+- <a href="#onboarding-verification">Onboarding Verification</a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h2 id="onboarding-dc-vedge1">Onboarding DC-vEdge1</h2>
+
+<h3 id="bootstrapping-dc-vedge1-initial-configuration">Bootstrapping DC-vEdge1 (Initial Configuration)</h3>
+
+<p>Use the following information in this section (some of the information will be used later)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SITE ID</th>
+      <th>SYSTEM IP</th>
+      <th>VM</th>
+      <th>Network Adapter</th>
+      <th>Network</th>
+      <th>Interface</th>
+      <th>IP</th>
+      <th>Gateway</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>10.255.255.11</td>
+      <td>DC-vEdge1</td>
+      <td>Network Adapter 1</td>
+      <td>Management</td>
+      <td>eth0</td>
+      <td>192.168.0.10/24</td>
+      <td>192.168.0.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 2</td>
+      <td>MPLS10</td>
+      <td>ge0/1</td>
+      <td>192.0.2.2/30</td>
+      <td>192.0.2.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 3</td>
+      <td>SiteDC_VPN10</td>
+      <td>ge0/2</td>
+      <td>10.100.10.2/24</td>
+      <td>10.100.10.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 4</td>
+      <td>SiteDC-VPN20</td>
+      <td>ge0/3</td>
+      <td>10.100.20.2/24</td>
+      <td>10.100.20.1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Network Adapter 5</td>
+      <td>Internet</td>
+      <td>ge0/0</td>
+      <td>100.100.100.10/24</td>
+      <td>100.100.100.1</td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>
+    <p>Console in to the DC-vEdge1 VM from vCenter (you should already be logged in from our last activity)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/19_choosetoopenconsolefordcvedge1.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Wait for the VM to prompt you for the username and password and enter the credentials given below. If you get a message stating that they are incorrect, wait for 30 seconds and try again (since the processes need to initialize before you can log in)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>admin</td>
+          <td>admin</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> From version 19.2, the password will need to be reset on initial login. For this lab, we will reset the password to <code class="language-plaintext highlighter-rouge">admin</code>.</div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/20_login_adminadminresettoadmin.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Enter the configuration enumerated below. Unfortunately, this will need to be typed out since the console isn’t copy-paste friendly</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/21_Enterbootstrap_typeincons.PNG" alt="" /></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> conf t
+ system
+  host-name DC-vEdge1
+  system-ip 10.255.255.11
+  site-id 1
+  organization-name "swat-sdwanlab"
+  vbond 100.100.100.3
+  exit
+ !
+ vpn 0
+  ip route 0.0.0.0/0 100.100.100.1
+  interface ge0/0
+   ip address 100.100.100.10/24
+   no tunnel-interface
+   no shutdown
+   exit
+   !
+   exit
+ !
+ vpn 512
+  ip route 0.0.0.0/0 192.168.0.1
+  interface eth0
+   ip address 192.168.0.10/24
+   no shutdown
+ !
+ commit and-quit
+</code></pre></div>    </div>
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> We are ensuring that the vEdge has basic IP Addressing and Routing to the Controllers. <code class="language-plaintext highlighter-rouge">no tunnel-interface</code> has been added under the ge0/0 interface in VPN 0 in order to prevent control connections from being established</div>
+  </li>
+  <li>
+    <p>Open <strong>Putty</strong> and double click the saved session for DC-vEdge1 (or <strong>SSH</strong> to <strong>192.168.0.10</strong>)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/22_openputty_dcvedge1doubleclick.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose Yes to accept the certificate, if prompted</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/23_cert_yes.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Login using the same credentials as Step 2.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/24_loginusingadminadmin.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm"><del>Creating the DC-vEdge1 VM</del></a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter"><del>Deploying the VM on vCenter</del></a>
+    <br />
+- <a href="#onboarding-dc-vedge1">Onboarding DC-vEdge1</a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration"><del>Bootstrapping DC-vEdge1 (Initial Configuration)</del></a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</a>
+    <br />
+- <a href="#onboarding-verification">Onboarding Verification</a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h3 id="installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</h3>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Make sure the certificates and relevant files (like the .viptela Serial file) are in order before initiating a deployment. Certificate mismatches are one of the most widely seen causes for devices not being able to establish control connections with the vManage/vSmarts</div>
+
+<ol>
+  <li>
+    <p>Type <code class="language-plaintext highlighter-rouge">vshell</code> and enter <code class="language-plaintext highlighter-rouge">scp admin@192.168.0.6:ROOTCA.pem .</code> to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH’d in to the vEdge (there is a dot at the end of the scp command). Enter <code class="language-plaintext highlighter-rouge">yes</code> when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/25_vshellcopypemtovedgefromvman.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> vshell
+ scp admin@192.168.0.6:ROOTCA.pem .
+</code></pre></div>    </div>
+    <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This is NOT how you would normally install certificates over to your devices. In a lab, this manual method works fine but for production environments, the other options are definitely preferred (like Cisco PKI)</div>
+  </li>
+  <li>
+    <p>Go to the vManage GUI (https://192.168.0.6) and log in, if logged out. Navigate to <strong>Configuration =&gt; Devices</strong> (from the left-hand side, click on the cog wheel to access the configuration options)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/26_config_devices.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Choose any vEdge Cloud device (it doesn’t matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose <strong>Generate Bootstrap Configuration</strong></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/27_threedots_genbootstrap.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <strong>Cloud-Init</strong> and click on OK</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG" alt="" /></p>
+  </li>
+  <li>Make note of the <strong>UUID</strong> and the <strong>OTP</strong> values. These will be required to activate the vEdge. It’s best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required
+    <div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The UUID and OTP/Token are super important for vEdge Cloud or cEdge CSRs. Physical devices don’t have a token associated with them and are uniquely identified by their serial number</div>
+
+    <p><img src="/images/Deploying_DC_vEdge1/29_makenote_uuid_otp.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go back to the Putty session for DC-vEdge1 and enter <code class="language-plaintext highlighter-rouge">request root-cert-chain install /home/admin/ROOTCA.pem</code>to install the root cert chain. It should install successfully</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/30_installrootcertchain.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> request root-cert-chain install /home/admin/ROOTCA.pem
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Enter <code class="language-plaintext highlighter-rouge">tunnel-interface</code>, <code class="language-plaintext highlighter-rouge">encapsulation ipsec</code> and <code class="language-plaintext highlighter-rouge">allow-service all</code> under <code class="language-plaintext highlighter-rouge">interface ge0/0</code> to bring up the tunnel Interface. Make sure to <code class="language-plaintext highlighter-rouge">commit and-quit</code> in order to write the configuration change</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/31_enable_tunnint.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> config t
+ vpn 0
+ interface ge0/0
+  tunnel-interface
+  encapsulation ipsec
+  allow-service all
+  exit
+  !
+  commit and-quit
+</code></pre></div>    </div>
+    <p>This ensures that our vEdge is now able to establish control connections with the vManage and vSmarts via the vBond. However, these connections will not be fully formed till we don’t activate the vEdge itself</p>
+  </li>
+  <li>
+    <p>Issue the <code class="language-plaintext highlighter-rouge">request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)</code>command. Replace the <em>(Enter your UUID)</em> and <em>(Enter your OTP)</em> fields with the UUID and OTP generated in Step 5 (image below is an example, UUID and OTP may not match).</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/32_activatevedge_uuid_token_diff.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> request vedge-cloud activate chassis-number (Enter your UUID) token (Enter the OTP)
+</code></pre></div>    </div>
+    <p>This completes the Onboarding section for DC-vEdge1</p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm"><del>Creating the DC-vEdge1 VM</del></a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter"><del>Deploying the VM on vCenter</del></a>
+    <br />
+- <a href="#onboarding-dc-vedge1"><del>Onboarding DC-vEdge1</del></a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration"><del>Bootstrapping DC-vEdge1 (Initial Configuration)</del></a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge"><del>Installing certificates and activating the vEdge</del></a>
+    <br />
+- <a href="#onboarding-verification">Onboarding Verification</a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h2 id="onboarding-verification">Onboarding Verification</h2>
+
+<ol>
+  <li>
+    <p>Wait for a couple of minutes and run <code class="language-plaintext highlighter-rouge">show control connections</code> in the DC-vEdge1 CLI. We should see that the vEdge has been able to establish a DTLS tunnel with the vManage and the vSmarts. If you don’t see any output, wait for a couple of minutes and run the command again</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/33_showcontrolconn.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> show control connections
+</code></pre></div>    </div>
+    <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> You can also issue <code class="language-plaintext highlighter-rouge">show control connections-history</code> in the event of failures to find out why is the connection not working as expected. A few helpful commands are <code class="language-plaintext highlighter-rouge">show certificate installed</code>, <code class="language-plaintext highlighter-rouge">show certificate root-ca-cert</code>, <code class="language-plaintext highlighter-rouge">show control local-properties</code> and <code class="language-plaintext highlighter-rouge">show certificate validity</code>. Most of these commands give us details about the status of certificates on the device and are helpful in ascertaining the root cause of failure when control connections aren’t getting established.</div>
+  </li>
+  <li>
+    <p>On the vManage GUI, navigate to <strong>Monitor =&gt; Network Devices</strong> (the computer icon on the left-hand side)</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/34_monitor_network.png" alt="" /></p>
+  </li>
+  <li>
+    <p>DC-vEdge1 should show up in the list of devices</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/35_DC-vEdge1added.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on DC-vEdge1 and navigate to <strong>Troubleshooting =&gt; Control Connections(Live view)</strong>. You should see the vEdge successfully connected to 2 vSmarts and 1 vManage</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/36_MonNet_dcvedge1_tshoot_controlconn.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>This completes the verification activity.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm"><del>Creating the DC-vEdge1 VM</del></a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter"><del>Deploying the VM on vCenter</del></a>
+    <br />
+- <a href="#onboarding-dc-vedge1"><del>Onboarding DC-vEdge1</del></a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration"><del>Bootstrapping DC-vEdge1 (Initial Configuration)</del></a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge"><del>Installing certificates and activating the vEdge</del></a>
+    <br />
+- <a href="#onboarding-verification"><del>Onboarding Verification</del></a>
+<br />
+- <a href="#helpful-debugs-and-logs">Helpful debugs and logs</a>
+<br />
+
+</div>
+
+<h2 id="helpful-debugs-and-logs">Helpful debugs and logs</h2>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This section is optional and is intended as a learning activity. It is not required to go through this in order to complete the lab tasks successfully</div>
+
+<ol>
+  <li>
+    <p>On the CLI for DC-vEdge1, issue <code class="language-plaintext highlighter-rouge">debug vdaemon all</code> followed by <code class="language-plaintext highlighter-rouge">clear control connections</code>. This will tear down all the control connections and the vEdge will rebuilt the DTLS tunnels. We can capture the logs to see the process associated with the DTLS tunnels being built</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/37_enabledebug_clearcontr.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> debug vdaemon all
+ clear control connections
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Wait for a couple of minutes and go to <code class="language-plaintext highlighter-rouge">vshell</code>. Type <code class="language-plaintext highlighter-rouge">cat /var/log/tmplog/vdebug</code> to view the contents of the log file</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/38_accessvsh_deboutput.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Given below are a couple of sample outputs</p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/39_sampleoutput.PNG" alt="" /></p>
+
+    <p><img src="/images/Deploying_DC_vEdge1/40_sampleoutput2.PNG" alt="" /></p>
+
+    <p>Use <code class="language-plaintext highlighter-rouge">no debug vdaemon all</code> to disable the debug</p>
+  </li>
+</ol>
+
+<p>This completes our onboarding activity for DC-vEdge1.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+- <a href="#verifying-the-existing-lab-setup"><del>Verifying the existing lab setup</del></a>
+<br />
+- <a href="creating-the-dc-vedge1-vm"><del>Creating the DC-vEdge1 VM</del></a>
+<br />
+        - <a href="#overview"><del>Overview</del></a>
+    <br />
+        - <a href="#deploying-the-vm-on-vcenter"><del>Deploying the VM on vCenter</del></a>
+    <br />
+- <a href="#onboarding-dc-vedge1"><del>Onboarding DC-vEdge1</del></a>
+<br />
+        - <a href="#bootstrapping-dc-vedge1-initial-configuration"><del>Bootstrapping DC-vEdge1 (Initial Configuration)</del></a>
+    <br />
+        - <a href="#installing-certificates-and-activating-the-vedge"><del>Installing certificates and activating the vEdge</del></a>
+    <br />
+- <a href="#onboarding-verification"><del>Onboarding Verification</del></a>
+<br />
+- <a href="#helpful-debugs-and-logs"><del>Helpful debugs and logs</del></a>
+<br />
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2020 Cisco Systems Inc. and/or its affiliates. All rights reserved. Cisco Partner Confidential. <br />
+<span>Page last updated:</span> May 15, 2020<br/> Site last generated: Jul 23, 2020 <br />
+<p><img src="images/logo.png" alt="Cisco logo" width="150" /></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+<script type="text/javascript" src="intro2.js" href="javascript:introJs().start();"></script>
+</html>
