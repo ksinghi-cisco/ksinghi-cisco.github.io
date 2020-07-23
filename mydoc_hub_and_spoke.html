@@ -1,0 +1,1176 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="introjs.css" rel="stylesheet">
+<link href="introjs-modern.css" rel="stylesheet">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Moving the SD-WAN topology from the default of full mesh to a Hub and Spoke for a particular VPN while leaving the other VPNs in full mesh.">
+<meta name="keywords" content="navigation,  Control policies, hub and spoke, single vpn">
+<title>Configuring a Hub and Spoke topology | Cisco SWAT SD-WAN Lab Guide</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="swat-sdwanlab.github.io" href="swat-sdwanlab.github.io/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="https://salesconnect.cisco.com/#/program/PAGE-14324" target="_blank">&nbsp;<span class="projectTitle"> Cisco SWAT</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Toggle Sidebar</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://www.cisco.com" target="_blank" rel="noopener">Cisco Systems</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">SD-WAN Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en_in/solutions/enterprise-networks/sd-wan/index.html" target="_blank" rel="noopener">Cisco SD-WAN Solution</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/solutions/design-zone/networking-design-guides/branch-wan-edge.html" target="_blank" rel="noopener">SD-WAN Design Zone</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.cisco.com/c/en/us/support/routers/sd-wan/products-installation-and-configuration-guides-list.html" target="_blank" rel="noopener">Configuration Guides</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Help and Support" href="#" onclick="javascript:window.location='mailto:swat_labops@cisco.com?subject=Cisco SWAT SD-WAN Lab Guide Feedback feedback&body=I need some help on the Configuring a Hub and Spoke topology page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Need help?</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Configuring a Hub and Spoke topology">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav" style="height: 70%;position: fixed;z-index: 1;overflow-x: hidden; ">
+  <li class="sidebarTitle">Cisco SD-WAN </li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="Readme First" href="#">Readme First</a>
+      <ul>
+          
+          
+          
+          <li><a title="Scenario based Lab Tasks" href="index.html">Scenario based Lab Tasks</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="How to Connect to the SWAT SD-WAN Labs" href="mydoc_connect.html">How to Connect to the SWAT SD-WAN Labs</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Overview" href="#">Overview</a>
+      <ul>
+          
+          
+          
+          <li><a title="Conventions used in this document" href="mydoc_Overview.html">Conventions used in this document</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Topology, Credentials and IP Addressing" href="mydoc_introduction.html">Topology, Credentials and IP Addressing</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Prerequisites and Objectives" href="mydoc_prerequisitesandobjectives.html">Prerequisites and Objectives</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Bringing Up the DC-vEdges" href="#">Bringing Up the DC-vEdges</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying DC-vEdge1" href="mydoc_Deploying_DCvEdge1.html">Deploying DC-vEdge1</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying DC-vEdge2" href="mydoc_Deploying_DCvEdge2.html">Deploying DC-vEdge2</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 20 and Site 30" href="#">Deploying devices in Site 20 and Site 30</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying vEdge20 - Single INET uplink" href="mydoc_Deploying_vEdge20.html">Deploying vEdge20 - Single INET uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge21 - Single MPLS uplink" href="mydoc_Deploying_vEdge21.html">Deploying vEdge21 - Single MPLS uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying vEdge30 - Dual uplink" href="mydoc_Deploying_vEdge30.html">Deploying vEdge30 - Dual uplink</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Deploying devices in Site 40 and Site 50" href="#">Deploying devices in Site 40 and Site 50</a>
+      <ul>
+          
+          
+          
+          <li><a title="Deploying cEdge40 - Dual Uplink" href="mydoc_Deploying_cEdge40.html">Deploying cEdge40 - Dual Uplink</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Deploying cEdge50 and cEdge51" href="mydoc_Deploying_cEdge50_cEdge51.html">Deploying cEdge50 and cEdge51</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="" href="mydoc_lists.html"></a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Configuring Templates" href="#">Configuring Templates</a>
+      <ul>
+          
+          
+          
+          <li><a title="Templates for the DC-vEdges" href="mydoc_DCvEdges_templates.html">Templates for the DC-vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 20" href="mydoc_Site20_Templates.html">vEdge Templates for Site 20</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="vEdge Templates for Site 30" href="mydoc_Site30_Templates.html">vEdge Templates for Site 30</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="cEdge Templates for Site 40" href="mydoc_Site40_Templates.html">cEdge Templates for Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Applying Templates to vSmarts" href="mydoc_Templates_to_vSmarts.html">Applying Templates to vSmarts</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Dynamic Service Side Routing" href="#">Implementing Dynamic Service Side Routing</a>
+      <ul>
+          
+          
+          
+          <li><a title="Service Side VPNs - vEdges" href="mydoc_ssv_vedges.html">Service Side VPNs - vEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Service Side VPNs - cEdges" href="mydoc_ssv_cedges.html">Service Side VPNs - cEdges</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Updating Device Templates" href="mydoc_devtemp_update.html">Updating Device Templates</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing OSPF at DC" href="mydoc_ospf_dc.html">Implementing OSPF at DC</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing EIGRP at Site 40" href="mydoc_eigrp_site40.html">Implementing EIGRP at Site 40</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Configuring VRRP at Site 50" href="mydoc_vrrp_site50.html">Configuring VRRP at Site 50</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="TLOC Extensions" href="#">TLOC Extensions</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring TLOC Extensions" href="mydoc_tloc_ext.html">Configuring TLOC Extensions</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Control Policies" href="#">Implementing Control Policies</a>
+      <ul>
+          
+          
+          
+          <li class="active"><a title="Configuring a Hub and Spoke Topology" href="mydoc_hub_and_spoke.html">Configuring a Hub and Spoke Topology</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing a Regional Hub" href="mydoc_regional_hub.html">Implementing a Regional Hub</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Implementing Data Policies and ZBF" href="#">Implementing Data Policies and ZBF</a>
+      <ul>
+          
+          
+          
+          <li><a title="Implementing Custom Traffic Engineering" href="mydoc_custom_te.html">Implementing Custom Traffic Engineering</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Implementing Direct Internet Access" href="mydoc_dia.html">Implementing Direct Internet Access</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="ZBF configuration for Guest DIA" href="mydoc_zbf_dia.html">ZBF configuration for Guest DIA</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Application Aware Routing and QoS" href="#">Application Aware Routing and QoS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring and Testing AAR" href="mydoc_aar.html">Configuring and Testing AAR</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Setting up Quality of Service" href="mydoc_qos.html">Setting up Quality of Service</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cisco SD-WAN Security" href="#">Cisco SD-WAN Security</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring IPS" href="mydoc_ips.html">Configuring IPS</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="URL Filtering Configuration" href="mydoc_urlf.html">URL Filtering Configuration</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Software Defined Application Visibility and Control (SD-AVC)" href="mydoc_sdavc.html">Software Defined Application Visibility and Control (SD-AVC)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Cisco SD-WAN and Umbrella" href="mydoc_umbrella.html">Cisco SD-WAN and Umbrella</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Cloud OnRamp for SaaS" href="#">Cloud OnRamp for SaaS</a>
+      <ul>
+          
+          
+          
+          <li><a title="Configuring Cloud OnRamp for SaaS" href="mydoc_conrampsaas.html">Configuring Cloud OnRamp for SaaS</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Configuring a Hub and Spoke topology
+      <a
+	class="btn btn-large btn-primary"
+	href="javascript:introJs().setOption('showProgress', true).start();"
+	>Get a demo tour</a
+	>
+	</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Moving the SD-WAN topology from the default of full mesh to a Hub and Spoke for a particular VPN while leaving the other VPNs in full mesh.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc" data-step="1" data-intro="The Table of Contents will give a quick run down of the lab activities that need to be performed, along with serving as a navigation mechanism."></div>
+
+    
+
+
+    
+
+   <div class="bs-callout bs-callout-primary" data-step="2" data-intro="The Task List will allow you to keep track of what activities have been done so far." data-position="left"><strong>Task List</strong>
+<br /><br />
+
+- Overview
+<br />
+- Creating a new DC VPN 20 Feature Template
+<br />
+- Creating the Policy
+<br />
+        - Configuring Network Constructs
+    <br />
+        - Adding a Custom Control Policy
+    <br />
+- Activity Verification
+<br />
+
+</div>
+
+<h2 id="overview">Overview</h2>
+
+<p>Cisco SD-WAN builds out a full mesh network between sites by default for all VPNs. This might not be desirable in some cases, where there is a requirement of a Hub and Spoke or a partial mesh topology.</p>
+
+<p>Cisco SD-WAN Policies allow us to enforce a custom topology, thereby controlling the data flow within our network. We will be setting up a Hub and Spoke topology for VPN 20 at all Branch sites, steering data to the DC site, post which it will be routed to its destination. Other VPNs in the network will retain full mesh connectivity. First, let’s check the current status of the connectivity.</p>
+
+<ol>
+  <li>
+    <p data-step="3" data-intro="This is a step that needs to be performed to complete a lab task. Some steps will have tables.">Log in to the vManage GUI and navigate to <strong>Monitor =&gt; Network</strong></p>
+
+    <p data-step="4" data-intro="An image will usually accompany a step, for reference." data-position="left"><img src="/images/VPN20_HnS/01_HnS.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>vEdge20</strong> and scroll down to <strong>Troubleshooting</strong>. Click on it and then choose <strong>Trace Route</strong></p>
+
+    <p><img src="/images/VPN20_HnS/02_tracert.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Enter the <strong>Destination IP</strong> as <em>10.30.20.2</em>, choose <strong>VPN</strong> as <em>VPN - 20</em> and populate the <strong>Source/Interface</strong> as <em>ge0/3</em>. Click on <strong>Start</strong>. You will notice that traffic is flowing directly between the two sites (i.e. Site 20 and Site 30) in VPN 20 (if there are multiple hops shown in the image in your POD, run the test again)</p>
+
+    <p><img src="/images/VPN20_HnS/03_tracertres.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Run another test, this time to the <strong>Destination IP</strong> of <em>10.40.20.2</em>. Traffic again flows directly between the sites</p>
+
+    <p><img src="/images/VPN20_HnS/04_site40simres.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Log in to the CLI of <strong>cEdge40</strong> via Putty and issue a <code class="language-plaintext highlighter-rouge">show ip route vrf 20</code>. We will see that routes point directly to the sites, thereby facilitating full mesh connectivity</p>
+
+    <p><img src="/images/VPN20_HnS/04_ucliroutevrf20ce40_2.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> show ip route vrf 20
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Log in to the CLI of <strong>vEdge20</strong> and issue a <code class="language-plaintext highlighter-rouge">show ip route vpn 20</code>. Once again, routes are pointing directly to the corresponding site, which is expected behaviour. We will be looking at changing this in the upcoming sections</p>
+
+    <p><img src="/images/VPN20_HnS/05_a.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#creating-a-new-dc-vpn-20-feature-template">Creating a new DC VPN 20 Feature Template</a>
+<br />
+- <a href="#creating-the-policy">Creating the Policy</a>
+<br />
+        - <a href="#configuring-network-constructs">Configuring Network Constructs</a>
+    <br />
+        - <a href="#adding-a-custom-control-policy">Adding a Custom Control Policy</a>
+    <br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="creating-a-new-dc-vpn-20-feature-template">Creating a new DC VPN 20 Feature Template</h2>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This section is optional. We will be testing just inter-site traffic so the changes in this section won’t come into play, but if VPN 20 has to route all traffic through the DC, it might encompass Internet traffic as well. In this event, the following configuration is needed to steer all unknown prefixes to the DC.</div>
+
+<ol>
+  <li>
+    <p>Go to <strong>Configure =&gt; Templates =&gt; Feature tab</strong> on the vManage GUI</p>
+
+    <p><img src="/images/VPN20_HnS/05_feat.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Locate the <em>vedge-vpn20</em> Feature Template and click on the dots next to it. Choose to make a <strong>Copy</strong> of this template</p>
+
+    <p><img src="/images/VPN20_HnS/06_copy.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Rename the template <em>vedge-vpn20-DC</em> with a Description of <em>VPN 20 Template for vEdges at the Data Center</em> and click on <strong>Copy</strong></p>
+
+    <p><img src="/images/VPN20_HnS/07_ren.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on the dots next to the newly created template and choose to <strong>Edit</strong> it. Make sure that the Template Name and Description match and modify the <strong>Name</strong> field under Basic Configuration to a Global value of <em>PoS</em></p>
+
+    <p><img src="/images/VPN20_HnS/08_name.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <strong>IPv4 Route</strong> click on <strong>New IPv4 Route</strong>. Enter a Prefix of <em>0.0.0.0/0</em> and set the Gateway as <strong>Null 0</strong>. Toggle <strong>Enable Null0</strong> to a Global value of <em>On</em> and click on <strong>Add</strong>. Click on <strong>Update</strong> to update this Feature Template</p>
+
+    <p><img src="/images/VPN20_HnS/09_routesave.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to <strong>Configuration =&gt; Templates =&gt; Device Tab</strong> and locate the <em>DCvEdge_dev_temp</em>. Click on the three dots to the template and choose to <strong>Edit</strong></p>
+
+    <p><img src="/images/VPN20_HnS/10_editdevtemp.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Scroll to the <strong>Service VPN</strong> section, select the <em>vedge-vpn20</em> Template and choose <strong>Remove VPN</strong> (don’t worry, we will be adding it again, with the template we just created in steps 4 and 5)</p>
+
+    <p><img src="/images/VPN20_HnS/10_remsvpn20.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Confirm removal of the VPN by clicking on <strong>Remove</strong></p>
+
+    <p><img src="/images/VPN20_HnS/11_confirm.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Back on the Device Template, click on <strong>Add VPN</strong> under <strong>Service VPN</strong>. Move the <em>vedge-vpn20-DC</em> Template to the Selected VPN Templates section and click on <strong>Next</strong></p>
+
+    <p><img src="/images/VPN20_HnS/12_addnxt.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>VPN Interface</strong> under <strong>Additional VPN Tempaltes</strong> and populate <em>vedge-vpn20-int</em> in the VPN Interface drop down. Click on <strong>Add</strong>. This should take you back to the Device Template page. Click on <strong>Update</strong></p>
+
+    <p><img src="/images/VPN20_HnS/13_vpnintadd_upd.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Next</strong> followed by <strong>Configure Devices</strong> in the ensuing pages (you can choose to check the side-by-side configuration before choosing to Configure Devices)</p>
+
+    <p><img src="/images/VPN20_HnS/14_nxt_confdev.PNG" alt="" /></p>
+
+    <p><img src="/images/VPN20_HnS/15_sbs.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Confirm the change on 2 devices (the DC-vEdges)</p>
+
+    <p><img src="/images/VPN20_HnS/16_confirm.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Once complete, go to the CLI of vEdge20 via Putty and issue <code class="language-plaintext highlighter-rouge">show ip route vpn 20</code> again. You should notice default routes pointing to the DC-vEdges (at this point, site to site traffic will still not go via the DC-vEdges. For this, we will need to implement control policies)</p>
+
+    <p><img src="/images/VPN20_HnS/17_befafter.PNG" alt="" /></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show ip route vpn 20
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>We have completed updating our Device Template to support a Hub and Spoke topology for VPN 20. Enforcement of the Hub and Spoke topology will be done in the following sections.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#creating-a-new-dc-vpn-20-feature-template"><del>Creating a new DC VPN 20 Feature Template</del></a>
+<br />
+- <a href="#creating-the-policy">Creating the Policy</a>
+<br />
+        - <a href="#configuring-network-constructs">Configuring Network Constructs</a>
+    <br />
+        - <a href="#adding-a-custom-control-policy">Adding a Custom Control Policy</a>
+    <br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="creating-the-policy">Creating the Policy</h2>
+
+<p>We will now start enforcement of the Hub and Spoke topology via Control Policies. This is kicked off by creating a Policy which encompasses various Network Constructs (like Site Lists, VPN Lists etc.) that are used within the Policy.</p>
+
+<h3 id="configuring-network-constructs">Configuring Network Constructs</h3>
+
+<ol>
+  <li>
+    <p>First, let’s create our overarching policy. Through this policy, we will create our Network Constructs. Click on <strong>Configuration =&gt; Policies</strong> in the vManage GUI to start configuring the Policy</p>
+
+    <p><img src="/images/VPN20_HnS/18_pol.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Add Policy</strong></p>
+
+    <p><img src="/images/VPN20_HnS/19_add.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>We will first create a Site List. Click on <strong>Sites</strong> and then choose <strong>New Site List</strong>. Give it a name of <em>Branches</em> and enter <em>20,30,40,50</em> in the <strong>Add Site</strong> section. Click on <strong>Add</strong></p>
+
+    <p><img src="/images/VPN20_HnS/20_slnsl.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Three more Site Lists need to be created in a similar fashion. Some won’t be used right now, but it’s best to create them while we’re here. Use the table and images below as reference points</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">Site List Name</th>
+          <th style="text-align: center">Add Site</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">DC</td>
+          <td style="text-align: center">1</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Site30</td>
+          <td style="text-align: center">30</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Site40</td>
+          <td style="text-align: center">40</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><img src="/images/VPN20_HnS/21_dcsl.PNG" alt="" /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">Site List for the DC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><img src="/images/VPN20_HnS/22_s30.PNG" alt="" /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">Site List for Site 30</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><img src="/images/VPN20_HnS/23_s40.PNG" alt="" /></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">Site List for Site 40</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Once all the Site Lists are configured, it should look like this</p>
+
+    <p><img src="/images/VPN20_HnS/24_finsite.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>VPN</strong> on the left-hand side and click on <strong>New VPN List</strong>. Specify the VPN List Name as <em>Corporate</em> and enter <em>10</em> under <strong>Add VPN</strong>. Click on <strong>Add</strong></p>
+
+    <p><img src="/images/VPN20_HnS/25_vpn10.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Repeat Step 6 two more times to create VPN Lists for <em>PoS</em> and <em>Guest</em>. They will have VPNs of <em>20</em> and <em>30</em> associated with them, respectively</p>
+
+    <p><img src="/images/VPN20_HnS/26_finvpnnext_2.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>TLOC</strong> on the left-hand side then click on <strong>New TLOC List</strong>. Give a List Name of <em>DC-TLOCs</em>. Specify the following values (click <strong>Add TLOC</strong> 3 times - this will add the number of rows we need)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">TLOC IP</th>
+          <th style="text-align: center">Color</th>
+          <th style="text-align: center">Encap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">10.255.255.11</td>
+          <td style="text-align: center">public-internet</td>
+          <td style="text-align: center">ipsec</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">10.255.255.11</td>
+          <td style="text-align: center">mpls</td>
+          <td style="text-align: center">ipsec</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">10.255.255.12</td>
+          <td style="text-align: center">public-internet</td>
+          <td style="text-align: center">ipsec</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">10.255.255.12</td>
+          <td style="text-align: center">mpls</td>
+          <td style="text-align: center">ipsec</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="/images/VPN20_HnS/26_tloclist.PNG" alt="" /></p>
+
+    <p><img src="/images/VPN20_HnS/26_tloclistfinsave.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>The <em>DC-TLOCs</em> list should look like the following image. Click on <strong>Next</strong></p>
+
+    <p><img src="/images/VPN20_HnS/26_tloclistnext.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>We will pause here since configuration of the Network Constructs is complete for our Control Policy. These will be used as building blocks for our policies. Configuration of the policy itself will continue in the next section (carrying on from the page we’re at in the vManage GUI).</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+ <br /><br />
+
+ - <a href="#overview"><del>Overview</del></a>
+ <br />
+ - <a href="#creating-a-new-dc-vpn-20-feature-template"><del>Creating a new DC VPN 20 Feature Template</del></a>
+ <br />
+ - <a href="#creating-the-policy">Creating the Policy</a>
+ <br />
+         - <a href="#configuring-network-constructs"><del>Configuring Network Constructs</del></a>
+     <br />
+         - <a href="#adding-a-custom-control-policy">Adding a Custom Control Policy</a>
+     <br />
+ - <a href="#activity-verification">Activity Verification</a>
+ <br />
+
+ </div>
+
+<h3 id="adding-a-custom-control-policy">Adding a Custom Control Policy</h3>
+
+<p>Continuing from the previous section, let’s build out our Custom Control Policy to enforce a Hub and Spoke Topology on VPN 20</p>
+
+<ol>
+  <li>
+    <p>You should be at the <strong>Configure Topology and VPN Membership</strong> page after the previous section. Click on <strong>Add Topology</strong> and choose <strong>Custom Control (Route &amp; TLOC)</strong></p>
+
+    <p><img src="/images/VPN20_HnS/27_custom.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Specify a <strong>Name</strong> of <em>HnS-VPN20</em> with a Description of <em>Hub and Spoke for VPN 20 only</em>. Click on <strong>Sequence Type</strong> and choose to add a <strong>Route</strong> Control Policy</p>
+
+    <p><img src="/images/VPN20_HnS/28_route.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Sequence Rule</strong> to add a new rule</p>
+
+    <p><img src="/images/VPN20_HnS/29_seqrule.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <strong>Match</strong> click on <strong>Site</strong> and populate <em>Branches</em> in the <strong>Site List</strong> (this is one of the Site Lists we had created before)</p>
+
+    <p><img src="/images/VPN20_HnS/29_tsitebr.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Still under <strong>Match</strong>, click on <strong>VPN</strong> and choose <em>PoS</em> in the <strong>VPN List</strong></p>
+
+    <p><img src="/images/VPN20_HnS/29_uvpnpos.PNG" alt="" /></p>
+
+    <p>Through these two match conditions, we have specified that this rule applies to the site list Branches (which contains Site IDs 20, 30, 40 and 50) and to the PoS VPN (which has VPN 20 in it)</p>
+  </li>
+  <li>
+    <p>Move over to the <strong>Actions</strong> tab and click on <strong>Accept</strong>. Then click on <strong>TLOC</strong> and populate <em>DC-TLOCs</em> in the <strong>TLOC List</strong>. Click on <strong>Save Match and Actions</strong></p>
+
+    <p><img src="/images/VPN20_HnS/29_vactaccepttlocdctlot.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to the <strong>Default Action</strong> and click on <strong>Accept</strong>. Click <strong>Save Match and Actions</strong></p>
+
+    <p><img src="/images/VPN20_HnS/29_wdefactaccpt.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>The <em>HnS-VPN20</em> policy should look like the image below. Click on <strong>Save Control Policy</strong></p>
+
+    <p><img src="/images/VPN20_HnS/29_wfinsave.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Click on <strong>Next</strong> since we don’t want to add any more Policies and then <strong>Next</strong> again (since we aren’t doing any Application Aware Routing, Data Policies or Netflow policies as of now)</p>
+
+    <p><img src="/images/VPN20_HnS/29_xnxt.PNG" alt="" /></p>
+
+    <p><img src="/images/VPN20_HnS/29_ynxt.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>You should be presented with a screen which asks for a Policy Name, among other things. This can be a bit confusing since we just gave a Policy Name before (called <em>HnS-VPN20</em>). The easiest way to wrap your head around this is think of creating a Master Policy and before we can name this Master Policy, we are asked to create Sub-Policies in it. So far, we have just created a Sub Policy and given it a name. At this point, we are being asked to give a name to our Master Policy, which will then need to be applied.</p>
+
+    <p>Enter a <strong>Policy Name</strong> of <em>Hub-n-Spoke-VPN20-only</em> and give a Policy Description of <em>Hub and Spoke policy for VPN 20 only</em>. Click on <strong>New Site List</strong> under HnS-VPN20 and populate <em>Branches</em> in the <strong>Outbound Site List</strong>. Click on <strong>Add</strong></p>
+
+    <p><img src="/images/VPN20_HnS/30_finpoladdb4save.PNG" alt="" /></p>
+
+    <div class="alert alert-success" role="alert" data-step="5" data-intro="Watch out for special text boxes like this one - there are Warnings, Notes, Tips and Important information styled text boxes."><i class="fa fa-check-square-o"></i> <b>Tip:</b> Control Policies (such as the one you just built) are enforced by vSmart. Hence, the policy you just created is from the perspective of vSmart. The application of this policy is enforced in an outbound direction towards branch sites (i.e. Branches Site List). Think of how a BGP Route-Reflector would modify the next-hop of routes it receives before sending them back out to neighbors.</div>
+
+    <p>Click on <strong>Save Policy</strong></p>
+  </li>
+  <li>
+    <p>Back at the main Policy page, we should see the <em>Hub-n-Spoke-VPN20-only</em> Master Policy created. Click on the three dots next to it and choose to <strong>Activate</strong> the policy</p>
+
+    <p><img src="/images/VPN20_HnS/31_act.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Confirm the activation by clicking on <strong>Activate</strong></p>
+
+    <p><img src="/images/VPN20_HnS/32_actconf.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>This completes our policy creation and activation. We will verify functionality in the upcoming section.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#creating-a-new-dc-vpn-20-feature-template"><del>Creating a new DC VPN 20 Feature Template</del></a>
+<br />
+- <a href="#creating-the-policy"><del>Creating the Policy</del></a>
+<br />
+        - <a href="#configuring-network-constructs"><del>Configuring Network Constructs</del></a>
+    <br />
+        - <a href="#adding-a-custom-control-policy"><del>Adding a Custom Control Policy</del></a>
+    <br />
+- <a href="#activity-verification">Activity Verification</a>
+<br />
+
+</div>
+
+<h2 id="activity-verification">Activity Verification</h2>
+
+<ol>
+  <li>
+    <p>Log in to <strong>cEdge40</strong> via Putty and run <code class="language-plaintext highlighter-rouge">show ip route vrf 20</code>. When compared to the output of this command taken before we applied our policy, we see that all routes are now pointing to the DC-vEdges. Check Step 5 of <a href="#overview">Overview</a> for the earlier output</p>
+
+    <p><img src="/images/VPN20_HnS/33_ce40routevrf20.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>On the vManage GUI, go to <strong>Monitor =&gt; Network</strong> and click on <strong>vEdge20</strong>. Scroll down on the left-hand side and click on <strong>Real Time</strong>. Enter <em>IP Routes</em> in <strong>Device Options</strong> and choose to Filter. Filter on the basis of VPN ID 20. We will notice similar output as what was seen for cEdge40</p>
+
+    <p><img src="/images/VPN20_HnS/34_netmon_vpn20filt.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to <strong>Troubleshooting</strong> and choose Trace Route. Enter the <strong>Destination IP</strong> as <em>10.30.20.2</em> with a VPN of <em>VPN - 20</em> and a Source/Interface of <em>ge0/3</em>. Traffic is now reaching the destination via the DC-vEdge</p>
+
+    <p><img src="/images/VPN20_HnS/35_goingthrudc.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Run the traceroute for <em>10.40.20.2</em> and we see that traffic is being routed through the DC-vEdge in this case as well</p>
+
+    <p><img src="/images/VPN20_HnS/36_goingthrudc2.PNG" alt="" /></p>
+  </li>
+  <li>
+    <p>Try to do a traceroute to <em>10.40.10.2</em>, changing the VPN to <em>VPN - 10</em> and the Source/Interface to <em>ge0/2</em> and we will notice that VPN 10 still has full mesh connectivity</p>
+
+    <p><img src="/images/VPN20_HnS/37_vpn10stillfullmesh.PNG" alt="" /></p>
+  </li>
+</ol>
+
+<p>Thus, all traffic from VPN 20 in the Branches is being steered to the DC-vEdges in a Hub and Spoke topology, whereas traffic still utilizes a Mesh topology for other VPNs.</p>
+
+<p><br /></p>
+
+<div class="bs-callout bs-callout-primary"><strong>Task List</strong>
+<br /><br />
+
+- <a href="#overview"><del>Overview</del></a>
+<br />
+- <a href="#creating-a-new-dc-vpn-20-feature-template"><del>Creating a new DC VPN 20 Feature Template</del></a>
+<br />
+- <a href="#creating-the-policy"><del>Creating the Policy</del></a>
+<br />
+        - <a href="#configuring-network-constructs"><del>Configuring Network Constructs</del></a>
+    <br />
+        - <a href="#adding-a-custom-control-policy"><del>Adding a Custom Control Policy</del></a>
+    <br />
+- <a href="#activity-verification"><del>Activity Verification</del></a>
+<br />
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2020 Cisco Systems Inc. and/or its affiliates. All rights reserved. Cisco Partner Confidential. <br />
+<span>Page last updated:</span> May 26, 2020<br/> Site last generated: Jul 23, 2020 <br />
+<p><img src="images/logo.png" alt="Cisco logo" width="150" /></p>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+<script type="text/javascript" src="intro2.js" href="javascript:introJs().start();"></script>
+</html>
