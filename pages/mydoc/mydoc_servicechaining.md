@@ -76,10 +76,167 @@ Diagrammatically, our topology will look as below:
 
 ## Configure VPN 40 on DC-vEdges
 
-We start off by configuring a few Lists that form the building blocks of our ZBF. The following lists will be created
+We will configure VPN 40 at the DC Site and ensure connectivity between the DC-vEdges and the ASAv Firewall.
 
-* Zone List for identifying the Guest and Outside zones
-* Application List for identifying webmail traffic and allowing all other TCP traffic to ports 80 and 443
+1. Log in to vCenter using the bookmark or by going to 10.2.1.50/ui from a web browser. Use the credentials for your POD
+
+    | Username | Password |
+    | :---: | :---: |
+    | sdwanpodX <br> <br> (X is your POD number) | C1sco12345 |
+
+    ![](/images/InterVPN_ServiceChaining/01_login.PNG)
+
+2. Right click on the **DC-vEdge1-podX** VM (where X is your POD number) and go to **Edit Settings**
+
+    ![](/images/InterVPN_ServiceChaining/02_edit.PNG)
+
+3. Click on **Add New Device** and choose to add a new **Network Adapter**. Repeat this process to add another Network Adapter
+
+    ![](/images/InterVPN_ServiceChaining/03_andna.PNG)
+
+4. You should have two new network adapters. Click on the drop down next to the assigned network (Internet in the image below) for the first network adapter and click **Browse**
+
+    ![](/images/InterVPN_ServiceChaining/04_browse.PNG)
+
+5. Choose *SiteDC_VPN10* and click on **OK**
+
+    ![](/images/InterVPN_ServiceChaining/124_maynetwint.PNG)
+
+6. This takes you back to the **Edit Settings** page. Click on the drop down next to the assigned network for the second network adapter and click **Browse**. Select *SiteDC-VPN40* and click on **OK**
+
+    ![](/images/InterVPN_ServiceChaining/05_sdc40.PNG)
+
+7. Make sure the settings match with the image given below and click on **OK**
+
+    ![](/images/InterVPN_ServiceChaining/06_sdcvpn40_2.PNG)
+
+8. Log in to **DC-vEdge1** via Putty. You can use the saved session or SSH to *192.168.0.10* along with the credentials given below
+
+    | Username | Password |
+    | :---: | :---: |
+    | admin | admin |
+
+    ![](/images/InterVPN_ServiceChaining/07_putty.PNG)
+
+9. Type `reboot` and then `yes` to confirm the reboot
+
+    ![](/images/InterVPN_ServiceChaining/09_reboot.PNG)
+    ```
+    reboot
+    yes
+    ```
+
+10. While the DC-vEdge1 vEdge is rebooting, head over to vCenter and right click on the **DC-vEdge2-podX** VM. Click on **Edit Settings**
+
+    ![](/images/InterVPN_ServiceChaining/10_edit.PNG)
+
+11. Like before, add two network adapters by clicking on **Add New Device** and selecting **Network Adapter**. Make sure you add two network adapters. Click on the drop down for the first Network Adapter and choose **Browse**
+
+    ![](/images/InterVPN_ServiceChaining/11_browse.PNG)
+
+12. Select *SiteDC_VPN10* and click on **OK**
+
+    ![](/images/InterVPN_ServiceChaining/124_maynetwint.PNG)
+
+13. Click on the drop down next to the second network adapter and click on browse. Select *SiteDC-VPN40_2* and click on **OK**. The network adapters should look like the image below
+
+    ![](/images/InterVPN_ServiceChaining/13_bothok_2.PNG)
+
+14. Log in to *DC-vEdge2* via Putty, using the credentials below
+
+    | Username | Password |
+    | :---: | :---: |
+    | admin | admin |
+
+    ![](/images/InterVPN_ServiceChaining/14_putty2.PNG)
+
+15. Type `show interface ?` and notice that there are 4 "ge" interfaces
+
+    ![](/images/InterVPN_ServiceChaining/15_b4reboot.PNG)
+    ```
+    show interface ?
+    ```
+
+16. Type `reboot` and then `yes` to confirm the reboot
+
+    ![](/images/InterVPN_ServiceChaining/16_reboot.PNG)
+    ```
+    reboot
+    yes
+    ```
+
+17. Once *DC-vEdge1* and *DC-vEdge2* are back up, log in to either device and issue `show interface ?` again. You will notice two additional interfaces - ge0/4 and ge0/5
+
+    ![](/images/InterVPN_ServiceChaining/17_afterreboot.PNG)
+
+18. Log in to the vManage GUI using the bookmark or by going to *192.168.0.6* on a web browser. Click on **Configuration => Templates**
+
+    ![](/images/InterVPN_ServiceChaining/18_temp.PNG)
+
+19. Go to the **Feature** tab and click on **Add Template**. Search for *vedge* and put a check mark next to **vEdge Cloud**. Choose **VPN** to create a VPN Template
+
+    ![](/images/InterVPN_ServiceChaining/19_vpntemp.PNG)
+
+20. Give a **Template Name** of *dc-vedge-vpn40* and a Description of *vEdge VPN 40 Template for Service Chaining*. Put the VPN as *40*
+
+    ![](/images/InterVPN_ServiceChaining/20_tempdet1.PNG)
+
+21. Scroll down to the **Advertise OMP** section and set **Static (IPv4)** and **Connected (IPv4)** to **On**
+
+    ![](/images/InterVPN_ServiceChaining/21_tempdet2.PNG)
+
+22. Go to the **Service** section and click on **New Service**. Select the **Service Type** as *netsvc1* and enter an **IPv4 Address** of *10.100.40.1*. Click on **Add**
+
+    ![](/images/InterVPN_ServiceChaining/22_svc1.PNG)
+
+23. Click on **New Service** again and select the **Service Type** as *netsvc2*. Enter an **IPv4 Address** of *10.100.40.5*. Click on **Add** then click on **Save** to save the VPN Template configuration
+
+    ![](/images/InterVPN_ServiceChaining/23_svc2_save.PNG)
+
+24. At the **Configuration => Templates => Feature Tab** page, click on **Add Template**. Search for *vedge* and select **vEdge Cloud**. Choose **VPN Interface Ethernet** as the Template Type
+
+    ![](/images/InterVPN_ServiceChaining/24_vpnint1.PNG)
+
+25. Give a **Template Name** of *dc-vedge-vpn40-int1* with a Description of *DC vEdge VPN 40 interface*. Set **Shutdown** to *No* and the **Interface Name** as a Global value of *ge0/4*. Set the **IPv4 Address** to a Device Specific value of *vpn40_if_ipv4_address* and click on **Save**
+
+    ![](/images/InterVPN_ServiceChaining/25_vpnint1det.PNG)
+
+26. Go to **Configuration => Templates** on the vManage GUI and make sure you're on the **Device** tab. Locate the *DCvEdge_dev_temp* template and click on the three dots next to it. Choose to **Edit** the template
+
+    ![](/images/InterVPN_ServiceChaining/26_editdevtemp.PNG)
+
+27. Scroll down to the **Service VPN** section and click on **Add VPN**. Move the *dc-vedge-vpn40* template to the right-hand side and click on **Next**
+
+    ![](/images/InterVPN_ServiceChaining/27_addserv.PNG)
+
+28. Click on **VPN Interface** under **Additional VPN Templates** and select *dc-vedge-vpn40-int1* under the VPN Interface drop down. Click on **Add**
+
+    ![](/images/InterVPN_ServiceChaining/28_addintvpn40.PNG)
+
+29. Make sure the Service VPN section shows the addition of the VPN 40 Template and click on **Update**
+
+    ![](/images/InterVPN_ServiceChaining/29_upd.PNG)
+
+30. Enter the **IPv4 Address** field for *vpn40_if_ipv4_address* as *10.100.40.2/30* (for DC-vEdge1) and *10.100.40.6/30* (for DC-vEdge2). Click on **Next**
+
+    ![](/images/InterVPN_ServiceChaining/30_enterdetnext.PNG)
+
+31. Click on **Configure Devices**. You can choose to view the side by side configuration, if required, noting the addition of vpn 40 with the corresponding service addresses
+
+    ![](/images/InterVPN_ServiceChaining/31_sbs.PNG)
+
+32. Confirm the configuration change by clicking on the check box and clicking on **OK**
+
+    ![](/images/InterVPN_ServiceChaining/32_confir.PNG)
+
+33. Once the configuration update goes through, log in to the CLI of **DC-vEdge1** and **DC-vEdge2** via Putty and issue the following commands. You should see successful ping responses:
+
+    On DC-vEdge1 - `ping vpn 40 10.100.40.1`
+    On DC-vEdge2 - `ping vpn 40 10.100.40.5`
+
+    ![](/images/InterVPN_ServiceChaining/33_ping.PNG)
+
+This completes the configuration needed for adding VPN 40 to the DC-vEdges.
 
 <br/>
 
@@ -107,25 +264,69 @@ We start off by configuring a few Lists that form the building blocks of our ZBF
 
 ## Configuration Cleanup and Routing Verification
 
-1. On the vManage GUI, go to **Configuration => Security**
+1. On the vManage GUI, go to **Configuration => Templates => Feature Tab**. Locate the *vedge-vpn20-DC* template and click on the three dots next to it. Choose to **Edit** the template
 
-    ![](/images/AppFW_DIA/01_sec.PNG)
+    ![](/images/InterVPN_ServiceChaining/34_editdevtemp.PNG)
 
-2. Click on **Custom Options** in the top right corner of the screen and click on **Lists**
+2. Scroll down to the IPv4 Route section and delete the route populated (it should be a null route) by clicking on the **trash icon**. Click on **Update**. Click **Next** and **Configure Devices** to push the update out
 
-    ![](/images/AppFW_DIA/02_lists.PNG)
+    ![](/images/InterVPN_ServiceChaining/35_delnull.PNG)
 
-3. Click on **Zones** on the left-hand side and choose to create a **New Zone List**. Give the Zone List Name as *Guest* and Add VPN as *30*. Click on **Add**
+3. To check the current routing tables for VPN 10 and VPN 20, navigate to **Monitor => Network**
 
-    ![](/images/AppFW_DIA/03_zl.PNG)
+    ![](/images/InterVPN_ServiceChaining/36_mon.PNG)
 
-4. Click on **New Zone List** again and give the Zone List Name as *Outside*. Specify the Add VPN as *0*. Click on **Add**
+4. Click on **vEdge20**
 
-    ![](/images/AppFW_DIA/04_out.PNG)
+    ![](/images/InterVPN_ServiceChaining/37_ve20.PNG)
 
-5. Make sure that there are two Zone Lists in the configuration and move to the next section of the guide (while staying on the same page)
+5. Go to **Real Time** in the left menu and enter *ip route* in the **Device Options** field. Click on *IP Routes* to see the current routes and choose **Show Filters**
 
-    ![](/images/AppFW_DIA/05_2zl_app.PNG)
+    ![](/images/InterVPN_ServiceChaining/38_ipr.PNG)
+
+    ![](/images/InterVPN_ServiceChaining/39_sf.PNG)
+
+6. Enter a **VPN ID** of *10* and click on **Search** to filter the routes for VPN 10 on vEdge20
+
+    ![](/images/InterVPN_ServiceChaining/40_vpn10.PNG)
+
+7. Since Inter VPN Routing hasn't been configured yet, we will see routes that are part of VPN 10 only. Subnets from other VPNs will not show up over here. We can thus infer that there won't be inter VPN connectivity as of now
+
+    ![](/images/InterVPN_ServiceChaining/41_ninterroute.PNG)
+
+8. Click on **Select Devices** (top left-hand corner) and choose **vEdge30** from the drop down. Click on **Show Filters**
+
+    ![](/images/InterVPN_ServiceChaining/42_ve30.PNG)
+
+    ![](/images/InterVPN_ServiceChaining/43_sf.PNG)
+
+9. Enter *20* in the **VPN ID** and click on **Search**
+
+    ![](/images/InterVPN_ServiceChaining/44_vpn20.PNG)
+
+10. This shows all the routes learnt by vEdge30 in VPN 20. There aren't any routes subnets in other VPNs, as of now
+
+    ![](/images/InterVPN_ServiceChaining/45_ninterroute.PNG)
+
+11. On the left hand slide, click on Troubleshooting and select Traceroute (note that this is being done on vEdge30)
+
+    ![](/images/InterVPN_ServiceChaining/46_tr.PNG)
+
+12. Enter a **Destination IP** of *10.20.10.2* and select *VPN 20* from the **VPN** drop down. Populate the **Source/Interface** as *ge0/3* and click on **Start**
+
+    ![](/images/InterVPN_ServiceChaining/47_tracetovpn10.PNG)
+
+13. As expected, the traceroute should fail
+
+    ![](/images/InterVPN_ServiceChaining/48_fail.PNG)
+
+14. Click on **Select Device** in the top left-hand corner and choose *vEdge20*. Run the traceroute again, changing the **Destination IP** to *10.30.20.2*, **VPN** to *VPN 10* and the **Source/Interface** to *ge0/2*. Click on **Start** and this should fail as well
+
+    ![](/images/InterVPN_ServiceChaining/49_trve20.PNG)
+
+    ![](/images/InterVPN_ServiceChaining/50_fail.PNG)
+
+We have established that Inter VPN communication is not happening between Site 20 and Site 30 as of now.
 
 <br/>
 
