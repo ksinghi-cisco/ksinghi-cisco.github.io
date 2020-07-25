@@ -216,10 +216,10 @@ entries:
     - title: Cisco SD-WAN and Umbrella
       url: /mydoc_umbrella.html
       output: web, pdf
-
-    - title: Service Chaining
+    - title: Inter VPN Routing & Service Chaining
       url: /mydoc_servicechaining.html
       output: web, pdf
+
 
   - title: Cloud OnRamp for SaaS
     output: web, pdf
