@@ -221,11 +221,10 @@ entries:
       url: /mydoc_servicechaining.html
       output: web, pdf
 
-
-  - title: Cloud OnRamp for SaaS
+  - title: Cloud onRamp for SaaS
     output: web, pdf
     folderitems:
 
-    - title: Configuring Cloud OnRamp for SaaS
+    - title: Configuring Cloud onRamp for SaaS
       url: /mydoc_conrampsaas.html
       output: web, pdf
