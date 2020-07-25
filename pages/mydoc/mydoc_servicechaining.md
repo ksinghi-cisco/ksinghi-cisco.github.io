@@ -354,19 +354,31 @@ We have established that Inter VPN communication is not happening between Site 2
 
 ## Setting up VPN Lists
 
-1. From the previous section, click on **Application** in the top left corner of the screen after verifying that both the Zone Lists are visible
+In order to facilitate inter VPN connectivity, we will be setting up VPN Lists that can be used in our Policies.
 
-    ![](/images/AppFW_DIA/05_2zl_app.PNG)
+1. On the vManage GUI, go to **Configuration => Policies**
 
-2. Once Application is selected, click on **New Application List** and give the Application List Name of *Guest-Inspect*. Choose *Webmail* from the drop down, making sure all the sub-items under webmail are selected as well
+    ![](/images/InterVPN_ServiceChaining/51_confpol.PNG)
 
-    ![](/images/AppFW_DIA/06_app.PNG)
+2. Click on **Custom Options** in the top right-hand corner and click on **Lists**
 
-3. Click on **Add** to add this Application List
+    ![](/images/InterVPN_ServiceChaining/52_list.PNG)
 
-    ![](/images/AppFW_DIA/07_add.PNG)
+3. Select **VPN** and click on **New VPN List**. Enter a **VPN List Name** of *FW* and put *40* for the **Add VPN** field. Click on **Add**
 
-We have created an Application List which can potentially identify Gmail, Mail.ru etc. traffic. We will now create our policy.
+    ![](/images/InterVPN_ServiceChaining/53_fwvpn.PNG)
+
+4. Click on **New VPN List** again and Put a **VPN List Name** of *Corp_FW*. Put *10,40* in the **Add VPN** field. Click on **Add**
+
+    ![](/images/InterVPN_ServiceChaining/54_cfw.PNG)
+
+5. Click on **New VPN List** again and Put a **VPN List Name** of *PoS_FW*. Put *20,40* in the **Add VPN** field. Click on **Add**
+
+    ![](/images/InterVPN_ServiceChaining/55_pfw.PNG)
+
+6. Make sure that the following VPN lists show up, before proceeding
+
+    ![](/images/InterVPN_ServiceChaining/56_finvpn.PNG)
 
 <br/>
 
@@ -394,71 +406,75 @@ We have created an Application List which can potentially identify Gmail, Mail.r
 
 ## Inter VPN Routing Policies
 
-1. On the vManage GUI, navigate to **Configuration => Security** and click on **Add Security Policy**
+1. Navigate to **Configuration => Policies** and locate the *Site40-Guest-DIA* Policy. Click on the three dots next to it and choose to **Edit** the policy
 
-    ![](/images/AppFW_DIA/08_addsec.PNG)
+    ![](/images/InterVPN_ServiceChaining/57_edit.PNG)
 
-2. Choose **Guest Access** and click on Proceed
+2. Click on the **Topology** tab (top of the screen) and click on **Add Topology**. Choose to add a *Custom Control (Route & TLOC)* topology
 
-    ![](/images/AppFW_DIA/09_guest.PNG)
+    ![](/images/InterVPN_ServiceChaining/58_toptab_add.PNG)
 
-3. Under Firewall, choose to **Add Firewall Policy**. Click on *Create New*
+3. Give the topology a **Name** of *vpn10-inter-vpn20-40* with a Description of *Control Policy for Inter VPN Routing from VPN 10 to VPNs 20 and 40*. Click on **Sequence Type** and choose **Route**
 
-    ![](/images/AppFW_DIA/10_fw.PNG)
+    ![](/images/InterVPN_ServiceChaining/59_name_route.PNG)
 
-4. Click on **Apply Zone Pairs**
+4. Click on **Sequence Rule** and add a **VPN** match. Select *Corporate* from the **VPN List** drop down
 
-    ![](/images/AppFW_DIA/11_azp.PNG)
+    ![](/images/InterVPN_ServiceChaining/60_vpn10.PNG)
 
-5. Set the **Source Zone** as *Guest* and the **Destination Zone** as *Outside*. Click on **Save**
+5. Click on the **Actions** tab and select the **Accept** radio button. Click on **Export To** and select *PoS_FW* from the drop down under Actions. CLick on **Save Match And Actions**
 
-    ![](/images/AppFW_DIA/12_szp.PNG)
+    ![](/images/InterVPN_ServiceChaining/61-action.PNG)
 
-6. Ensure that *Guest* appears under Sources and *Outside* appears under Destinations. Give the Policy a name of *Guest-FW* and a Description of *Guest Traffic Firewall**. Click on **Add Rule**
+6. Select **Default Action** on the left-hand side and click on the **pencil** icon to edit the Default Action
 
-    ![](/images/AppFW_DIA/13_seq.PNG)
+    ![](/images/InterVPN_ServiceChaining/62_pencil.PNG)
 
-7. Click on **Source Data Prefix** and choose *Guest-Site40* as the **IPv4 Prefix List**. Click on the Green **Save** button (be careful, don't click on the Blue Save button)
+7. Click on **Accept** and then **Save Match And Actions**
 
-    ![](/images/AppFW_DIA/14_sdp.PNG)
+    ![](/images/InterVPN_ServiceChaining/63_acceptall.PNG)
 
-8. Click on **Application List** and select the *Guest-Inspect* list we created. Click on the Green **Save** button (again, please don't click on the Blue Save button)
+8. Click **Save Control Policy**
 
-    ![](/images/AppFW_DIA/15_applist.PNG)
+    ![](/images/InterVPN_ServiceChaining/64_savecp.PNG)
 
-9. Give the Firewall Rule a name of *Inspect Web App Guest* and set the Action as **Inspect**. Click on **Save** (this time, we click the Blue Save button). Ensure that the Source Data Prefix and the Application List is populated
+9. Click on **Add Topology** and add another *Custom Control (Route & TLOC)* topology. Give it a **Name** of *vpn20-inter-vpn10-40* with a Description of *Control Policy for Inter VPN routing between VPN 20 and VPNs 10 and 40*. Click on **Sequence Type** and select **Route**
 
-    ![](/images/AppFW_DIA/16_ins.PNG)
+    ![](/images/InterVPN_ServiceChaining/65_route.PNG)
 
-10. Click on **Add Rule** again and select the **Source Data Prefix** IPv4 Prefix List as *Guest-Site40*. Click on the Green **Save** button
+10. Click on **Sequence Rule** and select VPN as the match. Select *PoS* from the **VPN List**
 
-    ![](/images/AppFW_DIA/20_sdp.PNG)
+    ![](/images/InterVPN_ServiceChaining/66_sr.PNG)
 
-11. Click on **Destination Ports** and set the Destination Ports as *80 443* (there is a space between the port numbers). Click on the Green **Save** button
+11. Click on the **Actions** tab and select the **Accept** radio button. Click on **Export To** and select the *Corp_FW* VPN list in the **Export To** drop down under Actions. To save the rule, click on **Save Match And Actions**
 
-    ![](/images/AppFW_DIA/18_port.PNG)
+    ![](/images/InterVPN_ServiceChaining/67_save.PNG)
 
-12. Make sure the Firewall Rule looks like the image below and specify a Name of *TCP Guest Pass Web*. Specify the **Action** as *Pass* and put a check mark against Log. Click on the Blue **Save** button
+12. Click on **Default Action** on the left-hand side and click the **Pencil** icon to edit the Default Action
 
-    ![](/images/AppFW_DIA/21_save.PNG)
+    ![](/images/InterVPN_ServiceChaining/67_y.PNG)
 
-13. Make sure the Firewall Policy looks as below and click on **Save Firewall Policy**
+13. Select **Accept** and click **Save Match And Actions**
 
-    ![](/images/AppFW_DIA/22_savefwpol.PNG)
+    ![](/images/InterVPN_ServiceChaining/67_z.PNG)
 
-14. Click on **Next** and then **Next** again at the URL Filtering and TLS/SSL Decryption sections
+14. Click on **Save Control Policy**
 
-    ![](/images/AppFW_DIA/23_next.PNG)
+    ![](/images/InterVPN_ServiceChaining/68_savecp.PNG)
 
-    ![](/images/AppFW_DIA/24_next_urlflater.PNG)
+15. You should be back at the main policy screen. Click on the **Policy Application** tab and make sure you're under the **Topology** sub-tab (should not be under the main Topology tab). Click on **New Site List** under the entry for *vpn10-inter-vpn20-40* and select the **Inbound Site List** as *Site20*. Click on **Add**
 
-    ![](/images/AppFW_DIA/25_next.PNG)
+    ![](/images/InterVPN_ServiceChaining/71_polapp_site20add.PNG)
 
-15. At the Policy Summary page, give a Security Policy Name of *Site40-Guest-DIA* and a Description of *Guest Policy for Site 40*. Under Additional Policy Settings set the TCP SYN Flood Limit to Enabled and 5000. Enable **Audit Trail** as well and click on **Save Policy**
+16. Click on **New Site List** under the entry for *vpn20-inter-vpn10-40* and select the **Inbound Site List** as *Site30*. Click on **Add**. Click on **Save Policy Changes**
 
-    ![](/images/AppFW_DIA/26_save.PNG)
+    ![](/images/InterVPN_ServiceChaining/72_site30_savepol.PNG)
 
-This completes the process of creating the Security Policy.
+17. Click on **Activate** to push the changes to the vSmarts
+
+    ![](/images/InterVPN_ServiceChaining/73_act.PNG)
+
+We have set up the policies for Inter VPN Routing.
 
 <br/>
 
@@ -486,35 +502,33 @@ This completes the process of creating the Security Policy.
 
 ## Inter VPN Routing Verification
 
-1. Go to **Configuration => Templates** and click on the three dots next to the *cEdge_dualuplink_devtemp* Device Template. Choose to **Edit** it
+1. On the vManage GUI, navigate to **Monitor => Network** and click on **vEdge20**. Scroll down along the left-hand side menu and click on **Real Time**. Enter *IP Routes* in the **Device Options** and select IP Routes when it pops up. Choose **Show Filters** and enter a **VPN ID** of *10*. Click on **Search**. The Routing Table for VPN 10 on vEdge20 should show routes to subnets at Site 30 VPN 20
 
-    ![](/images/AppFW_DIA/27_devtemp.PNG)
+    ![](/images/InterVPN_ServiceChaining/74_vpn20leak.PNG)
 
-2. Under the **Additional Templates** section, populate the **Security Policy** as *Site40-Guest-DIA* and click on **Update**
+2. Click on **Select Device** in the top left-hand corner and click on **vEdge30**
 
-    ![](/images/AppFW_DIA/28_secpol_upd.PNG)
+    ![](/images/InterVPN_ServiceChaining/75_ve30.PNG)
 
-3. Choose **Next** and then **Configure Devices** to push the Security Policy to cEdge40
+3. Click **Show Filters** and enter a **VPN ID** of *20*. Click on **Search**
 
-    ![](/images/AppFW_DIA/29_next.PNG)
+    ![](/images/InterVPN_ServiceChaining/76_sf.PNG)
 
-    ![](/images/AppFW_DIA/30_sbs.PNG)
+    ![](/images/InterVPN_ServiceChaining/77_vpn20search.PNG)
 
-4. Open the Console session to the Site 40 PC (log in to vCenter => locate the site40pc VM and open the Web Console) and navigate to www.facebook.com. It should work indicating that Web Traffic is allowed. Log in to the cEdge40 CLI via Putty and issue a `show logg`. We should see some activity there
+4. You should see routes for Site 20 VPN 10
 
-    ![](/images/AppFW_DIA/31_fb.PNG)
+    ![](/images/InterVPN_ServiceChaining/78_vpn10leak.PNG)
 
-    ![](/images/AppFW_DIA/32_snipshlog.PNG)
+5. Click on **Troubleshooting** on the left-hand side and make sure you have **vEdge20** as the selected device. Enter a **Destination IP** of *10.30.20.2* with a **VPN** of *VPN - 10*. Select a **Source/Interface** of *ge0/2* (once again, verify that you're at the vEdge20 device. If not, click on the Select Device drop down from the top left-hand corner and select vEdge20). Click on **Start**. Notice that we now have direct Inter VPN connectivity from Site 20 VPN 10 to Site 30 VPN 20
 
-5. Open up a few tabs on the Site 40 PC (2 to 3 of them) and try to access www.gmail.com on all tabs. This should fail
+    ![](/images/InterVPN_ServiceChaining/79_leak1.PNG)
 
-    ![](/images/AppFW_DIA/33_gmailnw.PNG)
+6. Click on **Select Device** in the top left-hand corner and select **vEdge30**. Enter a **Destination IP** of *10.20.10.2* with a **VPN** of *VPN - 20* and a **Source/Interface** of *ge0/3*. Click on **Start**. Notice that we now have direct Inter VPN Connectivity from Site 30 VPN 20 to Site 20 VPN 10
 
-6. On the vManage GUI, navigate to **Dashboard => Security** and you should see spikes in the Firewall Enforcement dashlet (continue with the lab and check back after approximately 15 minutes to see this)
+    ![](/images/InterVPN_ServiceChaining/80_leak2.PNG)
 
-    ![](/images/AppFW_DIA/34_dashsec.PNG)
-
-Thus, our ZBF is working as expected, blocking webmail traffic on the Guest VPN while allowing other traffic on ports 80 and 443.
+This completes the verification of our Inter VPN Routing configuration.
 
 <br/>
 
@@ -541,6 +555,16 @@ Thus, our ZBF is working as expected, blocking webmail traffic on the Guest VPN 
 " type="primary" %}
 
 ## Policies for Service Chaining
+
+Direct connectivity between two VPNs might not be a desirable scenario. There might be a requirement to enforce certain rules when two VPNs are communicating between each other. That's where Service Chaining comes into the picture, where we route Inter VPN traffic through an intermediary device (like a Firewall) to enforce our policies/rules. To reiterate, the traffic flow should look like the diagram below at the end of this section vs. the direct connectivity that we have between VPNs right now.
+
+![](/images/InterVPN_ServiceChaining/125_Topo2.PNG)
+
+> The Black arrow between Site 20 and Site 30 indicates the traffic flow when Inter VPN Routing configuration is done for the first time. Traffic flows directly between the two Sites.
+
+> The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br> Source IP: 10.20.10.2 or 10.20.10.3 <br>  Destination IP: 10.30.20.2
+
+>The Green arrow is the traffic flow from Site 30 VPN 20 to Site 20 VPN 10 once Service Chaining is configured. <br> <br>  Source IP: 10.30.20.2 <br>  Destination IP: 10.20.10.2 or 10.20.10.3
 
 <br/>
 
