@@ -217,7 +217,7 @@ entries:
       url: /mydoc_umbrella.html
       output: web, pdf
 
-    - title: Inter VPN Routing & Service Chaining
+    - title: Service Chaining
       url: /mydoc_servicechaining.html
       output: web, pdf
 
