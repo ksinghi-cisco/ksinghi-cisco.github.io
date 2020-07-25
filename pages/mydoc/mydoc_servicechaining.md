@@ -410,11 +410,11 @@ In order to facilitate inter VPN connectivity, we will be setting up VPN Lists t
 
     ![](/images/InterVPN_ServiceChaining/57_edit.PNG)
 
-2. Click on the **Topology** tab (top of the screen) and click on **Add Topology**. Choose to add a *Custom Control (Route & TLOC)* topology
+2. Click on the **Topology** tab (top of the screen) and click on **Add Topology**. Choose to add a *Custom Control (Route & TLOC)* policy
 
     ![](/images/InterVPN_ServiceChaining/58_toptab_add.PNG)
 
-3. Give the topology a **Name** of *vpn10-inter-vpn20-40* with a Description of *Control Policy for Inter VPN Routing from VPN 10 to VPNs 20 and 40*. Click on **Sequence Type** and choose **Route**
+3. Give the policy a **Name** of *vpn10-inter-vpn20-40* with a Description of *Control Policy for Inter VPN Routing from VPN 10 to VPNs 20 and 40*. Click on **Sequence Type** and choose **Route**
 
     ![](/images/InterVPN_ServiceChaining/59_name_route.PNG)
 
@@ -422,7 +422,7 @@ In order to facilitate inter VPN connectivity, we will be setting up VPN Lists t
 
     ![](/images/InterVPN_ServiceChaining/60_vpn10.PNG)
 
-5. Click on the **Actions** tab and select the **Accept** radio button. Click on **Export To** and select *PoS_FW* from the drop down under Actions. CLick on **Save Match And Actions**
+5. Click on the **Actions** tab and select the **Accept** radio button. Click on **Export To** and select *PoS_FW* from the drop down under Actions. Click on **Save Match And Actions**
 
     ![](/images/InterVPN_ServiceChaining/61-action.PNG)
 
@@ -438,7 +438,7 @@ In order to facilitate inter VPN connectivity, we will be setting up VPN Lists t
 
     ![](/images/InterVPN_ServiceChaining/64_savecp.PNG)
 
-9. Click on **Add Topology** and add another *Custom Control (Route & TLOC)* topology. Give it a **Name** of *vpn20-inter-vpn10-40* with a Description of *Control Policy for Inter VPN routing between VPN 20 and VPNs 10 and 40*. Click on **Sequence Type** and select **Route**
+9. Click on **Add Topology** and add another *Custom Control (Route & TLOC)* policy. Give it a **Name** of *vpn20-inter-vpn10-40* with a Description of *Control Policy for Inter VPN routing between VPN 20 and VPNs 10 and 40*. Click on **Sequence Type** and select **Route**
 
     ![](/images/InterVPN_ServiceChaining/65_route.PNG)
 
@@ -556,7 +556,7 @@ This completes the verification of our Inter VPN Routing configuration.
 
 ## Policies for Service Chaining
 
-Direct connectivity between two VPNs might not be a desirable scenario. There might be a requirement to enforce certain rules when two VPNs are communicating between each other. That's where Service Chaining comes into the picture, where we route Inter VPN traffic through an intermediary device (like a Firewall) to enforce our policies/rules. To reiterate, the traffic flow should look like the diagram below at the end of this section vs. the direct connectivity that we have between VPNs right now.
+Direct connectivity between two VPNs might not be a desirable scenario. There might be a requirement to enforce certain rules when two VPNs are communicating with each other. That's where Service Chaining comes into the picture, where we route Inter VPN traffic through an intermediary device (like a Firewall) to enforce our policies/rules. To reiterate, the traffic flow should look like the diagram below at the end of this section vs. the direct connectivity that we have between VPNs right now.
 
 ![](/images/InterVPN_ServiceChaining/125_Topo2.PNG)
 
@@ -565,6 +565,46 @@ Direct connectivity between two VPNs might not be a desirable scenario. There mi
 > The Orange arrow is the traffic flow from Site 20 VPN 10 to Site 30 VPN 20 once Service Chaining is configured. <br> <br> Source IP: 10.20.10.2 or 10.20.10.3 <br>  Destination IP: 10.30.20.2
 
 >The Green arrow is the traffic flow from Site 30 VPN 20 to Site 20 VPN 10 once Service Chaining is configured. <br> <br>  Source IP: 10.30.20.2 <br>  Destination IP: 10.20.10.2 or 10.20.10.3
+
+1. On the vManage GUI, go to **Configuration => Policies**. Locate the *Site40-Guest-DIA* policy and click on the three dots next to it. Choose to **Edit** the policy. Make sure you're on the **Topology** tab and click on **Add Topology**. Choose to add a *Custom Control (Route and TLOC)* topology
+
+    ![](/images/InterVPN_ServiceChaining/81_addsc.PNG)
+
+2. Give the Custom Control Policy a **Name** of *site20-fw-site30* and a Description of *Traffic from Site 20 to Site 30 via the Firewall*. Click on **Sequence Type** and choose **Route**
+
+    ![](/images/InterVPN_ServiceChaining/82_namestroute.PNG)
+
+3. Click on **Sequence Rule** and select **Site** for a Match Condition. Click on the **Site List** drop down and choose *Site 30*. Click on the **Actions** tab
+
+    ![](/images/InterVPN_ServiceChaining/83_srsite30.PNG)
+
+4. Select the **Accept** radio button and choose **Service**. Under Actions select the **Service: Type** as *Net Service 1* and specify a **Service: VPN** of *40*. Select an **Encapsulation** of *IPSEC* and click on **Save Match And Actions** to save this rule
+
+    ![](/images/InterVPN_ServiceChaining/84_action.PNG)
+
+5. Click on **Default Action** on the left-hand side and click the pencil icon. Select Accept and then **Save Match And Actions**. The Default Action should change to **Accept** *Enabled*. Click on **Save Control Policy**
+
+    ![](/images/InterVPN_ServiceChaining/85_defactionen.PNG)
+
+6. Make sure you're on the **Topology** tab and click on **Add Topology**. Choose to add a *Custom Control (Route and TLOC)* topology. Give the Custom Control Policy a **Name** of *site30-fw-site20* and a Description of *Site 30 to Site 20 via the firewall*. Click on **Sequence Type** and choose **Route**
+
+    ![](/images/InterVPN_ServiceChaining/86_s30to20route.PNG)
+
+7. Click on **Sequence Rule** and then select **Site**. Choose *Site 20* in the **Site List** under **Match Conditions**. Click on **Actions**
+
+    ![](/images/InterVPN_ServiceChaining/87_s20match.PNG)
+
+8. Select the **Accept** radio button and choose **Service**. Under Actions select the **Service: Type** as *Net Service 2* and specify a **Service: VPN** of *40*. Select an **Encapsulation** of *IPSEC* and click on **Save Match And Actions** to save this rule
+
+    ![](/images/InterVPN_ServiceChaining/88_sr.PNG)
+
+9. Click on **Default Action** on the left-hand side and click the pencil icon. Select Accept and then **Save Match And Actions**. The Default Action should change to **Accept** *Enabled*. Click on **Save Control Policy**
+
+    ![](/images/InterVPN_ServiceChaining/89_defactionsave.PNG)
+
+10. Go to the **Policy Application** tab and locate the *site30-fw-site20* and *site20-fw-site30* entries. For *site30-fw-site20*, click on **New Site List** and choose *Site30* in the out direction. Click on **Add**. Similarly, for *site20-fw-site30*, click on **New Site List** and choose *Site20* in the out direction. Click on **Add**. Click on **Save Policy Changes**. **Activate** the change when prompted to do so
+
+    ![](/images/InterVPN_ServiceChaining/90_polapp_sitelist_save_act.PNG)
 
 <br/>
 
@@ -591,6 +631,58 @@ Direct connectivity between two VPNs might not be a desirable scenario. There mi
 " type="primary" %}
 
 ## Activity Verification
+
+1. Log in to the CLI of **vEdge20** via Putty (username and password given below) and enter `ping vpn 10 10.100.40.2` to test connectivity between Site 20 VPN 10 and Site DC VPN 40. The pings should fail
+
+    | Username | Password |
+    | :---: | :---: |
+    | admin | admin |
+
+    ![](/images/InterVPN_ServiceChaining/90_q.PNG)
+
+    This is due to the fact that we haven't set up inter VPN connectivity between VPN 10/VPN 20 and VPN 40. It is vital to ensure that the source and destination VPNs can access the Service Subnet.
+
+2. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** on the top right-hand corner and select **Lists**. Click on **VPN** in the left-hand menu and then **New VPN List**. Enter a **VPN List Name** of *Corp_PoS* and put *10,20* in the **Add VPN** field. Click on **Add**
+
+    ![](/images/InterVPN_ServiceChaining/90_r.PNG)
+
+3. Go to **Configuration => Policies** and locate the *Site40-Guest-DIA* Policy. Click on the three dots next to it and choose to **Edit** the policy. Click on the **Topology** tab (top of the screen) and click on **Add Topology**. Choose to add a *Custom Control (Route & TLOC)* policy. Give the policy a **Name** of *vpn40-inter-vpn10-20* with a Description of *Control Policy for Inter VPN Routing from VPN 40 to VPNs 10 and 20*. Click on **Sequence Type** and choose **Route**
+
+    ![](/images/InterVPN_ServiceChaining/199_vpn40inter.PNG)
+
+4. Click on **Sequence Rule** and add a **VPN** match. Select *FW* from the **VPN List** drop down
+
+    ![](/images/InterVPN_ServiceChaining/198_vpninterrule.PNG)
+
+5. Click on the **Actions** tab and select the **Accept** radio button. Click on **Export To** and select *Corp_PoS* from the drop down under Actions. Click on **Save Match And Actions**
+
+    ![](/images/InterVPN_ServiceChaining/196_actionvpn40inter.PNG)
+
+6. Select **Default Action** on the left-hand side and click on the **pencil** icon to edit the Default Action. Click on **Accept** and then **Save Match And Actions**. Click **Save Control Policy**
+
+    ![](/images/InterVPN_ServiceChaining/195_defaction.PNG)
+
+7. You should be back at the main policy screen. Click on the **Policy Application** tab and make sure you're under the **Topology** sub-tab (should not be under the main Topology tab). Click on **New Site List** under the entry for *vpn40-inter-vpn10-20* and select the **Inbound Site List** as *DC*. Click on **Add**. Click on **Save Policy Changes**. Click on **Activate** to push the changes to the vSmarts
+
+    ![](/images/InterVPN_ServiceChaining/194_polapp_sitedc_savepolch.PNG)
+
+8. Head back over to the CLI of vEdge20 and type `ping vpn 10 10.100.40.2`. The pings should now be successful. Type `ping vpn 10 10.100.40.1` to ping the Firewall. This should also work
+
+    ![](/images/InterVPN_ServiceChaining/192_afterinter40.PNG)
+
+9. On the vManage GUI, go to **Monitor => Network** and select **vEdge20**. Click on **Troubleshooting** along the left-hand menu and choose **Traceroute**. Enter a **Destination IP** of *10.30.20.2* and a **VPN** of *VPN - 10*. Set the **Source/Interface** as *ge0/2* and click on **Start**. We are thus doing a traceroute from Site 20 VPN 10 to Site 30 VPN 20
+
+    ![](/images/InterVPN_ServiceChaining/191_traceroute.PNG)
+
+    Notice that traffic doesn't flow directly between the sites. Instead, it traverses the Firewall (IP of 10.100.40.1 in this case) and then goes to Site 30 VPN 20.
+
+10. Click on **Select Device** in the top left-hand corner and select **vEdge30**. Enter a **Destination IP** of *10.20.10.2* and a **VPN** of *VPN - 20*. Specify a **Source/Interface** of *ge0/3* and click on **Start**. We are doing a traceroute from Site 30 VPN 20 to Site 20 VPN 10
+
+    ![](/images/InterVPN_ServiceChaining/190_tragain.PNG)
+
+    In this case as well, traffic traverses the Firewall (IP of 10.100.40.5) and then goes to Site 20 VPN 10.
+
+This completes the Service Chaining lab activity.
 
 <br/>
 
