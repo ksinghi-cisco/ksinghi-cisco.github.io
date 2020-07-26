@@ -144,9 +144,9 @@ VM names need to be used accordingly.
 | U <br> Site 30 AD                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.18X         |               |
 | V <br> Site 30 PC                                            | 30      | NA            | sdwan-slc/ghi-site30pc-podX | Network Adapter 1 | Site30-VPN10            | eth0             | 10.30.10.21/24     | 10.30.10.2    |
 | V <br> Site 30 PC                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.16X         |               |
-| W <br> Firewall                                              | 1       | NA            | sdwan-slc/ghi-asa-podX      | Network Adapter 1 | Management              | Management0/0    | 192.168.0.50/24    | 192.168.0.1   |
-|                                                              |         |               |                             | Network Adapter 2 | SiteDC-VPN40            | Gig0/0           | 10.100.40.1/30     | 10.100.40.2   |
-|                                                              |         |               |                             | Network Adapter 3 | SiteDC-VPN40_2          | Gig0/1           | 10.100.40.5/30     | 10.100.40.6   |
+| W <br> Firewall     ASAv                                         | 1       | NA            | sdwan-slc/ghi-asa-podX      | Network Adapter 1 | Management              | Management0/0    | 192.168.0.50/24    | 192.168.0.1   |
+|          W <br> Firewall   ASAv                                                 |         |               |                             | Network Adapter 2 | SiteDC-VPN40            | Gig0/0           | 10.100.40.1/30     | 10.100.40.2   |
+|           W <br> Firewall    ASAv                                               |         |               |                             | Network Adapter 3 | SiteDC-VPN40_2          | Gig0/1           | 10.100.40.5/30     | 10.100.40.6   |
 
 <div class="datatable-end"></div>
 
