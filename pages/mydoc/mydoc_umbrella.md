@@ -1451,7 +1451,7 @@ We have thus used a Firewall Policy to block traffic to a particular destination
 
 We will now apply a Web Policy to all traffic traversing the IPSEC Tunnels.
 
-1. On the Umbrella GUI, navigate to **Policies => Policy Components => Destination Lists** and click on **Add**. Name the list *blockyahoo* and make sure that the **Blocked** radio button is selected. Enter *yahoo.com* in the **Enter a domain, URL, IPv4 or CIDR** box and click on **Add**. Once yahoo.com shows up in the lower half of the screen, click on **Save**
+1. On the Umbrella GUI, navigate to **Policies => Policy Components => Destination Lists** and click on **Add**. Name the list *blockyahoo* and make sure that the **Blocked** radio button is selected. The **This Destination List is applied to** field should be **Web Policies**. Enter *yahoo.com* in the **Enter a domain, URL, IPv4 or CIDR** box and click on **Add**. Once yahoo.com shows up in the lower half of the screen, click on **Save**
 
     ![](/images/Umbrella_SDWAN_2/192_wp3.PNG)
 
