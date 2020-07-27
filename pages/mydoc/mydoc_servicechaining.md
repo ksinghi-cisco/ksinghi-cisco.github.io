@@ -360,7 +360,7 @@ In order to facilitate inter VPN connectivity, we will be setting up VPN Lists t
 
     ![](/images/InterVPN_ServiceChaining/51_confpol.PNG)
 
-2. Click on **Custom Options** in the top right-hand corner and click on **Lists**
+2. Click on **Custom Options** in the top right-hand corner and click on **Lists** (under Centralized Policy)
 
     ![](/images/InterVPN_ServiceChaining/52_list.PNG)
 
@@ -642,7 +642,7 @@ Direct connectivity between two VPNs might not be a desirable scenario. There mi
 
     This is due to the fact that we haven't set up inter VPN connectivity between VPN 10/VPN 20 and VPN 40. It is vital to ensure that the source and destination VPNs can access the Service Subnet.
 
-2. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** on the top right-hand corner and select **Lists**. Click on **VPN** in the left-hand menu and then **New VPN List**. Enter a **VPN List Name** of *Corp_PoS* and put *10,20* in the **Add VPN** field. Click on **Add**
+2. On the vManage GUI, navigate to **Configuration => Policies**. Click on **Custom Options** on the top right-hand corner and select **Lists** (under Centralized Policy). Click on **VPN** in the left-hand menu and then **New VPN List**. Enter a **VPN List Name** of *Corp_PoS* and put *10,20* in the **Add VPN** field. Click on **Add**
 
     ![](/images/InterVPN_ServiceChaining/90_r.PNG)
 
