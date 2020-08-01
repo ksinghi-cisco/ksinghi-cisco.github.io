@@ -298,7 +298,7 @@ We will make use of the templates that were created for cEdge40, repurposing the
 
 8. Make copies of the following templates, renaming the template name and description as shown below. No changes need to be made to the newly copied templates
 
-    | Template to be copied | Renamed Template Name | Renamed Template Description
+    | Template to be copied | Copied Template Name | Copied Template Description
     | :---: | :---: | :---: |
     | cEdge_VPN512_dual_uplink | cEdge_VPN512_single_uplink | cEdge VPN 512 Template for Single Uplinks
     | cedge-vpn512-int-dual | cedge-vpn512-int-single | cEdge VPN 512 Interface Template for devices with a Single uplink
@@ -351,8 +351,8 @@ The feature templates created in the previous sections are referenced in Device 
     |------------------------------|---------------|------------------------------|--------------------------|
     | Transport and Management VPN | Cisco VPN 0   |                              | cEdge_VPN0_single_uplink   |
     | Transport and Management VPN | Cisco VPN 0   | Cisco VPN Interface Ethernet | cedge-vpn0-int-single      |
-    | Transport and Management VPN | Cisco VPN 512 |                              | cEdge_VPN512_dual_uplink |
-    | Transport and Management VPN | Cisco VPN 512 | Cisco VPN Interface Ethernet | cedge-vpn512-int-dual    |
+    | Transport and Management VPN | Cisco VPN 512 |                              | cEdge_VPN512_single_uplink |
+    | Transport and Management VPN | Cisco VPN 512 | Cisco VPN Interface Ethernet | cedge-vpn512-int-single    |
 
 
 
