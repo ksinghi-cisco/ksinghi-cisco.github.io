@@ -44,7 +44,7 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
 
     ![](/images/Deploying_DC_vEdge1/01_logintovmanage.PNG)
 
-2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along with 5 WAN Edges. 7 control planes should be up and 3 sites should have WAN connectivity.
+2. On logging in, you should see 2 vSmarts, 1 vBond and 1 vManage along with 5 WAN Edges. 7 control planes should be up and 3 sites should have WAN connectivity. If you see 7 WAN Edges with 9 Control Planes, that is OK as well (since it depends on the scenario chosen while registering for the lab)
 
     ![](/images/Deploying_cEdge40/01_dash.PNG)
 
