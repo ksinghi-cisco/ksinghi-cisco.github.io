@@ -296,6 +296,13 @@ We will make use of the templates that were created for cEdge40, repurposing the
 
     ![](/images/Deploying_cEdge50_cEdge51/20_varupd_ip_col_rest.PNG)
 
+8. Make copies of the following templates, renaming the template name and description as shown below. No changes need to be made to the newly copied templates
+
+    | Template to be copied | Renamed Template Name | Renamed Template Description
+    | :---: | :---: | :---: |
+    | cEdge_VPN512_dual_uplink | cEdge_VPN512_single_uplink | cEdge VPN 512 Template for Single Uplinks
+    | cedge-vpn512-int-dual | cedge-vpn512-int-single | cEdge VPN 512 Interface Template for devices with a Single uplink
+
 We are done with creating feature templates for the initial onboarding of cEdge50 and cEdge51. Notice, this was less work than before since we could simply copy the template already created for cEdge40.
 
 <br>
@@ -334,7 +341,7 @@ The feature templates created in the previous sections are referenced in Device 
 
     ![](/images/Deploying_cEdge50_cEdge51/94_copy.PNG)
 
-3. Click on the three dots next to the newly copied template and choose to **Edit** it. Make sure the details under **Transport and Management VPN** are populated as below, updating VPN0 and VPN0 Interface templates with the ones we just created. **VPN512 templates are being re-used from before**. Click on **Update** once done
+3. Click on the three dots next to the newly copied template and choose to **Edit** it. Make sure the details under **Transport and Management VPN** are populated as below, updating VPN0 and VPN0 Interface templates with the ones we just created. Click on **Update** once done
 
     {% include tip.html content="You can create templates on the fly if the template hasn't already been created. This can be done via the **Create Template** hyperlink from the drop down menu" %}
 
@@ -349,7 +356,7 @@ The feature templates created in the previous sections are referenced in Device 
 
 
 
-    ![](/images/Deploying_cEdge50_cEdge51/21_reuse512.PNG)
+    ![](/images/Deploying_cEdge50_cEdge51/199_minorupdate.PNG)
 
 4. Once created, the Device Template will need to be attached to a Device for it to take effect. Click on the three dots (right-hand side) of the *cEdge-single-uplink* template and click on **Attach Devices**
 
