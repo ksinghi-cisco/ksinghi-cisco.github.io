@@ -55,7 +55,7 @@ The vManage, vBond and vSmarts have been deployed along with Sites 1, 20 and 30.
 
     ![](/images/Deploying_cEdge40/02_vercontvm.PNG)
 
-Look at the System IP to see which device has the vManage established a control connection with. There should be 5 connections to vEdges. This completes the verification activity.
+Look at the System IP to see which device has the vManage established a control connection with. There should be 5 (or 7, depending on the selected lab scenario) connections to vEdges. This completes the verification activity.
 <br>
 
 {% include callout.html content="**Task List**
