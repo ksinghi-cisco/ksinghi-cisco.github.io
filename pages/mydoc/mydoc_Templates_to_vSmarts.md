@@ -283,6 +283,8 @@ Our Device Template for the vSmarts are set up and we now need to attach them to
 
 This completes our activity of attaching Device Templates to the vSmarts.
 
+{% include note.html content="If you check the main dashboard screen on vManage at this point, it's possible  there will be 2 Control Connections that are down. Log in to the vSmarts via Putty (or SSH to 192.168.0.8 and 192.168.0.9) and issue a `clear control connections`. After a few seconds, all control connections (i.e. 10 of them) should be up." %}
+
 <br/>
 
 {% include callout.html content="**Task List**
