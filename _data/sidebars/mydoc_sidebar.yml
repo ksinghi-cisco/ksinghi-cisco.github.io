@@ -88,9 +88,7 @@ entries:
       url: /mydoc_Deploying_cEdge50_cEdge51.html
       output: web, pdf
 
-    - title:
-      url: /mydoc_lists.html
-      output: web, pdf
+
 
   - title: Configuring Templates
     output: web, pdf
