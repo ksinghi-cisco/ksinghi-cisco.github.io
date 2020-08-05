@@ -21,7 +21,7 @@ folder: mydoc
 
 ## Editing Templates to support VRRP
 
-1. On the vManage GUI, navigate to **Configuration => Templates**
+1. On the vManage GUI, navigate to **Configuration => Templates => Feature Tab**
 
     ![](/images/VRRP/01_temp.PNG)
 
@@ -116,7 +116,9 @@ folder: mydoc
 
     ![](/images/VRRP/17_ve51mas.PNG)
 
-7. Wait for cEdge50 to come up. Once you're able to SSH to it, issue `show vrrp 5 Gig3` - you will notice it has taken the role of MASTER (look at the priority - it's 110, meaning cEdge50 will always be the MASTER if available). Had we left both the devices at the default priority of 100, cEdge51 would have continued being the MASTER even after cEdge50 came back up
+7. Wait for cEdge50 to come up (approx. 5 minutes). Once you're able to SSH to it, issue `show vrrp 5 Gig3` - you will notice it has taken the role of MASTER (look at the priority - it's 110, meaning cEdge50 will always be the MASTER if available). Had we left both the devices at the default priority of 100, cEdge51 would have continued being the MASTER even after cEdge50 came back up.
+
+    Changing the priority of cEdge50 to a higher value and  forcing it to be the MASTER might cause issues since it's possible that the LAN/VRRP side of the Router comes up post a reboot before the WAN/OMP side is ready. This might lead to a few dropped packets
 
     ![](/images/VRRP/18_ce50up_massinceprihigh.PNG)
 
