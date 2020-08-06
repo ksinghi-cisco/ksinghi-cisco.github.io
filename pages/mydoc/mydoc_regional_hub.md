@@ -196,7 +196,7 @@ We will be adding two policies in this section - one for traffic destined to the
 
     ![](/images/Regional_Hub/17_site20_savematch.PNG)
 
-3. Click on **Sequence Type** again and choose **Route**. Click on **Sequence Rule** and choose **Site** under the Match tab. Populate *Site20* in the Site List. Click on the Actions tab and choose **Accept**. Click on **TLOC** and populate *Sie30* from the TLOC List drop down. Click on **Save Match and Actions**
+3. Click on **Sequence Type** again and choose **Route**. Click on **Sequence Rule** and choose **Site** under the Match tab. Populate *Site20* in the Site List. Click on the Actions tab and choose **Accept**. Click on **TLOC** and populate *Site30* from the TLOC List drop down. Click on **Save Match and Actions**
 
     ![](/images/Regional_Hub/18_site20_tloc30_savematch.PNG)
 
@@ -282,7 +282,7 @@ This completes the configuration of our Policy for making Site 30 a Regional Hub
 
     Notice that the traffic destined for the DC Service Side VPN is going through Site30 (10.30.10.2) and then getting routed over to the DC-vEdge.
 
-2. Click on **Tunnel** on the left-hand side and notice that vEdge20 has a single Up tunnel with vEdge30. Other tunnels are not up (as expected)
+2. Click on **Tunnel** on the left-hand side and notice that vEdge20 has a single Up tunnel with vEdge30 on public-internet and one on mpls. Other tunnels are not up (as expected)
 
     ![](/images/Regional_Hub/25_tunnve20.PNG)
 
