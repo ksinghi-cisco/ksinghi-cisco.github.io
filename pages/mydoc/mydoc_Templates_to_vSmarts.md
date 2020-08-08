@@ -257,9 +257,11 @@ Our Device Template for the vSmarts are set up and we now need to attach them to
 
     ![](/images/vSmart_Templates/24_chooseattach.PNG)
 
-3. Populate the details in the Device Template window itself (if you're more comfortable with the **Edit Device Template** option, use that) and click on **Next**. Details to be entered are shown in the image below
+3. You can populate the details in the Device Template window itself since there isn't much. If you're more comfortable with the **Edit Device Template** option, use that to enter the values and click on **Next**. Details to be entered are shown in the images below
 
-    ![](/images/vSmart_Templates/25_popdet.PNG)
+    ![](/images/Updates/vSmart_Updates/vsu1.PNG)
+
+    ![](/images/Updates/vSmart_Updates/vsu2.PNG)
 
 4. Click on the Device List on the left-hand side and click on **Config Diff**. Choose **Side By Side Diff** to review the configuration difference
 
