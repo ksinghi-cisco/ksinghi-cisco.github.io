@@ -148,14 +148,14 @@ This completes configuration of the VPN Interface Template for TLOC Extension in
     |------------------------|------------------|---------------------------------------|---------------------------------|
     | Basic Configuration    | Shutdown         | Global                                | No                              |
     | Basic Configuration    | Interface Name   | Device Specific                       | *if_name_tunn_notlocext*        |
-    | Basic Configuration    | IPv4 Address     | Device Specific                       | *if_ipv4_address_tunn_notloc*   |
+    | Basic Configuration    | IPv4 Address     | Device Specific                       | *if_ipv4_address_tunn*   |
     | Tunnel                 | Tunnel Interface | Global                                | On                              |
     | Tunnel                 | Color            | Device Specific                       | *tloc_if_tunnel_color_value*    |
     | Tunnel                 | Restrict         | Device Specific                       | *tloc_if_tunnel_color_restrict* |
     | Tunnel - Allow Service | All              | Global                                | On                              |
     | Advanced               | TLOC Extension   | Default                               |                                 |
 
-    ![](/images/TLOC_Ext/09_update.PNG)
+    ![](/images/Updates/TLOCEXT_Upd/update1.PNG)
 
     ![](/images/TLOC_Ext/10_tunn.PNG)
 
@@ -287,28 +287,28 @@ We will start by updating the existing VPN template for Site 20 (named *Site20-v
     | Field                                      | Value            |
     |--------------------------------------------|------------------|
     | Interface Name (if_name_tunn_notlocext)    | ge0/4            |
-    | IPv4 Address (if_ipv4_address_tunn_notloc) | 192.168.26.20/24 |
+    | IPv4 Address (if_ipv4_address_tunn) | 192.168.26.20/24 |
     | Color (tloc_if_tunnel_color_value)         | mpls             |
     | Restrict (tloc_if_tunnel_color_restrict)   | Checked          |
     | Interface Name (if_name_notunn_tlocext)    | ge0/1            |
     | IPv4 Address (if_ipv4_address_notunn)      | 192.168.25.20/24 |
     | Shutdown (bgp_shutdown)                    | Checked          |
 
-    ![](/images/TLOC_Ext/25_ve20upd.PNG)
+    ![](/images/Updates/TLOCEXT_Upd/update2.PNG)
 
 12. Click on the three dots next to vEdge21 and choose **Edit Device Template**. Enter the details as shown in the table below, referencing the image and click on **Update** and then click on **Next**
 
     | Field                                      | Value            |
     |--------------------------------------------|------------------|
     | Interface Name (if_name_tunn_notlocext)    | ge0/1            |
-    | IPv4 Address (if_ipv4_address_tunn_notloc) | 192.168.25.21/24 |
+    | IPv4 Address (if_ipv4_address_tunn) | 192.168.25.21/24 |
     | Color (tloc_if_tunnel_color_value)         | public-internet  |
     | Restrict (tloc_if_tunnel_color_restrict)   | Unchecked        |
     | Interface Name (if_name_notunn_tlocext)    | ge0/4            |
     | IPv4 Address (if_ipv4_address_notunn)      | 192.168.26.21/24 |
     | Shutdown (bgp_shutdown)                    | Unchecked        |
 
-    ![](/images/TLOC_Ext/26_ve21upd.PNG)
+    ![](/images/Updates/TLOCEXT_Upd/update3.PNG)
 
 13. View the side-by-side configuration (optional) and click on **Configure Devices**. Confirm the configuration change on 2 devices
 

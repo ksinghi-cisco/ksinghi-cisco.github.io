@@ -65,7 +65,9 @@ Since our Feature Templates for Service Side VPNs are ready, we will now update 
 
 8. Enter the details as shown in the figure below and click on **Next**. These details can be found in the Overview => Topology and IP Addressing section of the guide
 
-    ![](/images/Update_Dev_Temp_SSV/08_dcdet.PNG)
+    ![](/images/Updates/SSVPN_Updates/update1.PNG)
+
+    ![](/images/Updates/SSVPN_Updates/update2.PNG)
 
 9. Check the side by side configuration to see the commands that will be added and click on **Configure Devices**. Confirm the change and click on **OK**
 
