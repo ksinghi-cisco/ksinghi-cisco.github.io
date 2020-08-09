@@ -137,7 +137,7 @@ We will be deploying a cEdge in Site 40 via vCenter. Make note of the following 
     {% include important.html content="Please make sure that these look exactly as shown below" %}
 
     ![](/images/Deploying_cEdge40/09_netad.PNG)
-10. Click Next on **Customize Template** and then Click on **Finish** to deploy your cEdge40 VM
+10. Click Next on **Customize Template** and then Click on **Finish** to deploy your cEdge40 VM. **Please do not power on the VM at this point**
 
     ![](/images/Deploying_cEdge40/10_nextcusttemp.PNG)
 
