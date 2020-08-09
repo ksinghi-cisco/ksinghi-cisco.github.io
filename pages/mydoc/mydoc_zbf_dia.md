@@ -161,7 +161,7 @@ We have created an Application List which can potentially identify Gmail, Mail.r
 
     ![](/images/AppFW_DIA/12_szp.PNG)
 
-6. Ensure that *Guest* appears under Sources and *Outside* appears under Destinations. Give the Policy a name of *Guest-FW* and a Description of *Guest Traffic Firewall**. Click on **Add Rule**
+6. Ensure that *Guest* appears under Sources and *Outside* appears under Destinations. Give the Policy a name of *Guest-FW* and a Description of *Guest Traffic Firewall*. Click on **Add Rule**
 
     ![](/images/AppFW_DIA/13_seq.PNG)
 
