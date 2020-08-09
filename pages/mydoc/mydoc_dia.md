@@ -30,13 +30,13 @@ We will now shift focus to setting up our DIA site at Site40. Guest users will c
 
     ![](/images/DataPol_DIA/01_vc.PNG)
 
-2. Locate the Site40 PC (it will be named *swat-YYY-site40pc-podX* where YYY are some characters and X is your POD number, image uses Site40_PC). Click on it and click on the icon to open a console session. Choose to open the Web Console, if prompted
+2. Locate the Site40 PC (it will be named *sdwan-YYY-site40pc-podX* where YYY are some characters and X is your POD number, image uses Site40_PC). Click on it and click on the icon to open a console session. Choose to open the Web Console, if prompted
 
     ![](/images/DataPol_DIA/02_console.PNG)
 
 3. Navigate to the console window/tab and click on the *sdwan* user to log in. The password is *C1sco12345*
 
-    {% include note.html content="If the machine hangs at the login window and doesn't show the Ubuntu Desktop, please power off and power on the Site40PC VM for your POD." %}
+    {% include note.html content="If the machine hangs at the login window and doesn't show the Ubuntu Desktop, please power off and power on the Site40PC VM for your POD from vCenter." %}
 
     ![](/images/DataPol_DIA/03_ubuntu.PNG)
 
