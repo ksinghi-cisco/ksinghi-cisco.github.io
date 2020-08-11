@@ -1021,7 +1021,7 @@ $('#toc').on('click', 'a', function() {
 <h3 id="installing-certificates-and-activating-the-vedge">Installing certificates and activating the vEdge</h3>
 
 <ol>
-  <li>Type <code class="language-plaintext highlighter-rouge">vshell</code> and  enter <code class="language-plaintext highlighter-rouge">scp admin@192.168.0.6:ROOTCA.pem .</code> to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH’d in to the vEdge (there is a dot at the end of the scp command). Enter <code class="language-plaintext highlighter-rouge">yes</code> when prompted and enter the password of vManage (i.e. admin). Exit when done with this step.
+  <li>Type <code class="language-plaintext highlighter-rouge">vshell</code> and  enter <code class="language-plaintext highlighter-rouge">scp admin@192.168.0.6:ROOTCA.pem .</code> to copy the ROOTCA.pem certificate to the vEdge. Commands can be copy-pasted now since we have SSH’d in to the vEdge (there is a dot at the end of the scp command). Enter <code class="language-plaintext highlighter-rouge">yes</code> when prompted and enter the password of vManage (i.e. admin). Once the ROOTCA.pem file is copied over, type <code class="language-plaintext highlighter-rouge">exit</code> and hit Enter to go back to the vEdge CLI.
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> vshell
  scp admin@192.168.0.6:ROOTCA.pem .
 </code></pre></div>    </div>
