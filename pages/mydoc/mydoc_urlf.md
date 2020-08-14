@@ -64,15 +64,11 @@ URL Filtering allows networks to block traffic to certain sites by utilizing URL
 
 Wait for a few minutes before going through the verification steps enumerated below.
 
-1. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui). Log in using the credentials provided and click on the sdwan-slc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open an Incognito window in Chrome or a Private Browsing tab in Mozilla Firefox. Try to access http://www.amazon.com. The page should get blocked, giving the message we had customized
+1. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui). Log in using the credentials provided and click on the sdwan-slc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open an **Incognito window** in Chrome or a **Private Browsing** tab in Mozilla Firefox. Try to access http://www.amazon.com. The page should get blocked, giving the message we had customized
 
     ![](/images/SD-WAN_Security_URLF/07_pvtbrowse.PNG)
 
-2. Log in to the CLI of cEdge40 via Putty and issue a `show logging`. You should see traffic to amazon.com getting blocked
-
-    ![](/images/SD-WAN_Security_URLF/08_shutd.PNG)
-
-URL Filtering is working in our lab environment.
+URL Filtering is working as expected in our lab environment.
 
 <br/>
 {% include callout.html content="**Task List**
