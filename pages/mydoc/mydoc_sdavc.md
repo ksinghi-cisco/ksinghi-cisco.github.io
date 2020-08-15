@@ -170,7 +170,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
     ![](/images/SD-AVC/17_tab_fb_yt.PNG)
 
-6. Once the sites have loaded, click on **Application Visibility** (top left-hand corner) and you should notice the AVC controller detect YouTube and Facebook traffic
+6. Once the sites have loaded, click on **Application Visibility** (top left-hand corner) and you should notice the AVC controller detect YouTube and Facebook traffic. This normally takes approximately 5 minutes to show up on the SD-AVC dashboard
 
     ![](/images/SD-AVC/18_avc_details.PNG)
 
