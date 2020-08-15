@@ -68,6 +68,10 @@ Wait for a few minutes before going through the verification steps enumerated be
 
     ![](/images/SD-WAN_Security_URLF/07_pvtbrowse.PNG)
 
+2. Log in to the CLI for **cEdge40** via Putty and issue `show utd engine standard logging events`. This will show us amazon.com being blocked with a category of **shopping** attached to it
+
+    ![](/images/SD-WAN_Security_URLF/shoppingupdate.PNG)
+
 URL Filtering is working as expected in our lab environment.
 
 <br/>
