@@ -86,9 +86,9 @@ This completes the configuration of the VPN 0 Feature Template for Site 20.
 
 ### Creating the INET and MPLS VPN Interface Feature Template
 
-We will copy and edit the *DCvEdge-MPLS* Interface Feature Template for our INET and MPLS VPN Interface Feature Templates at Site 20.
+We will copy and edit the *DC-vEdge_MPLS* Interface Feature Template for our INET and MPLS VPN Interface Feature Templates at Site 20.
 
-1. Navigate to the **Configuration => Templates** section and make sure you're on the **Feature** tab. Click on the three dots next to the *DCvEdge-MPLS* and click on **Copy**
+1. Navigate to the **Configuration => Templates** section and make sure you're on the **Feature** tab. Click on the three dots next to the *DC-vEdge_MPLS* and click on **Copy**
 
     ![](/images/vEdgeSite20_Templates/09_intcopy.PNG)
 
