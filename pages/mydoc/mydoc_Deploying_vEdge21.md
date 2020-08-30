@@ -232,9 +232,9 @@ Use the following information in this section (some of the information will be u
 
 3. >Choose any vEdge Cloud device (it doesn't matter which one you pick, as long as it is a vEdge Cloud) and click on the three dots at the extreme right-hand side. Choose to Generate Bootstrap Configuration
 
-4. >Select Cloud-Init and click on OK
+4. >Choose **Cloud-Init** and **uncheck** *Include Default Root Certificate*.  Click on OK
 
-    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+    ![](/images/Updates/203updates/dcve1upd.PNG)
 
 5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the vEdge21 device. Alternatively, leave this popup open and we can come back to it when required
 

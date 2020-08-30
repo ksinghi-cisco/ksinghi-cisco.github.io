@@ -476,11 +476,11 @@ We will be generating a Bootstrap file and placing it in the flash of the device
 
     ![](/images/Deploying_cEdge40/52_config_dev_edit.PNG)
 
-2. Identify the **Chassis Number** that was selected before, while attaching a Device to the Template. In this case, it ended in **73F2**. Click on the three dots in the right-hand side and click on **Generate Bootstrap Configuration**. Choose **Cloud-Init** and click on OK.
+2. Identify the **Chassis Number** that was selected before, while attaching a Device to the Template. In this case, it ended in **73F2**. Click on the three dots on the right-hand side and click on **Generate Bootstrap Configuration**. Choose **Cloud-Init** and **uncheck** *Include Default Root Certificate*.  Click on OK
 
     ![](/images/Deploying_cEdge40/53_genbootstrap.PNG)
 
-    ![](/images/Deploying_cEdge40/54_cloudinit.PNG)
+    ![](/images/Updates/203updates/dcve1upd.PNG)
 
 3. Download the bootstrap file (will get saved to the Downloads folder by default). It should be a file beginning with CSR...
 
