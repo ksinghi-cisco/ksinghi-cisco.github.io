@@ -420,11 +420,11 @@ We will be generating a Bootstrap file for each cEdge and placing it in the flas
 
     ![](/images/Deploying_cEdge40/52_config_dev_edit.PNG)
 
-2. Identify the **Chassis Number** that was selected before, while attaching a Device to the Template. In this case, it ended in **38F4** for cEdge50 and **FBA3** for cEdge51. Click on the three dots in the right-hand side and click on **Generate Bootstrap Configuration** for the cEdge50 device. Choose **Cloud-Init** and click on OK.
+2. Identify the **Chassis Number** that was selected before, while attaching a Device to the Template. In this case, it ended in **38F4** for cEdge50 and **FBA3** for cEdge51. Click on the three dots on the right-hand side and click on **Generate Bootstrap Configuration** for the cEdge50 device. Choose **Cloud-Init** and **uncheck** *Include Default Root Certificate*.  Click on OK
 
     ![](/images/Deploying_cEdge50_cEdge51/26_ce50genboot.PNG)
 
-    ![](/images/Deploying_cEdge40/54_cloudinit.PNG)
+    ![](/images/Updates/203updates/dcve1upd.PNG)
 
 3. Download the bootstrap file (will get saved to the Downloads folder by default). It should be a file beginning with CSR...
 

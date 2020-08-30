@@ -255,9 +255,9 @@ Use the following information in this section (some of the information will be u
 
     ![](/images/Deploying_DC_vEdge2/08_genboot.PNG)
 
-4. >Select Cloud-Init and click on OK
+4. >Choose **Cloud-Init** and **uncheck** *Include Default Root Certificate*.  Click on OK
 
-    ![](/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG)
+    ![](/images/Updates/203updates/dcve1upd.PNG)
 
 5. >Make note of the **UUID** and the **OTP** values. These will be required to activate the vEdge. It's best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge2 device. Alternatively, leave this popup open and we can come back to it when required
 
