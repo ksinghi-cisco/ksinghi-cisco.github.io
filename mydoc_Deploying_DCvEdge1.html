@@ -1162,9 +1162,9 @@ $('#toc').on('click', 'a', function() {
     <p><img src="/images/Deploying_DC_vEdge1/27_threedots_genbootstrap.png" alt="" /></p>
   </li>
   <li>
-    <p>Select <strong>Cloud-Init</strong> and click on OK</p>
+    <p>Select <strong>Cloud-Init</strong> and <strong>uncheck</strong> <em>Include Default Root Certificate</em>. Click on OK</p>
 
-    <p><img src="/images/Deploying_DC_vEdge1/28_cloudinit_ok.PNG" alt="" /></p>
+    <p><img src="/images/Updates/203updates/dcve1upd.PNG" alt="" /></p>
   </li>
   <li>Make note of the <strong>UUID</strong> and the <strong>OTP</strong> values. These will be required to activate the vEdge. It’s best to copy the string and place it in notepad, since we will need to use it in our SSH session to the DC-vEdge1 device. Alternatively, leave this popup open and we can come back to it when required
     <div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The UUID and OTP/Token are super important for vEdge Cloud or cEdge CSRs. Physical devices don’t have a token associated with them and are uniquely identified by their serial number</div>

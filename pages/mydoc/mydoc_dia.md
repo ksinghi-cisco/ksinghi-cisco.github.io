@@ -89,7 +89,7 @@ We will start by enabling NAT on the Internet interface and then continue with o
 
     ![](/images/DataPol_DIA/10_addpol.PNG)
 
-5. Select **Data Prefix List** on the left-hand side under Create Groups of Interest and choose **New Data Prefix List**. Give it a name of *Guest-Site40* and specific the **Add Data Prefix** as *10.40.30.0/24*. Click on **Add** and then click on **Next** (please click on Add BEFORE clicking on Next else the Data Prefix List will not get added)
+5. Select **Data Prefix List** on the left-hand side under Create Groups of Interest and choose **New Data Prefix List**. Give it a name of *Guest-Site40* and specify the **Add Data Prefix** as *10.40.30.0/24*. Click on **Add** and then click on **Next** (please click on Add BEFORE clicking on Next else the Data Prefix List will not get added)
 
     ![](/images/DataPol_DIA/11_datapref.PNG)
 
