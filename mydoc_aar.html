@@ -816,12 +816,12 @@ $('#toc').on('click', 'a', function() {
   <li>
     <p>On the same screen, click on <strong>Advanced Options</strong> and set the DSCP to <em>46</em>. Click on <strong>Simulate</strong></p>
 
-    <p><img src="/images/AAR_LLQ/14_dscptraf.PNG" alt="" /></p>
+    <p><img src="/images/Updates/203updates/aartwopaths.PNG" alt="" /></p>
 
-    <p>VoIP Traffic is now traversing the MPLS link as the preferred route. We see just one path in the image above - if 10.255.255.11 (DC-vEdge1) is rebooted and this tested again, traffic will go through 10.255.255.12 (DC-vEdge2). If Simulate is clicked multiple times, traffic does take different paths.</p>
+    <p>VoIP Traffic is now traversing the MPLS link as the preferred route.</p>
   </li>
   <li>
-    <p>We will now check the current network statistics. On the left-hand side go to <strong>Tunnel</strong> and put a check mark against all the <em>mpls</em> Tunnel Endpoints. Click on Real-Time after scrolling up to the chart and make sure Packet Loss/Latency is checked under <strong>Chart Options</strong>. We may see negligible packet loss occurring (let the chart run for 5 minutes before analysing, it should get updated every few seconds)</p>
+    <p>We will now check the current network statistics. Go to <strong>Monitor => Network => cEdge40 => Tunnel</strong> and put a check mark against all the <em>mpls</em> Tunnel Endpoints. Click on Real-Time after scrolling up to the chart and make sure Packet Loss/Latency is checked under <strong>Chart Options</strong>. We may see negligible packet loss occurring (let the chart run for 5 minutes before analysing, it should get updated every few seconds)</p>
 
     <p><img src="/images/AAR_LLQ/16_minorloss.PNG" alt="" /></p>
   </li>
@@ -999,7 +999,7 @@ $('#toc').on('click', 'a', function() {
     <p><img src="/images/AAR_LLQ/22_save.PNG" alt="" /></p>
   </li>
   <li>
-    <p>On the <strong>Policy Overview</strong> page (this is our Main Policy), enter a Policy Name of <em>Policer-AAR-Impairment</em> and a Description of Injecting Impairment for AAR via a Policer - Packet Loss. Click on <strong>Save Policy</strong></p>
+    <p>On the <strong>Policy Overview</strong> page (this is our Main Policy), enter a Policy Name of <em>Policer-AAR-Impairment</em> and a Description of <em>Injecting Impairment for AAR via a Policer - Packet Loss</em>. Click on <strong>Save Policy</strong></p>
 
     <p><img src="/images/AAR_LLQ/23_savepol.PNG" alt="" /></p>
   </li>
@@ -1153,14 +1153,14 @@ $('#toc').on('click', 'a', function() {
     <p><img src="/images/AAR_LLQ/35_plaar.PNG" alt="" /></p>
   </li>
   <li>
-    <p>We will now revert the configuration to what it was pre-impairment. Go to <strong>Configuration =&gt; Templates</strong> and locate the <em>cEdge_dualuplink_devtemp</em>. Click on the three dots next to it and <strong>Edit</strong>. Change the Cisco VPN Interface Ethernet value under <strong>Transport &amp; Management VPN</strong> back to <em>cedge-vpn0-int-dual_mpls</em> and click on <strong>Update</strong></p>
+    <p>We will now revert the configuration to what it was pre-impairment. Go to <strong>Configuration =&gt; Templates</strong> and locate the <em>cEdge_dualuplink_devtemp</em>. Click on the three dots next to it and <strong>Edit</strong>. Change the Cisco VPN Interface Ethernet value under <strong>Transport &amp; Management VPN</strong> back to <em>cedge-vpn0-int-dual_mpls</em> and click on <strong>Update</strong>. Click on <strong>Next</strong> and <strong>Configure Devices</strong></p>
 
     <p><img src="/images/AAR_LLQ/36_rev.PNG" alt="" /></p>
   </li>
   <li>
     <p>Wait for approximately 3 minutes and head over to <strong>Monitor =&gt; Network =&gt; cEdge40 =&gt; Troubleshooting =&gt; Traffic Flows</strong>. Enter the same details as in Step 3 above and click on <strong>Simulate</strong>. VoIP traffic should traverse over the MPLS link again</p>
 
-    <p><img src="/images/AAR_LLQ/37_waitmpls.PNG" alt="" /></p>
+    <p><img src="/images/Updates/203updates/aartwopaths.PNG" alt="" /></p>
   </li>
 </ol>
 
