@@ -14,8 +14,7 @@ folder: mydoc
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- Uploading the AVC Image to vManage
-<br/>
+
 - Enabling AVC on vManage and Verification
 <br/>
 - Checking Policy configuration for AVC
@@ -24,45 +23,16 @@ folder: mydoc
 <br/>
 " type="primary" %}
 
-## Uploading the AVC Image to vManage
-
-In order to deploy the Software Defined Application Visibility and Control (SD-AVC) module to the network, we will first need to upload the image to vManage. In this case, vManage acts as the SD-AVC controller and the cEdges act as SD-AVC Agents.
-
-1. On the vManage GUI, go to **Maintenance => Software Repository**
-
-    ![](/images/SD-AVC/01_sw.PNG)
-
-2. Click on **Virtual Images** and then click on **Upload Virtual Image**. Choose **vManage** and click on **Browse**. Make sure you're in the SD-WAN Deployment Files folder (which should be on the Desktop of your Jumphost) and select the file starting with *sdavc_viptela...*. Click on **Open**
-
-    ![](/images/SD-AVC/02_up.PNG)
-
-3. Click on **Upload** and the image should get uploaded to vManage
-
-    ![](/images/SD-AVC/03_upl.PNG)
-
-    ![](/images/SD-AVC/04_uping.PNG)
-
-<br/>
-
-{% include callout.html content="**Task List**
-<br/><br/>
-- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
-<br/>
-- [Enabling AVC on vManage and Verification](#enabling-avc-on-vmanage-and-verification)
-<br/>
-- [Checking Policy configuration for AVC](#checking-policy-configuration-for-avc)
-<br/>
-- [Verification](#verification)
-<br/>
-" type="primary" %}
-
+<br>
 ## Enabling AVC on vManage and Verification
 
-1. Once the image is uploaded, navigate to **Administration => Cluster Management**
+vManage acts as the SD-AVC Network Controller and the cEdges act as SD-AVC clients. In order to make vManage the AVC Controller, we need to enable the functionality on the GUI. In previous versions of vManage, this entailed uploading an SD-AVC image to vManage but with version 20.3.x, the AVC container comes bundled with the vManage image. It just needs to be enabled.
+
+1. Navigate to **Administration => Cluster Management**
 
     ![](/images/SD-AVC/05_clm.PNG)
 
-2. Click on the three dots next to **localhost** and click on **Edit**
+2. Click on the three dots next to **vmanage** and click on **Edit**
 
     ![](/images/SD-AVC/06_edit.PNG)
 
@@ -80,9 +50,9 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
 
     ![](/images/SD-AVC/10_ver.PNG)
 
-6. Log in to the CLI for vManage via Putty and run the command `request nms container-manager status`. We should see the sd-avc container UP on vManage
+6. Log in to the CLI for vManage via Putty and run the command `request nms container-manager status`. We should see the NMS Container Manager enabled
 
-    ![](/images/SD-AVC/11_output.PNG)
+    ![](/images/Updates/203updates/avc1.PNG)
     ```
     request nms container-manager status
     ```
@@ -99,8 +69,7 @@ In order to deploy the Software Defined Application Visibility and Control (SD-A
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
-<br/>
+
 - [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
 <br/>
 - [Checking Policy configuration for AVC](#checking-policy-configuration-for-avc)
@@ -135,8 +104,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
-<br/>
+
 - [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
 <br/>
 - [~~Checking Policy configuration for AVC~~](#checking-policy-configuration-for-avc)
@@ -157,7 +125,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
 3. Log in to the CLI of cEdge40 via Putty and run the command `show avc sd-service info summary`. You should see that the cEdge is connected to the SD-AVC controller, along with details of the controller
 
-    ![](/images/SD-AVC/15_cever1.PNG)
+    ![](/images/Updates/203updates/avc2.PNG)
     ```
     show avc sd-service info summary
     ```
@@ -186,8 +154,7 @@ This completes SD-AVC setup and verification.
 
 {% include callout.html content="**Task List**
 <br/><br/>
-- [~~Uploading the AVC Image to vManage~~](#uploading-the-avc-image-to-vmanage)
-<br/>
+
 - [~~Enabling AVC on vManage and Verification~~](#enabling-avc-on-vmanage-and-verification)
 <br/>
 - [~~Checking Policy configuration for AVC~~](#checking-policy-configuration-for-avc)
