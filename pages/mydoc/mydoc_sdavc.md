@@ -115,7 +115,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
 ## Verification
 
-1. Open a new browser window/tab and navigate to https://192.168.0.6:10502/. This is the SD-AVC portal running as a container on vManage. Notice that one device is being monitored by SD-AVC and it is showing some traffic with the specific application layer protocol seen (output might vary). Click on the *Devices 1* too view details about the Device
+1. Open a new browser window/tab and navigate to https://100.100.100.2:10502/. This is the SD-AVC portal running as a container on vManage. Notice that one device is being monitored by SD-AVC and it is showing some traffic with the specific application layer protocol seen (output might vary). Click on the *Devices 1* too view details about the Device
 
     ![](/images/SD-AVC/13_avcgui.PNG)
 
@@ -142,7 +142,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
     ![](/images/SD-AVC/18_avc_details.PNG)
 
-7. This information can be viewed on vManage as well. From the vManage GUI, navigate to **Monitor => Network**. Click on cEdge40 and then click on **DPI Applications**. Choose the **Web** traffic and you will notice Youtube and Facebook traffic pop up over there with detailed statistics associated with the traffic
+7. This information can be viewed on vManage as well. From the vManage GUI, navigate to **Monitor => Network**. Click on cEdge40 and then click on **DPI Applications**. Choose the **Web** traffic and you will notice Youtube and Facebook traffic pop up over there with detailed statistics associated with the traffic. This might take some time to get populated - wait for about 15 minutes and use the refresh button
 
     ![](/images/SD-AVC/19_vmanage.PNG)
 
