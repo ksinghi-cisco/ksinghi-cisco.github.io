@@ -5,6 +5,7 @@ last_updated: June 3, 2020
 tags: [navigation]
 summary: "Implementing Cloud OnRamp for SaaS in Cisco SD-WAN"
 sidebar: mydoc_sidebar
+hide_sidebar: true
 permalink: mydoc_conrampsaas.html
 folder: mydoc
 ---
