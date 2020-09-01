@@ -4,8 +4,6 @@ keywords: documentation theme, jekyll, technical writers, help authoring tools, 
 last_updated: June 6, 2020
 tags: [getting_started]
 summary: "Understanding the connection methodology for accessing the SWAT SD-WAN Lab Environment"
-sidebar: mydoc_sidebar
-hide_sidebar: true
 permalink: mydoc_connect.html
 
 ---
