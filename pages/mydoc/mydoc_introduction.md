@@ -1,7 +1,7 @@
 ---
 title: Network Details
 sidebar: mydoc_sidebar
-datatable: false
+datatable: true
 permalink: mydoc_introduction.html
 folder: mydoc
 ---
@@ -14,7 +14,7 @@ Given below is the lab topology being used for the SWAT SD-WAN Labs
 
 ![](/images/Topology_Schema/SD-WAN_Lab_23_07_2020.PNG)
 
-Decoding the toplogy:
+Decoding the topology:
 
 * There are a total of 5 sites where we will have cEdges/vEdges deployed
 
