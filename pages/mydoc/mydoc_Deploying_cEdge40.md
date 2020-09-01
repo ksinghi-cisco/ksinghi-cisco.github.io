@@ -4,6 +4,7 @@ tags: [getting_started, formatting, content_types]
 keywords: cEdges, cEdge40, Site40, Deploy
 last_updated: May 19, 2020
 summary: "Deploying Site 40 with a single cEdge which has both transport uplinks"
+sidebar: mydoc_sidebar
 permalink: mydoc_Deploying_cEdge40.html
 folder: mydoc
 ---

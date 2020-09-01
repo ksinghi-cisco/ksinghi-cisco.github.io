@@ -4,6 +4,7 @@ keywords: archives, tagging
 last_updated: June 3, 2020
 tags: [navigation]
 summary: "Implementing Cloud OnRamp for SaaS in Cisco SD-WAN"
+sidebar: mydoc_sidebar
 permalink: mydoc_conrampsaas.html
 folder: mydoc
 ---

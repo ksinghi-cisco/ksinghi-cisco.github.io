@@ -3,6 +3,7 @@ title: Connecting to the Cisco SWAT SD-WAN Lab Environment
 keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 last_updated: June 6, 2020
 tags: [getting_started]
+sidebar: mydoc_sidebar
 summary: "Understanding the connection methodology for accessing the SWAT SD-WAN Lab Environment"
 permalink: mydoc_connect.html
 
