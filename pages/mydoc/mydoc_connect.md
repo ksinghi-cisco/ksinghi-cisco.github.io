@@ -91,6 +91,6 @@ You should now be able to RDP to the Jumphost for your POD. The IP for the Jumph
 
 | Username | Password | IP Address |
 | :---: | :---: | :---: |
-| admin | C1sco12345 | 10.2.1.20X <br><br> where X is your POD number |
+| admin | C1sco12345 | 10.2.1.22X <br><br> where X is your POD number |
 
 If things aren't working as expected, please use the **Need Help?** link at the top of the page (or check with your SWAT contact) to send an email to our support team and someone will get in touch with you at the earliest. If the Need Help? link isn't visible, there should be a menu on the top-right of the screen. Click on it to display the Top Navigation Bar.
