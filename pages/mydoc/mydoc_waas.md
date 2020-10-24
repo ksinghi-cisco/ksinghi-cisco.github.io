@@ -69,27 +69,121 @@ The components of the WAAS SD-WAN solution are:
 
 ## Adding WAAS Nodes to WCM
 
-1. On the vManage GUI, navigate to **Configuration => Templates => Feature Tab**. Locate the *vEdge30_INET* template and click on the three dots next to it. Choose to **Edit** the template
+1. Open the WCM GUI by navigating to the IP Address of WCM (10.100.10.100) or using the bookmark on your Jumphost and entering the credentials as enumerated below
 
-    ![](/images/Cloud_OnRamp/06_edit.PNG)
+    | Username | Password |
+    | --- | --- |
+    | admin | default |
 
-2. Scroll down to the NAT section and set NAT to a global value of *On*. Click on **Update**
+    ![](/images/WaaS/image001.png)
 
-    ![](/images/Cloud_OnRamp/07_nat.PNG)
+2. Once logged in, click on **Device** and notice that there aren't any nodes added to WCM as of now. We will be adding the WAAS Nodes to WCM in this section
 
-3. Click on **Next** and **Configure Device**. There are no changes to be made here since we are simply enabling NAT on the interface.
+    ![](/images/WaaS/image003.png)
 
-4. On the vManage GUI, go to **Configuration => Templates => Feature Tab**. Locate the *DC-vEdge_INET* template and click on the three dots next to it. Choose to **Edit** the template
+3. Open vCenter (10.2.1.50/ui or via the bookmark) and log in using the credentials provided for your POD. Locate the *sdwan-ghi-site40waas* VM and click on it. Click on the **Open Console** icon and choose **Web Console** if prompted. Click on **OK**. Initial setup of the WAAS Nodes is done via the CLI
 
-    ![](/images/Cloud_OnRamp/08_dcnat.PNG)
+    ![](/images/WaaS/image005.png)
 
-5. Scroll down to the NAT section and set **NAT** to a Global value of *On*. Click on **Update**. Click **Next/Configure Devices** to finish the update to the devices. Confirm the change on two devices and click **OK**
+    ![](/images/WaaS/image007.png)
 
-    ![](/images/Cloud_OnRamp/09_enup.PNG)
+4. Enter the username and password as enumerated below to log in to the WAAS Node
 
-    ![](/images/Cloud_OnRamp/10_conf.PNG)
+    | Username | Password |
+    | --- | --- |
+    | admin | default |
 
-We have enabled NAT on all the interfaces that will be communicating directly with the SaaS applications. There are other prerequisites that need to be taken into consideration while deploying this in production (a few examples are devices should be in vManage mode, DNS server details populated in VPN 0 etc.) but these have been fulfilled in our SD-WAN Network.
+    ![](/images/WaaS/image009.png)
+
+5. Type **setup** and hit Enter to begin initial setup of the WAAS Node
+
+    ![](/images/WaaS/image011.png)
+
+6. Press any key to continue
+
+    ![](/images/WaaS/image013.png)
+
+7. We will now be presented with a few ways in which the node can be configured. Type *n* to begin configuring all parameters of the WAAS Node. In some of the prompts during this setup, you **don't** need to press Enter for the input to take effect
+
+    ![](/images/WaaS/image015.png)
+
+8. At the *Select Interception Method* type *2* to set the interception method to AppNav. This is the only supported interception method in SD-WAN WAAS
+
+    ![](/images/WaaS/image017.png)
+
+9. Hit **Enter** at the *Enter Time Zone* prompt to choose the default time zone of UTC
+
+    ![](/images/WaaS/image019.png)
+
+10. Hit **Enter** at the *Select Management Interface* prompt to select *Virtual 1/0* as the management interface
+
+    ![](/images/WaaS/image021.png)
+
+11. Type *n* at the *Enable DHCP for Management Interface* to disable DHCP on the selected management interface. We will be entering an IP Address manually
+
+    ![](/images/WaaS/image023.png)
+
+12. Hit **Enter** at the *Enable IPv6 on Device* prompt such that IPv6 is not enabled
+
+    ![](/images/WaaS/image025.png)
+
+13. Type an IP Address of *10.40.10.101/24* and hit **Enter**
+
+    ![](/images/WaaS/image027.png)
+
+14. Type a Default Gateway address of *10.40.10.2* and hit **Enter**
+
+    ![](/images/WaaS/image029.png)
+
+15. Type *10.100.10.100* at the *Enter Central Manager IP Address* prompt and hit **Enter**
+
+    ![](/images/WaaS/image031.png)
+
+16. Hit **Enter** at the *Enter Domain Name Server IP Address* prompt. We will not be using DNS
+
+    ![](/images/WaaS/image033.png)
+
+17. Type *swatsdwanlab.com* at the *Enter Domain Name(s)* prompt and hit **Enter**
+
+    ![](/images/WaaS/image035.png)
+
+18. Type *Site40-WaaS* as the Hostname and hit **Enter**
+
+    ![](/images/WaaS/image037.png)
+
+19. Hit **Enter** when asked about the license to accept the default of Enterprise Licenses
+
+    ![](/images/WaaS/image039.png)
+
+20. Hit **Enter** to implement the configuration changes
+
+    ![](/images/WaaS/image041.png)
+
+21. Hit **Enter** again
+
+    ![](/images/WaaS/image043.png)
+
+22. Once the connectivity check to WCM passes, hit **Enter** to skip running diagnostics
+
+    ![](/images/WaaS/image045.png)
+
+    ![](/images/WaaS/image047.png)
+
+23. Repeat from Step 3 for the *sdwan-ghi-site50waas* node, making necessary changes to the Hostname and IP Address/Default Gateway. All other parameters remain the same. Reference the image given below
+
+    ![](/images/WaaS/image049.png)
+
+24. Log in to WCM and navigate to **Devices** - you should see the two WAAS Nodes we just configured on WCM
+
+    ![](/images/WaaS/image051.png)
+
+    ![](/images/WaaS/image053.png)
+
+25. If you click on **All Devices**, you will see the *Site40-WaaS* and *Site50-WaaS* nodes in an online state. If there are alarms for the Device Status, it's OK since Core Dump files are generated sometimes
+
+    ![](/images/WaaS/image054.png)
+
+This completes the addition of WAAS Nodes on WCM.
 
 <br/>
 
