@@ -57,9 +57,13 @@ Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a v
 
 4. On the vManage GUI, go to **Configuration => Templates => Feature Tab**. Locate the *DC-vEdge_INET* template and click on the three dots next to it. Choose to **Edit** the template
 
+    {% include note.html content="This step is not required if you have gone through the WAAS Integration. Please skip to the next section if WAAS integration has been done." %}
+
     ![](/images/Cloud_OnRamp/08_dcnat.PNG)
 
 5. Scroll down to the NAT section and set **NAT** to a Global value of *On*. Click on **Update**. Click **Next/Configure Devices** to finish the update to the devices. Confirm the change on two devices and click **OK**
+
+    {% include note.html content="This step is not required if you have gone through the WAAS Integration. Please skip to the next section if WAAS integration has been done." %}
 
     ![](/images/Cloud_OnRamp/09_enup.PNG)
 
