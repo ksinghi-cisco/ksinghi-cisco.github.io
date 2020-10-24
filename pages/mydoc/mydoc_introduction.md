@@ -12,7 +12,7 @@ Given below is the lab topology being used for the SWAT SD-WAN Labs
 
 {% include note.html content="There might be minor differences in the topology being used versus what you see here. We will keep this updated as far as possible" %}
 
-![](/images/Topology_Schema/SD-WAN_Lab_23_07_2020.PNG)
+![](/images/Topology_Schema/SD-WAN_Lab_24_10_2020.PNG)
 
 Decoding the topology:
 
@@ -51,7 +51,7 @@ Given below are the access details for some key devices in the network
 | Site 30 PC  | RDP/Guacamole | swatsdwanlab\sdwan    | C1sco12345 | 10.30.10.21 |
 | Cisco Umbrella  | Browser - GUI | ghi.pod0X@gmail.com <br> <br> X is your POD number    | C1sco@12345 | login.umbrella.com |
 | Guacamole  | Browser - GUI | sdwanpod | C1sco12345 | 10.2.1.20X:8080/guacamole <br> <br> X is your POD number |
-| WAAS Central Manager | Browser - GUI             | admin    | admin      | 10.40.30.123 |
+| WAAS Central Manager | Browser - GUI             | admin    | default      | 10.100.10.100 |
 
 <div class="datatable-end"></div>
 
@@ -130,9 +130,9 @@ VM names need to be used accordingly.
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.3/24      |               |
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.3/24      |               |
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.3/24      |               |
-| M <br> WAAS                                                  | NA      | NA            | sdwan-slc/ghi-wcm-podX      | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.123/24    | 10.40.30.1    |
-| N <br> WAAS                                                  |         |               | sdwan-slc/ghi-waa40-podX    | Network Adapter 1 | Site40-VPN30            | Virtual 1/0      | 10.40.30.46/24     | 10.40.30.1    |
-| O <br> WAAS                                                  |         |               | sdwan-slc/ghi-waa50-podX    | Network Adapter 1 | Site50-VPN30            | Virtual 1/0      | 10.50.30.46/24     | 10.50.30.1    |
+| M <br> WAAS Central Manager                                                 | NA      | NA            | sdwan-slc/ghi-wcm-podX      | Network Adapter 1 | SiteDC_VPN10            | Virtual 1/0      | 10.100.10.100/24    | 10.100.10.2    |
+| N <br> WAAS Node Site 40                                                 |         |               | sdwan-slc/ghi-site40waas-podX    | Network Adapter 1 | Site40-VPN10            | Virtual 1/0      | 10.40.10.101/24     | 10.40.10.2    |
+| O <br> WAAS Node Site 50                                                 |         |               | sdwan-slc/ghi-site50waas-podX    | Network Adapter 1 | Site50-VPN10            | Virtual 1/0      | 10.50.10.101/24     | 10.50.10.2    |
 | P <br> Central GW                                            | NA      | NA            | sdwan-slc/ghi-gw-podX       | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
 | P <br> Central GW                                            |         |               |                             | Network Adapter 2 | WAN-Trunk               | GigabitEthernet2 | All DGs point here |               |
 | P <br> Central GW                                            |         |               |                             | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.24X/24      | 10.2.1.1      |
