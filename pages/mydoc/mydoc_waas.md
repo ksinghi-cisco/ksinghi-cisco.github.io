@@ -31,9 +31,21 @@ folder: mydoc
 
 ## Overview
 
-With the changing network landscape, the way in which applications are consumed has also undergone a massive overhaul. Applications being hosted in the cloud (Public/Private) are a common occurrence, rather than the exception.
+Cisco WAAS and SD-WAN can be integrated for traffic interception and redirection to WAAS Nodes for optimization. This brings WAAS capabilities to Cisco IOS-XE SD-WAN by enabling the AppNav-XE feature on compatible devices.
 
-Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a vQoE score (Viptela Quality of Experience). Loss and latency are used to calculate the vQoE score and based on this, the solution routes traffic to the Cloud Application via the optimal path. The vQoE value is calculated periodically to ensure persistent optimal application performance.
+Cisco SD-WAN Devices are configured with AppNav-XE redirection policies and WAAS nodes are configured with optimization policies from WAAS Central Manager (WCM).
+
+The AppNav-XE SD-WAN Device and the WAAS Nodes together form a cluster known as an AppNav-XE cluster.
+
+The WCM registers as a third party controller to vManage.
+
+The components of the WAAS SD-WAN solution are:
+
+* WAAS Central Manager (WCM) - used for centralized management of WAAS Nodes and AppNav-XE on Cisco SD-WAN Devices
+<br>
+* AppNav-XE Service Controller (SC) running on WAN Edges which contain redirection policies
+<br>
+* WAAS Nodes or Service Nodes (SN) which contain optimization policies
 
 <br/>
 
@@ -46,8 +58,11 @@ Cloud OnRamp for SaaS monitors widely used Cloud Applications and arrives at a v
 - [Downloading vManage certs and Enabling DIA at Site DC](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [Integrating vManage and WCM](#integrating-vmanage-and-wcm)
+<br/>
 - [Discovering the AppNav-XE Controllers](#discovering-the-appnav-xe-controllers)
+<br/>
 - [Setting up the AppNav Clusters](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -87,8 +102,11 @@ We have enabled NAT on all the interfaces that will be communicating directly wi
 - [Downloading vManage certs and Enabling DIA at Site DC](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [Integrating vManage and WCM](#integrating-vmanage-and-wcm)
+<br/>
 - [Discovering the AppNav-XE Controllers](#discovering-the-appnav-xe-controllers)
+<br/>
 - [Setting up the AppNav Clusters](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -168,8 +186,11 @@ Go through the following steps in order to configure Cloud OnRamp for SaaS in ou
 - [~~Downloading vManage certs and Enabling DIA at Site DC~~](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [Integrating vManage and WCM](#integrating-vmanage-and-wcm)
+<br/>
 - [Discovering the AppNav-XE Controllers](#discovering-the-appnav-xe-controllers)
+<br/>
 - [Setting up the AppNav Clusters](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -223,8 +244,11 @@ This completes the Cloud OnRamp for SaaS lab.
 - [~~Downloading vManage certs and Enabling DIA at Site DC~~](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [~~Integrating vManage and WCM~~](#integrating-vmanage-and-wcm)
+<br/>
 - [Discovering the AppNav-XE Controllers](#discovering-the-appnav-xe-controllers)
+<br/>
 - [Setting up the AppNav Clusters](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -242,8 +266,11 @@ This completes the Cloud OnRamp for SaaS lab.
 - [~~Downloading vManage certs and Enabling DIA at Site DC~~](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [~~Integrating vManage and WCM~~](#integrating-vmanage-and-wcm)
+<br/>
 - [~~Discovering the AppNav-XE Controllers~~](#discovering-the-appnav-xe-controllers)
+<br/>
 - [Setting up the AppNav Clusters](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -261,8 +288,11 @@ This completes the Cloud OnRamp for SaaS lab.
 - [~~Downloading vManage certs and Enabling DIA at Site DC~~](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [~~Integrating vManage and WCM~~](#integrating-vmanage-and-wcm)
+<br/>
 - [~~Discovering the AppNav-XE Controllers~~](#discovering-the-appnav-xe-controllers)
+<br/>
 - [~~Setting up the AppNav Clusters~~](#setting-up-the-appnav-clusters)
+<br/>
 - [Verification and Testing](#verification-and-testing)
 <br/>
 " type="primary" %}
@@ -280,8 +310,11 @@ This completes the Cloud OnRamp for SaaS lab.
 - [~~Downloading vManage certs and Enabling DIA at Site DC~~](#downloading-vmanage-certs-and-enabling-dia-at-site-dc)
 <br/>
 - [~~Integrating vManage and WCM~~](#integrating-vmanage-and-wcm)
+<br/>
 - [~~Discovering the AppNav-XE Controllers~~](#discovering-the-appnav-xe-controllers)
+<br/>
 - [~~Setting up the AppNav Clusters~~](#setting-up-the-appnav-clusters)
+<br/>
 - [~~Verification and Testing~~](#verification-and-testing)
 <br/>
 " type="primary" %}
