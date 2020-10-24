@@ -33,7 +33,7 @@ exclude:
   - vendor
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Cisco SWAT SD-WAN Lab Guide
+feedback_subject_line: Cisco SWAT SD-WAN Lab Help and Support
 
 feedback_email: swat_labsupport@cisco.com
 # used as a contact email for the Feedback link in the top navigation bar
