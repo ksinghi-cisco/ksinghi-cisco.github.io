@@ -527,6 +527,90 @@ This completes the discovery and registration of the AppNav-XE Controllers to WC
 
 ## Setting up the AppNav Clusters
 
+We will be setting up two AppNav Clusters in the lab. One will be at Site 40 and another at Site 50.
+
+1. On the WCM GUI, make sure you're at the Home tab and click on **Appnav Clusters**. Choose **All AppNav Clusters**
+
+    ![](/images/WaaS/image158.png)
+
+2. Click on **AppNav Cluster Wizard** to start setting up our AppNav clusters
+
+    ![](/images/WaaS/image159.png)
+
+3. Choose *CSR 1000V Series* for the AppNav Platform since we will be using the CSRs at Site 40 and Site 50 as the AppNav-XE controllers. Click on **Next**
+
+    ![](/images/WaaS/image161.png)
+
+4. Enter a **Cluster Name** and **Description** of *Site40-WaaS*, select the **WAAS Cluster ID** as *waas/1* and click on **Next**
+
+    ![](/images/WaaS/image163.png)
+
+5. Select the **AppNav IOS Devices** as *AppNav-SDWAN*
+
+    ![](/images/WaaS/image165.png)
+
+6. Select *cEdge40* in the upper half of the window and *Site40-WaaS* in the lower half. We're choosing the components of our cluster over here. Click on **Next**
+
+    ![](/images/WaaS/image167.png)
+
+7. Select *VRF default* and click on **Next**. This associates all VRFs with the context waas/1
+
+    ![](/images/WaaS/image169.png)
+
+8. Select *Tunnel2* and *Tunnel3* as the WAN interfaces on which data path interception should be enabled. Make sure the **Cluster Interface** is set to *GigabitEthernet4* and the VRF is *10*. Click on **Next*
+
+    ![](/images/WaaS/image171.png)
+
+9. Click on **Finish**, making sure the cluster interface is set to **Virtual 1/0**
+
+    ![](/images/WaaS/image173.png)
+
+10. Templates are pushed to vManage which in turn configures the AppNav-XE Controllers. The status of the template push can be checked on vManage or on WCM. On WCM, make sure you're on the Home tab and click on **vManage Template Status** under **Admin**. Wait for the templates to get deployed before proceeding
+
+    ![](/images/WaaS/image175.png)
+
+    ![](/images/WaaS/image177.png)
+
+    ![](/images/WaaS/image179.png)
+
+11. We have built our AppNav Cluster at Site 40. A similar procedure will need to be followed for the Site 50 AppNav Cluster. Open the AppNav Cluster Wizard and select the **AppNav Platform** as *CSR 1000V Series*. Click on **Next**
+
+    ![](/images/WaaS/image181.png)
+
+12. Enter a **Cluster Name** and **Description** of *Site50-WaaS*, select the **WAAS Cluster ID** as *waas/2* and click on **Next**
+
+    ![](/images/WaaS/image183.png)
+
+13. Select the **AppNav IOS Devices** as *AppNav-SDWAN*
+
+    ![](/images/WaaS/image185.png)
+
+14. Select *cEdge50* and *cEdge51* in the upper half of the window and *Site50-WaaS* in the lower half. We're choosing the components of our cluster over here. Click on **Next**
+
+    ![](/images/WaaS/image187.png)
+
+15. Select *VRF default* and click on **Next**. This associates all VRFs with the context waas/2
+
+    ![](/images/WaaS/image189.png)
+
+16. Select *Tunnel2* as the WAN interfaces on which data path interception should be enabled. Make sure the **Cluster Interface** is set to *GigabitEthernet3* and the VRF is *10*. Click on **Next**. This is for *cEdge50*
+
+    ![](/images/WaaS/image191.png)
+
+17. Select *Tunnel2* as the WAN interfaces on which data path interception should be enabled. Make sure the **Cluster Interface** is set to *GigabitEthernet3* and the VRF is *10*. Click on **Next**. This is for *cEdge51*
+
+    ![](/images/WaaS/image193.png)
+
+18. Click on **Finish**, making sure the cluster interface is set to **Virtual 1/0**
+
+    ![](/images/WaaS/image195.png)
+
+19. Wait for approximately 8 minutes and head over to the AppNav Cluster section on WCM, clicking on **All AppNav Clusters**. Both clusters we just created should be operational
+
+    ![](/images/WaaS/image197.png)
+
+We have created the AppNav Clusters and applied some default policies. Traffic optimization should be in effect. This will be verified in the next section.
+
 <br/>
 
 {% include callout.html content="**Task List**
@@ -548,6 +632,71 @@ This completes the discovery and registration of the AppNav-XE Controllers to WC
 " type="primary" %}
 
 ## Verification and Testing
+
+We will be testing things out in VPN 10 and generating HTTP traffic in that VPN from Site 40 to Site 50. A few changes will need to be made on the workstations available at Site 40 and Site 50, post which we can begin verification.
+
+
+1. Log in to vCenter (use the bookmark or go to 10.2.1.50/ui) using the credentials provided to you. Locate the *sdwan-slc/ghi-site40pc-podX* VM and click on it. Open the Web Console to the Site 40 PC VM and log in. The Username is sdwan and the password is C1sco12345. Click the network icon in the top-right corner and go to Wired Settings
+
+    ![](/images/AAR_LLQ/87_wired.PNG)
+
+2. Click on the cog wheel/gear icon
+
+    ![](/images/AAR_LLQ/86_gear.PNG)
+
+3. Click on **Remove Connection Profile**
+
+    ![](/images/AAR_LLQ/85_remprof.PNG)
+
+4. The **+** sign should show up next to **Wired**. If you still see a cog wheel/gear icon, click on it and choose Remove Connection Profile again. Once the **+** icon is visible, click on it
+
+    ![](/images/AAR_LLQ/84_pluswired.PNG)
+
+5. Go to the **IPv4** tab and set the **IPv4 Method** as Manual. Enter the following details and click on **Add**
+
+    | Address     | Netmask       | Gateway    | DNS                                    |
+    |-------------|---------------|------------|----------------------------------------|
+    | 10.40.10.21 | 255.255.255.0 | 10.40.10.2 | Automatic - Off <br> <br> 10.y.1.5, 10.y.1.6 |
+
+    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+
+    ![](/images/AAR_LLQ/83_staticsave.PNG)
+
+6. Back at the vCenter screen, right click on the Site40PC (named sdwan-slc/ghi-site40pc-podX) for your POD and click on **Edit Settings** (image as an example only)
+
+    ![](/images/AAR_LLQ/82_editsett.PNG)
+
+7. Under **Network Adapter 1** click on the drop down and click **Browse**
+
+    ![](/images/AAR_LLQ/81_browse.PNG)
+
+8. Select *Site40-VPN10* from the list of Networks and click on **OK**. Click on **OK** again. The Site 40 PC is now in VPN 10
+
+    ![](/images/AAR_LLQ/80_s40v10okok.PNG)
+
+9. Back at vCenter, console in to *sdwan-ghi/slc-ad-podX*. The username is administrator and the password is C1sco12345. Click on **Start** and type *ncpa.cpl* to open the Network Connections. Right click on Ethernet0 and **Disable** it. Right click on Ethernet2 and **Enable** the adapter
+
+    ![](/images/WaaS/image207.png)
+
+10. Go to the Site 40 PC console session and open Firefox. Access 10.50.10.200 via the browser - it should open an IIS page. Open multiple tabs to the same IP so as to generate some web traffic
+
+    ![](/images/WaaS/image213.png)
+
+11. SSH to the Site40-WaaS Node (IP of 10.40.10.101) or console in via vCenter (VM name is *sdwan-ghi/slc-site40waas-podX*). Log in via the username of admin and a password of default and enter the command `show statistics connection`
+
+    ![](/images/WaaS/image215.png)
+
+    ![](/images/WaaS/image217.png)
+
+    We can see that the web traffic is showing up in the output and it has a Reduction Ratio (RR) of 98% in this example. The RR will vary.
+
+12. On the WCM GUI, navigate to the main dashboard by clicking on **Home**. You should see traffic being optimized
+
+    ![](/images/WaaS/image219.png)
+
+    ![](/images/WaaS/image221.png)
+
+This completes the integration of WAAS with Cisco SD-WAN.
 
 <br/>
 
