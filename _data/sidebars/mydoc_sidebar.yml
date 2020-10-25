@@ -219,13 +219,13 @@ entries:
       url: /mydoc_servicechaining.html
       output: web, pdf
 
-#  - title: SD-WAN and WAAS Integration
-#    output: web, pdf
-#    folderitems:
+  - title: SD-WAN and WAAS Integration
+    output: web, pdf
+    folderitems:
 
-#    - title: Integrating SD-WAN and Cisco WAAS
-#      url: /mydoc_waas.html
-#      output: web, pdf
+    - title: Integrating SD-WAN and Cisco WAAS
+      url: /mydoc_waas.html
+      output: web, pdf
 
   - title: Cloud onRamp for SaaS
     output: web, pdf
