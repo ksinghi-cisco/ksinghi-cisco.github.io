@@ -28,13 +28,9 @@ folder: mydoc
 " type="primary" %}
 
 ## Overview
-Sites in Cisco SD-WAN will generally have an L3 device on the LAN other than the vEdges/cEdges. These devices might be servicing LAN users and advertising their routes via an IGP of choice. We need to make sure that these routes are advertised across the SD-WAN Fabric. While static routing can be used to achieve this, it is time consuming and extremely prone to errors. Thus, running a Dynamic Routing Protocol between the WAN Edge devices and the L3 devices, is usually preferred.
+IPSEC tunnels are established between TLOCs in a full mesh fashion between devices in the SD-WAN overlay. This leads to multiple, potentially idle tunnels remaining up between sites and an overhead of traffic traversing the WAN links (due to BFD).
 
-We will run OSPF on VPN 10 in the DC with an L3 Device (called the Central Gateway). The Central Gateway has been configured with the corresponding OSPF configuration. Once OSPF neighbourship is established between the Central Gateway and our DC-vEdges, we will try to reach a route being advertised by the Central Gateway (*10.0.0.1/32*) from vEdge30.
-
-Given below is the section of the topology that we will be working on for this activity.
-
-![](/images/DC-vEdge_ConfiguringOSPF/99_topo.PNG)
+With version 20.3 of vManage, Cisco SD-WAN allows the creation of on-demand tunnels between sites - i.e. tunnels will only be set up when there is traffic traversing the sites.
 
 <br/>
 
@@ -56,73 +52,7 @@ Given below is the section of the topology that we will be working on for this a
 
 ## Exploring the current setup
 
-1. Go to **Configuration => Templates** and click on the three dots next to *DCvEdge_dev_temp*. Click on **Edit**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/01_edittemp.PNG)
-
-2. Under **Service VPN**, click on the three dots next to the *vedge-vpn10* template and choose to **Edit** it
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/02_editssv.PNG)
-
-3. Click on **OSPF** under **Additional VPN Templates** to add an OSPF Template
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/03_addospf.PNG)
-
-4. Click on the OSPF drop down and click on **Create Template** to create a new OSPF Template. We are creating our Templates on the fly over here, but could have created them before hand from the Feature Templates, if required
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/04_createtemp.PNG)
-
-5. Give the template a name of *DC-OSPF* and a Description of *OSPF Template for the DC*. Click on **New Redistribute** under the Redistribute section
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/05_name_newredi.PNG)
-
-6. No routes get redistributed into OSPF but we want to ensure that WAN Routes are advertised into the DC LAN. For this purpose, choose **OMP** and click on **Add**. This will redistribute OMP routes into OSPF
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/06_omp.PNG)
-
-7. Under the Area section, click on **New Area**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/07_area.PNG)
-
-8. Set the Area Number as a Global value of **0**. Our OSPF neighbourships will be formed on Area 0. Click on **Add Interface**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/08_an_ai.PNG)
-
-9. Click on **Add Interface** again to add the OSPF Interfaces
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/09_aia.PNG)
-
-10. Specify the Interface Name as a Global value of *ge0/2* and click on **Add**. This is our LAN facing Interface in VPN 10
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/10_ge02.PNG)
-
-11. Click on **Add** under the Area section to Add these details to the OSPF Template
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/11_add.PNG)
-
-12. Click on **Save** to save the OSPF template
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/12_save.PNG)
-
-13. This should take you back to the *vedge-vpn10* Template configuration window. If it doesn't, navigate to it manually and populate the *DC-OSPF* template in the OSPF field. Click on **Save**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/13_ifnotback_gomanually_save.PNG)
-
-14. Make sure that the VPN 10 Service VPN has *OSPF, VPN Interface* tacked on to it and click on **Update**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/14_upd.PNG)
-
-15. We are taken to the configuration page for the individual devices at the DC. There is nothing that needs to be configured, so we can click on **Next**
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/15_next.PNG)
-
-16. Review the side-by-side config diff (notice the OSPF configuration added) and click on **Configure Devices**. Confirm this configuration change
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/16_sbs.PNG)
-
-    ![](/images/DC-vEdge_ConfiguringOSPF/17_config.PNG)
-
-This completes the OSPF related configuration on VPN 10 for the DC-vEdges.
+1. 
 
 
 <br/>
