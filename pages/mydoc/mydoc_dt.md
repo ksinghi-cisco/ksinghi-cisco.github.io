@@ -32,6 +32,12 @@ IPSEC tunnels are established between TLOCs in a full mesh fashion between devic
 
 With version 20.3 of vManage, Cisco SD-WAN allows the creation of on-demand tunnels between sites - i.e. tunnels will only be set up when there is traffic traversing the sites.
 
+The following configuration components come into play when configuration Dynamic Auto-Tunnels:
+
+* Control Policies
+* OMP Templates (max path and ECMP limits)
+* System Templates (for configuring Dynamic Tunnels)
+
 <br/>
 
 {% include callout.html content="**Task List**
