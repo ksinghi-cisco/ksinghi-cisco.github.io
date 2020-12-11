@@ -229,12 +229,22 @@ We will configure VPN 40 at the DC Site and ensure connectivity between the DC-v
 
     ![](/images/InterVPN_ServiceChaining/32_confir.PNG)
 
-33. Once the configuration update goes through, log in to the CLI of **DC-vEdge1** and **DC-vEdge2** via Putty and issue the following commands. You should see successful ping responses:
+33. Once the configuration update goes through, log in to the CLI of **DC-vEdge1** and **DC-vEdge2** via Putty and issue the following commands. You should see successful ping responses. Go to the next step if pings fail
 
     On DC-vEdge1 - `ping vpn 40 10.100.40.1`
     On DC-vEdge2 - `ping vpn 40 10.100.40.5`
 
     ![](/images/InterVPN_ServiceChaining/33_ping.PNG)
+
+34. If pings fail in the previous step, it's possible that the mapping of the VM Networks in vCenter needs to be swappped. Log in to vCenter and edit the settings for **DC-vEdge1** and **DC-vEdge2** such that the network adapters look as below. Try the pings on DC-vEdge1 via `ping vpn 40 10.100.40.1` and on DC-vEdge2 via `ping vpn 40 10.100.40.5` again
+
+    | ![](/images/Updates/SC_Updates/01.PNG) |
+    |:---:|
+    | Network Adapters on DC-vEdge1 |
+
+    | ![](/images/Updates/SC_Updates/02.PNG) |
+    |:---:|
+    | Network Adapters on DC-vEdge2 |
 
 This completes the configuration needed for adding VPN 40 to the DC-vEdges.
 
