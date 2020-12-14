@@ -3,8 +3,8 @@ title: Dynamic On-Demand Tunnels
 tags: [formatting]
 keywords: Dynamic Tunnels, On-Demand
 last_updated: Dec 8, 2020
+hide_sidebar: true
 summary: "Configuring Dynamic On-Demand Tunnels between Site 30 and Site 40 with DC as the backup route"
-sidebar: mydoc_sidebar
 permalink: mydoc_dt.html
 folder: mydoc
 ---
