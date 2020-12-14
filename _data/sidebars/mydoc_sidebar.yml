@@ -194,13 +194,13 @@ entries:
       url: /mydoc_qos.html
       output: web, pdf
 
-#  - title: Configuring Dynamic On-Demand Tunnels
-#    output: web, pdf
-#    folderitems:
+  - title: Configuring Dynamic On-Demand Tunnels
+    output: web, pdf
+    folderitems:
 
-#    - title: Configuring Dynamic On-Demand Tunnels
-#      url: /mydoc_dt.html
-#      output: web, pdf
+    - title: Configuring Dynamic On-Demand Tunnels
+      url: /mydoc_dt.html
+      output: web, pdf
 
   - title: Cisco SD-WAN Security
     output: web, pdf
