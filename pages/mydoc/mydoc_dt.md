@@ -302,7 +302,7 @@ We will now add some basic configuration on the DC-vEdges and enable Dynamic On-
 
     ![](/images/DT/44.PNG)
 
-4. Give the template a name of *vedge-system-dt* with a Description of *System modification for Dynamic Tunnels - vEdge*. Under Advanced, set **On-Demand Tunnel** to a Global value of *On* and the **On-Demand Tunnel Idle Timeout (min)** to *5*. Click on **Save**
+4. Give the template a name of *vedge-system-dt* with a Description of *System modification for Dynamic Tunnels - vEdge*. Set the Console Baud Rate to the default value (or set it to a Global value of 9600). Under Advanced, set **On-Demand Tunnel** to a Global value of *On* and the **On-Demand Tunnel Idle Timeout (min)** to *5*. Click on **Save**
 
     ![](/images/DT/45.PNG)
 
@@ -312,7 +312,7 @@ We will now add some basic configuration on the DC-vEdges and enable Dynamic On-
 
     ![](/images/DT/47.PNG)
 
-6. Give the template a name of *cedge-system-dt* with a Description of *System modification for Dynamic Tunnels - cEdge*. Under Advanced, set **On-Demand Tunnel** to a Global value of *On* and the **On-Demand Tunnel Idle Timeout (min)** to *5*. Click on **Save**
+6. Give the template a name of *cedge-system-dt* with a Description of *System modification for Dynamic Tunnels - cEdge*. Set the Console Baud Rate to the default value (or set it to a Global value of 9600). Under Advanced, set **On-Demand Tunnel** to a Global value of *On* and the **On-Demand Tunnel Idle Timeout (min)** to *5*. Click on **Save**
 
     ![](/images/DT/48.PNG)
 
