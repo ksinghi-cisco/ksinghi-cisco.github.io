@@ -202,7 +202,7 @@ entries:
       url: /mydoc_dt.html
       output: web, pdf
 
-    - title: Cisco SD-WAN Security
+  - title: Cisco SD-WAN Security
     output: web, pdf
 
     folderitems:
@@ -227,7 +227,7 @@ entries:
       url: /mydoc_servicechaining.html
       output: web, pdf
 
-    - title: SD-WAN and WAAS Integration
+  - title: SD-WAN and WAAS Integration
     output: web, pdf
     folderitems:
 
