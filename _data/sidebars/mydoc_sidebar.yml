@@ -202,7 +202,7 @@ entries:
       url: /mydoc_dt.html
       output: web, pdf
 
-  - title: Cisco SD-WAN Security
+    - title: Cisco SD-WAN Security
     output: web, pdf
 
     folderitems:
