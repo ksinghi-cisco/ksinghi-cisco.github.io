@@ -134,7 +134,7 @@ This completes configuration of the VPN Interface Template for TLOC Extension in
 
     ![](/images/TLOC_Ext/06_copy.PNG)
 
-2. Rename the Template to *Site20_Tunn_no_tlocext* with a Description of *Site 20 Template with Tunnel Configuration no TLOC-Ext*. Clcik on **Copy**
+2. Rename the Template to *Site20_Tunn_no_tlocext* with a Description of *Site 20 Template with Tunnel Configuration no TLOC-Ext*. Click on **Copy**
 
     ![](/images/TLOC_Ext/07_naem.PNG)
 
