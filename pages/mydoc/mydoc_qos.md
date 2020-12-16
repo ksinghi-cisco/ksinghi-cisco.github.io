@@ -250,7 +250,7 @@ The QoS Map will be applied in the outbound direction on the WAN interfaces (INE
 
     ![](/images/AAR_LLQ/90_servedit.PNG)
 
-5. Change the template under **Cisco VPN Interface Ethernet** to *cedge-vpn1-int-qos* and click on **Save**
+5. Change the template under **Cisco VPN Interface Ethernet** to *cedge-vpn10-int-qos* and click on **Save**
 
     ![](/images/AAR_LLQ/89_intsave.PNG)
 
