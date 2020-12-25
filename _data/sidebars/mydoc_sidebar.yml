@@ -219,6 +219,10 @@ entries:
       url: /mydoc_sdavc.html
       output: web, pdf
 
+    - title: Advanced Malware Protection (AMP) and TLS/SSL Proxy
+      url: /mydoc_tls.html
+      output: web, pdf
+
     - title: Cisco SD-WAN and Umbrella
       url: /mydoc_umbrella.html
       output: web, pdf
