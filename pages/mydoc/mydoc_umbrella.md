@@ -24,6 +24,8 @@ folder: mydoc
 <br/>
 - Basic Configuration for Umbrella
 <br/>
+- Configuring WAN Edge for Umbrella Redirection
+<br/>
 - Making Umbrella Ours
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- API Keys and AD Configuration
@@ -73,6 +75,8 @@ In this section, we will deploy DNS Layer Security as an Umbrella feature and th
 - [Life without Cisco Umbrella](#life-without-cisco-umbrella)
 <br/>
 - [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
+<br/>
+- [Configuring WAN Edge Umbrella Redirection](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
@@ -304,6 +308,8 @@ This completes the pre-work that we needed to do at Site 30.
 <br/>
 - [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
 <br/>
+- [Configuring WAN Edge Umbrella Redirection](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
@@ -390,6 +396,8 @@ We have enabled DIA at Site 30 for VPN 10. This will be used to showcase DNS sec
 <br/>
 - [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
 <br/>
+- [Configuring WAN Edge Umbrella Redirection](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
@@ -453,6 +461,8 @@ Life without Umbrella doesn't look too good since we are open to the simplest of
 - [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
 - [Basic Configuration for Umbrella](#basic-configuration-for-umbrella)
+<br/>
+- [Configuring WAN Edge Umbrella Redirection](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
@@ -569,6 +579,243 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
+- [Configuring WAN Edge Umbrella Redirection](#configuring-wan-edge-umbrella-redirection)
+<br/>
+- [Making Umbrella Ours](#making-umbrella-ours)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [DC Configuration Download](#dc-configuration-download)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [AD Connectors](#ad-connectors)
+    <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Roaming Computer Configuration](#roaming-computer-configuration)
+    <br/>
+- [Building a DNS Policy](#building-a-dns-policy)
+<br/>
+- [Setting up IPSEC Tunnels](#setting-up-ipsec-tunnels)
+<br/>
+- [Configuring a Firewall Policy](#configuring-a-firewall-policy)
+<br/>
+- [Configuring a Web Policy](#configuring-a-web-policy)
+<br/>
+
+" type="primary" %}
+
+
+## Configuring WAN Edge Umbrella Redirection
+
+In this section we will first bypass our Umbrella configuration and then enforce redirection to Umbrella by the WAN Edge. vEdge30 will intercept DNS queries and redirect them to Umbrella.
+
+1. Access the Site 30 PC via your preferred method (Guacamole/RDP/vCenter Console) and log in. [Click here](#pre-work){:target="_blank"} and go through Step 1 to review how to connect to the Site 30 PC. Click on Start and search for **ncpa.cpl**. Open the Network Connections
+
+    ![](/images/EDNS/01.PNG)
+
+2. Right click on **Ethernet0** and click on Properties. Enter the credentials and click on *Yes* to proceed
+
+    | Username | Password |
+    | --- | --- |
+    | administrator | C1sco12345 |
+
+    ![](/images/EDNS/02.PNG)
+
+    ![](/images/EDNS/03.PNG)
+
+3. Double click *Internet Protocol version 4 (TCP/IPv4)* and select the **Use the following DNS Server Addresses** radio button. Enter DNS Server addresses of *8.8.8.8* and *4.2.2.2*. Click on **OK** on all subsequent windows to apply the configuration change
+
+    ![](/images/EDNS/04.PNG)
+
+    ![](/images/EDNS/05.PNG)
+
+4. Double click the **Flush DNS** shortcut on the Site 30 PC desktop and click on the **Umbrella Test** bookmark in Google Chrome (or go to welcome.umbrella.com) and we will be notified that the system is not protected by Umbrella. Attempt to access *internetbadguys.com* again (you can use the **Phishing Test** bookmark). The site should be accessible since we have bypassed Umbrella
+
+    ![](/images/EDNS/06.PNG)
+
+    ![](/images/EDNS/08.PNG)
+
+    ![](/images/EDNS/07.PNG)
+
+    {% include note.html content="Through this configuration change, we have bypassed the Umbrella DNS Servers completely and thereby circumvented any Umbrella Policies that might be applicable to the organization. We will now ensure that the WAN Edge at Site 30 intercepts DNS queries and redirects them to Umbrella." %}
+
+5. Log in to the Umbrella portal from your Jumphost by accessing a browser and navigating to login.umbrella.com. Enter the credentials for your POD and click on **Log In**
+
+    | Username | Password |
+    | :---: | :---: |
+    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
+
+    ![](/images/EDNS/09.PNG)
+
+6. Click on *Admin* in the left navigation bar and then on *API Keys* to create new API keys
+
+    ![](/images/EDNS/10.PNG)
+
+7. Click on **Create** and choose **Umbrella Network Devices**. Click on *Create* in the bottom right hand corner
+
+    ![](/images/EDNS/11.PNG)
+
+    ![](/images/EDNS/12.PNG)
+
+8. **Open Notepad and copy-paste the Organization ID, Key and Secret**. Check the checkbox agreeing to keep the secret secure and click on **Close**. The Organization ID can be found in the URL (3870852 in this sample screenshot)
+
+    {% include important.html content="Make sure that the Key and Secret are copied to notepad before proceeding since the Secret is visible on this page only." %}
+
+    ![](/images/EDNS/13.PNG)
+
+    ![](/images/EDNS/14.PNG)
+
+9. If you see an API Key already created for **Legacy Network Devices**, expand the section and click on **Refresh**. Copy-paste the token to Notepad. If the API Key for Legacy Network Devices doesn't exist, click on **Create** and select the **Legacy Network Devices** radio button. Click on Create again
+
+    ![](/images/EDNS/15.PNG)
+
+10. Log in to vManage and navigate to **Configuration => Security**
+
+    ![](/images/EDNS/16.PNG)
+
+11. Click on **Custom Options** in the top right corner and choose **Umbrella Registration**
+
+    ![](/images/EDNS/17.PNG)
+
+12. Copy-paste the **Organization ID**, **Umbrella Network Devices Key**, **Umbrella Network Devices Secret** and **Legacy Network Devices Token** in the corresponding fields. Click on Save Changes
+
+    ![](/images/EDNS/18.PNG)
+
+13. Go to **Configuration => Security** and choose to **Add Security Policy**. Click on **Custom** and choose **Proceed**
+
+    ![](/images/EDNS/19.PNG)
+
+14. Click Next till you're at the **DNS Security** tab and click on **Add DNS Security Policy**. Click on Create New
+
+    ![](/images/EDNS/20.PNG)
+
+15. Enter the **Policy Name** as *dns-umbrella* and select the **Custom VPN Configuration** radio button. Click *Got It* and then click on **Target VPNs** and enter the VPN as *10*. Click on Save Changes
+
+    ![](/images/EDNS/21.PNG)
+
+16. Make sure the DNS Policy has the Umbrella Registration Status as *Configured* and click on **Save DNS Security Policy**. Also ensure that VPN 10 is listed in the configuration
+
+    ![](/images/EDNS/22.PNG)
+
+17. Back at the main Security Policy, click Next till you're at the **Policy Summary** page and give the Policy a name of *vedge30-dns-sec* with a Description of *DNS Security Policy for vEdge30*. Click on **Save Policy**
+
+    ![](/images/EDNS/23.PNG)
+
+    ![](/images/EDNS/24.PNG)
+
+18. Navigate to **Configuration => Templates** and locate the **vEdge30_dev_temp**. Click on the three dots next to it and choose to Edit the Template
+
+    ![](/images/EDNS/25.PNG)
+
+19. Scroll down to the **Additional Templates** section and select the **Security Policy** as *vedge30-dns-sec*. Click on **Update**
+
+    ![](/images/EDNS/26.PNG)
+
+20. Click on **Next** and then **Configure Devices**. You can view the side by side configuration if needed
+
+    ![](/images/EDNS/27.PNG)
+
+    ![](/images/EDNS/28.PNG)
+
+21. EDNS functionality on the vEdges might not work due to the Centralized Data Policy which has been created for DIA. We will remove Site30 from the Centralized Data Policy and add a NAT Route for VPN 10 at Site 30. Click on **Configuration => Policies** and locate the *Site40-Guest-DIA* policy. Click on the three dots next to it and click on **Edit**
+
+    ![](/images/EDNS/29.PNG)
+
+22. Under Policy Application, go to the Traffic Data tab and click on the delete icon next to the Site30 Site List
+
+    ![](/images/EDNS/30.PNG)
+
+23. Click on **Save Policy Changes** and **Activate** the policy
+
+    ![](/images/EDNS/31.PNG)
+
+    ![](/images/EDNS/32.PNG)
+
+24. Navigate to **Configuration => Templates => Feature Tab** and locate the *vedge30-vpn10* feature template. Click on the three dots next to it and click on Edit
+
+    ![](/images/EDNS/33.PNG)
+
+25. Scroll down to the **IPv4 Route** section and click on **New IPv4 Route**. Enter the details as enumerated below. Make sure you click on **Add** and then click on **Update**
+
+    | Field | Value |
+    | :---: | :---: |
+    | Prefix | 0.0.0.0/0 |
+    | Gateway | VPN |
+    | Enable VPN | Global - On |
+
+    ![](/images/EDNS/34.PNG)
+
+26. Click on **Next** and **Configure Devices**
+
+    ![](/images/EDNS/35.PNG)
+
+27. At this point, vEdge30 will register to the Umbrella portal as a Network Device. Log in to the Umbrella portal and go to **Deployments => Network Devices**. You should see a device showing up over there, with the Device Name *vEdge30-vpn10*. The Status should be Active (might take a few minutes to reflect the correct status)
+
+    ![](/images/EDNS/36.PNG)
+
+28. Log in to CLI of vEdge30 via the saved session in Putty (or SSH to 192.168.0.30) using the credentials enumerated below. Run the commands `show umbrella config-state` and `show umbrella device-id`. We should see a public key along with resolver addresses (the Umbrella addresses) and the VPN which is redirecting traffic to Umbrella in the show umbrella config-state. The show umbrella device-id indicates that the device successfully registered with Umbrella, receiving a Response Code of 201. A Device ID is reported for this device
+
+    | Username | Password |
+    | :---: | :---: |
+    | admin | admin |
+
+    ![](/images/EDNS/37.PNG)
+
+    ```
+    show umbrella config-state
+    show umbrella device-id
+    ```
+
+29. Run `show umbrella dnscrypt`, to see the certificate state as Valid and in a Successful state. The state might be Init/SockCreated temporarily (in case there are issues with the certificates, create an NTP feature template on vManage and point it to pool.ntp.org as the NTP server. Associate the NTP Feature Template with the vEdge30_dev_temp)
+
+    ![](/images/EDNS/38.PNG)
+
+    ```
+    show umbrella dnscrypt
+    ```
+
+30. To verify registration via the CLI, issue `show umbrella-overview`. To view the data statistics, issue `show umbrella-oper-dp stats`
+
+    ![](/images/EDNS/39.PNG)
+
+    ```
+    show umbrella-overview
+    show umbrella-oper-dp stats
+    ```
+
+31. Access the Site 30 PC and clear the DNS Cache via the shortcut on the desktop. Open Chrome and click on the **Phishing Test** bookmark (or access internetbadguys.com). The site should not load
+
+    ![](/images/EDNS/40.PNG)
+
+32. On the Umbrella portal, navigate to the Overview page and scroll down. We should see a spike in Total Blocks and Security Blocks (takes 5 minutes to reflect)
+
+    ![](/images/EDNS/41.PNG)
+
+33. Mouse over the latest spike and you should see the timestamp of it. Click on the spike to see details of it. Click on the three dots next to any of the blocks and choose *View Full Details*
+
+    ![](/images/EDNS/42.PNG)
+
+    ![](/images/EDNS/43.PNG)
+
+    ![](/images/EDNS/44.PNG)
+
+We thus see that although the Site 30 Client has got a DNS server pointing to 8.8.8.8 and 4.2.2.2, vEdge30 intercepts the DNS Query and redirects it to Umbrella, potentially enforcing any Umbrella DNS Policies for that Organization.
+
+<br/>
+
+{% include callout.html content="**Task List**
+<br/><br/>
+
+- [~~Overview~~](#overview)
+<br/>
+- [~~Pre-Work~~](#pre-work)
+<br/>
+- [~~Enabling Site 30 for DIA~~](#enabling-site-30-for-dia)
+<br/>
+- [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
+<br/>
+- [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [API Keys and AD Configuration](#api-keys-and-ad-configuration)
@@ -610,7 +857,7 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com <br> <br> X is your POD number | C1sco@12345 |
+    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/76_login.PNG)
 
@@ -701,6 +948,8 @@ We have generated the API Key and Secret which will be needed later in the integ
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
@@ -730,7 +979,7 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 
     | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com <br> <br> X is your POD number | C1sco@12345 |
+    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/90_dep_conf_sad.PNG)
 
@@ -778,6 +1027,8 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 - [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
@@ -892,6 +1143,8 @@ This completes the configuration needed for linking AD with Umbrella. While we c
 - [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [Making Umbrella Ours](#making-umbrella-ours)
 <br/>
@@ -1012,6 +1265,8 @@ We will use the Roaming Computer as an Identity to enforce DNS Policies (the nex
 - [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [~~Making Umbrella Ours~~](#making-umbrella-ours)
 <br/>
@@ -1169,6 +1424,8 @@ This completes the DNS Security part of our configuration. We have successfully 
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [~~Making Umbrella Ours~~](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
@@ -1320,6 +1577,8 @@ We have completed IPSEC Tunnel configuration for our vEdge30 device. Through the
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [~~Making Umbrella Ours~~](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
@@ -1426,6 +1685,8 @@ We have thus used a Firewall Policy to block traffic to a particular destination
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
 <br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
+<br/>
 - [~~Making Umbrella Ours~~](#making-umbrella-ours)
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [~~API Keys and AD Configuration~~](#api-keys-and-ad-configuration)
@@ -1492,6 +1753,8 @@ We have completed integration and configuration of Umbrella with our SD-WAN envi
 - [~~Life without Cisco Umbrella~~](#life-without-cisco-umbrella)
 <br/>
 - [~~Basic Configuration for Umbrella~~](#basic-configuration-for-umbrella)
+<br/>
+- [~~Configuring WAN Edge Umbrella Redirection~~](#configuring-wan-edge-umbrella-redirection)
 <br/>
 - [~~Making Umbrella Ours~~](#making-umbrella-ours)
 <br/>
