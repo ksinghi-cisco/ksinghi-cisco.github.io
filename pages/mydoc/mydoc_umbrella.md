@@ -489,7 +489,7 @@ Life without Umbrella doesn't look too good since we are open to the simplest of
 
 Let's start off by giving some basic DNS-layer Security to our devices.
 
-1. Connect to the sdwan-ghi-ad-podX machine by logging in to Guacamole (10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X:8080/guacamole if connected to the SJC DC, where X is your POD number) with the credentials given below and click on the PODX-AD option.
+1. Connect to the sdwan-sjc/ghi-ad-podX machine by logging in to Guacamole (10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X:8080/guacamole if connected to the SJC DC, where X is your POD number) with the credentials given below and click on the PODX-AD option.
 
     Alternatively, you can RDP to 10.2.1.18X if connected to the GHI DC and 10.1.8.18X if connected to the SJC DC (where X is your POD number) from the Jumphost. RDP to the AD PC will only work from the Jumphost
 
@@ -641,7 +641,7 @@ In this section we will first bypass our Umbrella configuration and then enforce
 
     | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
+    | ghi.pod0X@gmail.com if connected to the GHI DC or slc.pod0X@gmail.com if connected to the SJC DC<br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for GHI POD 5 | C1sco@12345 |
 
     ![](/images/EDNS/09.PNG)
 
@@ -857,7 +857,7 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
+    | ghi.pod0X@gmail.com if connected to the GHI DC or slc.pod0X@gmail.com if connected to the SJC DC<br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for GHI POD 5 | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/76_login.PNG)
 
@@ -979,7 +979,7 @@ To uniquely identify our SD-WAN network, we will be connecting AD to Umbrella an
 
     | Username | Password |
     | :---: | :---: |
-    | ghi.pod0X@gmail.com <br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for POD 5 | C1sco@12345 |
+    | ghi.pod0X@gmail.com if connected to the GHI DC or slc.pod0X@gmail.com if connected to the SJC DC<br> <br> X is your POD number <br> <br> e.g. ghi.pod05@gmail.com is the username for GHI POD 5 | C1sco@12345 |
 
     ![](/images/Umbrella_SDWAN_2/90_dep_conf_sad.PNG)
 

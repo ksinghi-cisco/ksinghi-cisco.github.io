@@ -81,7 +81,7 @@ The components of the WAAS SD-WAN solution are:
 
     ![](/images/WaaS/image003.png)
 
-3. Open vCenter (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC or via the bookmark) and log in using the credentials provided for your POD. Locate the *sdwan-ghi-site40waas* VM and click on it. Click on the **Open Console** icon and choose **Web Console** if prompted. Click on **OK**. Initial setup of the WAAS Nodes is done via the CLI
+3. Open vCenter (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC or via the bookmark) and log in using the credentials provided for your POD. Locate the *sdwan-sjc/ghi-site40waas* VM and click on it. Click on the **Open Console** icon and choose **Web Console** if prompted. Click on **OK**. Initial setup of the WAAS Nodes is done via the CLI
 
     ![](/images/WaaS/image005.png)
 
@@ -169,7 +169,7 @@ The components of the WAAS SD-WAN solution are:
 
     ![](/images/WaaS/image047.png)
 
-23. Repeat from Step 3 for the *sdwan-ghi-site50waas* node, making necessary changes to the Hostname and IP Address/Default Gateway. All other parameters remain the same. Reference the image given below
+23. Repeat from Step 3 for the *sdwan-sjc/ghi-site50waas* node, making necessary changes to the Hostname and IP Address/Default Gateway. All other parameters remain the same. Reference the image given below
 
     ![](/images/WaaS/image049.png)
 

@@ -49,7 +49,7 @@ Given below are the access details for some key devices in the network
 | vCenter | Browser - GUI             | sdwanpodX <br><br> X is your POD number <br> <br> *e.g. sdwanpod5*   | C1sco12345     | 10.2.1.50 |
 | Site 30 AD <br> <br> Domain: swatsdwanlab.com  | RDP/Guacamole | administrator   | C1sco12345 | 10.30.10.50 |
 | Site 30 PC  | RDP/Guacamole | swatsdwanlab\sdwan    | C1sco12345 | 10.30.10.21 |
-| Cisco Umbrella  | Browser - GUI | ghi.pod0X@gmail.com <br> <br> X is your POD number    | C1sco@12345 | login.umbrella.com |
+| Cisco Umbrella  | Browser - GUI | ghi.pod0X@gmail.com if connected to the GHI DC or slc.pod0X@gmail.com if connected to the SJC DC <br> <br> X is your POD number    | C1sco@12345 | login.umbrella.com |
 | Guacamole  | Browser - GUI | sdwanpod | C1sco12345 | 10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X if connected to the SJC DC<br> <br> X is your POD number |
 | WAAS Central Manager | Browser - GUI             | admin    | default      | 10.100.10.100 |
 
