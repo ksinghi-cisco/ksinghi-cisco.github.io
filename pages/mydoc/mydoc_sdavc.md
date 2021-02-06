@@ -134,7 +134,7 @@ The configuration we had done for QoS also had the relevant configuration requir
 
     ![](/images/SD-AVC/16_cever2.PNG)
 
-5. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui). Log in using the credentials provided and click on the sdwan-slc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open Firefox and go to youtube.com and facebook.com. For good measure, open about 4 tabs of these sites
+5. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC). Log in using the credentials provided and click on the sdwan-sjc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open Firefox and go to youtube.com and facebook.com. For good measure, open about 4 tabs of these sites
 
     ![](/images/SD-AVC/17_tab_fb_yt.PNG)
 

@@ -76,7 +76,7 @@ We will be deploying a vEdge at Site 20 via vCenter. Make note of the following 
 ### Deploying the vEdge20 VM on vCenter
 <br>
 
-1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC. Log in with the credentials provided for your POD.
 
 2. Right click on the host and choose to **Deploy OVF Template**
 

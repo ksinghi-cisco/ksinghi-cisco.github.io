@@ -45,12 +45,12 @@ Given below are the access details for some key devices in the network
 | Central Gateway      | Putty                     | admin    | admin      | 192.168.0.1 |
 | Ubuntu - Site 40 PC  | vCenter Console | sdwan    | C1sco12345 | 10.40.30.21 |
 | Ubuntu - Site 50 PC  | vCenter Console | sdwan    | C1sco12345 | 10.50.10.21 |
-| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | 10.2.1.22X <br> <br> X is your POD number |
+| Jumphost             | RDP/Guacamole             | admin    | C1sco12345 | 10.2.1.22X if connected to the GHI DC and 10.1.8.22X if connected to the SJC DC<br> <br> X is your POD number |
 | vCenter | Browser - GUI             | sdwanpodX <br><br> X is your POD number <br> <br> *e.g. sdwanpod5*   | C1sco12345     | 10.2.1.50 |
 | Site 30 AD <br> <br> Domain: swatsdwanlab.com  | RDP/Guacamole | administrator   | C1sco12345 | 10.30.10.50 |
 | Site 30 PC  | RDP/Guacamole | swatsdwanlab\sdwan    | C1sco12345 | 10.30.10.21 |
 | Cisco Umbrella  | Browser - GUI | ghi.pod0X@gmail.com <br> <br> X is your POD number    | C1sco@12345 | login.umbrella.com |
-| Guacamole  | Browser - GUI | sdwanpod | C1sco12345 | 10.2.1.20X:8080/guacamole <br> <br> X is your POD number |
+| Guacamole  | Browser - GUI | sdwanpod | C1sco12345 | 10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X if connected to the SJC DC<br> <br> X is your POD number |
 | WAAS Central Manager | Browser - GUI             | admin    | default      | 10.100.10.100 |
 
 <div class="datatable-end"></div>
@@ -61,7 +61,7 @@ Given below are the access details for some key devices in the network
 
 Use the following table to copy-paste IP Addresses as and when required through the course of the lab. There is a search function which is super handy - search with the name of the VM you are looking for so as to return complete results.
 
-* If the POD assigned to you is in location SLC
+* If the POD assigned to you is in location SJC
 
     * y (in the table below) is 1
     * X is your POD number
@@ -79,13 +79,13 @@ VM names need to be used accordingly.
 
 | VM TAG <br> FOR IDENTIFICATION ONLY <br> NOT USED IN THE LAB | SITE ID | SYSTEM ID     | VM Name                     | Network Adapter   | Network                 | Interface        | IP                 | Gateway       |
 |--------------------------------------------------------------|---------|---------------|-----------------------------|-------------------|-------------------------|------------------|--------------------|---------------|
-| A <br> vManage                                               | 1000    | 10.255.255.1  | sdwan-slc/ghi-vmanage-podX  | Network Adapter 1 | Management              | eth1             | 192.168.0.6/24     | 192.168.0.1   |
+| A <br> vManage                                               | 1000    | 10.255.255.1  | sdwan-sjc/ghi-vmanage-podX  | Network Adapter 1 | Management              | eth1             | 192.168.0.6/24     | 192.168.0.1   |
 | A <br> vManage                                               |         |               |                             | Network Adapter 2 | Internet                | eth0             | 100.100.100.2/24   | 100.100.100.1 |
-| B <br> vBond                                                 |         | 10.255.255.2  | sdwan-slc/ghi-vbond-podX    | Network Adapter 1 | Management              | eth1             | 192.168.0.7/24     | 192.168.0.1   |
+| B <br> vBond                                                 |         | 10.255.255.2  | sdwan-sjc/ghi-vbond-podX    | Network Adapter 1 | Management              | eth1             | 192.168.0.7/24     | 192.168.0.1   |
 | B <br> vBond                                                 |         |               |                             | Network Adapter 2 | Internet                | eth0             | 100.100.100.3/24   | 100.100.100.1 |
-| C <br> vSmart                                                |         | 10.255.255.3  | sdwan-slc/ghi-vsmart-podX   | Network Adapter 1 | Management              | eth1             | 192.168.0.8/24     | 192.168.0.1   |
+| C <br> vSmart                                                |         | 10.255.255.3  | sdwan-sjc/ghi-vsmart-podX   | Network Adapter 1 | Management              | eth1             | 192.168.0.8/24     | 192.168.0.1   |
 | C <br> vSmart                                                |         |               |                             | Network Adapter 2 | Internet                | eth0             | 100.100.100.4/24   | 100.100.100.1 |
-| D <br> vSmart2                                               |         | 10.255.255.4  | sdwan-slc/ghi-vsmart2-podX  | Network Adapter 1 | Management              | eth1             | 192.168.0.9/24     | 192.168.0.1   |
+| D <br> vSmart2                                               |         | 10.255.255.4  | sdwan-sjc/ghi-vsmart2-podX  | Network Adapter 1 | Management              | eth1             | 192.168.0.9/24     | 192.168.0.1   |
 | D <br> vSmart2                                               |         |               |                             | Network Adapter 2 | Internet                | eth0             | 100.100.100.5/24   | 100.100.100.1 |
 | E <br> DC-vEdge1                                             | 1       | 10.255.255.11 | DC-vEdge1-podX              | Network Adapter 1 | Management              | eth0             | 192.168.0.10/24    | 192.168.0.1   |
 | E <br> DC-vEdge1                                             |         |               |                             | Network Adapter 2 | MPLS10                  | ge0/1            | 192.0.2.2/30       | 192.0.2.1     |
@@ -130,21 +130,21 @@ VM names need to be used accordingly.
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 3 | Site50-VPN10            | GigabitEthernet3 | 10.50.10.3/24      |               |
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 4 | Site50-VPN20            | GigabitEthernet4 | 10.50.20.3/24      |               |
 | L <br> cEdge51                                               |         |               |                             | Network Adapter 5 | Site50-VPN30            | GigabitEthernet5 | 10.50.30.3/24      |               |
-| M <br> WAAS Central Manager                                                 | NA      | NA            | sdwan-slc/ghi-wcm-podX      | Network Adapter 1 | SiteDC_VPN10            | Virtual 1/0      | 10.100.10.100/24    | 10.100.10.2    |
-| N <br> WAAS Node Site 40                                                 |         |               | sdwan-slc/ghi-site40waas-podX    | Network Adapter 1 | Site40-VPN10            | Virtual 1/0      | 10.40.10.101/24     | 10.40.10.2    |
-| O <br> WAAS Node Site 50                                                 |         |               | sdwan-slc/ghi-site50waas-podX    | Network Adapter 1 | Site50-VPN10            | Virtual 1/0      | 10.50.10.101/24     | 10.50.10.2    |
-| P <br> Central GW                                            | NA      | NA            | sdwan-slc/ghi-gw-podX       | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
+| M <br> WAAS Central Manager                                                 | NA      | NA            | sdwan-sjc/ghi-wcm-podX      | Network Adapter 1 | SiteDC_VPN10            | Virtual 1/0      | 10.100.10.100/24    | 10.100.10.2    |
+| N <br> WAAS Node Site 40                                                 |         |               | sdwan-sjc/ghi-site40waas-podX    | Network Adapter 1 | Site40-VPN10            | Virtual 1/0      | 10.40.10.101/24     | 10.40.10.2    |
+| O <br> WAAS Node Site 50                                                 |         |               | sdwan-sjc/ghi-site50waas-podX    | Network Adapter 1 | Site50-VPN10            | Virtual 1/0      | 10.50.10.101/24     | 10.50.10.2    |
+| P <br> Central GW                                            | NA      | NA            | sdwan-sjc/ghi-gw-podX       | Network Adapter 1 | Management              | GigabitEthernet1 | 192.168.0.1        |               |
 | P <br> Central GW                                            |         |               |                             | Network Adapter 2 | WAN-Trunk               | GigabitEthernet2 | All DGs point here |               |
-| P <br> Central GW                                            |         |               |                             | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.24X/24      | 10.2.1.1      |
-| Q <br> Guacamole                                             | NA      | NA            | sdwan-slc/ghi-guac-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.20X/24      | 10.2.1.1      |
-| R <br> Jumphost                                              | NA      | NA            | sdwan-slc/ghi-jump-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.22X/24      | 10.2.1.1      |
-| S <br> Site 40 PC                                            | 40      | NA            | sdwan-slc/ghi-site40pc-podX | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
-| T <br> Site 50 PC                                            | 50      | NA            | sdwan-slc/ghi-site50pc-podX | Network Adapter 1 | Site50-VPN10            | eth0             | 10.50.10.21/24     | 10.50.10.100  |
-| U <br> Site 30 AD                                            | 30      | NA            | sdwan-slc/ghi-ad-podX       | Network Adapter 1 | Site30-VPN10            | eth0             | 10.30.10.50/24     | 10.30.10.2    |
-| U <br> Site 30 AD                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.18X         |               |
-| V <br> Site 30 PC                                            | 30      | NA            | sdwan-slc/ghi-site30pc-podX | Network Adapter 1 | Site30-VPN10            | eth0             | 10.30.10.21/24     | 10.30.10.2    |
-| V <br> Site 30 PC                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.16X         |               |
-| W <br> Firewall     ASAv                                         | 1       | NA            | sdwan-slc/ghi-asa-podX      | Network Adapter 1 | Management              | Management0/0    | 192.168.0.50/24    | 192.168.0.1   |
+| P <br> Central GW                                            |         |               |                             | Network Adapter 3 | Shared_Services_VLAN101 | GigabitEthernet3 | 10.2.1.24X/24 if connected to the GHI DC and 10.1.8.24X/24 if connected to the SJC DC      | 10.2.1.1 if connected to the GHI DC and 10.1.8.1 if connected to the SJC DC     |
+| Q <br> Guacamole                                             | NA      | NA            | sdwan-sjc/ghi-guac-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.20X/24 if connected to the GHI DC and 10.1.8.20X/24 if connected to the SJC DC      | 10.2.1.1 if connected to the GHI DC and 10.1.8.1 if connected to the SJC DC     |
+| R <br> Jumphost                                              | NA      | NA            | sdwan-sjc/ghi-jump-podX     | Network Adapter 1 | Shared_Services_VLAN101 | eth0             | 10.2.1.22X/24 if connected to the GHI DC and 10.1.8.22X/24 if connected to the SJC DC      | 10.2.1.1 if connected to the GHI DC and 10.1.8.1 if connected to the SJC DC      |
+| S <br> Site 40 PC                                            | 40      | NA            | sdwan-sjc/ghi-site40pc-podX | Network Adapter 1 | Site40-VPN30            | eth0             | 10.40.30.21/24     | 10.40.30.2    |
+| T <br> Site 50 PC                                            | 50      | NA            | sdwan-sjc/ghi-site50pc-podX | Network Adapter 1 | Site50-VPN10            | eth0             | 10.50.10.21/24     | 10.50.10.100  |
+| U <br> Site 30 AD                                            | 30      | NA            | sdwan-sjc/ghi-ad-podX       | Network Adapter 1 | Site30-VPN10            | eth0             | 10.30.10.50/24     | 10.30.10.2    |
+| U <br> Site 30 AD                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.18X  if connected to the GHI DC and 10.1.8.18X if connected to the SJC DC       |               |
+| V <br> Site 30 PC                                            | 30      | NA            | sdwan-sjc/ghi-site30pc-podX | Network Adapter 1 | Site30-VPN10            | eth0             | 10.30.10.21/24     | 10.30.10.2    |
+| V <br> Site 30 PC                                            |         |               |                             | Network Adapter 2 | Shared_Services_VLAN101 | eth1             | 10.2.1.16X if connected to the GHI DC and 10.1.8.16X if connected to the SJC DC        |               |
+| W <br> Firewall     ASAv                                         | 1       | NA            | sdwan-sjc/ghi-asa-podX      | Network Adapter 1 | Management              | Management0/0    | 192.168.0.50/24    | 192.168.0.1   |
 |          W <br> Firewall   ASAv                                                 |         |               |                             | Network Adapter 2 | SiteDC-VPN40            | Gig0/0           | 10.100.40.1/30     | 10.100.40.2   |
 |           W <br> Firewall    ASAv                                               |         |               |                             | Network Adapter 3 | SiteDC-VPN40_2          | Gig0/1           | 10.100.40.5/30     | 10.100.40.6   |
 

@@ -72,7 +72,7 @@ TLS proxy devices act as a man-in-the-middle (MitM) to decrypt encrypted TLS tra
 
 We will first perform some initial testing without AMP and TLS/SSL Proxy functionality enabled.
 
-1. Log in to vCenter (10.2.1.50/ui) via the saved bookmark using the username/password for your POD. Locate the *sdwan-ghi/slc-site40pc2win-podX* VM and click on it. Click on the console icon to open a console session to the PC (choose Web Console if prompted)
+1. Log in to vCenter (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC) via the saved bookmark using the username/password for your POD. Locate the *sdwan-sjc/ghi-site40pc2win-podX* VM and click on it. Click on the console icon to open a console session to the PC (choose Web Console if prompted)
 
     | Username | Password |
     | :---: | :---: |
@@ -257,7 +257,7 @@ This completes the DNS and NTP configuration required for TLS/SSL Proxy setup.
 
 We will now set up vManage as the CA and install the certificate on our client PC at Site 40.
 
-1. Log in to vCenter (10.2.1.50/ui) via the saved bookmark using the username/password for your POD. Locate the *sdwan-ghi/slc-site40pc2win-podX* VM and click on it. Click on the console icon to open a console session to the PC (choose Web Console if prompted)
+1. Log in to vCenter (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC) via the saved bookmark using the username/password for your POD. Locate the *sdwan-sjc/ghi-site40pc2win-podX* VM and click on it. Click on the console icon to open a console session to the PC (choose Web Console if prompted)
 
     | Username | Password |
     | :---: | :---: |

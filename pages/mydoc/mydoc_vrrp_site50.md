@@ -92,7 +92,7 @@ folder: mydoc
 
 ## Verification and Testing
 
-1. Log in to vCenter via the Bookmark in Chrome (or go to the URL 10.2.1.50/ui). Use the credentials provided to you for your POD. Locate the *sdwan-slc/ghi-site50pc-podX* VM (in the image it is named Ubuntu_Site50) and click on the Console icon. Choose Web Console, if prompted
+1. Log in to vCenter via the Bookmark in Chrome (or go to the URL 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC). Use the credentials provided to you for your POD. Locate the *sdwan-sjc/ghi-site50pc-podX* VM (in the image it is named Ubuntu_Site50) and click on the Console icon. Choose Web Console, if prompted
 
     ![](/images/VRRP/13_vconsole.PNG)
 

@@ -306,7 +306,7 @@ This completes the configuration of our QoS Policy in VPN 10 at Site 40.
 
 ## Activity Verification
 
-1. Log in to vCenter (use the bookmark or go to 10.2.1.50/ui) using the credentials provided to you. Locate the sdwan-slc/ghi-site40pc-podX VM and click on it. Open the Web Console to the Site 40 PC VM and log in. The Username is sdwan and the password is C1sco12345. Click the network icon in the top-right corner and go to Wired Settings
+1. Log in to vCenter (use the bookmark or go to 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC) using the credentials provided to you. Locate the sdwan-sjc/ghi-site40pc-podX VM and click on it. Open the Web Console to the Site 40 PC VM and log in. The Username is sdwan and the password is C1sco12345. Click the network icon in the top-right corner and go to Wired Settings
 
     ![](/images/AAR_LLQ/87_wired.PNG)
 
@@ -328,11 +328,11 @@ This completes the configuration of our QoS Policy in VPN 10 at Site 40.
     |-------------|---------------|------------|----------------------------------------|
     | 10.40.10.21 | 255.255.255.0 | 10.40.10.2 | Automatic - Off <br> <br> 10.y.1.5, 10.y.1.6 |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/AAR_LLQ/83_staticsave.PNG)
 
-6. Back at the vCenter screen, right click on the Site40PC (named sdwan-slc/ghi-site40pc-podX) for your POD and click on **Edit Settings** (image as an example only)
+6. Back at the vCenter screen, right click on the Site40PC (named sdwan-sjc/ghi-site40pc-podX) for your POD and click on **Edit Settings** (image as an example only)
 
     ![](/images/AAR_LLQ/82_editsett.PNG)
 

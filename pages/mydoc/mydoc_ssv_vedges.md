@@ -42,7 +42,7 @@ We are now going to set up the Service Side VPNs for our vEdges. The process is 
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_vEdges_Templates/03_vpndet.PNG)
 

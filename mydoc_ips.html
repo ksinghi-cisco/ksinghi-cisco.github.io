@@ -751,12 +751,12 @@ We will be performing some initial configuration in the network before it can su
 
 <ol>
   <li>
-    <p data-step="3" data-intro="This is a step that needs to be performed to complete a lab task. Some steps will have tables.">Log in to vCenter via the bookmark in Chrome, or via the URL (10.2.1.50/ui). Use the credentials provided for your POD. Click on <strong>Login</strong></p>
+    <p data-step="3" data-intro="This is a step that needs to be performed to complete a lab task. Some steps will have tables.">Log in to vCenter via the bookmark in Chrome, or via the URL (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC). Use the credentials provided for your POD. Click on <strong>Login</strong></p>
 
     <p><img src="/images/SD-WAN_Security_IPS/99_vc.PNG" alt="" /></p>
   </li>
   <li>
-    <p>Locate your Site 40 PC (image below shows Site40_PC, VM name for your POD should be sdwan-slc/ghi-site40pc-podX) and choose to open the console. Select Web Console, if prompted</p>
+    <p>Locate your Site 40 PC (image below shows Site40_PC, VM name for your POD should be sdwan-sjc/ghi-site40pc-podX) and choose to open the console. Select Web Console, if prompted</p>
 
     <p data-step="4" data-intro="An image will usually accompany a step, for reference." data-position="left"><img src="/images/SD-WAN_Security_IPS/98_zconsole.PNG" alt="" /></p>
   </li>
@@ -781,7 +781,7 @@ We will be performing some initial configuration in the network before it can su
     <p><img src="/images/SD-WAN_Security_IPS/95_plus.PNG" alt="" /></p>
   </li>
   <li>
-    <p>Go to the <strong>IPv4</strong> tab and click on <strong>Manual</strong> for the IPv4 Method. Enter details as given below and click on <strong>Add</strong>. Over here, y is <em>1</em> if you’re connected to the SLC DC and <em>2</em> if you’re connected to the GHI DC. The email sent with lab access details should enumerate which DC you’re POD is on</p>
+    <p>Go to the <strong>IPv4</strong> tab and click on <strong>Manual</strong> for the IPv4 Method. Enter details as given below and click on <strong>Add</strong>. Over here, y is <em>1</em> if you’re connected to the SJC DC and <em>2</em> if you’re connected to the GHI DC. The email sent with lab access details should enumerate which DC you’re POD is on</p>
 
     <table>
       <thead>

@@ -69,7 +69,7 @@ Unlike before, we will create a Device Template and set up our Feature Templates
     | Basic Configuration - DNS | Primary DNS Address   | Global                                | 10.y.1.5                        |
     | Basic Configuration - DNS | Secondary DNS Address | Global                                | 10.y.1.6                        |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/vSmart_Templates/05_conf1.PNG)
 
@@ -183,7 +183,7 @@ Make sure the VPN 0 and VPN 0 Interface Templates just created are selected from
     | Basic Configuration - DNS | Primary DNS Address   | Global                                | 10.y.1.5                        |
     | Basic Configuration - DNS | Secondary DNS Address | Global                                | 10.y.1.6                        |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/vSmart_Templates/15_vpn512conf.PNG)
 

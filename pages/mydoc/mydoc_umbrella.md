@@ -105,9 +105,9 @@ We will need to change a few settings with respect to the DNS servers to ensure 
 
 Additionally, we will be working on the Site 30 PC which is part of an AD domain (swatsdwanlab.com). The Domain Controller is at 10.30.10.50, which is also acting as the DNS server for the Site 30 PC.
 
-1. Connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
+1. Connect to the Site 30 PC to verify that Site to Site communication is operational but the Internet cannot be accessed. Log in to Guacamole (10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X:8080/guacamole if connected to the SJC DC, where X is your POD number) with the credentials given below and click on the PODX-Site30PC option.
 
-    Alternatively, you can RDP to 10.2.1.16X (where X is your POD number) from the Jumphost. RDP to the Site 30 PC will only work from the Jumphost
+    Alternatively, you can RDP to 10.2.1.16X if connected to the GHI DC and 10.1.8.16X if connected to the SJC DC (where X is your POD number) from the Jumphost. RDP to the Site 30 PC will only work from the Jumphost
 
     | Connection Method | Username | Password |
     | --- | ---- | ---- |
@@ -118,7 +118,7 @@ Additionally, we will be working on the Site 30 PC which is part of an AD domain
 
     ![](/images/Umbrella_SDWAN_2/01_site30pc.PNG)
 
-    vCenter (accessible via the bookmark or 10.2.1.50/ui and the credentials provided for your POD) can also be used to console to the Site30 PC
+    vCenter (accessible via the bookmark or 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC and the credentials provided for your POD) can also be used to console to the Site30 PC
 
     ![](/images/Umbrella_SDWAN_2/01_vcc.PNG)
 
@@ -489,9 +489,9 @@ Life without Umbrella doesn't look too good since we are open to the simplest of
 
 Let's start off by giving some basic DNS-layer Security to our devices.
 
-1. Connect to the sdwan-ghi-ad-podX machine by logging in to Guacamole (10.2.1.20X:8080/guacamole, where X is your POD number) with the credentials given below and click on the PODX-AD option.
+1. Connect to the sdwan-ghi-ad-podX machine by logging in to Guacamole (10.2.1.20X:8080/guacamole if connected to the GHI DC and 10.1.8.20X:8080/guacamole if connected to the SJC DC, where X is your POD number) with the credentials given below and click on the PODX-AD option.
 
-    Alternatively, you can RDP to 10.2.1.18X (where X is your POD number) from the Jumphost. RDP to the AD PC will only work from the Jumphost
+    Alternatively, you can RDP to 10.2.1.18X if connected to the GHI DC and 10.1.8.18X if connected to the SJC DC (where X is your POD number) from the Jumphost. RDP to the AD PC will only work from the Jumphost
 
     | Connection Method | Username | Password |
     | --- | ---- | ---- |
@@ -502,7 +502,7 @@ Let's start off by giving some basic DNS-layer Security to our devices.
 
     ![](/images/Umbrella_SDWAN_2/57_xad.PNG)
 
-    vCenter (accessible via the bookmark or 10.2.1.50/ui and the credentials provided for your POD) can also be used to console to the AD PC
+    vCenter (accessible via the bookmark or 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC and the credentials provided for your POD) can also be used to console to the AD PC
 
 2. Depending on the connection method, you may need to enter credentials again to log in to the AD PC. Please enter the credentials shown below, if prompted
 
@@ -887,7 +887,7 @@ Three pieces of the puzzle that uniquely identify our Enterprise Network on Umbr
 
     {% include tip.html content="If the key needs to be re-generated (usually required if the secret is misplaced), the Refresh button will allow you to generate a new API Key and Secret." %}
 
-7. Log in to the AD PC (10.2.1.18X) via your preferred method (Guacamole/RDP/vCenter Console) and click on Start. Search for Active Directory Users and Computers and open the App
+7. Log in to the AD PC (10.2.1.18X if connected to the GHI DC and 10.1.8.18X if connected to the SJC DC) via your preferred method (Guacamole/RDP/vCenter Console) and click on Start. Search for Active Directory Users and Computers and open the App
 
     ![](/images/Umbrella_SDWAN_2/82_aduac.PNG)
 

@@ -64,7 +64,7 @@ URL Filtering allows networks to block traffic to certain sites by utilizing URL
 
 Wait for a few minutes before going through the verification steps enumerated below.
 
-1. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui). Log in using the credentials provided and click on the sdwan-slc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open an **Incognito window** in Chrome or a **Private Browsing** tab in Mozilla Firefox. Try to access http://www.amazon.com. The page should get blocked, giving the message we had customized
+1. Log in to the Site40 PC by accessing vCenter (use the bookmark or access 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC). Log in using the credentials provided and click on the sdwan-sjc/ghi-site40pc-podX. Click on the console icon to open a Web Console. Open an **Incognito window** in Chrome or a **Private Browsing** tab in Mozilla Firefox. Try to access http://www.amazon.com. The page should get blocked, giving the message we had customized
 
     ![](/images/SD-WAN_Security_URLF/07_pvtbrowse.PNG)
 
