@@ -59,7 +59,7 @@ We will be deploying two cEdges in Site 50 via vCenter. cEdge 50 will have a sin
 ### Deploying the VM on vCenter
 <br>
 
-1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui. Log in with the credentials provided for your POD.
+1. Click on the bookmark for vCenter or navigate to the following URL: https://10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC. Log in with the credentials provided for your POD.
 
     ![](/images/Deploying_DC_vEdge1/03_logintovcenter_usecredsprovided.PNG)
 2. We should see the vEdges and cEdges from previous sections of the lab deployed.

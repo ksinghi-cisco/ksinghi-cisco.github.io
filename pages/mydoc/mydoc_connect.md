@@ -33,7 +33,7 @@ Note that we are skipping a couple of portions of the lab (namely *Bringing up t
 
 Connecting to the Cisco SWAT SD-WAN Labs is encompassed in this section. You will receive an email with the following information (or it will be provided to you by your SWAT contact):
 
-* The Data Center (SLC or GHI) your POD is scheduled on and the POD number, along with the group
+* The Data Center (SJC or GHI) your POD is scheduled on and the POD number, along with the group
 * VPN Credentials and connection information
 * IP Address of the Jumphost/Guacamole
 
@@ -91,6 +91,6 @@ You should now be able to RDP to the Jumphost for your POD. The IP for the Jumph
 
 | Username | Password | IP Address |
 | :---: | :---: | :---: |
-| admin | C1sco12345 | 10.2.1.22X <br><br> where X is your POD number |
+| admin | C1sco12345 | 10.2.1.22X if connected to the GHI DC and 10.1.8.22X if connected to the SJC DC <br><br> where X is your POD number |
 
 If things aren't working as expected, please use the **Need Help?** link at the top of the page (or check with your SWAT contact) to send an email to our support team and someone will get in touch with you at the earliest. If the Need Help? link isn't visible, there should be a menu on the top-right of the screen. Click on it to display the Top Navigation Bar.

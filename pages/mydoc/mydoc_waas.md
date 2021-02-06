@@ -81,7 +81,7 @@ The components of the WAAS SD-WAN solution are:
 
     ![](/images/WaaS/image003.png)
 
-3. Open vCenter (10.2.1.50/ui or via the bookmark) and log in using the credentials provided for your POD. Locate the *sdwan-ghi-site40waas* VM and click on it. Click on the **Open Console** icon and choose **Web Console** if prompted. Click on **OK**. Initial setup of the WAAS Nodes is done via the CLI
+3. Open vCenter (10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC or via the bookmark) and log in using the credentials provided for your POD. Locate the *sdwan-ghi-site40waas* VM and click on it. Click on the **Open Console** icon and choose **Web Console** if prompted. Click on **OK**. Initial setup of the WAAS Nodes is done via the CLI
 
     ![](/images/WaaS/image005.png)
 
@@ -636,7 +636,7 @@ We have created the AppNav Clusters and applied some default policies. Traffic o
 We will be testing things out in VPN 10 and generating HTTP traffic in that VPN from Site 40 to Site 50. A few changes will need to be made on the workstations available at Site 40 and Site 50, post which we can begin verification.
 
 
-1. Log in to vCenter (use the bookmark or go to 10.2.1.50/ui) using the credentials provided to you. Locate the *sdwan-slc/ghi-site40pc-podX* VM and click on it. Open the Web Console to the Site 40 PC VM and log in. The Username is sdwan and the password is C1sco12345. Click the network icon in the top-right corner and go to Wired Settings
+1. Log in to vCenter (use the bookmark or go to 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC) using the credentials provided to you. Locate the *sdwan-sjc/ghi-site40pc-podX* VM and click on it. Open the Web Console to the Site 40 PC VM and log in. The Username is sdwan and the password is C1sco12345. Click the network icon in the top-right corner and go to Wired Settings
 
     ![](/images/AAR_LLQ/87_wired.PNG)
 
@@ -658,11 +658,11 @@ We will be testing things out in VPN 10 and generating HTTP traffic in that VPN 
     |-------------|---------------|------------|----------------------------------------|
     | 10.40.10.21 | 255.255.255.0 | 10.40.10.2 | Automatic - Off <br> <br> 10.y.1.5, 10.y.1.6 |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/AAR_LLQ/83_staticsave.PNG)
 
-6. Back at the vCenter screen, right click on the Site40PC (named sdwan-slc/ghi-site40pc-podX) for your POD and click on **Edit Settings** (image as an example only)
+6. Back at the vCenter screen, right click on the Site40PC (named sdwan-sjc/ghi-site40pc-podX) for your POD and click on **Edit Settings** (image as an example only)
 
     ![](/images/AAR_LLQ/82_editsett.PNG)
 
@@ -674,7 +674,7 @@ We will be testing things out in VPN 10 and generating HTTP traffic in that VPN 
 
     ![](/images/AAR_LLQ/80_s40v10okok.PNG)
 
-9. Back at vCenter, console in to *sdwan-ghi/slc-ad-podX*. The username is administrator and the password is C1sco12345. Click on **Start** and type *ncpa.cpl* to open the Network Connections. Right click on Ethernet0 and **Disable** it. Right click on Ethernet2 and **Enable** the adapter
+9. Back at vCenter, console in to *sdwan-sjc/ghi-ad-podX*. The username is administrator and the password is C1sco12345. Click on **Start** and type *ncpa.cpl* to open the Network Connections. Right click on Ethernet0 and **Disable** it. Right click on Ethernet2 and **Enable** the adapter
 
     ![](/images/WaaS/image207.png)
 
@@ -682,7 +682,7 @@ We will be testing things out in VPN 10 and generating HTTP traffic in that VPN 
 
     ![](/images/WaaS/image213.png)
 
-11. SSH to the Site40-WaaS Node (IP of 10.40.10.101) or console in via vCenter (VM name is *sdwan-ghi/slc-site40waas-podX*). Log in via the username of admin and a password of default and enter the command `show statistics connection`
+11. SSH to the Site40-WaaS Node (IP of 10.40.10.101) or console in via vCenter (VM name is *sdwan-sjc/ghi-site40waas-podX*). Log in via the username of admin and a password of default and enter the command `show statistics connection`
 
     ![](/images/WaaS/image215.png)
 

@@ -26,7 +26,7 @@ folder: mydoc
 ## Overview
 We will now shift focus to setting up our DIA site at Site40. Guest users will connect on VPN 30 and we need to ensure they have access to the Internet. We will first verify that the PC at Site 40 does not have Internet access. The WAN Interface at Site 40 on *public-internet* will then be updated for NAT and a Policy will be applied (which will include a Data Prefix list and a Data Policy) to allow users on VPN 30 to access the Internet.
 
-1. Click on the bookmark for vCenter in Google Chrome or navigate to https://10.2.1.50/ui. Enter the credentials provided for your POD and click on **Login**
+1. Click on the bookmark for vCenter in Google Chrome or navigate to https://10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC. Enter the credentials provided for your POD and click on **Login**
 
     ![](/images/DataPol_DIA/01_vc.PNG)
 

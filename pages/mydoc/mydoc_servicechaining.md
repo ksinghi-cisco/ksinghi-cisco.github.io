@@ -78,7 +78,7 @@ Diagrammatically, our topology will look as below:
 
 We will configure VPN 40 at the DC Site and ensure connectivity between the DC-vEdges and the ASAv Firewall.
 
-1. Log in to vCenter using the bookmark or by going to 10.2.1.50/ui from a web browser. Use the credentials for your POD
+1. Log in to vCenter using the bookmark or by going to 10.2.1.50/ui if connected to the GHI DC and 10.1.1.50/ui if connected to the SJC DC from a web browser. Use the credentials for your POD
 
     | Username | Password |
     | :---: | :---: |

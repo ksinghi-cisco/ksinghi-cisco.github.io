@@ -39,7 +39,7 @@ folder: mydoc
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/02_sett.PNG)
 
@@ -96,7 +96,7 @@ As indicated before, creating the templates is a repetitive task so we will be g
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/04_vpn20.PNG)
 
@@ -150,7 +150,7 @@ As indicated before, creating the templates is a repetitive task so we will be g
     | Advertise OMP             | Static (IPv4)         | Global                                | On                           |
     | Advertise OMP             | Connected (IPv4)      | Global                                | On                           |
 
-    Over here, y is *1* if you're on the SLC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
+    Over here, y is *1* if you're on the SJC DC and *2* if you're on the GHI DC (the email with lab details should enumerate which DC you're on).
 
     ![](/images/Service_cEdges_Templates/05_vpn30.PNG)
 
