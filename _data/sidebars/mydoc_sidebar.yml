@@ -48,35 +48,35 @@ entries:
       url: /mydoc_prerequisitesandobjectives.html
       output: web, pdf
 
-  - title: Bringing Up the DC-vEdges
+#  - title: Bringing Up the DC-vEdges
+#    output: web, pdf
+#    folderitems:
+
+#    - title: Deploying DC-vEdge1
+#      url: /mydoc_Deploying_DCvEdge1.html
+#      output: web, pdf
+
+#    - title: Deploying DC-vEdge2
+#      url: /mydoc_Deploying_DCvEdge2.html
+#      output: web, pdf
+
+  - title: Deploying devices in Site 30
     output: web, pdf
     folderitems:
 
-    - title: Deploying DC-vEdge1
-      url: /mydoc_Deploying_DCvEdge1.html
-      output: web, pdf
+#    - title: Deploying vEdge20 - Single INET uplink
+#      url: /mydoc_Deploying_vEdge20.html
+#      output: web, pdf
 
-    - title: Deploying DC-vEdge2
-      url: /mydoc_Deploying_DCvEdge2.html
-      output: web, pdf
-
-  - title: Deploying devices in Site 20 and Site 30
-    output: web, pdf
-    folderitems:
-
-    - title: Deploying vEdge20 - Single INET uplink
-      url: /mydoc_Deploying_vEdge20.html
-      output: web, pdf
-
-    - title: Deploying vEdge21 - Single MPLS uplink
-      url: /mydoc_Deploying_vEdge21.html
-      output: web, pdf
+#    - title: Deploying vEdge21 - Single MPLS uplink
+#      url: /mydoc_Deploying_vEdge21.html
+#      output: web, pdf
 
     - title: Deploying vEdge30 - Dual uplink
       url: /mydoc_Deploying_vEdge30.html
       output: web, pdf
 
-  - title: Deploying devices in Site 40 and Site 50
+  - title: Deploying devices in Site 40
     output: web, pdf
 
     folderitems:
@@ -84,9 +84,9 @@ entries:
       url: /mydoc_Deploying_cEdge40.html
       output: web, pdf
 
-    - title: Deploying cEdge50 and cEdge51
-      url: /mydoc_Deploying_cEdge50_cEdge51.html
-      output: web, pdf
+#    - title: Deploying cEdge50 and cEdge51
+#      url: /mydoc_Deploying_cEdge50_cEdge51.html
+#      output: web, pdf
 
 
 
