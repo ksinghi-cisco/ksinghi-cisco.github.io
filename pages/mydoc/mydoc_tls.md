@@ -3,10 +3,10 @@ title: Configuring AMP and TLS/SSL Proxy
 keywords: amp, tls, ssl proxy
 last_updated: Dec 25, 2020
 summary: "Configuring Advanced Malware Protection and TLS/SSL Proxy."
-sidebar: false
+sidebar: mydoc_sidebar
 permalink: mydoc_tls.html
 folder: mydoc
----
+
 
 <br/>
 
